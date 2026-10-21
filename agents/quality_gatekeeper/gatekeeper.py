@@ -79,7 +79,7 @@ class QualityGatekeeper:
         Nạp và kiểm thực 3 hợp đồng dữ liệu đầu vào từ Agent 1, 2 và 3.
         """
         # 1. Blueprint (Agent 1)
-        if isinstance(blueprint_input, CurriculumBlueprint):
+        if isinstance(blueprint_input, CurriculumBlueprint) or getattr(blueprint_input, "__class__", None).__name__ == "CurriculumBlueprint":
             self.blueprint = blueprint_input
         elif isinstance(blueprint_input, dict):
             self.blueprint = CurriculumBlueprint.model_validate(blueprint_input)
@@ -91,7 +91,7 @@ class QualityGatekeeper:
             raise TypeError(f"blueprint_input không hợp lệ: {type(blueprint_input)}")
 
         # 2. Asset Manifest (Agent 2)
-        if isinstance(manifest_input, VisualAssetManifest):
+        if isinstance(manifest_input, VisualAssetManifest) or getattr(manifest_input, "__class__", None).__name__ == "VisualAssetManifest":
             self.manifest = manifest_input
         elif isinstance(manifest_input, dict):
             self.manifest = VisualAssetManifest.model_validate(manifest_input)
@@ -103,7 +103,7 @@ class QualityGatekeeper:
             raise TypeError(f"manifest_input không hợp lệ: {type(manifest_input)}")
 
         # 3. Draft Payload (Agent 3)
-        if isinstance(draft_payload_input, DraftPayload):
+        if isinstance(draft_payload_input, DraftPayload) or getattr(draft_payload_input, "__class__", None).__name__ == "DraftPayload":
             self.draft_payload = draft_payload_input
         elif isinstance(draft_payload_input, dict):
             self.draft_payload = DraftPayload.model_validate(draft_payload_input)
@@ -677,7 +677,7 @@ class QualityGatekeeper:
 
         # Khảo sát tuần tự từng Luận điểm Vi mô (MPT)
         for mpt in self.draft_payload.mpt_payloads:
-            clean_mpt_num = mpt.mpt_id.replace("MPT_", "").replace("_", ".")
+            clean_mpt_num = mpt.mpt_id.replace("MPT_", "").replace("MUC_", "").replace("_", ".")
             mpt_title_text = f"Luận điểm {clean_mpt_num}: {mpt.mpt_title}"
 
             # H2: Tiêu đề Luận điểm vi mô (Bookmark Cấp 2)

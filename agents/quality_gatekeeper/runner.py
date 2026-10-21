@@ -43,6 +43,7 @@ def main():
     )
     parser.add_argument(
         "--draft",
+        "--payload",
         type=str,
         default=os.path.join(PROJECT_ROOT, "output", "payloads", "DRAFT_PAYLOAD_MUC_2_1.json"),
         help="Đường dẫn tệp DRAFT_PAYLOAD_MUC_X.Y.json",

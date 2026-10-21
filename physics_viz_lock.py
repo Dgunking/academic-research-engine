@@ -11,6 +11,7 @@ Triệt tiêu hoàn toàn:
 """
 
 import os
+import sys
 import json
 import hashlib
 from datetime import datetime
@@ -18,6 +19,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.transforms import Bbox
 from matplotlib.text import Annotation, Text
+
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 def apply_pedagogical_style():
     """Thiết lập chuẩn hiển thị rõ ràng, chống nhiễu thị giác cho người mới học 1 tháng."""
