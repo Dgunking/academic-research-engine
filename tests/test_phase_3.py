@@ -177,6 +177,7 @@ class TestPhase3PedagogicalAuthor(unittest.TestCase):
                 s.explanation_vi.startswith(UFMEEngine.MANDATORY_DERIVATION_PREFIX),
                 f"Bước {s.step_index} thiếu tiền tố ↳ chuẩn!"
             )
+            self.assertIn(s.step_nature, ["EXACT_ALGEBRAIC", "PHYSICAL_APPROXIMATION"])
 
     def test_08_ufme_stage_3_zero_slash_fractions(self):
         """Luật 14: Công thức từng bước trong dẫn xuất tuyệt đối không chứa phân số gạch chéo /."""

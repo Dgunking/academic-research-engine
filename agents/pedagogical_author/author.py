@@ -380,12 +380,14 @@ class UFMEEngine:
             IntermediateDerivationStep(
                 step_index=1,
                 explanation_vi=step_1_exp,
-                step_equation_latex=step_1_eq
+                step_equation_latex=step_1_eq,
+                step_nature="EXACT_ALGEBRAIC"
             ),
             IntermediateDerivationStep(
                 step_index=2,
                 explanation_vi=step_2_exp,
-                step_equation_latex=step_2_eq
+                step_equation_latex=step_2_eq,
+                step_nature="EXACT_ALGEBRAIC"
             )
         ]
 

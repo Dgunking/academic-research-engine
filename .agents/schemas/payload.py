@@ -5,7 +5,7 @@ Sinh ra bởi: pedagogical-author (Thuật toán 5, 12 & Linter Trạm 1)
 Tiêu thụ bởi: quality-gatekeeper.
 """
 
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Literal
 import pydantic
 
 
@@ -37,6 +37,10 @@ class IntermediateDerivationStep(pydantic.BaseModel):
     )
     step_equation_latex: str = pydantic.Field(
         description="Công thức toán học từng bước, tuyệt đối không chứa phân số gạch chéo /, dùng \\frac{}{}"
+    )
+    step_nature: Literal["EXACT_ALGEBRAIC", "PHYSICAL_APPROXIMATION"] = pydantic.Field(
+        default="EXACT_ALGEBRAIC",
+        description="Bản chất biến đổi: EXACT_ALGEBRAIC (đồng nhất thức đại số chuẩn xác cần SymPy CAS simplify == 0) hoặc PHYSICAL_APPROXIMATION (xấp xỉ vật lý tiệm cận)"
     )
 
 
