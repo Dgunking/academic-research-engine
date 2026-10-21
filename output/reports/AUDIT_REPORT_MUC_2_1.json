@@ -1,0 +1,69 @@
+{
+  "section_id": "MUC_2_1",
+  "audit_timestamp": "2026-10-21T19:44:05.437016",
+  "overall_verdict": "PASS_100_PERCENT",
+  "self_healing_attempt_count": 1,
+  "dohg_2_0_results": {
+    "station_1_static_linter": {
+      "station_name": "Trạm 1: Static AST & Typography Pre-Flight Linter",
+      "passed": true,
+      "details": "PASS 100%: Bản thảo hoàn toàn sạch mã LaTeX thô, phân số gạch chéo, biến ASCII gạch dưới và thực thể HTML thô. Ký hiệu ↳ xuống dòng đúng chuẩn.",
+      "error_traces": null
+    },
+    "station_2_boundary_re3_audit": {
+      "station_name": "Trạm 2: Geometry Collision & Cryptographic Manifest Detector",
+      "passed": true,
+      "details": "PASS 100%: 100% tài sản đồ họa khớp mã băm SHA-256, đạt chuẩn Triple Buffer Envelope và khổ in A4.",
+      "error_traces": null
+    },
+    "station_3_sympy_cas_verification": {
+      "station_name": "Trạm 3: Formal CAS & Epistemic Calibration Gate",
+      "passed": true,
+      "details": "PASS 100%: 100% biểu thức đại số hình thức đạt simplify == 0, chuẩn thông số 300 K và không bỏ sót thực thể.",
+      "error_traces": null
+    },
+    "station_4_typographic_preflight": {
+      "station_name": "Trạm 4: Typography DejaVu Preflight & Arrow Linebreak Gate",
+      "passed": true,
+      "details": "PASS 100%: 100% bảng Nomenclature đạt chuẩn 4 cột ISO 80000-2, đủ 5 giai đoạn sư phạm và thử thách CER.",
+      "error_traces": null
+    },
+    "station_5_reportlab_compilation": {
+      "station_name": "Trạm 5: ReportLab DocTemplate Compilation & Page Budget",
+      "passed": true,
+      "details": "PASS 100%: Biên dịch thành công PDF 5 trang (0.34 MB). Cây bookmarks 3 cấp (7 mục) và canvas 2 lượt Trang X / Y hoàn hảo.",
+      "error_traces": null
+    }
+  },
+  "binary_17_point_checklist": {
+    "total_passed": 17,
+    "checklist_status": {
+      "GATE_01_elastic_depth_zero_omission": true,
+      "GATE_02_five_stage_pedagogy": true,
+      "GATE_03_three_beat_analogy_aregistry": true,
+      "GATE_04_zero_symbol_drift": true,
+      "GATE_05_five_link_ocr_caption": true,
+      "GATE_06_algebraic_geometric_sign": true,
+      "GATE_07_asymptotic_sweeps_boundary": true,
+      "GATE_08_causal_flowchain_explicit_derivation": true,
+      "GATE_09_pillar_equation_nomenclature": true,
+      "GATE_10_parallel_operation_modes": true,
+      "GATE_11_zero_text_chat_rule": true,
+      "GATE_12_clean_slate_edit": true,
+      "GATE_13_matlab_hdse_triple_buffer": true,
+      "GATE_14_pdf_preflight_compliance": true,
+      "GATE_15_atcc_scientific_nomenclature": true,
+      "GATE_16_temp_isolation_atomic_replace": true,
+      "GATE_17_sample_gate_protocol": true
+    }
+  },
+  "publication_metadata": {
+    "temp_build_path": "C:\\Users\\AD\\AppData\\Local\\Temp\\hust_monograph_MUC_2_1_1792586645172.pdf",
+    "final_drive_path": "D:\\antigravity\\academic-research-engine\\output\\pdf\\Chuyen_Khao_Laser_Diode_Muc_2_1_Phase4.pdf",
+    "atomic_replace_success": true,
+    "file_size_bytes": 354804,
+    "sha256_checksum": "263f1941c8b4f54e176dc8d3c55e8b876fd720ec5f160ae95805b1135c3ef8e3",
+    "two_pass_total_pages": "Trang 1 / 5",
+    "pdf_bookmarks_levels_verified": true
+  }
+}
