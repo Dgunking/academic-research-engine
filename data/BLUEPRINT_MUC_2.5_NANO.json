@@ -1,0 +1,269 @@
+{
+  "lesson_title": "Chương 2: Bản chất lượng tử của thế giới nano - Mục 2.5: Bản chất và công nghệ nano lượng tử",
+  "section_id": "Mục 2.5",
+  "source_document_citations": [
+    "Bài 2-Quantum nature.pdf (Slide 54 đến 70), Bộ môn Vật liệu Điện tử - Viện Vật lý Kỹ thuật HUST",
+    "Michael A. Nielsen, Isaac L. Chuang, Quantum Computation and Quantum Information, Cambridge University Press, 2010",
+    "John S. Bell, Speakable and Unspeakable in Quantum Mechanics, Cambridge University Press, 2004",
+    "Scientific Background on the Nobel Prize in Physics 2022: For experiments with entangled photons, establishing the violation of Bell inequalities and pioneering quantum information science"
+  ],
+  "micro_point_topics": [
+    {
+      "mpt_id": "Luận điểm 2.5.1",
+      "concept_introduction": "Khoa học nano lượng tử & Khái niệm Độ kết hợp lượng tử (Coherence): Ranh giới giao thoa giữa khoa học nano và vật lý lượng tử, khả năng bảo toàn pha hàm sóng và sự suy giảm kết hợp (Decoherence) do tương tác nhiệt vi mô.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_2.5_Hinh_01_Khoa_Hoc_Nano_Luong_Tu.png",
+        "interaction_id": "IMG_2.5.1_ORIG_NANO_QUANTUM",
+        "aspect_ratio": "1:1",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.5.1: Sơ đồ khoa học nano lượng tử — giao thoa giữa cơ học lượng tử và cấu trúc nano."
+      },
+      "minimal_working_example": "Mô hình suy giảm ma trận mật độ của một qubit chấm lượng tử bán dẫn dưới tác động của tán xạ phonon âm thanh tại 300 K.",
+      "pillar_equation_latex": "\\rho(t) = \\begin{pmatrix} \\rho_{00} & \\rho_{01}(0) e^{-t / T_2} \\\\ \\rho_{10}(0) e^{-t / T_2} & \\rho_{11} \\end{pmatrix}, \\quad \\frac{1}{T_2} = \\frac{1}{2 T_1} + \\frac{1}{T_\\phi}",
+      "nomenclature_table": [
+        {
+          "name": "Ma trận mật độ trạng thái lượng tử",
+          "symbol": "\\rho(t)",
+          "unit": "không thứ nguyên",
+          "meaning": "Toán tử thống kê mô tả trạng thái hỗn hợp hoặc tinh khiết của hệ lượng tử"
+        },
+        {
+          "name": "Phần tử ngoài đường chéo",
+          "symbol": "\\rho_{01}(t)",
+          "unit": "không thứ nguyên",
+          "meaning": "Biên độ kết hợp pha lượng tử giữa hai mức năng lượng |0> và |1>"
+        },
+        {
+          "name": "Thời gian giải kết hợp lượng tử",
+          "symbol": "T_2",
+          "unit": "s",
+          "meaning": "Thời gian suy giảm độ kết hợp pha ngang (Transverse dephasing time)"
+        },
+        {
+          "name": "Thời gian hồi phục năng lượng dọc",
+          "symbol": "T_1",
+          "unit": "s",
+          "meaning": "Thời gian chuyển dịch hồi phục mức năng lượng về trạng thái cân bằng nhiệt"
+        },
+        {
+          "name": "Thời gian lệch pha thuần túy",
+          "symbol": "T_\\phi",
+          "unit": "s",
+          "meaning": "Thời gian trôi dạt ngẫu nhiên của pha sóng do thăng giáng thế năng cục bộ"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thiết lập phương trình chủ Lindblad cho hệ lượng tử mở tương tác với môi trường nhiệt bồn tắm phonon: d\\rho/dt = -i/\\hbar [H, \\rho] + \\mathcal{L}(\\rho).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Chiếu phương trình lên cơ sở trạng thái hai mức {|0>, |1>}, phân tách thành phương trình tốc độ cho các phần tử đường chéo (dân số hạt) và phần tử ngoài đường chéo (độ kết hợp pha).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Giải tích phân vi phân cho phần tử ngoài đường chéo: d\\rho_{01}/dt = -(1/T_2) \\rho_{01} \\implies \\rho_{01}(t) = \\rho_{01}(0) \\exp(-t / T_2)."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Khảo sát nhiệt độ: Tại T = 300 K, tán xạ phonon nhiệt cực mạnh làm T_2 < 1 ps, phá hủy toàn bộ tính kết hợp lượng tử. Để duy trì T_2 > 100 ns cho tính toán lượng tử, các chấm lượng tử bắt buộc phải làm lạnh ở nhiệt độ heli lỏng T < 4 K.",
+        "Khảo sát tiệm cận t >> T_2: Phần tử kết hợp \\rho_{01} triệt tiêu hoàn toàn về 0, ma trận mật độ trở thành ma trận đường chéo cổ điển, chuyển đổi hệ lượng tử thành phân bố xác suất cổ điển thuần túy."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao một quả bóng vĩ mô hay con mèo của Schrödinger không thể quan sát thấy hiện tượng giao thoa sóng lượng tử trong đời sống thường nhật, trong khi một electron trong chấm lượng tử nano lại thể hiện rõ nét độ kết hợp lượng tử?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.5.2",
+      "concept_introduction": "Chồng chất lượng tử & Hiện tượng Vướng víu lượng tử (Entanglement): Nguyên lý xếp chồng trạng thái tuyến tính, định nghĩa trạng thái Bell vướng víu cực đại và tính chất tương quan tức thời không phân chia.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_2.5_Hinh_04_Cap_Hat_Roi_Luong_Tu.png",
+        "interaction_id": "IMG_2.5.2_ORIG_ENTANGLED_PAIR",
+        "aspect_ratio": "1.5:1",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.5.2: Minh họa cặp hạt vướng víu lượng tử — liên hệ trạng thái tức thời bất kể khoảng cách."
+      },
+      "minimal_working_example": "Cặp photon vướng víu phân cực sinh ra từ quá trình phân rã phóng xạ nguyên tử Canxi hoặc chuyển đổi tham số tự phát SPDC trong tinh thể phi tuyến.",
+      "pillar_equation_latex": "|\\Psi^-\\rangle = \\frac{1}{\\sqrt{2}} \\left( |H\\rangle_A |V\\rangle_B - |V\\rangle_A |H\\rangle_B \\right), \\quad E(\\vec{a}, \\vec{b}) = -\\cos\\left(2 (\\theta_a - \\theta_b)\\right)",
+      "nomenclature_table": [
+        {
+          "name": "Trạng thái vướng víu Bell singlet",
+          "symbol": "|\\Psi^-\\rangle",
+          "unit": "vectơ Hilbert",
+          "meaning": "Trạng thái vướng víu cực đại đối xứng phản đảo chiều spin/phân cực"
+        },
+        {
+          "name": "Trạng thái phân cực ngang và dọc",
+          "symbol": "|H\\rangle, |V\\rangle",
+          "unit": "vectơ cơ sở",
+          "meaning": "Hai trạng thái riêng phân cực trực giao của photon đơn lẻ"
+        },
+        {
+          "name": "Góc định hướng kính phân cực Alice và Bob",
+          "symbol": "\\theta_a, \\theta_b",
+          "unit": "rad",
+          "meaning": "Góc quay của trục truyền qua trên hai kính phân cực độc lập đặt ở hai trạm đo xa nhau"
+        },
+        {
+          "name": "Hàm tương quan phân cực lượng tử",
+          "symbol": "E(\\vec{a}, \\vec{b})",
+          "unit": "không thứ nguyên",
+          "meaning": "Giá trị kỳ vọng của tích hai kết quả đo nhị phân (+1 hoặc -1) giữa hai trạm"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Biểu diễn toán tử đo phân cực của Alice theo góc \\theta_a: \\hat{A} = |\\theta_a\\rangle\\langle\\theta_a| - |\\theta_a^\\perp\\rangle\\langle\\theta_a^\\perp| và tương tự cho Bob \\hat{B} theo góc \\theta_b.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tính tích tenxơ của hai toán tử trên không gian Hilbert hai hạt: \\hat{A} \\otimes \\hat{B}.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tính giá trị kỳ vọng lượng tử: E(\\theta_a, \\theta_b) = \\langle\\Psi^-| \\hat{A} \\otimes \\hat{B} |\\Psi^-\\rangle = -\\cos(2(\\theta_a - \\theta_b))."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Góc song song (\\theta_a = \\theta_b): E = -\\cos(0) = -1. Hai kết quả luôn luôn ngược chiều nhau 100% (tương quan nghịch tuyệt đối).",
+        "Góc trực giao (\\theta_a - \\theta_b = 90^\\circ): E = -\\cos(180^\\circ) = +1. Hai kết quả luôn luôn trùng khớp nhau 100%.",
+        "Hiệu góc 45^\\circ: E = -\\cos(90^\\circ) = 0. Hoàn toàn không có tương quan thống kê giữa hai trạm."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao hiện tượng vướng víu lượng tử thể hiện sự tương quan tức thời giữa hai vị trí cách nhau hàng triệu km nhưng lại không thể dùng để truyền thông tin nhanh hơn vận tốc ánh sáng (không vi phạm thuyết tương đối hẹp)?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.5.3",
+      "concept_introduction": "Nghịch lý EPR (1935) & Cuộc tranh luận về Biến ẩn địa phương: Luận điểm của Einstein, Podolsky và Rosen về tính không đầy đủ của cơ học lượng tử, khái niệm Yếu tố thực tại (Element of physical reality) và giả thuyết Biến ẩn địa phương.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_2.5_Hinh_07_Mo_Hinh_Bien_An_Dia_Phuong.png",
+        "interaction_id": "IMG_2.5.3_ORIG_HIDDEN_VARIABLES",
+        "aspect_ratio": "2.6:1",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.5.3: Mô hình lý thuyết cặp quả bóng chứa biến ẩn địa phương — tương tự cặp hạt mang thông tin định trước."
+      },
+      "minimal_working_example": "Phép đo đồng thời vị trí và động lượng trên hai hạt tương quan khoảng cách vô hạn theo bài báo kinh điển EPR 1935.",
+      "pillar_equation_latex": "\\Delta(x_1 - x_2) = 0, \\quad \\Delta(p_1 + p_2) = 0 \\implies [\\hat{x}_1 - \\hat{x}_2, \\hat{p}_1 + \\hat{p}_2] = [\\hat{x}_1, \\hat{p}_1] - [\\hat{x}_2, \\hat{p}_2] = i\\hbar - i\\hbar = 0",
+      "nomenclature_table": [
+        {
+          "name": "Hiệu tọa độ không gian hai hạt",
+          "symbol": "\\hat{x}_1 - \\hat{x}_2",
+          "unit": "m",
+          "meaning": "Toán tử khoảng cách tương đối giữa hạt thứ nhất và hạt thứ hai"
+        },
+        {
+          "name": "Tổng động lượng hai hạt",
+          "symbol": "\\hat{p}_1 + \\hat{p}_2",
+          "unit": "kg*m/s",
+          "meaning": "Toán tử tổng động lượng của hệ cô lập bảo toàn"
+        },
+        {
+          "name": "Giao hoán tử cơ học lượng tử",
+          "symbol": "[,]",
+          "unit": "J*s",
+          "meaning": "Thước đo khả năng đo đồng thời chính xác hai đại lượng vật lý"
+        },
+        {
+          "name": "Hằng số Planck rút gọn",
+          "symbol": "\\hbar",
+          "unit": "J*s",
+          "meaning": "Hằng số lượng tử CODATA 2022: 1.054571817 x 10^-34 J*s"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khai triển giao hoán tử tổng hợp: [\\hat{x}_1 - \\hat{x}_2, \\hat{p}_1 + \\hat{p}_2] = [\\hat{x}_1, \\hat{p}_1] + [\\hat{x}_1, \\hat{p}_2] - [\\hat{x}_2, \\hat{p}_1] - [\\hat{x}_2, \\hat{p}_2].",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Hai hạt ở xa nhau nên toán tử của hạt 1 giao hoán với toán tử của hạt 2: [\\hat{x}_1, \\hat{p}_2] = [\\hat{x}_2, \\hat{p}_1] = 0.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Do [\\hat{x}_i, \\hat{p}_i] = i\\hbar, ta thu được giao hoán tử triệt tiêu bằng 0: i\\hbar - i\\hbar = 0. Do đó hai toán tử này có thể có trạng thái riêng đồng thời với độ bất định triệt tiêu."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Góc nhìn của Einstein: Một phép đo thực hiện trên hạt 1 không thể làm xáo trộn tức thời trạng thái thực tại của hạt 2 (nguyên lý cục bộ địa phương). Do đó hạt 2 phải có sẵn cả vị trí và động lượng xác định từ trước.",
+        "Góc nhìn của Niels Bohr: Cặp hạt vướng víu là một thực thể lượng tử không thể phân chia (Indivisible quantum whole), không thể gán tính chất độc lập cho từng phần tử khi chưa thiết lập toàn bộ sơ đồ đo đạc thí nghiệm."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao Einstein gọi hiện tượng vướng víu là 'tác động ma quái từ xa' (Spooky action at a distance) và kỳ vọng sự tồn tại của các biến ẩn địa phương để cứu vãn tính thực tại cổ điển?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.5.4",
+      "concept_introduction": "Bất đẳng thức Bell và Mở rộng CHSH: Chuyển hóa cuộc tranh luận triết học EPR thành một kiểm nghiệm thực nghiệm toán học định lượng, thiết lập giới hạn trên cổ điển |S| <= 2 và sự vi phạm tối đa 2*sqrt(2) của cơ học lượng tử.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Mo_Phong]_Muc_2.5_Bat_Dang_Thuc_Bell_CHSH.png",
+        "interaction_id": "IMG_2.5.4_SIM_BELL_CHSH",
+        "aspect_ratio": "6.5:4.2",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.5.4: Đồ thị giải tích kiểm chứng bất đẳng thức Bell-CHSH — so sánh giới hạn cổ điển |S| <= 2 và vi phạm cực đại Cirel'son."
+      },
+      "minimal_working_example": "Thí nghiệm CHSH đo tương quan với 4 cấu hình góc: a = 0, a' = 45 độ, b = 22.5 độ, b' = 67.5 độ.",
+      "pillar_equation_latex": "S = E(a, b) - E(a, b') + E(a', b) + E(a', b') \\implies |S_{\\mathrm{classical}}| \\le 2, \\quad |S_{\\mathrm{QM}}| \\le 2\\sqrt{2} \\approx 2.8284",
+      "nomenclature_table": [
+        {
+          "name": "Đại lượng tương quan CHSH",
+          "symbol": "S",
+          "unit": "không thứ nguyên",
+          "meaning": "Tổ hợp tuyến tính của 4 hàm tương quan thống kê giữa các góc đo phân cực khác nhau"
+        },
+        {
+          "name": "Giới hạn bất đẳng thức Bell cổ điển",
+          "symbol": "S_{classical}",
+          "unit": "không thứ nguyên",
+          "meaning": "Giá trị cực đại tuyệt đối mà mọi lý thuyết biến ẩn địa phương có thể đạt tới (|S| <= 2)"
+        },
+        {
+          "name": "Giới hạn Cirel'son lượng tử",
+          "symbol": "2\\sqrt{2}",
+          "unit": "không thứ nguyên",
+          "meaning": "Giới hạn trần tối cao của cơ học lượng tử đối với trạng thái lưỡng hạt"
+        },
+        {
+          "name": "Góc lệch phân cực tối ưu",
+          "symbol": "\\theta_{opt}",
+          "unit": "độ",
+          "meaning": "Góc lệch 22.5 độ (pi/8 rad) tạo ra sự vi phạm bất đẳng thức Bell lớn nhất"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Trong lý thuyết biến ẩn địa phương, kết quả đo phụ thuộc biến ẩn \\lambda với phân bố xác suất \\rho(\\lambda) >= 0: E(a, b) = \\int A(a, \\lambda) B(b, \\lambda) \\rho(\\lambda) d\\lambda với A, B \\in {-1, +1}.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Xét hiệu: A(a)B(b) - A(a)B(b') = A(a)B(b)[1 \\pm A(a')B(b')] - A(a)B(b')[1 \\pm A(a')B(b)]. Lấy trị tuyệt đối và chặn trên bằng 2.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Trong cơ học lượng tử, thay hàm E(a, b) = -\\cos(2(a-b)) vào biểu thức S với các góc a=0, a'=45^\\circ, b=22.5^\\circ, b'=67.5^\\circ: S = \\frac{\\sqrt{2}}{2} - (-\\frac{\\sqrt{2}}{2}) + \\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2} = 2\\sqrt{2} \\approx 2.8284 > 2."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Khảo sát góc theta: Khi theta = 0 hoặc 45 độ, S = 2 (chạm ngưỡng cổ điển). Khi theta = 22.5 độ, S đạt đỉnh 2.828 (vi phạm 41.4% so với ngưỡng cổ điển).",
+        "Ý nghĩa vật lý: Không có bất kỳ lý thuyết biến ẩn địa phương nào có thể tái tạo lại kết quả của cơ học lượng tử. Tự nhiên ở cấp độ hạ vi mô mang tính phi địa phương (Non-local)."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao bất đẳng thức Bell được coi là một trong những phát kiến sâu sắc nhất của vật lý thế kỷ 20, biến một câu hỏi thuần túy triết học thành một định luật định lượng có thể bác bỏ bằng thực nghiệm?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.5.5",
+      "concept_introduction": "Các mốc thực nghiệm Nobel 2022 (Clauser, Aspect, Zeilinger) & Ứng dụng công nghệ nano lượng tử: Lịch sử ba thế hệ thí nghiệm kiểm chứng Bell, loại bỏ kẽ hở định vị và kẽ hở phát hiện, cùng các ứng dụng đột phá trong mật mã lượng tử QKD, tính toán lượng tử và cảm biến nano.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_2.5_Hinh_12_Thi_Nghiem_Alain_Aspect_1982.png",
+        "interaction_id": "IMG_2.5.5_ORIG_ASPECT_1982",
+        "aspect_ratio": "4.3:1",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.5.5: Mô hình thí nghiệm của Alain Aspect (1982) — chuyển mạch phân cực ngẫu nhiên tốc độ cao 10 ns trên cự ly 6 m."
+      },
+      "minimal_working_example": "Giao thức phân phối khóa lượng tử E91 (Ekert 1991) dựa trên cặp photon vướng víu để phát hiện kẻ nghe lén Eve thông qua việc vi phạm bất đẳng thức Bell.",
+      "pillar_equation_latex": "S_{\\mathrm{exp}} = 2.697 \\pm 0.015 > 2, \\quad QBER = \\frac{N_{\\mathrm{error}}}{N_{\\mathrm{total}}} < 11\\%",
+      "nomenclature_table": [
+        {
+          "name": "Tham số Bell đo được từ thực nghiệm Aspect",
+          "symbol": "S_{exp}",
+          "unit": "không thứ nguyên",
+          "meaning": "Kết quả thực nghiệm xác nhận vi phạm bất đẳng thức Bell với độ lệch chuẩn > 40 sigma"
+        },
+        {
+          "name": "Tỷ lệ lỗi bit lượng tử",
+          "symbol": "QBER",
+          "unit": "%",
+          "meaning": "Tỷ lệ bit sai khác giữa Alice và Bob trong giao thức phân phối khóa bảo mật QKD"
+        },
+        {
+          "name": "Ngưỡng an toàn bảo mật Shor-Preskill",
+          "symbol": "11\\%",
+          "unit": "%",
+          "meaning": "Giới hạn QBER tối đa mà dưới đó các thuật toán sửa lỗi và khuếch đại bảo mật vẫn trích xuất được khóa tuyệt đối an toàn"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thí nghiệm Clauser (1972): Sử dụng dòng nguyên tử Canxi phát xạ photon phân rã bậc thang (Cascade decay), đo tương quan phân cực với bộ lọc cố định, lần đầu tiên ghi nhận S > 2 với độ tin cậy 5 sigma.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thí nghiệm Aspect (1982): Đưa vào bộ chuyển mạch quang âm acousto-optic tốc độ 10 ns đổi hướng phân cực ngẫu nhiên khi photon đang bay trên quãng đường 6 m, đóng kẽ hở định vị địa phương (Locality loophole).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thí nghiệm Zeilinger (1998+): Sử dụng tinh thể phi tuyến BBO sinh cặp photon qua quá trình SPDC, dùng máy phát số ngẫu nhiên lượng tử QRNG điều khiển kính phân cực cách nhau 400 m, thực hiện viễn tải lượng tử (Quantum Teleportation) và đóng kẽ hở tự do lựa chọn."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Ứng dụng QKD: Nếu kẻ nghe lén Eve chặn bắt photon, sự sụp đổ hàm sóng sẽ làm giá trị S giảm xuống dưới 2 và QBER tăng vọt > 25%, lập tức bị Alice và Bob phát hiện.",
+        "Ứng dụng công nghệ nano: Chế tạo các chấm lượng tử tự lắp ráp (InAs/GaAs QD) đóng vai trò nguồn phát photon đơn lẻ và cặp photon vướng víu trên chip quang tử tích hợp PIC."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao giải Nobel Vật lý 2022 trao cho Clauser, Aspect và Zeilinger lại được coi là mốc khởi đầu của Cuộc cách mạng lượng tử lần thứ hai (The Second Quantum Revolution)?"
+      ]
+    }
+  ],
+  "total_pages_estimate": 14
+}

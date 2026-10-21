@@ -1,0 +1,167 @@
+{
+  "chapter": 2,
+  "subject": "Cơ sở vật lý và công nghệ nano",
+  "nomenclature": [
+    {
+      "vietnamese": "kính hiển vi quét xuyên hầm",
+      "english": "scanning tunneling microscope",
+      "symbol": "STM",
+      "unit": "không thứ nguyên",
+      "definition": "Thiết bị hiển vi khai thác hiệu ứng xuyên hầm lượng tử của electron qua khe hẹp chân không để tạo ảnh địa hình bề mặt ở cấp độ từng nguyên tử."
+    },
+    {
+      "vietnamese": "kính hiển vi lực nguyên tử",
+      "english": "atomic force microscope",
+      "symbol": "AFM",
+      "unit": "không thứ nguyên",
+      "definition": "Thiết bị hiển vi đo lực tương tác nguyên tử (van der Waals, tĩnh điện) giữa mũi dò sắc nhọn và bề mặt mẫu để vẽ bản đồ hình thái học nano."
+    },
+    {
+      "vietnamese": "hiệu ứng giam cầm lượng tử",
+      "english": "quantum confinement effect",
+      "symbol": "QCE",
+      "unit": "không thứ nguyên",
+      "definition": "Hiện tượng dải năng lượng liên tục của vật liệu khối bị lượng tử hóa thành các mức năng lượng rời rạc khi kích thước hạt nhỏ hơn bán kính Bohr exciton."
+    },
+    {
+      "vietnamese": "bán kính Bohr exciton",
+      "english": "exciton Bohr radius",
+      "symbol": "a_B",
+      "unit": "nm",
+      "definition": "Khoảng cách không gian trung bình giữa electron và lỗ trống liên kết với nhau bằng tương tác Coulomb trong một exciton."
+    },
+    {
+      "vietnamese": "phương trình Brus",
+      "english": "Brus equation",
+      "symbol": "\\Delta E_g(R)",
+      "unit": "eV",
+      "definition": "Phương trình bán kinh nghiệm mô tả sự gia tăng dải cấm của chấm lượng tử theo nghịch đảo bình phương bán kính hạt do động năng giam cầm lượng tử trừ đi tương tác tĩnh điện Coulomb."
+    },
+    {
+      "vietnamese": "hiệu ứng siêu thuận từ",
+      "english": "superparamagnetism",
+      "symbol": "SPM",
+      "unit": "không thứ nguyên",
+      "definition": "Trạng thái từ tính đặc thù của hạt nano sắt từ đơn domain khi năng lượng nhiệt làm đảo ngẫu nhiên mômen từ, khiến đường cong từ hóa không còn trễ (từ dư và lực kháng từ bằng 0)."
+    },
+    {
+      "vietnamese": "thời gian hồi phục Néel",
+      "english": "Néel relaxation time",
+      "symbol": "\\tau_N",
+      "unit": "s",
+      "definition": "Khoảng thời gian đặc trưng để mômen từ của hạt nano đảo ngược qua hàng rào năng lượng dị hướng từ do kích thích nhiệt."
+    },
+    {
+      "vietnamese": "cộng hưởng plasmon bề mặt cục bộ",
+      "english": "localized surface plasmon resonance",
+      "symbol": "LSPR",
+      "unit": "không thứ nguyên",
+      "definition": "Dao động tập thể kết hợp của các electron tự do trong hạt nano kim loại khi kích thích bởi sóng ánh sáng có tần số cộng hưởng Fröhlich."
+    },
+    {
+      "vietnamese": "lưỡng tính sóng - hạt",
+      "english": "wave-particle duality",
+      "symbol": "không",
+      "unit": "không thứ nguyên",
+      "definition": "Đặc tính phổ quát của bức xạ điện từ và các vi hạt vật chất biểu hiện đồng thời hoặc luân phiên tính chất sóng và hạt tùy theo điều kiện thực nghiệm."
+    },
+    {
+      "vietnamese": "hiệu ứng tán xạ Compton",
+      "english": "Compton scattering effect",
+      "symbol": "\\Delta \\lambda",
+      "unit": "pm",
+      "definition": "Hiện tượng photon tia X hoặc tia gamma va chạm đàn hồi với electron tự do và bị lệch hướng với bước sóng tăng lên, chứng minh photon mang xung lượng."
+    },
+    {
+      "vietnamese": "bước sóng de Broglie",
+      "english": "de Broglie wavelength",
+      "symbol": "\\lambda_{dB}",
+      "unit": "nm",
+      "definition": "Bước sóng sóng vật chất gắn liền với một hạt chuyển động có xung lượng p theo hệ thức de Broglie: lambda = h / p."
+    },
+    {
+      "vietnamese": "nhiễu xạ tia X Bragg",
+      "english": "Bragg X-ray diffraction",
+      "symbol": "2d\\sin\\theta = n\\lambda",
+      "unit": "nm / rad",
+      "definition": "Sự giao thoa tăng cường của sóng điện từ phản xạ từ các mặt phẳng mạng tinh thể song song cách nhau một khoảng cách mạng d."
+    },
+    {
+      "vietnamese": "hàm sóng",
+      "english": "wave function",
+      "symbol": "\\psi(\\mathbf{r}, t)",
+      "unit": "m^{-3/2}",
+      "definition": "Hàm phức chứa đựng toàn bộ thông tin trạng thái lượng tử của vi hạt; bình phương môđun hàm sóng biểu thị mật độ xác suất tìm thấy hạt."
+    },
+    {
+      "vietnamese": "bó sóng",
+      "english": "wave packet",
+      "symbol": "\\Psi(x, t)",
+      "unit": "không thứ nguyên",
+      "definition": "Tập hợp chồng chập tuyến tính của nhiều sóng phẳng hình sin có số sóng sai khác nhau trong một dải hẹp, đại diện cho vi hạt định xứ trong không gian."
+    },
+    {
+      "vietnamese": "vận tốc nhóm",
+      "english": "group velocity",
+      "symbol": "v_g",
+      "unit": "m/s",
+      "definition": "Vận tốc lan truyền của bao bó sóng mang năng lượng và thông tin, đồng nhất với vận tốc chuyển động cơ học của hạt vi mô."
+    },
+    {
+      "vietnamese": "nguyên lý bất định Heisenberg",
+      "english": "Heisenberg uncertainty principle",
+      "symbol": "\\Delta x \\cdot \\Delta p_x \\ge \\hbar / 2",
+      "unit": "J \\cdot s",
+      "definition": "Nguyên lý cơ bản của cơ học lượng tử khẳng định không thể xác định đồng thời chính xác tuyệt đối cả tọa độ và thành phần xung lượng tương ứng của một vi hạt."
+    },
+    {
+      "vietnamese": "phương trình Schrödinger",
+      "english": "Schrödinger equation",
+      "symbol": "\\hat{H}\\Psi = i\\hbar \\frac{\\partial \\Psi}{\\partial t}",
+      "unit": "J",
+      "definition": "Phương trình vi phân đạo hàm riêng cơ bản mô tả sự biến thiên không gian và tiến triển thời gian của hàm sóng lượng tử."
+    },
+    {
+      "vietnamese": "nguyên lý loại trừ Pauli",
+      "english": "Pauli exclusion principle",
+      "symbol": "không",
+      "unit": "không thứ nguyên",
+      "definition": "Nguyên lý cơ học lượng tử khẳng định hai fermion đồng nhất (như hai electron) không thể cùng chiếm một trạng thái lượng tử với 4 số lượng tử giống hệt nhau."
+    },
+    {
+      "vietnamese": "quy tắc Aufbau",
+      "english": "Aufbau principle",
+      "symbol": "n + \\ell",
+      "unit": "không thứ nguyên",
+      "definition": "Quy tắc điền điện tử vào các phân lớp năng lượng từ thấp đến cao trong trạng thái cơ bản của nguyên tử nhiều electron theo tổng n + l."
+    },
+    {
+      "vietnamese": "quy tắc Hund",
+      "english": "Hund's rule",
+      "symbol": "2S + 1",
+      "unit": "không thứ nguyên",
+      "definition": "Quy tắc xác định trạng thái cấu hình điện tử bền vững nhất của một phân lớp suy biến có spin tổng cộng S cực đại (độ bội lớn nhất)."
+    },
+    {
+      "vietnamese": "vướng víu lượng tử",
+      "english": "quantum entanglement",
+      "symbol": "|\\Psi\\rangle",
+      "unit": "không thứ nguyên",
+      "definition": "Hiện tượng lượng tử phi cục bộ trong đó trạng thái của hai hay nhiều hạt liên kết chặt chẽ đến mức phép đo trên một hạt lập tức xác định kết quả đo trên hạt kia."
+    },
+    {
+      "vietnamese": "bất đẳng thức Bell",
+      "english": "Bell's inequality",
+      "symbol": "|S| \\le 2",
+      "unit": "không thứ nguyên",
+      "definition": "Bất đẳng thức toán học phân biệt giữa các lý thuyết biến ẩn địa phương cổ điển với các tiên đoán phi cục bộ của cơ học lượng tử."
+    },
+    {
+      "vietnamese": "hiệu ứng sinh đa exciton",
+      "english": "multiple exciton generation",
+      "symbol": "MEG",
+      "unit": "không thứ nguyên",
+      "definition": "Hiện tượng một photon năng lượng cao h\\nu > 2E_g hấp thụ trong chấm lượng tử tạo ra từ hai cặp electron-lỗ trống trở lên, nâng cao hiệu suất pin mặt trời vượt giới hạn Shockley-Queisser."
+    }
+  ]
+}

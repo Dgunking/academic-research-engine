@@ -1,0 +1,280 @@
+{
+  "lesson_title": "Chương 2: Bản chất lượng tử của thế giới nano - Mục 2.6: Tiềm năng và xu hướng tương lai của công nghệ nano",
+  "section_id": "Mục 2.6",
+  "source_document_citations": [
+    "Bài 2-Quantum nature.pdf (Slide 71 đến 75), Bộ môn Vật liệu Điện tử - Viện Vật lý Kỹ thuật HUST",
+    "International Roadmap for Devices and Systems (IRDS 2023) - More Moore & Beyond Moore",
+    "Markus Antonietti, Max Planck Institute of Colloids and Interfaces, Nanotechnology for environmental purification and future sustainable chemistry",
+    "Arthur J. Nozik, Multiple Exciton Generation in Semiconductor Quantum Dots, Chemical Physics Letters, 2008"
+  ],
+  "micro_point_topics": [
+    {
+      "mpt_id": "Luận điểm 2.6.1",
+      "concept_introduction": "Định luật Moore, Lộ trình công nghệ vi điện tử & Giới hạn lượng tử: Quy luật nhân đôi mật độ bóng bán dẫn mỗi 18-24 tháng của Gordon Moore, sự bão hòa định luật Dennard scaling, rào cản dòng rò xuyên hầm lượng tử qua lớp cách điện cổng và chuyển dịch kiến trúc nano 3D FinFET/GAA-FET.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_2.6_Hinh_01_Dinh_Luat_Moore_Intel_Transistor.png",
+        "interaction_id": "IMG_2.6.1_ORIG_MOORE_LAW",
+        "aspect_ratio": "1.1:1",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.6.1: Đường tăng trưởng số lượng transistor trên bộ vi xử lý Intel từ 1971 đến nay theo định luật Moore."
+      },
+      "minimal_working_example": "Mô hình dòng rò xuyên hầm trực tiếp qua lớp điện môi cổng SiO2 khi độ dày d_ox co lại dưới 1.2 nm.",
+      "pillar_equation_latex": "J_{\\mathrm{tunnel}} = J_0 \\left( \\frac{V_{\\mathrm{ox}}}{d_{\\mathrm{ox}}} \\right)^2 \\exp\\left( - \\frac{4 \\sqrt{2 m^*} \\Phi_B^{3/2}}{3 \\hbar q \\mathcal{E}} \\right) \\approx J_0 \\exp(- 2 \\kappa d_{\\mathrm{ox}})",
+      "nomenclature_table": [
+        {
+          "name": "Mật độ dòng rò xuyên hầm trực tiếp qua cổng",
+          "symbol": "J_{tunnel}",
+          "unit": "A/cm^2",
+          "meaning": "Dòng điện tử rò rỉ ký sinh xuyên qua rào thế năng lượng của lớp cách điện cổng"
+        },
+        {
+          "name": "Bề dày lớp oxit cách điện cổng",
+          "symbol": "d_{ox}",
+          "unit": "nm",
+          "meaning": "Khoảng cách cách điện giữa cực cổng kim loại và kênh dẫn bán dẫn"
+        },
+        {
+          "name": "Chiều cao rào thế năng lượng giao diện",
+          "symbol": "\\Phi_B",
+          "unit": "eV",
+          "meaning": "Độ lệch dải dẫn giữa bán dẫn kênh và điện môi cổng (3.15 eV đối với Si/SiO2)"
+        },
+        {
+          "name": "Cường độ điện trường bên trong oxit",
+          "symbol": "\\mathcal{E}",
+          "unit": "V/m",
+          "meaning": "Độ dốc điện thế điều khiển cực cổng: \\mathcal{E} = V_{ox} / d_{ox}"
+        },
+        {
+          "name": "Khối lượng hiệu dụng của electron trong oxit",
+          "symbol": "m^*",
+          "unit": "kg",
+          "meaning": "Khối lượng hiệu dụng xuyên hầm của electron: ~ 0.5 m_0 trong SiO2"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khi thu nhỏ kích thước transistor L theo định luật Moore, bề dày lớp oxit cổng d_{ox} bắt buộc phải giảm tương ứng để duy trì khả năng kiểm soát tĩnh điện kênh dẫn (Dennard scaling).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khi d_{ox} giảm dưới 1.5 nm (chỉ còn cỡ 4-5 lớp nguyên tử SiO2), hàm sóng electron trong kênh dẫn xuyên hầm trực tiếp qua rào thế sang cực cổng.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Dòng rò xuyên hầm tăng theo hàm mũ J_{leak} \\propto \\exp(-2\\kappa d_{ox}), làm tiêu tán công suất tĩnh của chip vượt quá giới hạn tản nhiệt (nút thắt nhiệt độ 100 W/cm^2), buộc công nghiệp phải thay thế SiO2 bằng vật liệu High-k (HfO2, k = 25) và chuyển sang cấu trúc 3D FinFET và GAA-FET."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "So sánh vật liệu: Thay thế SiO2 (k = 3.9) bằng HfO2 (k = 25) cho phép tăng bề dày vật lý d_{ox} lên gấp 6 lần mà vẫn giữ nguyên điện dung tương đương EOT (Equivalent Oxide Thickness < 0.8 nm), giảm dòng rò xuyên hầm tới 4 bậc độ lớn.",
+        "Giới hạn hạ nguyên tử: Khi độ rộng kênh dẫn d < 1 nm (vài thông số mạng tinh thể), các hiệu ứng lượng tử giam cầm và thăng giáng hạt tạp chất ngẫu nhiên làm tê liệt hoạt động transistor MOSFET cổ điển, dẫn tới kỷ nguyên More than Moore."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao định luật Moore không phải là một định luật vật lý tự nhiên mà là một lộ trình kinh tế - công nghệ, và tại sao hiệu ứng xuyên hầm lượng tử lại là rào cản vật lý tối thượng ngăn chặn việc thu nhỏ tiếp transistor cổ điển?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.6.2",
+      "concept_introduction": "Y sinh học nano: Hệ dẫn thuốc hướng đích & Theranostics: Ứng dụng hạt nano chức năng hóa bề mặt trong y dược học, cơ chế hướng đích thụ động qua hiệu ứng EPR và hướng đích chủ động gắn kháng thể/phối tử, cùng mô hình giải phóng thuốc có kiểm soát.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_2.6_Hinh_02_Y_Sinh_Hoc_Nano_Drug_Delivery.png",
+        "interaction_id": "IMG_2.6.2_ORIG_DRUG_DELIVERY",
+        "aspect_ratio": "1.5:1",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.6.2: Hệ thống hạt nano dẫn thuốc hướng đích — gắn phối tử đặc hiệu nhận diện thụ thể tế bào ung thư."
+      },
+      "minimal_working_example": "Mô hình giải phóng thuốc khuếch tán từ hạt nano polyme phân hủy sinh học PLGA theo phương trình động học Korsmeyer-Peppas.",
+      "pillar_equation_latex": "\\frac{M_t}{M_\\infty} = k t^n, \\quad \\sigma_{\\mathrm{EPR}} = \\frac{C_{\\mathrm{tumor}}}{C_{\\mathrm{normal}}} \\gg 1",
+      "nomenclature_table": [
+        {
+          "name": "Phân số khối lượng thuốc giải phóng tại thời điểm t",
+          "symbol": "M_t / M_\\infty",
+          "unit": "không thứ nguyên",
+          "meaning": "Tỷ lệ lượng hoạt chất phân tử thuốc đã khuếch tán ra môi trường ngoài so với tổng lượng nạp"
+        },
+        {
+          "name": "Hằng số tốc độ giải phóng biểu kiến",
+          "symbol": "k",
+          "unit": "s^{-n}",
+          "meaning": "Thông số phụ thuộc cấu trúc mạng polyme, độ nhớt và hệ số khuếch tán nội"
+        },
+        {
+          "name": "Chỉ số cơ chế giải phóng Peppas",
+          "symbol": "n",
+          "unit": "không thứ nguyên",
+          "meaning": "Xác định cơ chế: n = 0.43 (khuếch tán Fick thuần túy), 0.43 < n < 0.85 (khuếch tán dị thường kèm trương nở polyme)"
+        },
+        {
+          "name": "Tỷ số tích tụ chọn lọc mô u (Hiệu ứng EPR)",
+          "symbol": "\\sigma_{EPR}",
+          "unit": "không thứ nguyên",
+          "meaning": "Tỷ số nồng độ hạt nano tích tụ tại mô khối u so với mô lành xung quanh"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khối u ác tính tăng sinh mạch máu hỗn loạn với các khe hở nội mô thành mạch kích thước lớn (100 - 500 nm) và hệ thống thoát bạch huyết bị tê liệt.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Hạt nano kích thước 20 - 100 nm lưu thông tuần hoàn kéo dài trong máu nhờ lớp vỏ bọc PEG (chống bị đại thực bào tiêu hủy), dễ dàng lọt qua khe mạch u và tích tụ lại (Hiệu ứng EPR - Enhanced Permeability and Retention).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tại môi trường vi mô khối u có độ pH thấp (pH ~ 6.5) hoặc dưới tác động của nhiệt độ/sóng siêu âm/laser ngoại lai, liên kết hóa học nhạy cảm bị cắt đứt, giải phóng thuốc nồng độ cao cục bộ tiêu diệt tế bào u mà không gây độc tính toàn thân."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Kích thước hạt tối ưu: Dưới 10 nm, hạt nano bị lọc thải nhanh qua cầu thận vào nước tiểu. Trên 200 nm, hạt bị giữ lại tại gan và lách. Dải kích thước vàng cho dẫn thuốc là 30 - 100 nm.",
+        "Nền tảng Theranostics: Tích hợp đồng thời chức năng chẩn đoán hình ảnh (hạt nano từ tính Fe3O4 cho chụp MRI, hạt nano vàng cho chụp CT) và chức năng trị liệu (quang nhiệt photothermal, dẫn thuốc hóa trị)."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao phương pháp hóa trị ung thư truyền thống gây rụng tóc, suy tủy và nôn mửa nghiêm trọng, trong khi công nghệ nano dẫn thuốc hướng đích lại có thể triệt tiêu phần lớn các tác dụng phụ này?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.6.3",
+      "concept_introduction": "Năng lượng sạch nano: Pin mặt trời chấm lượng tử & Hiệu ứng sinh đa exciton MEG: Đột phá vượt giới hạn hiệu suất Shockley-Queisser (33.7%), cơ chế ngăn chặn nút thắt phonon nhiệt và sinh 2-3 cặp electron-lỗ trống từ 1 photon năng lượng cao.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Mo_Phong]_Muc_2.6_Hieu_Ung_Sinh_Da_Exciton_MEG_Pin_Mat_Troi.png",
+        "interaction_id": "IMG_2.6.3_SIM_MEG_SOLAR",
+        "aspect_ratio": "6.5:4.2",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.6.3: Đồ thị mô phỏng hiệu suất lượng tử nội vượt 100% nhờ hiệu ứng sinh đa exciton (MEG) trong chấm lượng tử nano PbSe/PbS."
+      },
+      "minimal_working_example": "Tính toán hiệu suất lượng tử nội eta_int của chấm lượng tử PbSe khi hấp thụ photon tử ngoại năng lượng h*nu = 3.2 E_g.",
+      "pillar_equation_latex": "\\eta_{\\mathrm{int}}(h\\nu) = 1 + \\eta_{\\mathrm{MEG}} \\left( \\frac{h\\nu}{E_g} - 2 \\right) \\quad \\text{khi } h\\nu \\ge 2 E_g, \\quad \\eta_{\\mathrm{SQ,max}} \\uparrow 44.4\\%",
+      "nomenclature_table": [
+        {
+          "name": "Hiệu suất lượng tử nội",
+          "symbol": "\\eta_{int}",
+          "unit": "%",
+          "meaning": "Số lượng cặp electron-lỗ trống (exciton) sinh ra trên một photon bị hấp thụ"
+        },
+        {
+          "name": "Hiệu suất lượng tử gia tăng MEG",
+          "symbol": "\\eta_{MEG}",
+          "unit": "% / Eg",
+          "meaning": "Độ dốc phát sinh exciton thêm khi năng lượng photon vượt qua ngưỡng kích hoạt 2 Eg"
+        },
+        {
+          "name": "Ngưỡng năng lượng kích hoạt MEG",
+          "symbol": "2 E_g",
+          "unit": "eV",
+          "meaning": "Năng lượng photon tối thiểu cần thiết để bảo toàn năng lượng khi sinh đồng thời 2 exciton"
+        },
+        {
+          "name": "Giới hạn hiệu suất Shockley-Queisser nâng cấp",
+          "symbol": "44.4\\%",
+          "unit": "%",
+          "meaning": "Hiệu suất chuyển đổi quang điện cực đại lý thuyết cho pin mặt trời đơn chuyển tiếp có MEG"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Trong bán dẫn khối vĩ mô (Si, GaAs), khi photon có h*nu > Eg, năng lượng dư h*nu - Eg bị mất nhiệt hóa cực nhanh (thermalization) qua phát xạ phonon mạng trong khoảng thời gian femtogiây (< 10^-13 s), khiến eta_int luôn <= 100%.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Trong chấm lượng tử nano bán dải cấm hẹp (PbSe, PbS, InAs), các mức năng lượng điện tử bị lượng tử hóa gián đoạn, khoảng cách giữa các mức lớn hơn nhiều so với năng lượng một phonon quang học, tạo ra hiệu ứng nút thắt phonon (Phonon bottleneck) làm chậm tốc độ làm nguội nhiệt.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Hạt tải nhiệt mang năng lượng cao dư thừa tương tác Coulomb mạnh mẽ với electron ở dải hóa trị thông qua quá trình ion hóa va chạm ngược (Impact Ionization / Inverse Auger), sinh thêm một exciton thứ hai và thứ ba trước khi kịp mất nhiệt."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Khảo sát năng lượng photon: Tại h*nu = 1.5 Eg, eta = 100%. Tại h*nu = 2.5 Eg, eta đạt ~ 140%. Tại h*nu = 4.0 Eg, eta vượt 250% (trung bình 1 photon tạo ra 2.5 electron dẫn).",
+        "Ý nghĩa kinh tế: Nâng trần hiệu suất quang điện từ 33.7% lên 44.4% mà không cần ghép nhiều lớp pin phức tạp đắt tiền (Multi-junction tandem cells)."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao hiệu ứng sinh đa exciton MEG chỉ xảy ra mạnh mẽ trong các cấu trúc chấm lượng tử nano 0D mà hầu như không thể quan sát thấy trong các tấm pin mặt trời Silicon khối lắp đặt trên mái nhà?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.6.4",
+      "concept_introduction": "Vật liệu nano composite siêu bền & Mạch tích hợp quang tử nano: Cơ chế tăng cường cơ tính theo quy tắc trộn thể tích, phân tán ống nano carbon CNT và graphene trong nền polyme/kim loại, và tích hợp quang tử trên chip silicon (Silicon Photonics).",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_2.6_Hinh_04_Vat_Lieu_Composite_Nano.png",
+        "interaction_id": "IMG_2.6.4_ORIG_COMPOSITE",
+        "aspect_ratio": "1.33:1",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.6.4: Cấu trúc vật liệu nano composite — mạng lưới ống nano carbon phân tán tăng cường cơ tính vượt bậc."
+      },
+      "minimal_working_example": "Tính toán module Young của vật liệu composite gia cường bằng 2% thể tích ống nano carbon CNT phân tán đồng hướng trong nền epoxy.",
+      "pillar_equation_latex": "E_c = V_f E_f + (1 - V_f) E_m, \\quad \\sigma_{\\mathrm{CNT}} > 50\\ \\mathrm{GPa}, \\quad E_{\\mathrm{CNT}} \\approx 1.0\\ \\mathrm{TPa}",
+      "nomenclature_table": [
+        {
+          "name": "Module đàn hồi Young của composite",
+          "symbol": "E_c",
+          "unit": "GPa",
+          "meaning": "Độ cứng chống biến dạng kéo dọc của vật liệu tổ hợp hoàn chỉnh"
+        },
+        {
+          "name": "Phân số thể tích pha gia cường nano",
+          "symbol": "V_f",
+          "unit": "không thứ nguyên",
+          "meaning": "Tỷ lệ thể tích của ống nano carbon hoặc sợi nano trong composite"
+        },
+        {
+          "name": "Module Young của pha gia cường CNT",
+          "symbol": "E_f",
+          "unit": "GPa",
+          "meaning": "Độ cứng của ống nano carbon đơn vách SWCNT (~ 1000 GPa = 1 TPa)"
+        },
+        {
+          "name": "Module Young của nền polyme epoxy",
+          "symbol": "E_m",
+          "unit": "GPa",
+          "meaning": "Độ cứng của vật liệu nền chất dẻo (~ 3 - 5 GPa)"
+        },
+        {
+          "name": "Độ bền kéo đứt của CNT",
+          "symbol": "\\sigma_{CNT}",
+          "unit": "GPa",
+          "meaning": "Ứng suất kéo cực đại trước khi đứt gãy liên kết C-C sp2: gấp 100 lần thép cường lực"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Liên kết cộng hóa trị carbon-carbon lai hóa sp2 trong mạng lục giác graphene/CNT là liên kết hóa học bền vững nhất trong tự nhiên.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khi phân tán CNT vào nền polyme, ứng suất cơ học tác động lên nền được truyền qua giao diện sang các sợi CNT thông qua lực ma sát cắt bề mặt (Interfacial shear stress).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Với chỉ 1 - 2% CNT phân tán đồng đều và liên kết tốt với nền, module đàn hồi và độ bền uốn của composite tăng vọt từ 200% đến 400%, đồng thời mang lại khả năng dẫn điện chống tích điện tĩnh và tản nhiệt vượt trội cho thân vỏ máy bay tàng hình và vệ tinh vũ trụ."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Thách thức kỹ thuật nano: Hiện tượng vón cục (Agglomeration) do lực hút Van der Waals liên ống cực mạnh khiến việc phân tán đồng nhất hạt nano trong nền công nghiệp là nút thắt công nghệ then chốt.",
+        "Mạch tích hợp quang tử nano: Tích hợp ống dẫn sóng silicon nano (kích thước 220 nm x 500 nm) và laser chấm lượng tử trên cùng một chip silicon, thay thế dây dẫn đồng bằng tia sáng photon, giải quyết triệt để nút thắt băng thông truyền dẫn dữ liệu."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao ống nano carbon CNT có module Young lên tới 1000 GPa và độ bền gấp 100 lần thép nhưng cho đến nay chúng ta vẫn chưa thể chế tạo được dây cáp thang máy không gian (Space Elevator) từ CNT?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.6.5",
+      "concept_introduction": "Tầm nhìn GS. Markus Antonietti & Định hướng tương lai của công nghệ nano: Khẳng định của Giám đốc Viện Max Planck về sứ mệnh cứu rỗi sinh thái của công nghệ nano, quang xúc tác thanh lọc không khí và nguồn nước, chuyển hóa CO2 và hóa học xanh bền vững.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_2.6_Hinh_06_GS_Markus_Antonietti_Max_Planck.png",
+        "interaction_id": "IMG_2.6.5_ORIG_ANTONIETTI",
+        "aspect_ratio": "0.67:1",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.6.5: GS. Markus Antonietti (Max Planck Institute) — người định hình tầm nhìn công nghệ nano xanh cho môi trường toàn cầu."
+      },
+      "minimal_working_example": "Động học phân hủy chất ô nhiễm hữu cơ trong nước bằng xúc tác nano TiO2 và g-C3N4 theo mô hình Langmuir - Hinshelwood.",
+      "pillar_equation_latex": "r = -\\frac{dC}{dt} = \\frac{k K C}{1 + K C} \\approx k_{\\mathrm{app}} C \\implies \\ln\\left(\\frac{C_0}{C(t)}\\right) = k_{\\mathrm{app}} t, \\quad k_{\\mathrm{app}} \\propto S_{\\mathrm{BET}}",
+      "nomenclature_table": [
+        {
+          "name": "Tốc độ phản ứng phân hủy quang xúc tác",
+          "symbol": "r",
+          "unit": "mol/(L*s)",
+          "meaning": "Tốc độ biến mất của hợp chất ô nhiễm độc hại trong dung dịch phản ứng"
+        },
+        {
+          "name": "Nồng độ chất ô nhiễm tại thời điểm t",
+          "symbol": "C(t)",
+          "unit": "mol/L",
+          "meaning": "Hàm lượng hoạt chất ô nhiễm còn tồn dư trong nước sau thời gian xử lý"
+        },
+        {
+          "name": "Hằng số tốc độ phản ứng biểu kiến",
+          "symbol": "k_{app}",
+          "unit": "phút^{-1}",
+          "meaning": "Hệ số tỷ lệ tốc độ phân hủy: tỷ lệ thuận trực tiếp với diện tích bề mặt riêng hạt nano"
+        },
+        {
+          "name": "Diện tích bề mặt riêng hạt nano",
+          "symbol": "S_{BET}",
+          "unit": "m^2/g",
+          "meaning": "Tổng diện tích bề mặt hiệu dụng đo theo phương pháp hấp phụ đẳng nhiệt Brunauer-Emmett-Teller"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Dưới tác dụng của photon ánh sáng có năng lượng h*nu > Eg, hạt nano xúc tác (TiO2, g-C3N4) sinh ra cặp electron ở dải dẫn và lỗ trống ở dải hóa trị.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Lỗ trống quang sinh phản ứng với phân tử H2O/OH- tạo gốc tự do hydroxyl *OH cực mạnh (+2.8 V), trong khi electron khử phân tử O2 thành gốc superoxide *O2-.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Các gốc oxy hóa hoạt tính ROS này tấn công bẻ gãy hoàn toàn các liên kết vòng benzen, kim loại nặng, kháng sinh và vi nhựa trong nước, oxy hóa triệt để chúng thành CO2 và H2O vô hại trong vài chục phút."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Ưu thế của kích thước nano: Hạt nano 10 nm có diện tích bề mặt SBET ~ 150 m^2/g, tăng tốc độ phân hủy quang xúc tác gấp 30 lần so với bột hạt micro thông thường.",
+        "Vật liệu tương lai g-C3N4 của Antonietti: Xúc tác phi kim carbon nitride polymer hoạt động mạnh dưới ánh sáng mặt trời tự nhiên khả kiến (không cần đèn tử ngoại UV), mở ra kỷ nguyên khử muối nước biển và chuyển hóa khí thải nhà kính CO2 thành nhiên liệu sạch ethanol."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao Giáo sư Markus Antonietti lại khẳng định rằng tiềm năng lớn nhất và cao cả nhất của công nghệ nano trong thế kỷ 21 không phải là làm điện thoại nhanh hơn, mà là thanh lọc không khí và nguồn nước để giải cứu hành tinh?"
+      ]
+    }
+  ],
+  "total_pages_estimate": 14
+}

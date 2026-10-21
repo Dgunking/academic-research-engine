@@ -1,0 +1,94 @@
+{
+  "chapter": 2,
+  "subject": "Cơ sở vật lý và công nghệ nano",
+  "course_code": "PH3470",
+  "instructor": "PGS. TS. Nguyễn Hữu Lâm (Viện Vật lý kỹ thuật - HUST)",
+  "title": "Bản chất lượng tử của thế giới nano (Quantum Nature of Nanoworld)",
+  "source_document": "Bài 2-Quantum nature.pdf",
+  "total_slides": 75,
+  "sections": [
+    {
+      "section_id": "2.1",
+      "title": "Giới thiệu chung về công nghệ nano & Vật lý trong thế giới nano",
+      "english_title": "Introduction to Nanotechnology & Physics in the Nanoworld",
+      "slides_range": "Slide 1 - 12",
+      "key_topics": [
+        "Lịch sử công nghệ nano: Richard Feynman 1959, Norio Taniguchi 1974, STM (Binnig & Rohrer 1981), AFM (Binnig, Quate, Gerber 1986)",
+        "Thang đo không gian nano (1-100 nm), diện tích bề mặt riêng bùng nổ, tỷ lệ diện tích trên thể tích S/V = 3/R",
+        "Hiệu ứng giam cầm lượng tử trong chất bán dẫn nano, bán kính Bohr exciton và phương trình Brus",
+        "Vật liệu từ tính nano, hiện tượng siêu thuận từ (Superparamagnetism) và giới hạn Néel-Brown",
+        "Quang học nano: Cộng hưởng plasmon bề mặt cục bộ (LSPR) và điều kiện Fröhlich",
+        "Nền tảng lượng tử hệ chiều thấp: 'It all starts with a box', giếng lượng tử 2D, dây lượng tử 1D, chấm lượng tử 0D, mật độ trạng thái DOS"
+      ]
+    },
+    {
+      "section_id": "2.2",
+      "title": "Lưỡng tính sóng - hạt của bức xạ và vật chất",
+      "english_title": "Wave-Particle Duality of Radiation and Matter",
+      "slides_range": "Slide 13 - 19",
+      "key_topics": [
+        "Lưỡng tính sóng - hạt của bức xạ điện từ: Hiệu ứng quang điện (Einstein) và hiệu ứng tán xạ Compton (1923)",
+        "Dẫn xuất giải tích độ dịch chuyển bước sóng Compton: Delta lambda = lambda' - lambda_0 = (h / m_0 c)(1 - cos theta)",
+        "Giả thiết sóng vật chất de Broglie (1924): lambda = h / p = h / (m v)",
+        "Nhiễu xạ tia X và định luật Bragg: 2d sin theta = n lambda",
+        "Thí nghiệm nhiễu xạ điện tử Davisson - Germer (1927) trên đơn tinh thể Ni xác nhận bước sóng de Broglie"
+      ]
+    },
+    {
+      "section_id": "2.3",
+      "title": "Hàm sóng, bó sóng và nguyên lý bất định Heisenberg",
+      "english_title": "Wave Function, Wave Packet and Heisenberg Uncertainty Principle",
+      "slides_range": "Slide 20 - 27",
+      "key_topics": [
+        "Hàm sóng phẳng de Broglie dạng phức psi(x, t) = A exp(-i(omega t - k x))",
+        "Ý nghĩa xác suất của hàm sóng theo Max Born: Mật độ xác suất P(x) = |psi(x,t)|^2 và điều kiện chuẩn hóa",
+        "Bó sóng (Wave Packet), chồng chập sóng đơn sắc, vận tốc pha v_p = omega / k và vận tốc nhóm v_g = d(omega)/dk",
+        "Nguyên lý bất định Heisenberg: Delta x . Delta p_x >= hbar / 2, Delta E . Delta t >= hbar / 2",
+        "Hệ quả giam giữ không gian đối với động năng lượng tử cực tiểu E_min ~ hbar^2 / (2 m L^2)",
+        "Giới thiệu phương trình sóng cơ bản của cơ học lượng tử - Phương trình Schrödinger dừng và phụ thuộc thời gian"
+      ]
+    },
+    {
+      "section_id": "2.4",
+      "title": "Phổ năng lượng của các hệ hạt lượng tử (Nguyên tử & Phân tử)",
+      "english_title": "Energy Spectra of Quantum Systems (Atoms & Molecules)",
+      "slides_range": "Slide 28 - 53",
+      "key_topics": [
+        "Bài toán nguyên tử hydro trong tọa độ cầu, tách biến hàm sóng Psi(r, theta, phi) = R(r) Y(theta, phi)",
+        "Hệ 4 số lượng tử: số lượng tử chính n, quỹ đạo l, từ m_l, và spin m_s",
+        "Nguyên tử nhiều electron, tương tác đẩy Coulomb e-e, Nguyên lý loại trừ Pauli",
+        "Quy tắc Aufbau / Madelung (n + l) và quy tắc cấu hình phân lớp điện tử",
+        "Quy tắc Hund xác định trạng thái cơ bản có độ bội cực đại",
+        "Phổ phát xạ/hấp thụ Hydro (dãy Lyman, Balmer, Paschen...) và quy tắc lựa chọn lưỡng cực điện Delta l = +-1",
+        "Phổ năng lượng phân tử: Xấp xỉ Born - Oppenheimer, mức năng lượng dao động E_v = (v + 1/2) hbar omega và mức năng lượng quay E_J = B_0 J(J + 1)"
+      ]
+    },
+    {
+      "section_id": "2.5",
+      "title": "Bản chất và công nghệ nano lượng tử (Vướng víu, EPR, Bell, Nobel 2022)",
+      "english_title": "Quantum Nanoscience & Quantum Nanotechnology (Entanglement, EPR, Bell, Nobel 2022)",
+      "slides_range": "Slide 54 - 70",
+      "key_topics": [
+        "Khái niệm Khoa học nano lượng tử (Quantum Nanoscience) và độ kết hợp lượng tử (Quantum Coherence)",
+        "Nguyên lý chồng chất lượng tử (Quantum Superposition) và trạng thái vướng víu lượng tử (Quantum Entanglement)",
+        "Nghịch lý EPR (Einstein - Podolsky - Rosen 1935) và tranh luận về biến ẩn địa phương (Local Hidden Variables)",
+        "Bất đẳng thức Bell và mở rộng CHSH: Giới hạn cổ điển |S| <= 2 vs. Giới hạn lượng tử Cirel'son |S| <= 2 sqrt(2)",
+        "Các mốc thực nghiệm kiểm chứng vi phạm bất đẳng thức Bell: John Clauser (1972), Alain Aspect (1982), Anton Zeilinger (1998) - Giải Nobel Vật lý 2022",
+        "Định hướng ứng dụng vật liệu nano lượng tử: Qubit, cảm biến lượng tử độ nhạy cao, truyền thông mã hóa lượng tử"
+      ]
+    },
+    {
+      "section_id": "2.6",
+      "title": "Tiềm năng và xu hướng tương lai của công nghệ nano",
+      "english_title": "Future Potential and Trends of Nanotechnology",
+      "slides_range": "Slide 71 - 75",
+      "key_topics": [
+        "Định luật Moore, lộ trình thu nhỏ transistor bán dẫn và thách thức xuyên hầm lượng tử ở kích thước dưới 2 nm",
+        "Y sinh học nano: Hệ dẫn thuốc hướng đích (Targeted Drug Delivery), chẩn đoán và điều trị kết hợp (Theranostics)",
+        "Năng lượng và môi trường: Pin mặt trời chấm lượng tử (QD Solar Cells), hiệu ứng sinh đa exciton (MEG), vật liệu nano quang xúc tác xử lý nước và không khí",
+        "Vật liệu composite nano siêu bền, siêu nhẹ (Carbon Nanotubes, Graphene), mạch tích hợp quang tử nano (Photonic Integrated Circuits)",
+        "Tầm nhìn của GS. Markus Antonietti (Viện Max Planck) về công nghệ nano thế hệ mới"
+      ]
+    }
+  ]
+}

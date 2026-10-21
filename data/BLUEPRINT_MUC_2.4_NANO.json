@@ -1,0 +1,319 @@
+{
+  "lesson_title": "Chương 2: Bản chất lượng tử của vật chất — Mục 2.4: Phổ năng lượng của các hệ hạt lượng tử (Nguyên tử & Phân tử)",
+  "section_id": "Mục 2.4",
+  "source_document_citations": [
+    "Bài giảng Cơ sở vật lý và công nghệ nano, Bài 2: Quantum nature (Slide 28–53)",
+    "Giáo trình Vật lý Bán dẫn & Quang điện tử (HUST)",
+    "Sze, S. M. - Physics of Semiconductor Devices, 3rd Edition, Wiley",
+    "Saleh, B. E. A. & Teich, M. C. - Fundamentals of Photonics, Wiley",
+    "Griffiths, D. J. - Introduction to Quantum Mechanics, Cambridge University Press"
+  ],
+  "micro_point_topics": [
+    {
+      "mpt_id": "Luận điểm 2.4.1",
+      "concept_introduction": "Bài toán nguyên tử hydro & Phương pháp tách biến trong tọa độ cầu: Mô hình thế Coulomb đối xứng cầu U(r) = -Z*e^2 / (4*pi*epsilon_0*r), phương trình Schrödinger dừng, phép phân ly hàm sóng toàn phần Psi(r, theta, phi) = R(r)*Theta(theta)*Phi(phi), các phương trình vi phân thành phần và điều kiện đơn trị, liên tục, hữu hạn.",
+      "visual_anchor": {
+        "image_file_path": "G:/My Drive/NotebookLM - Academic Knowledge Base/Cơ sở vật lý và công nghệ nano/Kho_Hinh_Anh/[Goc]_Muc_2.4_Hinh_01_Cau_Truc_Nguyen_Tu_Hydro.png",
+        "interaction_id": "IMG_2_4_01_COULOMB_SPHERICAL",
+        "aspect_ratio": "1:1",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Mô hình thế Coulomb U(r) đối xứng cầu mô tả tương tác tĩnh điện giữa electron và proton trong hệ tọa độ cầu (r, theta, phi)."
+      },
+      "minimal_working_example": "Thiết lập phương trình vi phân hướng kính R(r) từ toán tử Laplace trong tọa độ cầu, đặt hằng số tách ly lambda = l(l+1) để giải nghiệm hữu hạn tại r -> 0 và r -> oo.",
+      "pillar_equation_latex": "-\\frac{\\hbar^2}{2m} \\nabla^2 \\Psi - \\frac{Z e^2}{4\\pi \\varepsilon_0 r} \\Psi = E \\Psi \\quad \\Longrightarrow \\quad E_n = -\\frac{m Z^2 e^4}{32 \\pi^2 \\varepsilon_0^2 \\hbar^2} \\frac{1}{n^2} = -\\frac{13.6 Z^2}{n^2} \\text{ [eV]}",
+      "nomenclature_table": [
+        {
+          "symbol": "<i>r</i>, <i>θ</i>, <i>φ</i>",
+          "name": "Tọa độ cầu (Bán kính, góc cực, góc phương vị)",
+          "unit": "m, rad, rad"
+        },
+        {
+          "symbol": "<i>U</i>(<i>r</i>)",
+          "name": "Thế năng Coulomb tương tác hút hạt nhân - electron",
+          "unit": "J hoặc eV"
+        },
+        {
+          "symbol": "<i>Z</i>",
+          "name": "Số điện tích hạt nhân (Z = 1 với nguyên tử Hydro)",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>R<sub>nl</sub></i>(<i>r</i>)",
+          "name": "Hàm sóng phần hướng kính (Radial wave function)",
+          "unit": "m<sup>−3/2</sup>"
+        },
+        {
+          "symbol": "<i>Y<sub>lm</sub></i>(<i>θ</i>, <i>φ</i>)",
+          "name": "Hàm cầu điều hòa (Spherical harmonics)",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>a</i><sub>0</sub>",
+          "name": "Bán kính Bohr cơ bản (Bohr radius, ~0.529 Å)",
+          "unit": "m"
+        }
+      ],
+      "guided_practice_steps": [
+        "Bước 1: Khai triển toán tử Laplace trong hệ tọa độ cầu và viết phương trình Schrödinger cho thế năng Coulomb đối xứng cầu.",
+        "Bước 2: Phân ly hàm sóng thành tích ba hàm thành phần Psi(r, theta, phi) = R(r)*Theta(theta)*Phi(phi).",
+        "Bước 3: Giải phương trình góc phi với điều kiện đơn trị tuần hoàn chu kỳ 2*pi, xác định số lượng tử từ m_l.",
+        "Bước 4: Giải phương trình góc theta bằng đa thức Legendre liên kết, xác định số lượng tử quỹ đạo l.",
+        "Bước 5: Giải phương trình hướng kính R(r) bằng đa thức Laguerre liên kết, xác định năng lượng lượng tử hóa E_n phụ thuộc số lượng tử chính n."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Khảo sát tiệm cận r -> 0: Thế Coulomb chiếm ưu thế, hàm R(r) tỉ lệ với r^l để mật độ xác suất hữu hạn.",
+        "Khảo sát tiệm cận r -> oo: Hàm sóng suy giảm hàm mũ e^(-r / (n*a_0)) bảo đảm điều kiện chuẩn hóa bình phương khả tích.",
+        "Mở rộng cho các ion giống hydro (He+, Li2+): Thay thế Z > 1, bán kính cực đại co lại theo tỉ lệ a_0 / Z và năng lượng liên kết tăng theo Z^2."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 2.4.1: Tại sao trong trường thế đối xứng cầu Coulomb thuần túy, năng lượng E_n của Hydro chỉ phụ thuộc vào số lượng tử chính n mà không phụ thuộc vào l và m_l? Trình bày luận điểm (Claim), bằng chứng toán học (Evidence) và lập luận đối xứng động lực SO(4) / vectơ Runge-Lenz (Reasoning)."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.4.2",
+      "concept_introduction": "Hệ 4 số lượng tử và Spin electron: Bản chất vật lý của bộ 4 số lượng tử (n, l, m_l, m_s), hình dạng không gian của các orbital s, p, d, mật độ xác suất hướng kính P_nl(r) = r^2 |R_nl(r)|^2, thí nghiệm Stern-Gerlach và thuộc tính spin nội tại của electron.",
+      "visual_anchor": {
+        "image_file_path": "G:/My Drive/NotebookLM - Academic Knowledge Base/Cơ sở vật lý và công nghệ nano/Kho_Hinh_Anh/[Mo_Phong]_Muc_2.4_Mat_Do_Xac_Suat_Huong_Kinh_Hydro.png",
+        "interaction_id": "IMG_2_4_02_RADIAL_PROBABILITY",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Đồ thị mô phỏng mật độ xác suất hướng kính P_nl(r) = r^2 |R_nl(r)|^2 của các orbital 1s, 2s, 2p, 3s, 3p, 3d, làm rõ vị trí bán kính có xác suất tìm thấy electron cực đại."
+      },
+      "minimal_working_example": "Tính bán kính có mật độ xác suất tìm thấy electron lớn nhất cho trạng thái cơ bản 1s bằng cách giải cực trị đạo hàm dP_10/dr = 0, chứng minh r_max = a_0.",
+      "pillar_equation_latex": "P_{nl}(r) = r^2 |R_{nl}(r)|^2, \\quad \\int_0^\\infty P_{nl}(r) \\, dr = 1, \\quad S^2 = s(s+1)\\hbar^2, \\quad S_z = m_s \\hbar \\quad \\left(s = \\frac{1}{2}, \\, m_s = \\pm \\frac{1}{2}\\right)",
+      "nomenclature_table": [
+        {
+          "symbol": "<i>n</i>",
+          "name": "Số lượng tử chính (Principal quantum number, n = 1, 2, 3...)",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>l</i>",
+          "name": "Số lượng tử quỹ đạo (Orbital angular momentum, l = 0, 1... n−1)",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>m<sub>l</sub></i>",
+          "name": "Số lượng tử từ quỹ đạo (Magnetic quantum number, -l ... +l)",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>m<sub>s</sub></i>",
+          "name": "Số lượng tử spin (Spin projection quantum number, ±1/2)",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>P<sub>nl</sub></i>(<i>r</i>)",
+          "name": "Hàm phân bố mật độ xác suất hướng kính",
+          "unit": "m<sup>−1</sup> hoặc <i>a</i><sub>0</sub><sup>−1</sup>"
+        },
+        {
+          "symbol": "<i>g<sub>n</sub></i>",
+          "name": "Độ suy biến mức năng lượng (Degeneracy, g_n = 2n^2 có tính spin)",
+          "unit": "Không thứ nguyên"
+        }
+      ],
+      "guided_practice_steps": [
+        "Bước 1: Phân tích ý nghĩa hình học của số lượng tử l và sự phân loại các phân lớp trạng thái s, p, d, f.",
+        "Bước 2: Thiết lập hàm mật độ xác suất hướng kính P_nl(r) = r^2 |R_nl(r)|^2 và giải thích sự xuất hiện của thừa số Jacobian r^2 khi tích phân trong vỏ cầu.",
+        "Bước 3: Xác định số nút hướng kính (radial nodes) bằng n - l - 1 và số mặt nút góc bằng l.",
+        "Bước 4: Phân tích thí nghiệm Stern-Gerlach tách chùm nguyên tử bạc trong từ trường không đồng nhất, khẳng định sự tồn tại của momen từ spin s = 1/2.",
+        "Bước 5: Viết hàm sóng spin-orbital toàn phần của electron dưới dạng tích tensor giữa hàm sóng không gian và spinor."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Khảo sát orbital s (l = 0): Mật độ xác suất tại gốc tọa độ |Psi(0)|^2 > 0, electron có thể xuyên sâu vào tâm hạt nhân (hiệu ứng xuyên thấu Fermi contact).",
+        "Khảo sát orbital l > 0 (p, d): Hàm sóng bị đẩy ra xa tâm do lực đẩy rào cản ly tâm l(l+1)*hbar^2 / (2m*r^2), |Psi(0)|^2 = 0.",
+        "Độ suy biến n^2 (bỏ qua spin) và 2n^2 (có spin): Phân tích nguyên nhân suy biến tình cờ Coulomb (accidental degeneracy) và sự tách mức khi có tương tác spin-quỹ đạo."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 2.4.2: Một sinh viên cho rằng bán kính Bohr a_0 là bán kính quỹ đạo hình tròn cố định của electron quanh hạt nhân như mô hình Rutherford - Bohr. Hãy dùng luận điểm cơ học lượng tử, đồ thị P_1s(r) và nguyên lý bất định Heisenberg để phản biện và làm sáng tỏ khái niệm đám mây điện tử."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.4.3",
+      "concept_introduction": "Nguyên tử nhiều electron, Nguyên lý Pauli & Quy tắc Aufbau / Hund: Tương tác Coulomb e-e và hiệu ứng chắn hạt nhân, thế trường tự hợp Hartree-Fock, nguyên lý loại trừ Pauli cho hệ fermion, định thức Slater, quy tắc Madelung (n+l) điền phân lớp và 3 quy tắc Hund xác định trạng thái cơ bản.",
+      "visual_anchor": {
+        "image_file_path": "G:/My Drive/NotebookLM - Academic Knowledge Base/Cơ sở vật lý và công nghệ nano/Kho_Hinh_Anh/[Goc]_Muc_2.4_Hinh_05_Quy_Tac_Aufbau_Madelung.png",
+        "interaction_id": "IMG_2_4_03_AUFBAU_MADELUNG",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Sơ đồ đường chéo Aufbau / Madelung quy định thứ tự điền electron theo tổng số lượng tử (n + l) và thang năng lượng phân lớp trong nguyên tử nhiều hạt."
+      },
+      "minimal_working_example": "Xác định cấu hình electron trạng thái cơ bản và số hạng quang phổ cơ bản của nguyên tử Cacbon (Z = 6) và Titan (Z = 22) áp dụng quy tắc Aufbau, nguyên lý Pauli và quy tắc Hund.",
+      "pillar_equation_latex": "\\hat{H} = \\sum_{i=1}^N \\left( -\\frac{\\hbar^2}{2m} \\nabla_i^2 - \\frac{Z e^2}{4\\pi\\varepsilon_0 r_i} \\right) + \\sum_{i < j}^N \\frac{e^2}{4\\pi\\varepsilon_0 r_{ij}}, \\quad \\Psi(1, 2, \\dots, N) = \\frac{1}{\\sqrt{N!}} \\det [\\psi_k(j)]",
+      "nomenclature_table": [
+        {
+          "symbol": "<i>ĥ</i>",
+          "name": "Toán tử Hamiltonian toàn phần của nguyên tử nhiều electron",
+          "unit": "J hoặc eV"
+        },
+        {
+          "symbol": "<i>r<sub>ij</sub></i>",
+          "name": "Khoảng cách giữa electron thứ i và electron thứ j",
+          "unit": "m"
+        },
+        {
+          "symbol": "<i>Z</i><sub>eff</sub>",
+          "name": "Điện tích hạt nhân hiệu dụng sau khi bị chắn (Z_eff = Z - sigma)",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>σ</i>",
+          "name": "Hằng số chắn Slater (Slater screening constant)",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>S, L, J</i>",
+          "name": "Momen spin, quỹ đạo và momen toàn phần Russell-Saunders",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<sup>2<i>S</i>+1</sup><i>L<sub>J</sub></i>",
+          "name": "Ký hiệu số hạng quang phổ (Term symbol)",
+          "unit": "Không thứ nguyên"
+        }
+      ],
+      "guided_practice_steps": [
+        "Bước 1: Thiết lập phương trình Hamiltonian nguyên tử nhiều electron và phân tích số hạng tương tác đẩy e-e không thể tách biến chính xác.",
+        "Bước 2: Xây dựng xấp xỉ trường tự hợp (Central Field Approximation) và hiệu ứng chắn hạt nhân hiệu dụng Z_eff.",
+        "Bước 3: Phát biểu nguyên lý loại trừ Pauli dưới dạng tính phản đối xứng của hàm sóng toàn phần qua định thức Slater.",
+        "Bước 4: Thiết lập quy tắc Aufbau / Madelung: các phân lớp có tổng (n + l) nhỏ hơn sẽ có năng lượng thấp hơn; nếu cùng (n + l), phân lớp có n nhỏ hơn điền trước.",
+        "Bước 5: Áp dụng 3 quy tắc Hund: cực đại hóa momen spin tổng cộng S, cực đại hóa momen quỹ đạo L, và chọn J = |L - S| nếu phân lớp chưa đầy một nửa hoặc J = L + S nếu đầy hơn một nửa."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Hiện tượng đảo mức năng lượng 4s và 3d: Tại Z = 19 (Kali) và 20 (Canxi), orbital 4s có năng lượng thấp hơn 3d do hiệu ứng xuyên thấu mạnh hơn; nhưng từ kim loại chuyển tiếp Scandium trở đi, 3d co lại và hạ sâu hơn 4s.",
+        "Ngoại lệ cấu hình nửa bão hòa và bão hòa: Cấu hình d^5 (Cr: [Ar] 3d^5 4s^1) và d^10 (Cu: [Ar] 3d^10 4s^1) có độ bền đặc biệt do năng lượng trao đổi lượng tử cực đại.",
+        "Ghép spin-quỹ đạo: Chuyển đổi từ cơ chế ghép L-S (Russell-Saunders) ở nguyên tử nhẹ sang cơ chế ghép j-j ở nguyên tử nặng có Z lớn."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 2.4.3: Giải thích tại sao cấu hình electron của Crom (Z=24) lại là [Ar] 3d^5 4s^1 thay vì [Ar] 3d^4 4s^2 như suy luận thông thường theo quy tắc Aufbau. Hãy dẫn ra bằng chứng về tích phân trao đổi năng lượng (Exchange energy K) và lập luận cơ học lượng tử khẳng định tính bền vững của phân lớp bán bão hòa."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.4.4",
+      "concept_introduction": "Phổ phát xạ của Hydro & Quy tắc lựa chọn quang học: Khảo sát các bước chuyển dời lượng tử bức xạ, thang năng lượng E_n = -13.6/n^2 eV, công thức Rydberg-Ritz, các dãy phổ Lyman (UV), Balmer (Visible), Paschen (IR), Brackett, Pfund, và các quy tắc lựa chọn lưỡng cực điện Delta l = +-1, Delta S = 0, Delta J = 0, +-1.",
+      "visual_anchor": {
+        "image_file_path": "G:/My Drive/NotebookLM - Academic Knowledge Base/Cơ sở vật lý và công nghệ nano/Kho_Hinh_Anh/[Mo_Phong]_Muc_2.4_Cac_Day_Chuyen_Doi_Quang_Hoc_Hydro.png",
+        "interaction_id": "IMG_2_4_04_HYDROGEN_TRANSITIONS",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Sơ đồ thang mức năng lượng Hydro và các bước chuyển quang học phát xạ thuộc các dãy Lyman, Balmer, Paschen, Brackett kèm bước sóng đặc trưng."
+      },
+      "minimal_working_example": "Tính bước sóng phát xạ của vạch đỏ H_alpha trong dãy Balmer (chuyển mức từ n=3 về n=2 của Hydro) bằng công thức Rydberg và so sánh với giá trị thực nghiệm 656.3 nm.",
+      "pillar_equation_latex": "\\frac{1}{\\lambda} = R_H \\left( \\frac{1}{n_1^2} - \\frac{1}{n_2^2} \\right), \\quad \\hbar\\omega = |E_{n_2} - E_{n_1}|, \\quad \\Delta l = \\pm 1, \\quad \\Delta S = 0, \\quad \\Delta J = 0, \\pm 1 \\; (0 \\not\\to 0)",
+      "nomenclature_table": [
+        {
+          "symbol": "<i>λ</i>",
+          "name": "Bước sóng bức xạ photon phát xạ / hấp thụ",
+          "unit": "nm hoặc m"
+        },
+        {
+          "symbol": "<i>R<sub>H</sub></i>",
+          "name": "Hằng số Rydberg cho nguyên tử Hydro (~1.097373 x 10^7 m^-1)",
+          "unit": "m<sup>−1</sup>"
+        },
+        {
+          "symbol": "<i>ħω</i>",
+          "name": "Năng lượng photon chuyển dời quang học",
+          "unit": "eV hoặc J"
+        },
+        {
+          "symbol": "<i>Δl</i>",
+          "name": "Độ biến thiên số lượng tử quỹ đạo trong chuyển dời lưỡng cực điện",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>ΔS</i>",
+          "name": "Độ biến thiên momen spin toàn phần (Quy tắc cấm đảo spin)",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>ΔJ</i>",
+          "name": "Độ biến thiên momen động lượng toàn phần",
+          "unit": "Không thứ nguyên"
+        }
+      ],
+      "guided_practice_steps": [
+        "Bước 1: Thiết lập công thức Rydberg-Ritz từ hiệu hai mức năng lượng Bohr E_n2 - E_n1 = hc / lambda.",
+        "Bước 2: Phân loại các dãy vạch quang phổ của nguyên tử Hydro: Lyman (n1 = 1, vùng tử ngoại), Balmer (n1 = 2, vùng ánh sáng khả kiến), Paschen (n1 = 3, hồng ngoại gần), Brackett (n1 = 4, hồng ngoại xa).",
+        "Bước 3: Dẫn xuất xác suất chuyển dời lưỡng cực điện từ lý thuyết nhiễu loạn phụ thuộc thời gian (Quy tắc vàng Fermi) và phần tử ma trận lưỡng cực <psi_f | e*r | psi_i>.",
+        "Bước 4: Chứng minh quy tắc chọn lọc Delta l = +-1 xuất phát từ tính chẵn lẻ của toán tử vị trí r và định luật bảo toàn momen động lượng khi phát xạ 1 photon có spin bằng 1.",
+        "Bước 5: Giải thích hiện tượng cấu trúc tinh tế (fine structure) của vạch quang phổ do hiệu ứng tương tác spin-quỹ đạo và hiệu chỉnh tương đối tính Dirac."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Giới hạn hội tụ của dãy phổ (Series limit): Khi n2 -> oo, bước sóng vạch quang phổ tiến tới giới hạn ion hóa lambda_limit = n1^2 / R_H.",
+        "Chuyển dời cấm (Forbidden transitions): Các bước chuyển không thỏa mãn Delta l = +-1 (ví dụ chuyển dời 2s -> 1s) có xác suất phát xạ lưỡng cực điện bằng 0, nhưng có thể xảy ra qua phát xạ 2-photon hoặc lưỡng cực từ với thời gian sống giả bền (metastable) rất dài.",
+        "Hiệu ứng dịch Lamb (Lamb shift): Sự dịch chuyển năng lượng 2s_1/2 và 2p_1/2 (~1057 MHz) do thăng giáng chân không điện động lực học lượng tử (QED)."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 2.4.4: Tại sao trong quang phổ phát xạ tự nhiên của Hydro, bước chuyển từ trạng thái 2s về 1s không xuất hiện vạch đơn photon mạnh như bước chuyển 2p về 1s (vạch Lyman-alpha)? Hãy trình bày luận điểm (Claim), biểu thức phần tử ma trận lưỡng cực điện (Evidence) và lập luận về tính chẵn lẻ / bảo toàn momen photon (Reasoning)."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.4.5",
+      "concept_introduction": "Phổ năng lượng phân tử: Xấp xỉ Born - Oppenheimer, Dao động & Quay: Cấu tạo hệ phân tử hai nguyên tử, sự phân tách ba thang bậc chuyển động (điện tử, dao động hạt nhân, quay phân tử), thế năng dao động Morse / điều hòa, mức năng lượng dao động E_v = hbar*omega*(v + 1/2), mức năng lượng quay E_J = B_0*J*(J+1), cấu trúc dải phổ dao động - quay và các nhánh P, Q, R.",
+      "visual_anchor": {
+        "image_file_path": "G:/My Drive/NotebookLM - Academic Knowledge Base/Cơ sở vật lý và công nghệ nano/Kho_Hinh_Anh/[Mo_Phong]_Muc_2.4_Pho_Dao_Dong_Quay_Phan_Tu.png",
+        "interaction_id": "IMG_2_4_05_ROVIBRATIONAL_SPECTRUM",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Thang mức năng lượng dao động - quay và phổ vạch hấp thụ phân tử hai nguyên tử phân tách thành hai nhánh P (Delta J = -1) và R (Delta J = +1)."
+      },
+      "minimal_working_example": "Tính khoảng cách giữa hai vạch hấp thụ liên tiếp trong nhánh R của phân tử CO, biết hằng số quay B_0 = 1.93 cm^-1, và xác định mômen quán tính I_0 của phân tử.",
+      "pillar_equation_latex": "E_{\\text{total}} = E_e + \\hbar\\omega \\left( v + \\frac{1}{2} \\right) + B_0 J (J + 1) - D_e J^2 (J + 1)^2, \\quad B_0 = \\frac{\\hbar^2}{2 I_0}, \\quad \\Delta v = \\pm 1, \\; \\Delta J = \\pm 1",
+      "nomenclature_table": [
+        {
+          "symbol": "<i>E</i><sub>total</sub>",
+          "name": "Năng lượng toàn phần của trạng thái phân tử",
+          "unit": "eV hoặc J"
+        },
+        {
+          "symbol": "<i>E<sub>e</sub></i>",
+          "name": "Năng lượng trạng thái điện tử (Electronic energy, ~ 1 - 10 eV)",
+          "unit": "eV"
+        },
+        {
+          "symbol": "<i>ħω</i>",
+          "name": "Lượng tử năng lượng dao động phân tử (~ 0.1 - 0.5 eV)",
+          "unit": "eV"
+        },
+        {
+          "symbol": "<i>v</i>",
+          "name": "Số lượng tử dao động (Vibrational quantum number, v = 0, 1, 2...)",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>B</i><sub>0</sub>",
+          "name": "Hằng số quay của phân tử (Rotational constant, ~ 10^-4 - 10^-3 eV)",
+          "unit": "cm<sup>−1</sup> hoặc eV"
+        },
+        {
+          "symbol": "<i>J</i>",
+          "name": "Số lượng tử quay (Rotational quantum number, J = 0, 1, 2...)",
+          "unit": "Không thứ nguyên"
+        },
+        {
+          "symbol": "<i>I</i><sub>0</sub>",
+          "name": "Mômen quán tính phân tử quanh trục vuông góc đường nối hạt nhân",
+          "unit": "kg·m<sup>2</sup>"
+        }
+      ],
+      "guided_practice_steps": [
+        "Bước 1: Thiết lập phương trình Schrödinger toàn phần cho phân tử gồm n electron và N hạt nhân.",
+        "Bước 2: Chứng minh xấp xỉ Born - Oppenheimer dựa trên tỉ số khối lượng electron trên hạt nhân m / M << 10^-3, cho phép giải riêng chuyển động electron trên nền hạt nhân đứng yên.",
+        "Bước 3: Giải phương trình dao động hạt nhân quanh vị trí cân bằng trong gần đúng thế điều hòa U(R) = 1/2 * K * (R - R_e)^2, tìm các mức năng lượng dao động cách đều hbar*omega.",
+        "Bước 4: Giải bài toán quay của phân tử như một rôto cứng (rigid rotor) với mômen quán tính I_0 = mu * R_e^2, tìm các mức năng lượng quay tỉ lệ J(J + 1).",
+        "Bước 5: Xây dựng phổ hấp thụ dao động - quay với quy tắc lựa chọn Delta v = +-1 và Delta J = +-1: phân tích sự hình thành nhánh P (Delta J = -1), nhánh R (Delta J = +1) và sự vắng mặt của nhánh Q trong phân tử hai nguyên tử đồng trục."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Hiệu ứng phi điều hòa (Anharmonicity) và thế Morse: Khi biên độ dao động lớn, khoảng cách giữa các mức năng lượng dao động bị thu hẹp dần E_v = hbar*omega*(v + 1/2) - x_e*hbar*omega*(v + 1/2)^2 cho đến giới hạn phân ly liên kết phân tử.",
+        "Hiệu ứng biến dạng ly tâm (Centrifugal distortion): Khi phân tử quay nhanh ở trạng thái J lớn, lực ly tâm làm tăng nhẹ khoảng cách liên kết R, dẫn đến số hạng hiệu chỉnh âm -D_e * J^2 * (J + 1)^2.",
+        "Phân bố cường độ vạch quay: Cường độ vạch phổ tỉ lệ với tích của độ suy biến (2J + 1) và hàm phân bố Boltzmann exp(-B_0*J*(J+1)/k_B*T), tạo nên dạng bao hình có cực đại tại J_max = sqrt(k_B*T / (2*B_0)) - 1/2."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 2.4.5: Tại sao trong phổ hồng ngoại dao động - quay của phân tử khí HCl, vạch phổ tại đúng tần số dao động trung tâm nu_0 lại hoàn toàn biến mất (tạo thành một khoảng trống giữa hai nhánh P và R)? Hãy trình bày luận điểm (Claim), quy tắc lựa chọn momen động lượng photon (Evidence) và lập luận đối xứng phản đối xứng của phân tử hai nguyên tử (Reasoning)."
+      ]
+    }
+  ],
+  "total_pages_estimate": 24
+}

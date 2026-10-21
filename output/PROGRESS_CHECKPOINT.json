@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "subject": "Cơ sở vật lý và công nghệ nano",
+  "status": "phase_2_completed_unbounded_depth",
+  "last_updated": "2026-10-20T17:38:15",
+  "stats": {
+    "total_sections": 6,
+    "completed_sections": 6,
+    "total_pages": 137,
+    "total_size_mb": 14.62,
+    "total_original_figures": 49,
+    "total_simulations": 18
+  },
+  "sections": {
+    "2.1": {
+      "title": "Giới thiệu chung về công nghệ nano & Vật lý trong thế giới nano",
+      "file": "Chuyen_Khao_Nano_Muc_2.1.pdf",
+      "pages": 25,
+      "size_kb": 2670.37,
+      "status": "completed_unbounded_depth",
+      "original_figures_count": 8,
+      "simulations_count": 3,
+      "mpt_count": 5
+    },
+    "2.2": {
+      "title": "Lưỡng tính sóng - hạt của bức xạ và vật chất",
+      "file": "Chuyen_Khao_Nano_Muc_2.2.pdf",
+      "pages": 24,
+      "size_kb": 1566.72,
+      "status": "completed_unbounded_depth",
+      "original_figures_count": 8,
+      "simulations_count": 3,
+      "mpt_count": 5
+    },
+    "2.3": {
+      "title": "Hàm sóng, bó sóng và nguyên lý bất định Heisenberg",
+      "file": "Chuyen_Khao_Nano_Muc_2.3.pdf",
+      "pages": 19,
+      "size_kb": 1505.28,
+      "status": "completed_unbounded_depth",
+      "original_figures_count": 3,
+      "simulations_count": 3,
+      "mpt_count": 5
+    },
+    "2.4": {
+      "title": "Phổ năng lượng của các hệ hạt lượng tử (Nguyên tử & Phân tử)",
+      "file": "Chuyen_Khao_Nano_Muc_2.4.pdf",
+      "pages": 22,
+      "size_kb": 2334.72,
+      "status": "completed_unbounded_depth",
+      "original_figures_count": 9,
+      "simulations_count": 3,
+      "mpt_count": 5
+    },
+    "2.5": {
+      "title": "Bản chất và công nghệ nano lượng tử (Vướng víu, EPR, Bell, Nobel 2022)",
+      "file": "Chuyen_Khao_Nano_Muc_2.5.pdf",
+      "pages": 25,
+      "size_kb": 4792.32,
+      "status": "completed_unbounded_depth",
+      "original_figures_count": 15,
+      "simulations_count": 3,
+      "mpt_count": 5
+    },
+    "2.6": {
+      "title": "Tiềm năng và xu hướng tương lai của công nghệ nano",
+      "file": "Chuyen_Khao_Nano_Muc_2.6.pdf",
+      "pages": 22,
+      "size_kb": 2037.76,
+      "status": "completed_unbounded_depth",
+      "original_figures_count": 6,
+      "simulations_count": 3,
+      "mpt_count": 5
+    }
+  }
+}

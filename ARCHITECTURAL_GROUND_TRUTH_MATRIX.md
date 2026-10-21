@@ -1,0 +1,64 @@
+# MA TRẬN LIÊN KẾT CHIỀU SÂU KIẾN TRÚC & TRUY HỒI MÃ NGUỒN THỰC THI 13 THUẬT TOÁN CỐT LÕI
+> **Chủ thể nghiên cứu:** Bùi Trung Dũng (Khoa Vật lý Kỹ thuật, ĐHBK Hà Nội - HUST)  
+> **Nền tảng:** Google Antigravity Native Engine (Python 3.12 / ReportLab / Matplotlib / Subagents)  
+> **Chuẩn mực tối thượng:** Khóa cứng 1-1 với 10 Tệp Thiết Kế Gốc trong thư mục `Tài liệu xây dựng thuật toán` (>4,4 MB Ground Truth).
+
+---
+
+## I. TỔNG QUAN KIẾN TRÚC 4 TẦNG & BẢN ĐỒ PHÂN BỔ THỰC THI
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                        TẦNG 1: RULES (RÀNG BUỘC BẤT BIẾN TOÀN CỤC)                     │
+│  GEMINI.md | 13_THUAT_TOAN_COT_LOI_MASTER_LOCK.md | .agents/rules/AGENTS.md            │
+│  - 6 Mệnh lệnh Tối thượng | 16 Luật cấm Hành vi | Khóa cứng 13 Thuật toán Master Lock  │
+└───────────────────────────────────────────┬────────────────────────────────────────────┘
+                                            │
+┌───────────────────────────────────────────▼────────────────────────────────────────────┐
+│                    TẦNG 2: SKILLS & TIẾT LỘ LŨY TIẾN (PROGRESSIVE DISCLOSURE)           │
+│  .agents/skills/antigravity-infrastructure      | .agents/skills/engineering-instructor │
+│  .agents/skills/physics-diagram-studio          | .agents/skills/monograph-pdf-publisher│
+│  .agents/skills/output-accuracy-verifier        | .agents/skills/academic-terminology    │
+└───────────────────────────────────────────┬────────────────────────────────────────────┘
+                                            │
+┌───────────────────────────────────────────▼────────────────────────────────────────────┐
+│                     TẦNG 3: SUBAGENTS CÔ LẬP (ASYNC WORKSPACE WORKERS)                 │
+│  curriculum-fidelity-auditor | monograph-pdf-publisher | physics-diagram-artist         │
+└───────────────────────────────────────────┬────────────────────────────────────────────┘
+                                            │
+┌───────────────────────────────────────────▼────────────────────────────────────────────┐
+│                  TẦNG 4: MÃ NGUỒN THỰC THI XÁC ĐỊNH (EXECUTABLE ENGINES)               │
+│  scripts/hdir_engine.py         | scripts/hpde_engine.py         | scripts/rvae_engine.py│
+│  scripts/atcc_engine.py         | scripts/malae_engine.py        | parallel_scan_engine  │
+│  physics_viz_lock.py            | academic_gate_hook.py          | hust_pdf_engine.py    │
+└────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## II. MA TRẬN LIÊN KẾT CHIỀU SÂU 13 THUẬT TOÁN CỐT LÕI
+
+| STT | Tên thuật toán cốt lõi | Tệp thiết kế gốc (Ground Truth) | Nền tảng Toán học & Cơ chế Sư phạm sâu | Tệp mã nguồn thực thi (`scripts/`) | Trạm kiểm định & Ràng buộc bảo toàn |
+| :---: | :--- | :--- | :--- | :--- | :--- |
+| **1** | **HDIR Engine 2.0** kết hợp **DICG 2.0** | `Thuật Toán Tạo Bài Giảng.md` (686 KB) & `Kiến Trúc Toàn Diện...` | - Khớp mờ Token Set Ratio $\ge 80\%$<br>- Quét phân tầng 3 cấp đa luồng `os.scandir`<br>- Lexer cờ lệnh Clean-slate (`/edit`)<br>- Pre-scan Handshake nhị phân Slide & Sách<br>- Quét cạn kho ảnh gốc $\mathbf{F}_{\text{blueprint}}$<br>- Kiểm toán độ sâu co giãn (Elastic Depth $\ge 5\text{–}10\text{ tr}$) | [`scripts/hdir_engine.py`](file:///d:/antigravity/academic-research-engine/scripts/hdir_engine.py) | - Cấm suy đoán tài liệu thay thế<br>- Sandbox Whitelist `G:\`<br>- %TEMP% Isolation Policy |
+| **2** | **HPDE Engine 2.0** (Chương $\to$ Mục $\to$ MPT) | `Phân Rã Kiến Thức Bằng AI.md` (320 KB) & `Phân Tích Luận Điểm AI.md` (337 KB) | - Ngữ nghĩa học Neo-Davidsonian ($P(x), R(x, y)$)<br>- Đóng gói Sự kiện Phân tử (Molecular Facts)<br>- SciSlide Dual-Plane (Mặt phẳng vi mô AIF + Mặt phẳng vĩ mô CPG DAG)<br>- Mô hình Toulmin 6 thành phần & Khung Dung 1995<br>- Xác thực đại số hình thức SymPy | [`scripts/hpde_engine.py`](file:///d:/antigravity/academic-research-engine/scripts/hpde_engine.py) | - Bi-NLI 2 chiều $\ge 0.85$<br>- Phần dư rỗng $\mathcal{R}_{\text{residual}} = \emptyset$<br>- Zero-Omission Hash Matrix 100% |
+| **3** | **RVAE Engine 2.0** kết hợp **D-SAFE & MPDS** | `Thuật Toán AI Tách Ảnh.md` (370 KB) | - D-SAFE 5 tầng lai ghép<br>- Tầng 1: OpenXML Traversal & ma trận xoay $90^\circ/180^\circ/270^\circ$<br>- Tầng 2: Luồng song song Bottom-Up Vector (PyMuPDF `get_drawings`, PDFFigures 2.0) & Top-Down DLA (DocLayout-YOLO)<br>- Tầng 3: Bounded Union-WBF & $IoA \ge 0.85$<br>- Tầng 4: Cứu hộ đảo chiều CAIR<br>- Tầng 5: Whitespace Projection & Auto-crop bù viền $8\text{–}12\text{ px}$ | [`scripts/rvae_engine.py`](file:///d:/antigravity/academic-research-engine/scripts/rvae_engine.py) | - Zero-Miss Recall tiệm cận 100%<br>- Độ phân giải $\ge 300\text{ DPI}$<br>- Dung lượng PNG $\le 300\text{ KB}$<br>- Manifest SHA-256 |
+| **4** | **PLBE Engine** (Thiết kế Khung Bài giảng) | `Phân Tích Luận Điểm Bằng AI.md` (310 KB) & `Kiến Trúc Toàn Diện...` | - Lược đồ Hợp đồng Dữ liệu Pydantic `LessonDeliverable`<br>- Khóa cứng thứ tự MPT và ánh xạ ảnh mỏ neo<br>- Dự báo số trang co giãn (Lõi $\ge 10\text{ tr}$, Phụ $5\text{–}6\text{ tr}$)<br>- Khử chu trình bằng `GREEDYCYCLEBREAK`<br>- Đăng ký miền nguồn ẩn dụ `ARegistry` | [`scripts/parallel_scan_engine.py`](file:///d:/antigravity/academic-research-engine/scripts/parallel_scan_engine.py) | - Phê duyệt Sample Gate Pha 1<br>- Xuất `BLUEPRINT_MUC_X.Y.json`<br>- FSA Logits Masking |
+| **5** | **UFME Engine** (Feynman 5 Giai đoạn & Scaffolding) | `AI Agent Giảng Dạy & Sáng Tạo Trên Antigravity.md` (505 KB) | - Cấu trúc sư phạm lũy tiến 5 Giai đoạn:<br>  * GĐ 1: Khám phá & Visual Anchor<br>  * GĐ 2: Minimal Working Example từ số liệu 300 K<br>  * GĐ 3: Nền tảng & Hệ thức Cột trụ $\frac{a}{b}$<br>  * GĐ 4: Luyện tập & Quét biến thiên tiệm cận<br>  * GĐ 5: Thử thách phản biện CER bóc tách điểm mù<br>- Inline Code Badge `↳` (Zero-Formula) | [`scripts/malae_engine.py`](file:///d:/antigravity/academic-research-engine/scripts/malae_engine.py) | - Cấm cấu trúc 5 Khối cũ (`Khối 1:`, `Khối 2:`)<br>- Spaced Repetition $\le 3$ lần<br>- 100% bước biến đổi trung gian có nhãn `↳` |
+| **6** | **5 Mắt xích OCR** (`Zero-Omission & Zero-Symbol-Drift`) | `Kiến Trúc Kiểm Định AI.md` (313 KB) | - Mắt xích 1: Nhận diện trục & miền giá trị thực nghiệm<br>- Mắt xích 2: Trích xuất điểm uốn, dòng ngưỡng, cực trị<br>- Mắt xích 3: Bóc tách điều kiện đo đạc Lab<br>- Mắt xích 4: Giải trình cơ chế vi mô từng đường đặc tuyến<br>- Mắt xích 5: Đối chiếu trực tiếp với phương trình giải tích | [`curriculum-fidelity-auditor`](file:///d:/antigravity/academic-research-engine/.agents/agents/curriculum-fidelity-auditor/agent.md) | - Đủ 3 dòng chú giải `↳` dưới mỗi hình<br>- Khớp 100% tọa độ và mũi tên từ hình gốc |
+| **7** | **HDSE Engine** (Bố cục Đồ họa & Triple Buffer) | `AI Agent Giảng Dạy & Sáng Tạo Trên Antigravity.md` (505 KB) | - Chuẩn đồ họa MATLAB R2014b+ (HG2), 4 cạnh `#1F1F1F`, inward ticks, 6 màu chuẩn<br>- 3 Vùng đệm bất biến:<br>  * $\delta_{\text{geom}} \ge 8\%$ (cách tuyệt đối mọi nét vẽ)<br>  * $\delta_{\text{box}} \ge 6\text{ pt}$ (khoảng cách giữa các hộp)<br>  * $\delta_{\text{spine}} \ge 5\%$ (lề 4 cạnh khung trục)<br>- Chiến lược Hành lang (Corridor Strategy)<br>- Tự động nới trục y thêm $20\text{–}35\%$, cấm co nhỏ cỡ chữ | [`.agents/skills/physics-diagram-studio/scripts/matlab_plot_engine.py`](file:///d:/antigravity/academic-research-engine/.agents/skills/physics-diagram-studio/scripts/matlab_plot_engine.py) | - Thực thi `assert_triple_buffer_geometry(fig, ax)` đạt PASS trước khi lưu<br>- Cỡ chữ $\ge 10.0\text{ pt}$<br>- Xuất vector 300 DPI |
+| **8** | **Pass/Fail Gate 17 Điểm & DOHG 2.0** | `Kiến Trúc Kiểm Định AI.md` (313 KB) | - 5 Trạm Chốt chặn Đầu ra Xác định (DOHG 2.0):<br>  * Trạm 1: Static AST & Typography Linter (Cấm LaTeX thô, cấm gạch chéo `/`, cấm ASCII `E_c(z)`)<br>  * Trạm 2: Geometry Collision Gate (đo pixel thực tế)<br>  * Trạm 3: Post-Build Binary PyMuPDF (Zero-Omission for Images)<br>  * Trạm 4: Formal CAS SymPy `simplify == 0`<br>  * Trạm 5: Atomic Sandbox & Dọn rác %TEMP% | [`.agents/scripts/academic_gate_hook.py`](file:///d:/antigravity/academic-research-engine/.agents/scripts/academic_gate_hook.py) | - Đạt 100% cả 17 tiêu chí<br>- Vòng lặp tự sửa lỗi $\le 5$ lần<br>- Quá 5 lần kích hoạt Hard Stop |
+| **9** | **%TEMP% Isolation & Atomic Replace** | `Thuật Toán Tạo Bài Giảng.md` (686 KB) | - Toàn bộ tệp tạm, đệm biên dịch, log cô lập tại `tempfile.gettempdir()`<br>- Kiểm tra quyền ghi `os.access(..., os.W_OK)`<br>- Thay thế nguyên tử `os.replace` sang Google Drive `G:\`<br>- Triệt tiêu hoàn toàn tệp trùng lặp ` (1).pdf` | [`scripts/hust_pdf_engine.py`](file:///d:/antigravity/academic-research-engine/.agents/skills/monograph-pdf-publisher/scripts/hust_pdf_engine.py) | - Cấm tệp rác trên `G:\`<br>- Tên file chuẩn hóa để Drive tự quản lý phiên bản |
+| **10** | **ATCC Engine** (Đối chiếu & Khóa Danh pháp Học thuật) | `AI Agent Giảng Dạy & Sáng Tạo Trên Antigravity.md` (505 KB) | - Danh pháp song ngữ `tiếng Việt chuẩn (english term)`<br>- Danh từ mượn nguyên ngữ không in nghiêng (`laser, diode, electron, photon, phonon, exciton, plasma, vector, tensor`)<br>- Nghị định 30/2020/NĐ-CP: Sentence case cho H1–H3, cấm viết hoa danh từ chung<br>- Viết số APA 7: Dấu phẩy thập phân, en-dash khoảng số<br>- Đơn vị SI Luật Đo lường 04: Đặt 1 khoảng trắng ($300\text{ K}$, cấm $300\text{K}$)<br>- Master Variable Dictionary chống trôi ký hiệu | [`scripts/atcc_engine.py`](file:///d:/antigravity/academic-research-engine/scripts/atcc_engine.py) | - Pre-compilation Gate chặn bắt trước khi viết<br>- Zero-Drift Gate: Xung đột Slide/Sách dừng hỏi Dũng |
+| **11** | **H-LCC/Scan Parallel Orchestration Engine** | `Thuật Toán AI Agent Song Song.md` (903 KB) | - Điều phối 6 Giai đoạn khép kín:<br>  * Giai đoạn 0: Tiền kiểm định & Prompt Caching<br>  * Giai đoạn 1: Đề cương Tuần tự LOGIC/DOC & Sample Gate<br>  * Giai đoạn 2: Hợp đồng Prompt Tất định FSM<br>  * Giai đoạn 3: Phân phối Worker song song & Nén 3 Bước CoD<br>  * Giai đoạn 4: Cổng kiểm định tất định & Phản xạ cục bộ<br>  * Giai đoạn 5: Gom cụm State Reducer, Khâu nối Re3 & Xuất PDF | [`scripts/parallel_scan_engine.py`](file:///d:/antigravity/academic-research-engine/scripts/parallel_scan_engine.py) | - Giới hạn $K = 3\text{–}4$ workers tránh lỗi HTTP 429<br>- Zero-Text Chat Rule (chỉ xuất Bộ ba Mỏ neo Điều hướng) |
+| **12** | **MALAE Engine** (Biên soạn Bài giảng Tự trị) | `Thuật Toán Tạo Bài Giảng.md` (686 KB) | - Lưỡng pha thực thi (Dual-Pass Execution):<br>  * Pha 1: `GREEDYCYCLEBREAK` khử chu trình $W_{\text{eff}}$, Sắp xếp Tô-pô trọng số, `ColPali MaxSim` neo ảnh đầu mục AST pos $\le 2$, Ánh xạ cấu trúc `SME` (Gentner)<br>  * Pha 2: Nén CoD 3 vòng, Chuỗi nhân quả `Causal Flowchain` $\le 65\text{ từ/khối}$, Giải phẫu Phương trình 3 Cấp, Triệt tiêu bảng lưới $> 4 \times 3$<br>- Bộ 5 Cổng Linter Tất định (`LINT_01` $\to$ `LINT_05`) | [`scripts/malae_engine.py`](file:///d:/antigravity/academic-research-engine/scripts/malae_engine.py) | - Ngăn chặn triệt để Wall-of-Text<br>- Cấm công thức trần trụi thiếu giải nghĩa<br>- Khóa bộ nhớ ẩn dụ `ARegistry` |
+| **13** | **ZT-GVLE Engine** (Khóa Bố cục Điểm ảnh & Sidecar Manifest) | `Giải Pháp Mô Phỏng Và Tối Ưu Nhãn Đồ Thị Vật Lý - Quang Điện Tử.md` (622 KB) | - Quy trình 5 Mắt xích Khép kín:<br>  * Mắt xích 1: Khóa Khổ Canvas Vùng in A4 ($W \le 7.0\text{ in}$, cấm ghép ngang 2 panel)<br>  * Mắt xích 2: Đồng bộ Điểm ảnh & Đám mây Vật cản Siêu mịn $\Delta s \le 2.5\text{ px}$, mở rộng Breathing Room<br>  * Mắt xích 3: Quỹ đạo Elip Đồng khoảng hở (24 góc $15^\circ$) & hàm phạt $J(\mathbf{c})$<br>  * Mắt xích 4: Cấm tuyệt đối phân số gạch chéo `/`<br>  * Mắt xích 5: Khóa chéo Mật mã Sidecar Manifest SHA-256 | [`physics_viz_lock.py`](file:///d:/antigravity/academic-research-engine/physics_viz_lock.py) & [`hust_pdf_engine.py`](file:///d:/antigravity/academic-research-engine/.agents/skills/monograph-pdf-publisher/scripts/hust_pdf_engine.py) | - ReportLab ném `AssertionError` nếu thiếu manifest hoặc hash mismatch<br>- Nhúng Thẻ Tham số Bóc tách (`Detached Parameter Card`) |
+
+---
+
+## III. CHỈ DẪN TRUY XUẤT TÀI LIỆU GỐC & CƠ CHẾ NẠP THEO YÊU CẦU
+
+Khi cần tham chiếu hoặc đối soát bất kỳ chi tiết toán học, chứng minh giải tích hoặc mô hình hóa nào trong 10 tệp thiết kế gốc:
+1. **Đường dẫn thư mục gốc:** [`D:\antigravity\academic-research-engine\Tài liệu xây dựng thuật toán`](file:///d:/antigravity/academic-research-engine/Tài liệu xây dựng thuật toán)
+2. **Cơ chế nạp:** Nạp có chủ đích theo phân mục bằng công cụ `read_file` với dải dòng hẹp (`StartLine` - `EndLine`), tuyệt đối không nạp cả tệp lớn $>500\text{ KB}$ vào cùng một lượt chat để bảo toàn cửa sổ ngữ cảnh hoạt động.
+3. **Quyền truy cập:** Toàn bộ 10 tệp thiết kế gốc được khóa quyền **Read-Only tuyệt đối**, nghiêm cấm mọi thao tác ghi đè hoặc chỉnh sửa.

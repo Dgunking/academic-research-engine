@@ -1,0 +1,268 @@
+{
+  "lesson_title": "Chương 2: Bản chất lượng tử của thế giới nano - Mục 2.3: Hàm sóng, bó sóng và nguyên lý bất định Heisenberg",
+  "section_id": "Mục 2.3",
+  "source_document_citations": [
+    "Bài 2-Quantum nature.pdf (Slide 20 đến 27), Bộ môn Vật liệu Điện tử - Viện Vật lý Kỹ thuật HUST",
+    "David J. Griffiths, Darrell F. Schroeter, Introduction to Quantum Mechanics, 3rd Edition, Cambridge University Press, 2018",
+    "Charles P. Poole Jr., Frank J. Owens, Introduction to Nanotechnology, Wiley-Interscience, 2003",
+    "Edward L. Wolf, Nanophysics and Nanotechnology, Wiley-VCH, 2006"
+  ],
+  "micro_point_topics": [
+    {
+      "mpt_id": "Luận điểm 2.3.1",
+      "concept_introduction": "Hàm sóng phẳng de Broglie dạng phức & Ý nghĩa vật lý: Mô tả trạng thái chuyển động của vi hạt tự do bằng hàm sóng điều hòa phức, sự liên kết giữa các đại lượng cơ học vi mô (E, p) với các đại lượng sóng (omega, k).",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_2.3_Hinh_01_Giao_Thoa_Van_Sang_Toi_Photon.png",
+        "interaction_id": "IMG_2.3.1_ORIG_INTERFERENCE_PHOTON",
+        "aspect_ratio": "4:3",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.3.1: Ảnh thực nghiệm giao thoa vân sáng tối của photon/electron tích lũy theo thời gian trên màn chắn."
+      },
+      "minimal_working_example": "Hàm sóng phẳng đơn sắc lan truyền theo phương x mô tả hạt tự do có động lượng p_x xác định và năng lượng E không đổi.",
+      "pillar_equation_latex": "\\Psi(\\vec{r}, t) = A \\exp\\left( i(\\vec{k}\\cdot\\vec{r} - \\omega t) \\right) = A \\exp\\left( \\frac{i}{\\hbar}(\\vec{p}\\cdot\\vec{r} - E t) \\right)",
+      "nomenclature_table": [
+        {
+          "name": "Hàm sóng trạng thái vi mô",
+          "symbol": "\\Psi(\\vec{r}, t)",
+          "unit": "m^{-3/2}",
+          "meaning": "Hàm giải tích phức chứa đựng toàn bộ thông tin vật lý của hệ vi mô"
+        },
+        {
+          "name": "Véctơ sóng",
+          "symbol": "\\vec{k}",
+          "unit": "rad/m",
+          "meaning": "Véctơ chỉ phương truyền sóng, có độ lớn k = 2\\pi / \\lambda = p / \\hbar"
+        },
+        {
+          "name": "Tần số góc của sóng",
+          "symbol": "\\omega",
+          "unit": "rad/s",
+          "meaning": "Tần số biến thiên pha thời gian: \\omega = 2\\pi\\nu = E / \\hbar"
+        },
+        {
+          "name": "Biên độ hàm sóng",
+          "symbol": "A",
+          "unit": "m^{-3/2}",
+          "meaning": "Hệ số chuẩn hóa không gian của hàm sóng"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Biểu diễn hàm sóng phẳng dạng lượng giác thực: D(x, t) = A\\cos(\\omega t - kx + \\alpha).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Áp dụng công thức Euler mở rộng sang trường phức: \\exp(i\\phi) = \\cos\\phi + i\\sin\\phi \\implies \\Psi(x, t) = A\\exp(-i(\\omega t - kx)).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thay thế các hệ thức Einstein - de Broglie E = \\hbar\\omega và \\vec{p} = \\hbar\\vec{k} để thu được phương trình hàm sóng vi hạt tự do."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Hàm sóng phẳng lan truyền hoàn toàn không định xứ trong không gian: Mật độ xác suất |Psi|^2 = |A|^2 là hằng số trên toàn bộ không gian vô hạn.",
+        "Pha của sóng: Phi(x, t) = kx - omega*t; mặt đồng pha là mặt phẳng vuông góc với véctơ k."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao hàm sóng lượng tử bắt buộc phải là một hàm phức (Complex Function) mà không thể thuần túy là một hàm thực như sóng cơ học hay sóng điện từ?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.3.2",
+      "concept_introduction": "Tiên đề xác suất Max Born & Điều kiện chuẩn hóa hàm sóng: Bản chất thống kê của cơ học lượng tử, giải thích ý nghĩa vật lý của hàm sóng phức qua bình phương môđun mật độ xác suất định xứ vi hạt.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Mo_Phong]_Muc_2.3_Mat_Do_Xac_Suat_Born_Va_Ham_Song.png",
+        "interaction_id": "IMG_2.3.2_SIM_BORN_PROBABILITY",
+        "aspect_ratio": "6.5:4.2",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.3.2: Đồ thị mô phỏng tiên đề xác suất Max Born: sự liên hệ giữa phần thực, phần ảo của hàm sóng và mật độ xác suất |Psi|^2 cùng hiện tượng giao thoa hai khe lượng tử."
+      },
+      "minimal_working_example": "Tích phân chuẩn hóa mật độ xác suất trong toàn bộ không gian đối với hạt chuyển động định xứ (bằng 100% tìm thấy hạt trong vũ trụ).",
+      "pillar_equation_latex": "dP = |\\Psi(\\vec{r}, t)|^2 dV = \\Psi^*(\\vec{r}, t)\\Psi(\\vec{r}, t) dV \\quad \\text{và} \\quad \\int_{-\\infty}^{\\infty} |\\Psi(\\vec{r}, t)|^2 dV = 1",
+      "nomenclature_table": [
+        {
+          "name": "Xác suất tìm thấy hạt trong phần tử thể tích",
+          "symbol": "dP",
+          "unit": "không thứ nguyên",
+          "meaning": "Xác suất định xứ hạt vi mô trong lân cận thể tích dV"
+        },
+        {
+          "name": "Mật độ xác suất vị trí",
+          "symbol": "|\\Psi(\\vec{r}, t)|^2",
+          "unit": "m^{-3}",
+          "meaning": "Bình phương độ lớn hàm sóng, đại lượng thực dương đo lường xác suất trên đơn vị thể tích"
+        },
+        {
+          "name": "Hàm sóng liên hợp phức",
+          "symbol": "\\Psi^*",
+          "unit": "m^{-3/2}",
+          "meaning": "Số phức liên hợp của hàm sóng Psi"
+        },
+        {
+          "name": "Điều kiện chuẩn hóa toàn phần",
+          "symbol": "\\int |\\Psi|^2 dV = 1",
+          "unit": "không thứ nguyên",
+          "meaning": "Đảm bảo tính bảo toàn xác suất toàn cục của hệ lượng tử"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Phân tích tương tự quang học sóng: cường độ bức xạ I = \\epsilon_0 c \\mathcal{E}^2 tỷ lệ với thông lượng photon N \\implies N \\propto \\mathcal{E}^2.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Mở rộng sang sóng vật chất: vai trò của trường điện từ \\mathcal{E} được thay thế bằng hàm sóng \\Psi.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Định nghĩa tiên đề Max Born (1926): Mật độ xác suất tìm thấy hạt tại điểm (\\vec{r}, t) tỷ lệ thuận với |\\Psi(\\vec{r}, t)|^2."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Điều kiện hàm sóng chuẩn mực (Well-behaved wave function): Bắt buộc phải liên tục, đơn trị, có đạo hàm riêng liên tục và khả tích bình phương (Square-integrable).",
+        "Giao thoa hai khe: |\\Psi_1 + \\Psi_2|^2 = |\\Psi_1|^2 + |\\Psi_2|^2 + 2\\mathrm{Re}[\\Psi_1^* \\Psi_2] tạo nên các vân giao thoa xác suất kỳ diệu."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Khi thực hiện thí nghiệm hai khe với chùm electron bắn từng hạt đơn lẻ cực kỳ thưa thớt, tại sao sau thời gian dài vẫn thu được hình ảnh vân giao thoa trên màn chắn?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.3.3",
+      "concept_introduction": "Khái niệm Bó sóng (Wave Packet), Chồng chập sóng & Vận tốc nhóm: Sự định xứ không gian của hạt vi mô thông qua tổ hợp tuyến tính các sóng phẳng Fourier, sự khác biệt bản chất giữa vận tốc pha và vận tốc nhóm của sóng de Broglie.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Mo_Phong]_Muc_2.3_Cau_Truc_Bo_Song_Va_Van_Toc_Nhom.png",
+        "interaction_id": "IMG_2.3.3_SIM_WAVE_PACKET",
+        "aspect_ratio": "6.5:4.2",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.3.3: Đồ thị mô phỏng giải tích bó sóng Gaussian lan truyền trong không gian: minh họa đường bao biên độ, sự lan truyền với vận tốc nhóm vg và vận tốc pha vp."
+      },
+      "minimal_working_example": "Tích phân chồng chập Fourier của phổ sóng liên tục A(k) quanh số sóng trung tâm k_0 với độ rộng Delta k.",
+      "pillar_equation_latex": "v_g = \\frac{d\\omega}{dk} = \\frac{d(\\hbar\\omega)}{d(\\hbar k)} = \\frac{dE}{dp} = \\frac{d}{dp}\\left(\\frac{p^2}{2m}\\right) = \\frac{p}{m} = v_{\\mathrm{hạt}}",
+      "nomenclature_table": [
+        {
+          "name": "Vận tốc nhóm của bó sóng",
+          "symbol": "v_g",
+          "unit": "m/s",
+          "meaning": "Tốc độ lan truyền của tâm bó sóng và năng lượng, trùng khớp với vận tốc hạt cổ điển"
+        },
+        {
+          "name": "Vận tốc pha của sóng",
+          "symbol": "v_p = \\omega / k",
+          "unit": "m/s",
+          "meaning": "Tốc độ lan truyền của các mặt đồng pha bên trong bó sóng (đối với hạt phi tương đối tính v_p = v/2)"
+        },
+        {
+          "name": "Phổ biên độ Fourier",
+          "symbol": "A(k)",
+          "unit": "m^{1/2}",
+          "meaning": "Hàm trọng số phân bố biên độ các thành phần sóng phẳng đơn sắc"
+        },
+        {
+          "name": "Độ rộng phổ số sóng",
+          "symbol": "\\Delta k",
+          "unit": "rad/m",
+          "meaning": "Dải tần số không gian tham gia cấu tạo nên bó sóng định xứ"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Biểu diễn bó sóng bằng tích phân Fourier: \\psi(x, t) = \\int_{k_0-\\Delta k}^{k_0+\\Delta k} A(k)\\exp(i(kx - \\omega(k)t)) dk.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khai triển chuỗi Taylor tần số góc quanh k_0: \\omega(k) \\approx \\omega(k_0) + \\left.\\frac{d\\omega}{dk}\\right|_{k_0} (k - k_0).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tách biểu thức thành tích của sóng mang nhanh và đường bao biên độ chuyển động với vận tốc v_g = d\\omega/dk."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Hạt phi tương đối tính: E = p^2/(2m) \\implies v_p = E/p = v/2, trong khi v_g = p/m = v (vận tốc nhóm gấp đôi vận tốc pha).",
+        "Hiện tượng tán sắc sóng (Dispersion): Bó sóng lan truyền trong môi trường tự do sẽ dần bị giãn rộng đường bao theo thời gian."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao vận tốc pha của sóng de Broglie đối với hạt tương đối tính v_p = c^2 / v lại lớn hơn tốc độ ánh sáng c nhưng hoàn toàn không vi phạm thuyết tương đối?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.3.4",
+      "concept_introduction": "Nguyên lý bất định Heisenberg & Hệ quả giam cầm năng lượng: Quy luật phổ quát của cơ học lượng tử thiết lập ranh giới nhận thức không thể vượt qua giữa các cặp biến số liên hợp (tọa độ - xung lượng, năng lượng - thời gian) và hệ quả giam cầm lượng tử trong thế giới nano.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Mo_Phong]_Muc_2.3_Nguyen_Ly_Bat_Dinh_Heisenberg.png",
+        "interaction_id": "IMG_2.3.4_SIM_HEISENBERG_CONFINEMENT",
+        "aspect_ratio": "6.5:4.2",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.3.4: Đồ thị mô phỏng nguyên lý bất định Heisenberg: mối quan hệ tương hỗ Delta x - Delta p và năng lượng giam cầm lượng tử E_conf bùng nổ khi kích thước nano L < 5 nm."
+      },
+      "minimal_working_example": "Ước tính động năng điểm không (Zero-point energy) của electron bị giam cầm trong hộp thế nano kích thước L = 1 nm.",
+      "pillar_equation_latex": "\\Delta x \\cdot \\Delta p_x \\ge \\frac{\\hbar}{2} = \\frac{h}{4\\pi} \\quad \\text{và} \\quad \\Delta E \\cdot \\Delta t \\ge \\frac{\\hbar}{2}",
+      "nomenclature_table": [
+        {
+          "name": "Độ bất định tọa độ không gian",
+          "symbol": "\\Delta x",
+          "unit": "nm",
+          "meaning": "Độ lệch chuẩn vị trí định xứ của hạt trong không gian thực"
+        },
+        {
+          "name": "Độ bất định động lượng",
+          "symbol": "\\Delta p_x",
+          "unit": "kg·m/s",
+          "meaning": "Độ lệch chuẩn thành phần động lượng tương ứng theo trục x"
+        },
+        {
+          "name": "Hằng số Planck rút gọn",
+          "symbol": "\\hbar = h / (2\\pi)",
+          "unit": "J·s",
+          "meaning": "Hằng số lượng tử vi mô CODATA 2022: 1.054571817e-34 J·s"
+        },
+        {
+          "name": "Năng lượng giam cầm tối thiểu",
+          "symbol": "E_{\\mathrm{conf}}",
+          "unit": "eV",
+          "meaning": "Động năng cực tiểu bắt buộc phải có do sự bất định động lượng trong không gian hẹp"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Biểu diễn tính chất Fourier của bó sóng: tích độ rộng không gian \\Delta x và độ rộng số sóng \\Delta k luôn thỏa mãn \\Delta x \\Delta k \\ge 1/2.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Nhân cả hai vế với hằng số Planck rút gọn \\hbar: \\Delta x (\\hbar \\Delta k) \\ge \\hbar / 2 \\implies \\Delta x \\Delta p_x \\ge \\hbar / 2.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Dẫn xuất năng lượng giam cầm trong cấu trúc nano kích thước L (\\Delta x \\approx L/2): E_k \\ge (\\Delta p)^2 / (2m^*) \\approx \\hbar^2 / (8 m^* (\\Delta x)^2) \\approx \\hbar^2 / (2 m^* L^2)."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Khi kích thước cấu trúc nano co nhỏ (L < 5 nm): Năng lượng giam cầm E_conf vượt trội hoàn toàn năng lượng dao động nhiệt k_B T ở 300 K, biến đổi dải năng lượng vật liệu.",
+        "Hệ thức bất định năng lượng - thời gian: Giải thích độ rộng vạch quang phổ tự nhiên của mức năng lượng có thời gian sống hữu hạn: Delta E = hbar / tau."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao electron trong nguyên tử không thể rơi vào hạt nhân mang điện tích dương để làm sụp đổ nguyên tử theo lực hút tĩnh điện Coulomb?"
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 2.3.5",
+      "concept_introduction": "Phương trình Schrödinger cơ bản của cơ học lượng tử: Phương trình động lực học nền tảng của vật lý lượng tử (Erwin Schrödinger, 1926), toán tử vi phân Hamiltonian và sự phân tách trạng thái dừng độc lập thời gian.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Mo_Phong]_Muc_2.3_Mat_Do_Xac_Suat_Born_Va_Ham_Song.png",
+        "interaction_id": "IMG_2.3.5_SCHRODINGER_EQUATION",
+        "aspect_ratio": "6.5:4.2",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.3.5: Cấu trúc toán tử vi phân trong phương trình Schrödinger và sự chuyển tiếp sang các trạng thái dừng năng lượng riêng."
+      },
+      "minimal_working_example": "Thiết lập phương trình Schrödinger một chiều cho vi hạt chuyển động tự do và vi hạt chịu tác dụng của trường thế V(x).",
+      "pillar_equation_latex": "i\\hbar \\frac{\\partial \\Psi}{\\partial t} = \\hat{H}\\Psi = \\left( -\\frac{\\hbar^2}{2m}\\nabla^2 + V(\\vec{r}, t) \\right)\\Psi \\quad \\text{và} \\quad -\\frac{\\hbar^2}{2m}\\nabla^2 \\psi + V(\\vec{r})\\psi = E\\psi",
+      "nomenclature_table": [
+        {
+          "name": "Toán tử Hamiltonian toàn phần",
+          "symbol": "\\hat{H}",
+          "unit": "J hoặc eV",
+          "meaning": "Toán tử năng lượng toàn phần gồm toán tử động năng và toán tử thế năng"
+        },
+        {
+          "name": "Toán tử vi phân Laplace",
+          "symbol": "\\nabla^2 = \\Delta",
+          "unit": "m^{-2}",
+          "meaning": "Toán tử đạo hàm không gian bậc hai: d^2/dx^2 + d^2/dy^2 + d^2/dz^2"
+        },
+        {
+          "name": "Trường thế năng ngoại đặt",
+          "symbol": "V(\\vec{r}, t)",
+          "unit": "J hoặc eV",
+          "meaning": "Trường lực tương tác tác dụng lên hạt vi mô (Coulomb, giếng thế, rào thế)"
+        },
+        {
+          "name": "Giá trị riêng năng lượng",
+          "symbol": "E",
+          "unit": "eV",
+          "meaning": "Mức năng lượng gián đoạn của trạng thái dừng lượng tử"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Xây dựng toán tử động lượng vi phân từ hàm sóng phẳng: \\hat{p}_x = -i\\hbar \\frac{\\partial}{\\partial x} \\implies \\hat{E}_k = \\frac{\\hat{p}^2}{2m} = -\\frac{\\hbar^2}{2m}\\nabla^2.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Xây dựng toán tử năng lượng toàn phần theo thời gian: \\hat{E} = i\\hbar \\frac{\\partial}{\\partial t}.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tách biến đối với trường thế dừng V(\\vec{r}): \\Psi(\\vec{r}, t) = \\psi(\\vec{r})\\exp(-iEt/\\hbar), khử thừa số thời gian thu được phương trình Schrödinger độc lập thời gian."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Trạng thái dừng (Stationary States): Mật độ xác suất |Psi(\u000bec{r}, t)|^2 = |\\psi(\u000bec{r})|^2 hoàn toàn độc lập với thời gian.",
+        "Nguyên lý xếp chồng trạng thái: Tổ hợp tuyến tính các nghiệm riêng trạng thái dừng cũng là một nghiệm của phương trình Schrödinger phụ thuộc thời gian."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER: Tại sao phương trình Schrödinger chỉ chứa đạo hàm bậc nhất theo thời gian dt mà lại chứa đạo hàm bậc hai theo không gian dx^2?"
+      ]
+    }
+  ],
+  "total_pages_estimate": 12
+}

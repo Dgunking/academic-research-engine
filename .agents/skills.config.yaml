@@ -1,0 +1,41 @@
+# skills.config.yaml — Cấu hình Chuyên sâu Cấp Dự án (HUST Semiconductor Photonics Lab)
+# Tự động ghi đè và hợp nhất sâu với config.default.yaml qua resolve_config.py
+
+domain:
+  name: "Vật lý Bán dẫn & Quang điện tử (Semiconductor Physics & Optoelectronics)"
+  institution: "Đại học Bách khoa Hà Nội (HUST)"
+  faculty: "Khoa Vật lý Kỹ thuật"
+  learner: "Bùi Trung Dũng"
+  cohort: "K67"
+  target_direction: "Kỹ thuật quân sự & quốc phòng; Laser Diode, PIC, Màng mỏng quang học, Cảm biến quang"
+  semiconductor_database_active: true
+  reference_temperature_k: 300
+  active_materials:
+    - "GaAs"
+    - "InP"
+    - "GaN"
+    - "Si"
+    - "Ge"
+    - "AlGaAs"
+  standard_constants: "CODATA 2022"
+
+drive_storage:
+  root_path: "G:/My Drive/NotebookLM - Academic Knowledge Base/Quang_Hoc_Va_Quang_Dien_Tu"
+  packaging_subfolder: "Bai_Giang_Dong_Goi"
+  figures_subfolder: "Kho_Hinh_Anh"
+  lab_data_subfolder: "Du_Lieu_Thuc_Nghiem_Lab"
+  sync_delay_seconds: 10
+
+visual_pipeline:
+  hybrid_mode: true
+  analytical_engine: "matplotlib"
+  matlab_version_target: "R2014b+"
+  aspect_ratio_standard: "6.5x4.2"
+  stateful_image_integration:
+    enabled: true
+    thinking_level: "high"
+    default_aspect_ratio: "16:9"
+
+publishing:
+  footer_text: "HUST — Bùi Trung Dũng — K67 Vật lý Kỹ thuật"
+  monograph_title_prefix: "Chuyên khảo Quang điện tử:"

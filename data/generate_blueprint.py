@@ -1,0 +1,225 @@
+# -*- coding: utf-8 -*-
+import json, os, sys
+import pydantic
+from typing import List, Dict, Any
+
+sys.stdout.reconfigure(encoding='utf-8')
+data_dir = r'd:\antigravity\academic-research-engine\data'
+os.makedirs(data_dir, exist_ok=True)
+blueprint_path = os.path.join(data_dir, 'BLUEPRINT_MUC_2.1_NANO.json')
+
+class VisualAssetSpec(pydantic.BaseModel):
+    image_file_path: str
+    interaction_id: str
+    aspect_ratio: str
+    brand_palette_compliant: bool
+    pedagogical_caption: str
+
+class MicroPointTopic(pydantic.BaseModel):
+    mpt_id: str
+    concept_introduction: str
+    visual_anchor: VisualAssetSpec
+    minimal_working_example: str
+    pillar_equation_latex: str
+    nomenclature_table: List[Dict[str, str]]
+    guided_practice_steps: List[str]
+    variations_and_asymptotic_sweeps: List[str]
+    student_challenges_cer: List[str]
+
+class LessonDeliverable(pydantic.BaseModel):
+    lesson_title: str
+    section_id: str
+    source_document_citations: List[str]
+    micro_point_topics: List[MicroPointTopic]
+    total_pages_estimate: int
+
+# Tạo 5 MPT chi tiết
+mpt1 = MicroPointTopic(
+    mpt_id='Luận điểm 2.1.1',
+    concept_introduction='Lịch sử hình thành & Cột mốc Công nghệ Nano: Từ bài giảng kinh điển của Richard Feynman (1959), thuật ngữ của Norio Taniguchi (1974) đến sự ra đời của kính hiển vi quét xuyên hầm STM (1981) và kính hiển vi lực nguyên tử AFM (1986).',
+    visual_anchor=VisualAssetSpec(
+        image_file_path=r'G:\My Drive\NotebookLM - Academic Knowledge Base\Cơ sở vật lý và công nghệ nano\Kho_Hinh_Anh\[Goc]_Muc_2.1_Hinh_01_Richard_Feynman.png',
+        interaction_id='IMG_2.1.1_ORIG_FEYNMAN',
+        aspect_ratio='1:1',
+        brand_palette_compliant=True,
+        pedagogical_caption='Hình 2.1: Nhà vật lý Richard Feynman (1918-1988) tại Hội nghị APS 1959 ở Caltech.'
+    ),
+    minimal_working_example='Mô hình dòng xuyên hầm lượng tử một chiều trong STM qua khe hở chân không bề dày d giữa đầu dò Vonfram và bề mặt mẫu kim loại.',
+    pillar_equation_latex=r'I_{\mathrm{tunnel}} \propto V_{\mathrm{bias}} \exp\left(- 2 \kappa d\right) = V_{\mathrm{bias}} \exp\left(- \frac{2 \sqrt{2 m_0 \Phi}}{\hbar} d\right)',
+    nomenclature_table=[
+        {'name': 'Dòng điện xuyên hầm lượng tử', 'symbol': 'I_{tunnel}', 'unit': 'A', 'meaning': 'Cường độ dòng điện tử vượt rào thế chân không nhờ hiệu ứng xuyên hầm'},
+        {'name': 'Điện áp phân cực đầu dò - mẫu', 'symbol': 'V_{bias}', 'unit': 'V', 'meaning': 'Hiệu điện thế kích thích dịch chuyển mức Fermi giữa kim dò và vật liệu'},
+        {'name': 'Hệ số suy giảm hàm sóng', 'symbol': '\\kappa', 'unit': 'm^{-1}', 'meaning': 'Tỷ lệ suy giảm hàm sóng electron theo khoảng cách trong chân không'},
+        {'name': 'Khoảng cách kim dò đến bề mặt', 'symbol': 'd', 'unit': 'm', 'meaning': 'Bề dày khe hở chân không giữa nguyên tử đỉnh mũi dò và bề mặt mẫu'},
+        {'name': 'Hàm công thoát hiệu dụng', 'symbol': '\\Phi', 'unit': 'eV', 'meaning': 'Chiều cao rào thế năng lượng trung bình giữa kim dò và bề mặt mẫu'}
+    ],
+    guided_practice_steps=[
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thiết lập phương trình Schrödinger 1D trong vùng rào thế chân không V(z) = \Phi với năng lượng electron E < \Phi. Hàm sóng suy giảm hàm mũ: \psi(z) = \psi(0) \exp(-\kappa z) với \kappa = \sqrt{2 m_0 (\Phi - E)} / \hbar.',
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Mật độ dòng xác suất xuyên hầm tỷ lệ với bình phương biên độ hàm sóng tại z = d: J \propto |\psi(d)|^2 = |\psi(0)|^2 \exp(-2 \kappa d).',
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khi đặt điện áp phân cực nhỏ V_{bias} \ll \Phi / e, dòng tích phân qua mật độ trạng thái cục bộ LDOS cho hệ thức tỷ lệ tuyến tính I_{tunnel} \propto V_{bias} \rho_{sample}(E_F) \exp(-2\kappa d).'
+    ],
+    variations_and_asymptotic_sweeps=[
+        r'Khảo sát độ nhạy không gian: Với rào thế \Phi \approx 4\ \mathrm{eV}, hệ số \kappa \approx 10.2\ \mathrm{nm}^{-1}. Khi dịch chuyển kim dò \Delta d = 0.1\ \mathrm{nm} (1 Å), dòng xuyên hầm giảm \exp(-2 \times 10.2 \times 0.1) \approx \exp(-2.04) \approx 0.13, tức giảm gần một bậc độ lớn (~87%). Đây là chìa khóa tạo độ phân giải nguyên tử dọc trục z.',
+        r'Giới hạn tiệm cận d \to 0: Tiếp xúc Ohmic điểm lượng tử (Quantum point contact) dẫn tới độ dẫn lượng tử hóa G_0 = 2e^2/h \approx 77.48\ \mu\mathrm{S}.'
+    ],
+    student_challenges_cer=[
+        'Thử thách CER: Tại sao kính hiển vi STM có độ phân giải nguyên tử vượt trội nhưng bắt buộc bề mặt mẫu phải có tính dẫn điện, trong khi AFM lại chụp ảnh được cấu trúc chuỗi xoắn kép DNA và màng tế bào cách điện?'
+    ]
+)
+
+mpt2 = MicroPointTopic(
+    mpt_id='Luận điểm 2.1.2',
+    concept_introduction='Thang đo không gian Nano & Hiệu ứng diện tích bề mặt vượt trội: Tỷ số diện tích bề mặt trên thể tích S/V, tỷ lệ nguyên tử bề mặt bùng nổ khi kích thước giảm dưới 10 nm, và hiện tượng suy giảm nhiệt độ nóng chảy theo mô hình Gibbs-Thomson.',
+    visual_anchor=VisualAssetSpec(
+        image_file_path=r'G:\My Drive\NotebookLM - Academic Knowledge Base\Cơ sở vật lý và công nghệ nano\Kho_Hinh_Anh\[Mo_Phong]_Muc_2.1_Ty_Le_Dien_Tich_Be_Mat.png',
+        interaction_id='IMG_2.1.2_SIM_SURFACE_MELTING',
+        aspect_ratio='9.2:4.2',
+        brand_palette_compliant=True,
+        pedagogical_caption='Hình 2.2: Mô phỏng giải tích tỷ lệ nguyên tử bề mặt và sự suy giảm nhiệt độ nóng chảy Gibbs-Thomson theo bán kính hạt nano.'
+    ),
+    minimal_working_example='Khảo sát hạt nano hình cầu bán kính R cấu tạo từ các nguyên tử có đường kính d_atom = 0.3 nm, tính tỷ số S/V và tỷ lệ nguyên tử bề mặt khi R giảm từ 100 nm xuống 1 nm.',
+    pillar_equation_latex=r'T_m(R) = T_{m,\mathrm{bulk}} \left( 1 - \frac{2 \gamma_{\mathrm{sv}}}{\rho_s \Delta H_f R} \right)',
+    nomenclature_table=[
+        {'name': 'Nhiệt độ nóng chảy của hạt nano', 'symbol': 'T_m(R)', 'unit': 'K', 'meaning': 'Nhiệt độ chuyển pha rắn - lỏng của cấu trúc hạt nano bán kính R'},
+        {'name': 'Nhiệt độ nóng chảy vật liệu khối', 'symbol': 'T_{m,bulk}', 'unit': 'K', 'meaning': 'Hằng số nhiệt động học chuyển pha của vật liệu ở quy mô vĩ mô vô hạn'},
+        {'name': 'Năng lượng tự do bề mặt chất rắn - hơi', 'symbol': '\\gamma_{sv}', 'unit': 'J/m^2', 'meaning': 'Mật độ năng lượng dư thừa của các liên kết nguyên tử chưa bão hòa tại bề mặt'},
+        {'name': 'Khối lượng riêng pha rắn', 'symbol': '\\rho_s', 'unit': 'kg/m^3', 'meaning': 'Mật độ khối lượng của vật liệu rắn'},
+        {'name': 'Nhiệt nóng chảy riêng', 'symbol': '\\Delta H_f', 'unit': 'J/kg', 'meaning': 'Nhiệt lượng cần cung cấp để làm nóng chảy một đơn vị khối lượng vật liệu'},
+        {'name': 'Bán kính hạt nano', 'symbol': 'R', 'unit': 'm', 'meaning': 'Kích thước hình học đặc trưng của hạt nano hình cầu'}
+    ],
+    guided_practice_steps=[
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Biểu diễn diện tích bề mặt S = 4\pi R^2 và thể tích V = \frac{4}{3}\pi R^3 của hình cầu, rút ra tỷ số S/V = 3/R. Khi R \to 0, S/V phân kỳ tiệm cận bậc một.',
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tính thể tích lớp vỏ bề mặt có độ dày d_{atom}: V_{shell} = \frac{4}{3}\pi [R^3 - (R - d_{atom})^3]. Rút ra tỷ lệ số nguyên tử bề mặt: N_s / N_{total} = 1 - (1 - d_{atom}/R)^3.',
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Áp dụng cân bằng nhiệt động học điều kiện hóa thế pha lỏng và pha rắn kèm áp suất Laplace \Delta P = 2\gamma / R, dẫn xuất phương trình nhiệt độ Gibbs-Thomson: \Delta T_m / T_{m,bulk} = - 2\gamma_{sv} / (\rho_s \Delta H_f R).'
+    ],
+    variations_and_asymptotic_sweeps=[
+        r'Khảo sát tiệm cận R \to \infty: T_m(R) \to T_{m,bulk}, vật liệu tuân theo hoàn toàn nhiệt động học vĩ mô cổ điển.',
+        r'Khảo sát tiệm cận R \to R_{crit}: Khi bán kính hạt nano tiến tới giới hạn R \sim 1\text{–}2\ \mathrm{nm}, nhiệt độ nóng chảy của Vàng sụt giảm từ 1337\ \mathrm{K} xuống dưới 600\ \mathrm{K} (hơn 700\ \mathrm{K}), cho phép hàn mạch nano ở nhiệt độ thấp.'
+    ],
+    student_challenges_cer=[
+        'Thử thách CER: Một kỹ sư tuyên bố hạt xúc tác nano platin bán kính R = 2 nm có hoạt tính phản ứng hóa học gấp 100 lần so với platin dạng bột micro bán kính R = 200 nm tại cùng một khối lượng sử dụng. Hãy dùng tỷ số S/V và tỷ lệ nguyên tử bề mặt để kiểm chứng tính đúng đắn.'
+    ]
+)
+
+mpt3 = MicroPointTopic(
+    mpt_id='Luận điểm 2.1.3',
+    concept_introduction='Biến đổi tính chất điện & quang trong vật liệu nano bán dẫn: Hiệu ứng giam cầm lượng tử không gian, bán kính Bohr exciton, phương trình dịch chuyển dải cấm Brus và cấu trúc điện tử của ống nano carbon CNT.',
+    visual_anchor=VisualAssetSpec(
+        image_file_path=r'G:\My Drive\NotebookLM - Academic Knowledge Base\Cơ sở vật lý và công nghệ nano\Kho_Hinh_Anh\[Mo_Phong]_Muc_2.1_Dich_Chuyen_Nang_Luong_Brus.png',
+        interaction_id='IMG_2.1.3_SIM_BRUS_BANDGAP',
+        aspect_ratio='9.2:4.2',
+        brand_palette_compliant=True,
+        pedagogical_caption='Hình 2.3: Phân tích mô hình Brus cho chấm lượng tử CdSe, PbS, InP: bóc tách động năng giam cầm và thế tương tác Coulomb.'
+    ),
+    minimal_working_example='Tính toán độ dịch chuyển năng lượng phát xạ delta Eg của chấm lượng tử CdSe bán kính R = 2.0 nm so với vật liệu khối Eg,bulk = 1.74 eV.',
+    pillar_equation_latex=r'E_g(R) = E_{g,\mathrm{bulk}} + \frac{\hbar^2 \pi^2}{2 m_r^* R^2} - \frac{1.786\, e^2}{4\pi \varepsilon_0 \varepsilon_r R} - 0.248\, E_{Ry}^*',
+    nomenclature_table=[
+        {'name': 'Năng lượng dải cấm của chấm lượng tử', 'symbol': 'E_g(R)', 'unit': 'eV', 'meaning': 'Khoảng cách năng lượng giữa mức đáy dải dẫn và đỉnh dải hóa trị bị lượng tử hóa'},
+        {'name': 'Dải cấm vật liệu khối vĩ mô', 'symbol': 'E_{g,bulk}', 'unit': 'eV', 'meaning': 'Năng lượng dải cấm nội tại của tinh thể bán dẫn ở quy mô vô hạn'},
+        {'name': 'Khối lượng hiệu dụng rút gọn', 'symbol': 'm_r^*', 'unit': 'kg', 'meaning': 'Hệ thức kết hợp 1/m_r* = 1/m_e* + 1/m_h* của cặp electron và lỗ trống'},
+        {'name': 'Hằng số điện môi tương đối', 'symbol': '\\varepsilon_r', 'unit': '1', 'meaning': 'Độ điện thẩm tương đối của vật liệu bán dẫn ở tần số quang học'},
+        {'name': 'Bán kính hình học của chấm lượng tử', 'symbol': 'R', 'unit': 'm', 'meaning': 'Bán kính biên giam cầm thế năng hình cầu'},
+        {'name': 'Năng lượng Rydberg exciton', 'symbol': 'E_{Ry}^*', 'unit': 'eV', 'meaning': 'Năng lượng liên kết exciton hiệu dụng trong tinh thể khối'}
+    ],
+    guided_practice_steps=[
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Trong hộp thế cầu bán kính R, hàm sóng electron và lỗ trống là hàm Bessel cầu bậc 0: \psi(r) \propto \frac{\sin(\pi r / R)}{r}, cho động năng không gian: E_{kin} = \frac{\hbar^2 \pi^2}{2 m_e^* R^2} + \frac{\hbar^2 \pi^2}{2 m_h^* R^2} = \frac{\hbar^2 \pi^2}{2 m_r^* R^2}.',
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tương tác tĩnh điện Coulomb giữa electron và lỗ trống giam cầm được tính bằng tích phân nhiễu loạn bậc nhất: \langle V_C \rangle = - \frac{1.786 e^2}{4\pi\varepsilon_0 \varepsilon_r R}, đóng vai trò làm hẹp nhẹ dải cấm.',
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tổng hợp hai đóng góp, vì số hạng động năng tỷ lệ 1/R^2 tăng nhanh hơn số hạng Coulomb tỷ lệ 1/R, tổng năng lượng dải cấm mở rộng khi R co nhỏ (hiện tượng dời về phía xanh / Blue-shift).'
+    ],
+    variations_and_asymptotic_sweeps=[
+        r'Chế độ giam cầm mạnh (R \ll a_B): Động năng 1/R^2 chiếm ưu thế tuyệt đối, chuyển động của electron và lỗ trống độc lập nhau, quang phổ phát xạ chuyển thành các vạch rời rạc như nguyên tử nhân tạo.',
+        r'Chế độ giam cầm yếu (R \gg a_B): Tương tác Coulomb liên kết thành exciton chuyển động toàn xứ, dải cấm chỉ dời nhẹ so với E_{g,bulk}.'
+    ],
+    student_challenges_cer=[
+        'Thử thách CER: Tại sao một dung dịch chứa các hạt nano CdSe có kích thước khác nhau (từ 2 nm đến 6 nm) lại phát ra các màu sắc rực rỡ khác nhau từ xanh lam, xanh lục, vàng đến đỏ khi được chiếu cùng một chùm tia tử ngoại UV?'
+    ]
+)
+
+mpt4 = MicroPointTopic(
+    mpt_id='Luận điểm 2.1.4',
+    concept_introduction='Biến đổi tính chất từ tính & Quang học Plasmon: Kích thước domain tới hạn, hiện tượng siêu thuận từ Néel (Superparamagnetism), thời gian hồi phục từ hóa và cộng hưởng plasmon bề mặt cục bộ (LSPR) trên hạt nano kim loại quý.',
+    visual_anchor=VisualAssetSpec(
+        image_file_path=r'G:\My Drive\NotebookLM - Academic Knowledge Base\Cơ sở vật lý và công nghệ nano\Kho_Hinh_Anh\[Mo_Phong]_Muc_2.1_Sieu_Thuan_Tu_Neel.png',
+        interaction_id='IMG_2.1.4_SIM_NEEL_MAGNETIZATION',
+        aspect_ratio='9.2:4.2',
+        brand_palette_compliant=True,
+        pedagogical_caption='Hình 2.4: Đặc tuyến từ hóa không trễ M(H) của hạt siêu thuận từ và thời gian hồi phục Néel theo đường kính hạt.'
+    ),
+    minimal_working_example='Xác định đường kính tới hạn chuyển sang trạng thái siêu thuận từ của hạt nano Fe3O4 tại nhiệt độ phòng T = 300 K với hằng số dị hướng K = 4.5e4 J/m^3.',
+    pillar_equation_latex=r'\tau_N = \tau_0 \exp\left( \frac{K V}{k_B T} \right) \quad \text{và} \quad \sigma_{\mathrm{ext}}(\omega) = \frac{9\omega V \varepsilon_d^{3/2}}{c} \frac{\varepsilon_2(\omega)}{[\varepsilon_1(\omega) + 2\varepsilon_d]^2 + \varepsilon_2(\omega)^2}',
+    nomenclature_table=[
+        {'name': 'Thời gian hồi phục Néel', 'symbol': '\\tau_N', 'unit': 's', 'meaning': 'Thời gian trung bình để mômen từ hạt nano tự lật hướng do kích thích nhiệt'},
+        {'name': 'Thời gian hồi phục tự nhiên', 'symbol': '\\tau_0', 'unit': 's', 'meaning': 'Thời gian đặc trưng thử nghiệm hồi phục từ lật mômen (thường 10^-9 đến 10^-10 s)'},
+        {'name': 'Hằng số dị hướng từ tinh thể', 'symbol': 'K', 'unit': 'J/m^3', 'meaning': 'Mật độ năng lượng cản trở mômen từ lệch khỏi trục từ hóa dễ'},
+        {'name': 'Thể tích hạt nano', 'symbol': 'V', 'unit': 'm^3', 'meaning': 'Thể tích hình học của hạt nano đơn domain từ tính'},
+        {'name': 'Hằng số Boltzmann', 'symbol': 'k_B', 'unit': 'J/K', 'meaning': 'Hằng số nhiệt động lực học vi mô CODATA 2022'},
+        {'name': 'Tiết diện dập tắt quang học LSPR', 'symbol': '\\sigma_{ext}', 'unit': 'm^2', 'meaning': 'Tổng tiết diện hấp thụ và tán xạ photon của đám mây plasmon hạt nano'}
+    ],
+    guided_practice_steps=[
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khi bán kính hạt giảm dưới kích thước vách domain R_c \approx 9 \sqrt{A K} / (\mu_0 M_s^2), việc tạo vách domain tiêu tốn năng lượng nhiều hơn năng lượng từ tĩnh, hạt trở thành đơn domain đồng nhất mang siêu mômen từ \mu = M_s V \sim 10^3\text{–}10^5\ \mu_B.',
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Năng lượng rào thế lật từ là E_B = K V. Xác suất vượt rào tuân theo thống kê Boltzmann Arrhenius: w = \tau_0^{-1} \exp(-K V / k_B T), dẫn tới thời gian hồi phục Néel \tau_N = \tau_0 \exp(K V / k_B T).',
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Trong quang học kim loại, dưới tác dụng của điện trường ánh sáng, đám mây electron tự do dao động tập thể lệch khỏi lõi ion dương. Cực đại cộng hưởng xuất hiện tại điều kiện Fröhlich: \varepsilon_1(\omega) = - 2 \varepsilon_d, làm mẫu số của tiết diện dập tắt \sigma_{ext} đạt cực tiểu.'
+    ],
+    variations_and_asymptotic_sweeps=[
+        r'Nhiệt độ chặn (Blocking Temperature T_B): Tại thời gian đo \tau_{meas} \approx 100\ \mathrm{s}, nhiệt độ chặn xác định bởi T_B = K V / [k_B \ln(100/\tau_0)] \approx K V / (25 k_B). Khi T > T_B, hạt ở trạng thái siêu thuận từ (lực kháng từ H_c = 0); khi T < T_B, hệ bị đóng băng sắt từ (có trễ H_c > 0).',
+        r'Ứng dụng y sinh: Hạt siêu thuận từ không bị tụ tập vón cục khi không có từ trường ngoài, nhưng dẫn đường tập trung bằng nam châm ngoài và phát nhiệt diệt tế bào ung thư (Magnetic Hyperthermia) khi đặt trong từ trường xoay chiều cao tần.'
+    ],
+    student_challenges_cer=[
+        'Thử thách CER: Tại sao một đĩa cứng máy tính (HDD) không thể tiếp tục thu nhỏ các hạt ghi từ xuống kích thước dưới 5 nm để tăng mật độ lưu trữ dữ liệu lên vô hạn? Hiện tượng vật lý nano nào là rào cản tối thượng?'
+    ]
+)
+
+mpt5 = MicroPointTopic(
+    mpt_id='Luận điểm 2.1.5',
+    concept_introduction='“It all starts with a box…” - Nền tảng Vật lý lượng tử của Hệ chiều thấp: Sự giam cầm không gian từ 3D Bulk xuống 2D Quantum Well, 1D Quantum Wire và 0D Quantum Dot, cùng sự tiến hóa của hàm Mật độ trạng thái DOS g(E).',
+    visual_anchor=VisualAssetSpec(
+        image_file_path=r'G:\My Drive\NotebookLM - Academic Knowledge Base\Cơ sở vật lý và công nghệ nano\Kho_Hinh_Anh\[Goc]_Muc_2.1_Hinh_08_Hop_The_Luong_Tu_Box.png',
+        interaction_id='IMG_2.1.5_ORIG_BOX_WELL_DOT',
+        aspect_ratio='16:9',
+        brand_palette_compliant=True,
+        pedagogical_caption='Hình 2.5: Sơ đồ giam cầm lượng tử từ khối 3D, giếng 2D, dây 1D đến chấm 0D (It all starts with a box).'
+    ),
+    minimal_working_example='Khảo sát giếng thế lượng tử vô hạn 3 chiều kích thước Lx, Ly, Lz và giải phương trình vi phân trị riêng tìm phổ năng lượng.',
+    pillar_equation_latex=r'E_{n_x, n_y, n_z} = \frac{\pi^2 \hbar^2}{2 m^*} \left( \frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} + \frac{n_z^2}{L_z^2} \right) \quad (n_x, n_y, n_z \in \{1, 2, 3, \dots\})',
+    nomenclature_table=[
+        {'name': 'Mức năng lượng giam cầm lượng tử', 'symbol': 'E_{n_x, n_y, n_z}', 'unit': 'eV', 'meaning': 'Trị riêng năng lượng của hạt chuyển động trong hộp thế ba chiều'},
+        {'name': 'Số lượng tử không gian', 'symbol': 'n_x, n_y, n_z', 'unit': '1', 'meaning': 'Số nguyên dương đặc trưng cho mode sóng dừng trên các trục tọa độ'},
+        {'name': 'Kích thước giam cầm của hộp thế', 'symbol': 'L_x, L_y, L_z', 'unit': 'm', 'meaning': 'Độ rộng không gian bị giới hạn bởi rào thế vô hạn'},
+        {'name': 'Khối lượng hiệu dụng hạt tải', 'symbol': 'm^*', 'unit': 'kg', 'meaning': 'Khối lượng hiệu dụng của electron hoặc lỗ trống trong mạng tinh thể'},
+        {'name': 'Hằng số Planck rút gọn', 'symbol': '\\hbar', 'unit': 'J\\cdot s', 'meaning': 'Hằng số tác dụng lượng tử vi mô h / (2*pi)'}
+    ],
+    guided_practice_steps=[
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Phương trình Schrödinger độc lập thời gian trong hộp thế V(x,y,z) = 0: -\frac{\hbar^2}{2m^*} \nabla^2 \psi = E\psi. Tách biến \psi(x,y,z) = X(x)Y(y)Z(z).',
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Điều kiện biên triệt tiêu hàm sóng tại các vách thành hộp: \psi(0) = \psi(L) = 0 cho vector sóng lượng tử hóa: k_x = n_x \pi / L_x, k_y = n_y \pi / L_y, k_z = n_z \pi / L_z.',
+        r'↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Đưa vector sóng vào hệ thức tán sắc parabol E = \frac{\hbar^2 k^2}{2m^*}, thu được trực tiếp phổ năng lượng gián đoạn E_{n_x, n_y, n_z}. Khi L_z \le a_B và L_x, L_y \gg a_B, hệ chuyển thành giếng lượng tử 2D với mật độ trạng thái dạng bậc thang hằng số g_{2D}(E) = \frac{m^*}{\pi \hbar^2} \sum_n \Theta(E - E_n).'
+    ],
+    variations_and_asymptotic_sweeps=[
+        r'Tiến hóa Mật độ trạng thái (DOS): '
+        r'• 3D Bulk: g_{3D}(E) \propto \sqrt{E - E_c} liên tục. '
+        r'• 2D Well: g_{2D}(E) dạng hàm bậc thang Heaviside \Theta(E). '
+        r'• 1D Wire: g_{1D}(E) \propto 1/\sqrt{E - E_n} (kỳ dị van Hove). '
+        r'• 0D Dot: g_{0D}(E) = 2 \sum_i \delta(E - E_i) (dạng vạch delta Dirac lý tưởng).',
+        r'Hệ quả thiết bị: Laser chấm lượng tử 0D có dòng ngưỡng I_{th} siêu thấp và độ ổn định nhiệt độ T_0 \to \infty do mật độ trạng thái hội tụ tại duy nhất mức phát xạ mong muốn.'
+    ],
+    student_challenges_cer=[
+        'Thử thách CER: Tại sao laser giếng lượng tử (2D Quantum Well Laser) và laser chấm lượng tử (0D Quantum Dot Laser) lại có hiệu suất quang học và độ ổn định nhiệt vượt trội so với laser bán dẫn khối 3D truyền thống?'
+    ]
+)
+
+deliverable = LessonDeliverable(
+    lesson_title='Chương 2: Bản chất lượng tử của thế giới nano - Mục 2.1: Giới thiệu chung về công nghệ nano & Vật lý trong thế giới nano',
+    section_id='Mục 2.1',
+    source_document_citations=[
+        'Bài 2-Quantum nature.pdf (Slide 1 đến 12), Bộ môn Vật liệu Điện tử - Viện Vật lý Kỹ thuật HUST',
+        'Charles P. Poole Jr., Frank J. Owens, Introduction to Nanotechnology, Wiley-Interscience, 2003',
+        'Edward L. Wolf, Nanophysics and Nanotechnology, Wiley-VCH, 2006'
+    ],
+    micro_point_topics=[mpt1, mpt2, mpt3, mpt4, mpt5],
+    total_pages_estimate=12
+)
+
+with open(blueprint_path, 'w', encoding='utf-8') as f:
+    f.write(deliverable.model_dump_json(indent=2))
+
+print('Đã tạo thành công BLUEPRINT tại:', blueprint_path)
+print(f'Số lượng MPT: {len(deliverable.micro_point_topics)}')

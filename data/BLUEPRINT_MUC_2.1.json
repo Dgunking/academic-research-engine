@@ -1,0 +1,92 @@
+{
+  "phan_muc": "Mục 2.1",
+  "chuong": "Chương 2: Phương pháp tiếp cận hiện tượng luận đối với laser diode",
+  "hoc_phan": "Laser Diode - Cấu trúc và Nguyên lý",
+  "hoc_vien": "Bùi Trung Dũng",
+  "nguon_giao_trinh": {
+    "sach_quoc_te": "Coldren & Corzine - Diode Lasers and Photonic Integrated Circuits (Chương 2, tr. 28-34)",
+    "slide_hust": "Slide Chương 2 Laser Diode - Bộ môn Quang học & Quang điện tử ĐHBK Hà Nội"
+  },
+  "cau_truc_mpt": [
+    {
+      "mpt_id": "2.1.1",
+      "tieu_de": "Mô hình phương trình tốc độ hạt tải trong vùng tích cực dị thể kép, các kênh tái hợp phi tuyến và phát xạ tự phát trong diode phát quang LED",
+      "trang_sach_goc": "Coldren tr. 28–32",
+      "hinh_goc": [
+        "Figure 2.1 (tr. 29): Giản đồ dải năng lượng DH phân cực thuận",
+        "Figure 2.2 (tr. 30): Mô hình hồ chứa hạt tải và các kênh rò rỉ",
+        "Figure 2.3 (tr. 33): Sơ đồ thoát photon và phản xạ toàn phần trong LED"
+      ],
+      "do_thi_mo_phong": "[Mo_Phong]_Dong_Luc_Hoc_Tai_Hop_ABC_Va_Hieu_Suat_Buc_Xa_LED.png",
+      "he_thuc_cot_tru": "\\frac{\\mathrm{d}N}{\\mathrm{d}t} = \\frac{\\eta_i I}{q V} - R(N) - v_g g S",
+      "phuong_trinh_trung_gian": [
+        "R_{\\mathrm{inj}} = \\frac{\\eta_i I}{q V}",
+        "R(N) = A N + B N^2 + C N^3",
+        "\\tau_n(N) = \\frac{1}{A + B N + C N^2}",
+        "\\eta_{\\mathrm{rad}} = \\frac{B N}{A + B N + C N^2}",
+        "N_{\\mathrm{opt}} = \\sqrt{\\frac{A}{C}}"
+      ],
+      "an_du_co_hoc": "Mô hình hồ chứa nước kim loại có van xả đáy (bơm nước ~ tiêm dòng, mực nước ~ mật độ hạt tải N, 3 van rò rỉ đáy ~ SRH, phát xạ tự phát, Auger)",
+      "khao_sat_tiem_can": [
+        "Cực hạn dòng nhỏ (N -> 0): Bẫy SRH AN chiếm ưu thế, tau_n -> 1/A, eta_rad -> 0",
+        "Cực hạn dòng cực lớn (N -> vô cùng): Auger CN^3 chiếm ưu thế, eta_rad -> 0 (hiện tượng Efficiency Droop)"
+      ]
+    },
+    {
+      "mpt_id": "2.1.2",
+      "tieu_de": "Mô hình photon trong hốc cộng hưởng, hệ số giam giữ quang, điều kiện cân bằng ngưỡng và hiện tượng kẹp hạt tải",
+      "trang_sach_goc": "Coldren tr. 32–41",
+      "hinh_goc": [
+        "Figure 2.8 & 2.9 (tr. 38, 40): Kẹp hạt tải độ lợi và đặc tuyến P-I laser diode"
+      ],
+      "he_thuc_cot_tru": "\\frac{\\mathrm{d}S}{\\mathrm{d}t} = \\left(\\Gamma v_g g - \\frac{1}{\\tau_p}\\right) S + \\Gamma R_{\\mathrm{sp}}'",
+      "phuong_trinh_trung_gian": [
+        "r_1 r_2 \\exp[(\\Gamma g - \\alpha_i)L] \\exp(-2\\mathrm{j}\\beta L) = 1",
+        "\\Gamma g_{\\mathrm{th}} = \\alpha_i + \\frac{1}{2L} \\ln\\left(\\frac{1}{R_1 R_2}\\right) = \\alpha_i + \\alpha_m",
+        "P_{\\mathrm{out}} = \\eta_d \\frac{h\\nu}{q} (I - I_{\\mathrm{th}})"
+      ],
+      "an_du_co_hoc": "Mô hình đập tràn thoát lũ tự động (cao trình đập 10m ~ tổn hao hốc, nước tràn đập ~ dòng photon laser kích thích, mực nước bị kẹp cứng ở 10m ~ kẹp hạt tải tại N_th)",
+      "khao_sat_tiem_can": [
+        "Cực hạn gương lý tưởng (R1*R2 -> 1): alpha_m -> 0, Gamma*g_th -> alpha_i, eta_d -> 0",
+        "Cực hạn hốc hở (R1*R2 -> 0): alpha_m -> vô cùng, laser không thể phát xung"
+      ]
+    },
+    {
+      "mpt_id": "2.1.3",
+      "tieu_de": "Động lực học điều chế tín hiệu nhỏ, khung dao động tương đương RLC bậc hai và các kỹ thuật đặc trưng hóa thực nghiệm laser",
+      "trang_sach_goc": "Coldren tr. 48–61",
+      "hinh_goc": [
+        "Figure 2.12 (tr. 50): Đáp ứng tần số điều chế tín hiệu nhỏ laser diode"
+      ],
+      "do_thi_mo_phong": "[Mo_Phong]_Dong_Luc_Hoc_Bat_Tat_Xung_Laser_Diode_Relaxation_Oscillation.png",
+      "he_thuc_cot_tru": "H(\\omega) = \\frac{\\omega_R^2}{\\omega_R^2 - \\omega^2 + \\mathrm{j} \\omega \\gamma}, \\qquad \\omega_R \\approx \\sqrt{\\frac{v_g a S_0}{\\tau_p}}",
+      "phuong_trinh_trung_gian": [
+        "I(t) = I_0 + i_1 \\mathrm{e}^{\\mathrm{j}\\omega t}, \\quad N(t) = N_0 + n_1 \\mathrm{e}^{\\mathrm{j}\\omega t}, \\quad S(t) = S_0 + s_1 \\mathrm{e}^{\\mathrm{j}\\omega t}",
+        "g(N) \\approx g(N_0) + a n_1 \\mathrm{e}^{\\mathrm{j}\\omega t}",
+        "s_1(\\omega) = \\frac{\\gamma_{SN} \\frac{\\eta_i i_1}{q V}}{\\omega_R^2 - \\omega^2 + \\mathrm{j}\\omega \\gamma}",
+        "f_{3\\mathrm{dB}} = \\sqrt{1 + \\sqrt{2}} f_R \\approx 1{,}55 f_R"
+      ],
+      "an_du_co_hoc": "Mô hình con lắc lò xo trao đổi động năng - thế năng trong dầu giảm chấn (thế năng lò xo ~ hạt tải N, động năng quả nặng ~ photon S, khối lượng quán tính ~ quán tính photon/cuộn cảm ảo, độ nhớt dầu ~ hệ số tắt dần gamma)",
+      "khao_sat_tiem_can": [
+        "Cực hạn tần số thấp (omega -> 0): H(omega) -> 1 (0 dB), photon bám sát dòng bơm",
+        "Cực hạn tần số siêu cao (omega >> omega_R): |H(omega)| ~ omega_R^2 / omega^2, suy giảm -40 dB/decade"
+      ]
+    }
+  ],
+  "khoi_5_cer": {
+    "ca_benh": [
+      {
+        "id": "2.1A",
+        "tieu_de": "Hiện tượng trễ bật xung t_d và hiệu ứng mẫu (Pattern Effect) trong laser diode Fabry-Perot 10 Gbps",
+        "noi_dung": "Laser diode InGaAsP/InP 1,55 μm phân cực dưới ngưỡng I_bias = 0,5 I_th, kích xung 10 Gbps với I_pulse = 2 I_th. Ghi nhận trễ bật xung t_d ~ 0,8 ns và pattern effect.",
+        "yeu_cau": "Claim - Evidence - Reasoning xác định nguyên nhân vi mô, dẫn xuất t_d và giải pháp phân cực tĩnh."
+      },
+      {
+        "id": "2.1B",
+        "tieu_de": "Sự bão hòa tần số cộng hưởng hồi phục f_R và hiện tượng san phẳng đáp ứng điều chế ở dòng bơm cao",
+        "noi_dung": "Khi đo S21, dòng I_0 > 4 I_th làm đỉnh f_R bão hòa ở 12 GHz và suy giảm, hệ số tắt dần gamma tăng vọt làm phẳng đường cong.",
+        "yeu_cau": "Claim - Evidence - Reasoning xác định cơ chế phi tuyến vi mô (hệ số nén epsilon, trở kháng nhiệt Z_th) và giới hạn K-factor."
+      }
+    ]
+  }
+}

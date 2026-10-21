@@ -1,0 +1,86 @@
+{
+  "chapter": 2,
+  "chapter_title": "Các hiện tượng vận chuyển trong bán dẫn",
+  "section": "2.5",
+  "section_title": "Quá trình phát xạ ion nhiệt trong chất bán dẫn",
+  "course": "Vật lý và linh kiện bán dẫn (PH3190 - HUST)",
+  "references": [
+    "Slide bài giảng HUST PH3190: Slide 2 (Syllabus Chương 2, Mục 2.5: Quá trình phát xạ ion nhiệt)",
+    "S. M. Sze & Kwok K. Ng, Physics of Semiconductor Devices (3rd Edition), Chapter 3: Metal-Semiconductor Contacts, pp. 134-180",
+    "Donald A. Neamen, Semiconductor Physics and Devices (4th Edition), Chapter 9: Metal-Semiconductor and Semiconductor Heterojunctions, Section 9.1",
+    "Ben G. Streetman & Sanjay Banerjee, Solid State Electronic Devices (7th Edition), Chapter 6: Metal-Semiconductor Junctions"
+  ],
+  "estimated_pages": 18,
+  "figures": {
+    "simulations": [
+      {
+        "id": "Mo_Phong_2.5.1",
+        "file": "[Mo_Phong]_Phat_xa_ion_nhiet_Richardson.png",
+        "caption": "Hình mô phỏng 2.5.1: Đồ thị Richardson thực nghiệm và mật độ dòng phát xạ ion nhiệt theo nhiệt độ và chiều cao rào thế (Chuẩn MATLAB R2014b+ Lab Quang điện tử HUST)."
+      },
+      {
+        "id": "Mo_Phong_2.5.2",
+        "file": "[Mo_Phong]_Ha_thap_rao_the_Schottky_Image_Force.png",
+        "caption": "Hình mô phỏng 2.5.2: Giản đồ thế năng không gian và hiệu ứng hạ thấp rào thế do lực ảnh điện tích Schottky (Image Force Lowering)."
+      },
+      {
+        "id": "Mo_Phong_2.5.3",
+        "file": "[Mo_Phong]_Dac_tuyen_IV_Schottky_vs_PN.png",
+        "caption": "Hình mô phỏng 2.5.3: So sánh đặc tuyến I–V của đi-ốt Schottky phát xạ ion nhiệt hạt đa số và đi-ốt p–n khuếch tán hạt thiểu số."
+      }
+    ]
+  },
+  "micro_point_theses": [
+    {
+      "mpt_id": "2.5.1",
+      "title": "Cơ chế vi mô hạt tải vượt rào thế năng qua kích thích năng lượng nhiệt",
+      "pillar_equation": "v_x \\ge v_{0x} = \\sqrt{\\frac{2 q (V_{\\mathrm{bi}} - V)}{m_n^*}}, \\qquad J = q \\int_{v_{0x}}^\\infty v_x \\, \\mathrm{d}n(v_x)",
+      "stages": [
+        "Giai đoạn 1: Giới thiệu khái niệm và trực quan hóa mở đầu (Concept Introduction & Visual Anchor)",
+        "Giai đoạn 2: Ví dụ tối giản và trực giác cơ học (Minimal Example & Mechanical Intuition)",
+        "Giai đoạn 3: Thực hành có hướng dẫn và dẫn xuất vi mô từng bước (Guided Practice & Step-by-Step Derivation)",
+        "Giai đoạn 4: Phân tích các biến thể và khảo sát tiệm cận kỹ thuật (Variations & Asymptotic Sweep)"
+      ]
+    },
+    {
+      "mpt_id": "2.5.2",
+      "title": "Dẫn xuất toàn văn phương trình Richardson–Dushman và hằng số Richardson hiệu dụng",
+      "pillar_equation": "J_{\\mathrm{th}} = A^* T^2 \\exp\\left( -\\frac{q \\phi_B}{k_B T} \\right), \\qquad A^* = \\frac{4 \\pi q m_n^* k_B^2}{h^3} = A_0 \\left( \\frac{m_n^*}{m_0} \\right)",
+      "stages": [
+        "Giai đoạn 1: Giới thiệu khái niệm và trực quan hóa mở đầu (Concept Introduction & Visual Anchor)",
+        "Giai đoạn 2: Ví dụ tối giản và trực giác cơ học (Minimal Example & Mechanical Intuition)",
+        "Giai đoạn 3: Thực hành có hướng dẫn và dẫn xuất vi mô từng bước (Guided Practice & Step-by-Step Derivation)",
+        "Giai đoạn 4: Phân tích các biến thể và khảo sát tiệm cận kỹ thuật (Variations & Asymptotic Sweep)"
+      ]
+    },
+    {
+      "mpt_id": "2.5.3",
+      "title": "Đặc tuyến I–V của Đi-ốt Schottky và ưu thế chuyển mạch siêu cao tần",
+      "pillar_equation": "J = J_s \\left[ \\exp\\left( \\frac{q V}{n k_B T} \\right) - 1 \\right], \\qquad J_s = A^* T^2 \\exp\\left( -\\frac{q \\phi_{Bn}}{k_B T} \\right)",
+      "stages": [
+        "Giai đoạn 1: Giới thiệu khái niệm và trực quan hóa mở đầu (Concept Introduction & Visual Anchor)",
+        "Giai đoạn 2: Ví dụ tối giản và trực giác cơ học (Minimal Example & Mechanical Intuition)",
+        "Giai đoạn 3: Thực hành có hướng dẫn và dẫn xuất vi mô từng bước (Guided Practice & Step-by-Step Derivation)",
+        "Giai đoạn 4: Phân tích các biến thể và khảo sát tiệm cận kỹ thuật (Variations & Asymptotic Sweep)"
+      ]
+    },
+    {
+      "mpt_id": "2.5.4",
+      "title": "Hiệu ứng hạ thấp rào thế do lực ảnh điện tích Schottky (Image Force Lowering)",
+      "pillar_equation": "x_m = \\sqrt{\\frac{q}{16 \\pi \\varepsilon_s E}}, \\qquad \\Delta \\phi_B = \\sqrt{\\frac{q E}{4 \\pi \\varepsilon_s}}",
+      "stages": [
+        "Giai đoạn 1: Giới thiệu khái niệm và trực quan hóa mở đầu (Concept Introduction & Visual Anchor)",
+        "Giai đoạn 2: Ví dụ tối giản và trực giác cơ học (Minimal Example & Mechanical Intuition)",
+        "Giai đoạn 3: Thực hành có hướng dẫn và dẫn xuất vi mô từng bước (Guided Practice & Step-by-Step Derivation)",
+        "Giai đoạn 4: Phân tích các biến thể và khảo sát tiệm cận kỹ thuật (Variations & Asymptotic Sweep)"
+      ]
+    }
+  ],
+  "cer_challenge": {
+    "title": "Khối 5: Thử thách chẩn đoán CER (Claim – Evidence – Reasoning)",
+    "cases": [
+      "Ca chẩn đoán 2.5-A: Bẫy điểm mù sai số hằng số Richardson A* khi xác định chiều cao rào thế tiếp xúc Schottky Si và GaAs trong thực nghiệm Lab",
+      "Ca chẩn đoán 2.5-B: Bẫy trôi dòng rò ngược do lực ảnh điện tích Schottky trong đi-ốt công suất cao (Power Schottky Barrier Diode)"
+    ]
+  }
+}

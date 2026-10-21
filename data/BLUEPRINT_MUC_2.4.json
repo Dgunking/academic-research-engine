@@ -1,0 +1,108 @@
+{
+  "phan_muc": "Mục 2.4",
+  "chuong": "Chương 2: Các hiện tượng vận chuyển trong bán dẫn",
+  "hoc_phan": "Vật lý và linh kiện bán dẫn (PH3190 - HUST)",
+  "hoc_vien": "Bùi Trung Dũng",
+  "nguon_giao_trinh": {
+    "sach_quoc_te": "Sze & Ng - Physics of Semiconductor Devices (3rd Ed., Ch. 1.6, tr. 54-63); Neamen - Semiconductor Physics and Devices (4th Ed., Ch. 6, tr. 219-238)",
+    "slide_hust": "Slide Chương 2 Vật lý và linh kiện bán dẫn (Slide 23–25: Mục 2.4) - Khoa Vật lý Kỹ thuật ĐHBK Hà Nội"
+  },
+  "cau_truc_mpt": [
+    {
+      "mpt_id": "2.4.1",
+      "tieu_de": "Thiết lập phương trình liên tục từ nguyên lý bảo toàn hạt tải trong phần tử thể tích vi phân",
+      "trang_sach_goc": "Slide 23–24; Sze tr. 54–56; Neamen tr. 219–224",
+      "hinh_goc": [
+        "Hình 2.20 (Slide 24): Dòng điện và các quá trình phát sinh - tái hợp trong thanh bán dẫn vô cùng nhỏ bề dày dx"
+      ],
+      "he_thuc_cot_tru": "\\frac{\\partial p}{\\partial t} = -\\frac{1}{q} \\frac{\\partial J_p}{\\partial x} + (G_p - R_p), \\qquad \\frac{\\partial n}{\\partial t} = \\frac{1}{q} \\frac{\\partial J_n}{\\partial x} + (G_n - R_n)",
+      "phuong_trinh_trung_gian": [
+        "\\frac{\\partial p}{\\partial t} A \\mathrm{d}x = \\left[ \\frac{J_p(x) - J_p(x+\\mathrm{d}x)}{q} \\right] A + (G_p - R_p) A \\mathrm{d}x",
+        "J_p(x+\\mathrm{d}x) = J_p(x) + \\frac{\\partial J_p}{\\partial x} \\mathrm{d}x",
+        "\\frac{\\partial p}{\\partial t} = -\\frac{1}{q} \\nabla \\cdot \\mathbf{J}_p + (G_p - R_p), \\quad \\frac{\\partial n}{\\partial t} = \\frac{1}{q} \\nabla \\cdot \\mathbf{J}_n + (G_n - R_n)"
+      ],
+      "an_du_co_hoc": "Mô hình bồn chứa nước vi phân hở đáy (dòng nước chảy vào ống A, chảy ra ống B, nhận thêm nước mưa sinh hạt tải G, bốc hơi tái hợp R; độ tăng mực nước bằng tổng đại số lưu lượng vào - ra + sinh - mất)",
+      "khao_sat_tiem_can": [
+        "Cực hạn không dòng điện (J = 0): dp/dt = G - R, phương trình thoái triển về động học sinh - tái hợp thuần túy",
+        "Cực hạn trạng thái dừng (dp/dt = 0): độ phân kỳ dòng điện cân bằng chính xác với tốc độ sinh tái hợp ròng div(J_p) = q(G_p - R_p)"
+      ]
+    },
+    {
+      "mpt_id": "2.4.2",
+      "tieu_de": "Tuyến tính hóa phương trình liên tục ở điều kiện tiêm mức thấp (LLI), điện trường đều và chiều dài khuếch tán",
+      "trang_sach_goc": "Slide 24–25; Sze tr. 56–58; Neamen tr. 224–228",
+      "hinh_goc": [],
+      "he_thuc_cot_tru": "\\frac{\\partial p_n}{\\partial t} = D_p \\frac{\\partial^2 p_n}{\\partial x^2} - \\mu_p E \\frac{\\partial p_n}{\\partial x} - \\frac{p_n - p_{n0}}{\\tau_p} + G_L",
+      "phuong_trinh_trung_gian": [
+        "J_p = q p \\mu_p E - q D_p \\frac{\\partial p}{\\partial x}",
+        "-\\frac{1}{q} \\frac{\\partial J_p}{\\partial x} = -\\mu_p \\frac{\\partial(p E)}{\\partial x} + D_p \\frac{\\partial^2 p}{\\partial x^2} = -\\mu_p E \\frac{\\partial p}{\\partial x} - \\mu_p p \\frac{\\partial E}{\\partial x} + D_p \\frac{\\partial^2 p}{\\partial x^2}",
+        "\\frac{\\partial E}{\\partial x} = \\frac{\\rho_s}{\\varepsilon_s} = \\frac{q}{\\varepsilon_s}(p - n + N_D^+ - N_A^-) \\approx 0 \\quad (\\text{điều kiện tự phối quasineutrality mức tiêm thấp})",
+        "L_p = \\sqrt{D_p \\tau_p}, \\quad L_n = \\sqrt{D_n \\tau_n}"
+      ],
+      "an_du_co_hoc": "Mô hình đoàn người đi bộ vừa tiến theo gió thổi (trôi dạt mu*E), vừa tản mác hỗn loạn (khuếch tán D), vừa có người rời hàng đi ngủ (tái hợp tau) và người mới nhập đoàn (sinh GL)",
+      "khao_sat_tiem_can": [
+        "Cực hạn không khuếch tán (Dp -> 0): dp/dt = -mu*E*dp/dx - Delta p / tau + GL (chuyển động sóng trôi dạt thuần túy)",
+        "Cực hạn không trôi dạt (E -> 0): dp/dt = Dp*d^2p/dx^2 - Delta p / tau + GL (phương trình truyền nhiệt / khuếch tán Fick có hấp thụ)"
+      ]
+    },
+    {
+      "mpt_id": "2.4.3",
+      "tieu_de": "Bài toán biên kinh điển: Tiêm hạt tải tĩnh tại từ một phía và động học khuếch tán suy giảm hàm mũ",
+      "trang_sach_goc": "Slide 25; Sze tr. 58–61; Neamen tr. 228–233",
+      "hinh_goc": [],
+      "do_thi_mo_phong": "[Mo_Phong]_Phan_bo_khuech_tan_tiem_tinh_tai.png",
+      "he_thuc_cot_tru": "D_p \\frac{\\mathrm{d}^2 \\Delta p_n}{\\mathrm{d}x^2} = \\frac{\\Delta p_n}{\\tau_p} \\implies \\Delta p_n(x) = \\Delta p_n(0) \\exp\\left(-\\frac{x}{L_p}\\right), \\quad L_p = \\sqrt{D_p \\tau_p}",
+      "phuong_trinh_trung_gian": [
+        "\\frac{\\mathrm{d}^2 \\Delta p_n}{\\mathrm{d}x^2} - \\frac{\\Delta p_n}{L_p^2} = 0 \\implies \\Delta p_n(x) = C_1 \\mathrm{e}^{-x/L_p} + C_2 \\mathrm{e}^{x/L_p}",
+        "x \\to \\infty \\implies \\Delta p_n(\\infty) = 0 \\implies C_2 = 0, \\quad x = 0 \\implies C_1 = \\Delta p_n(0)",
+        "J_p(x) = -q D_p \\frac{\\mathrm{d} \\Delta p_n}{\\mathrm{d}x} = \\frac{q D_p \\Delta p_n(0)}{L_p} \\exp\\left(-\\frac{x}{L_p}\\right) = q \\sqrt{\\frac{D_p}{\\tau_p}} \\Delta p_n(0) \\exp\\left(-\\frac{x}{L_p}\\right)",
+        "Q_p = q A \\int_0^\\infty \\Delta p_n(x) \\mathrm{d}x = q A \\Delta p_n(0) L_p = I_p(0) \\tau_p"
+      ],
+      "an_du_co_hoc": "Mô hình rỉ mực trên giấy thấm dài vô hạn (giọt mực nhỏ liên tục tại x = 0, mực khuếch tán loang dần sang phải nhưng bị giấy hút bay hơi theo thời gian, tạo dải màu nhạt dần theo quy luật hàm mũ)",
+      "khao_sat_tiem_can": [
+        "Cực hạn phiến bán dẫn dày vô hạn (W >> Lp): nồng độ suy giảm hàm mũ hoàn toàn về 0",
+        "Cực hạn phiến mỏng bazơ ngắn (W << Lp): nồng độ suy giảm tuyến tính Delta p(x) = Delta p(0)*(1 - x/W), dòng khuếch tán không đổi"
+      ]
+    },
+    {
+      "mpt_id": "2.4.4",
+      "tieu_de": "Thí nghiệm Haynes – Shockley: Xác định đồng thời độ linh động, hệ số khuếch tán và thời gian sống",
+      "trang_sach_goc": "Slide 25; Sze tr. 61–63; Neamen tr. 233–238",
+      "hinh_goc": [
+        "Hình 2.15 (Slide 17/25): Sơ đồ nguyên lý và đồ thị tín hiệu thí nghiệm Haynes - Shockley đo đồng thời hiện tượng trôi và khuếch tán"
+      ],
+      "do_thi_mo_phong": "[Mo_Phong]_Xung_Haynes_Shockley_theo_thoi_gian.png",
+      "he_thuc_cot_tru": "\\Delta p_n(x, t) = \\frac{N_0}{\\sqrt{4 \\pi D_p t}} \\exp\\left( -\\frac{(x - \\mu_p E t)^2}{4 D_p t} \\right) \\exp\\left(-\\frac{t}{\\tau_p}\\right)",
+      "phuong_trinh_trung_gian": [
+        "x_p(t) = \\mu_p E t \\implies \\mu_p = \\frac{d}{E t_0}",
+        "\\Delta t = \\frac{4 \\sqrt{\\ln 2} \\sqrt{D_p t_0}}{\\mu_p E} \\implies D_p = \\frac{(\\mu_p E)^2 (\\Delta t)^2}{16 t_0 \\ln 2} = \\frac{(d \\cdot \\Delta t)^2}{16 t_0^3 \\ln 2}",
+        "A_{\\mathrm{pulse}}(t) \\propto \\int \\Delta p_n(x, t) \\mathrm{d}x = N_0 \\exp\\left(-\\frac{t}{\\tau_p}\\right) \\implies \\ln A(t) = -\\frac{t}{\\tau_p} + \\text{const}"
+      ],
+      "an_du_co_hoc": "Mô hình giọt nước mực thả vào dòng sông chảy xiết (dòng sông cuốn tâm giọt mực xuôi dòng với vận tốc mu*E, đồng thời nước sông làm giọt mực khuếch tán loang rộng, và chất khử màu trong nước làm nhạt dần nồng độ mực theo thời gian sống tau)",
+      "khao_sat_tiem_can": [
+        "Cực hạn không có điện trường (E = 0): xung Gaussian đứng yên tại chỗ và loang rộng đối xứng ra hai phía",
+        "Cực hạn thời gian sống vô hạn (tau -> vô cùng): diện tích xung bảo toàn nguyên vẹn N0 không bị suy hao"
+      ]
+    }
+  ],
+  "khoi_5_cer": {
+    "ca_benh": [
+      {
+        "id": "2.4A",
+        "tieu_de": "Bẫy điểm mù trong thiết kế đi-ốt tiếp giáp p-n bazơ mỏng (Narrow-base Diode)",
+        "noi_dung": "Kỹ sư thiết kế diode công suất sử dụng vùng bazơ loại n có bề dày W = 10 μm. Do chiều dài khuếch tán đo được Lp = 50 μm, kỹ sư vẫn dùng công thức diode bazơ dày J = q*Dp*pn0/Lp*(exp(qV/kT) - 1) để tính dòng dẫn, dẫn đến sai số dòng thuận gấp hơn 5 lần.",
+        "yeu_cau": "Claim - Evidence - Reasoning chứng minh tại sao điều kiện W << Lp biến đổi nghiệm hàm mũ thành phân bố tuyến tính, dẫn xuất mật độ dòng bazơ mỏng J = q*Dp*pn0/W*(exp(qV/kT) - 1) và giải trình ý nghĩa giảm điện trở dẫn."
+      },
+      {
+        "id": "2.4B",
+        "tieu_de": "Bẫy điểm mù mức tiêm cao (HLI) trong thí nghiệm Haynes - Shockley làm sai lệch phép đo độ linh động",
+        "noi_dung": "Trong phòng thí nghiệm, một nhóm sinh viên tăng công suất xung laser tiêm hạt tải lên mức rất mạnh để tín hiệu cực dò rõ nét hơn. Kết quả tính toán ghi nhận độ linh động lỗ trống mu_p đo được thấp hơn 40% so với giá trị tra bảng bán dẫn.",
+        "yeu_cau": "Claim - Evidence - Reasoning phân tích sự vi phạm giả thiết tiêm mức thấp LLI (Delta p >= n0), chứng minh sự xuất hiện của điện trường phân cực tự phối (Ambipolar Field) làm chậm xung trôi và xác lập ngưỡng tiêm an toàn."
+      }
+    ],
+    "silent_drop": {
+      "tieu_de": "Hội tụ nguyên lý đầu: Phương trình liên tục bán dẫn và phương trình Fokker-Planck vĩ mô",
+      "cau_hoi": "Tại sao một hệ thống cơ học lượng tử phức tạp gồm hàng tỷ electron chịu thế tuần hoàn mạng tinh thể và tán xạ ngẫu nhiên với phonon lại có thể mô tả chính xác bằng một phương trình liên tục vi phân dòng cuốn - khuếch tán cổ điển dạng Fokker-Planck? Giới hạn vật lý nào (thang thời gian và thang chiều dài) sẽ làm sụp đổ mô hình liên tục này trong các bóng bán dẫn dưới 2 nm (GAAFET)?"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "phan_muc": "Mục 2.3",
+  "chuong": "Chương 2: Các hiện tượng vận chuyển trong bán dẫn",
+  "hoc_phan": "Vật lý và linh kiện bán dẫn (PH3190 - HUST)",
+  "hoc_vien": "Bùi Trung Dũng",
+  "nguon_giao_trinh": {
+    "sach_quoc_te": "Sze & Ng - Physics of Semiconductor Devices (3rd Ed., Ch. 1.5, tr. 43-54); Neamen - Semiconductor Physics and Devices (4th Ed., Ch. 6, tr. 195-218)",
+    "slide_hust": "Slide Chương 2 Vật lý và linh kiện bán dẫn (Slide 18–23: Mục 2.3) - Khoa Vật lý Kỹ thuật ĐHBK Hà Nội"
+  },
+  "cau_truc_mpt": [
+    {
+      "mpt_id": "2.3.1",
+      "tieu_de": "Quá trình sinh – tái hợp trực tiếp giữa các vùng năng lượng và động học thời gian sống hạt tải thiểu số",
+      "trang_sach_goc": "Slide 18–20; Sze tr. 43–46; Neamen tr. 195–202",
+      "hinh_goc": [
+        "Hình 2.16 (Slide 19–20): Giản đồ sinh – tái hợp trực tiếp e-h và động học suy giảm nồng độ lỗ trống theo thời gian"
+      ],
+      "he_thuc_cot_tru": "U = \\beta (n p - n_i^2) \\approx \\beta n_{n0} \\Delta p = \\frac{\\Delta p}{\\tau_p}",
+      "phuong_trinh_trung_gian": [
+        "\\frac{\\mathrm{d}p_n}{\\mathrm{d}t} = G_L + G_{\\mathrm{th}} - R = G_L - U = G_L - \\beta (n p - n_i^2)",
+        "\\frac{\\mathrm{d}p_n}{\\mathrm{d}t} = 0 \\implies G_L = U = \\frac{\\Delta p}{\\tau_p} \\implies p_n(0) = p_{n0} + \\tau_p G_L",
+        "\\frac{\\mathrm{d}\\Delta p}{\\mathrm{d}t} = -\\frac{\\Delta p}{\\tau_p} \\implies p_n(t) = p_{n0} + \\tau_p G_L \\exp\\left(-\\frac{t}{\\tau_p}\\right)"
+      ],
+      "an_du_co_hoc": "Mô hình vũ hội khiêu vũ ghép đôi nam nữ (nam ~ electron, nữ ~ lỗ trống, ghép đôi khiêu vũ ~ tái hợp, phòng n-type 1000 nam 1 nữ khiến thời gian sống cô gái cực ngắn và tỷ lệ nghịch với số lượng nam)",
+      "khao_sat_tiem_can": [
+        "Cực hạn cân bằng nhiệt (GL = 0): np = ni^2, U = 0, nồng độ hạt tải bảo toàn tuyệt đối",
+        "Cực hạn tiêm mức thấp LLI (Delta p << nn0): tau_p = 1 / (beta * nn0) là hằng số độc lập với mức kích thích"
+      ]
+    },
+    {
+      "mpt_id": "2.3.2",
+      "tieu_de": "Cơ chế tái hợp gián tiếp qua bẫy sâu Shockley – Read – Hall (SRH) trong bán dẫn vùng cấm xiên",
+      "trang_sach_goc": "Slide 21; Sze tr. 46–50; Neamen tr. 203–211",
+      "hinh_goc": [
+        "Hình 2.17 (Slide 21): Giản đồ 4 quá trình dịch chuyển năng lượng qua mức bẫy trung gian SRH trong vùng cấm"
+      ],
+      "do_thi_mo_phong": "[Mo_Phong]_Toc_do_tai_hop_SRH_theo_Et.png",
+      "he_thuc_cot_tru": "U_{\\mathrm{SRH}} = \\frac{v_{\\mathrm{th}} \\sigma_n \\sigma_p N_t (n p - n_i^2)}{\\sigma_n \\left[ n + n_i \\exp\\left(\\frac{E_t - E_i}{k_{\\mathrm{B}} T}\\right) \\right] + \\sigma_p \\left[ p + n_i \\exp\\left(-\\frac{E_t - E_i}{k_{\\mathrm{B}} T}\\right) \\right]}",
+      "phuong_trinh_trung_gian": [
+        "r_a - r_b = r_c - r_d \\implies C_n N_t [n (1 - f_t) - n_1 f_t] = C_p N_t [p f_t - p_1 (1 - f_t)]",
+        "U_{\\mathrm{SRH}} = \\frac{n p - n_i^2}{\\tau_{p0} (n + n_1) + \\tau_{n0} (p + p_1)}, \\quad \\tau_{n0} = \\frac{1}{v_{\\mathrm{th}} \\sigma_n N_t}, \\quad \\tau_{p0} = \\frac{1}{v_{\\mathrm{th}} \\sigma_p N_t}",
+        "U_{\\mathrm{SRH}} \\approx \\frac{\\Delta p}{\\tau_{p0}} \\implies \\tau = \\tau_{p0} = \\frac{1}{v_{\\mathrm{th}} \\sigma_p N_t} \\quad (\\text{trong bán dẫn loại n tiêm mức thấp})"
+      ],
+      "an_du_co_hoc": "Mô hình người nhảy từ đỉnh vách đá xuống đáy vực qua bệ đỡ bậc thang trung gian lưng chừng (bệ đỡ chính giữa Et ~ Ei cho lưu lượng nhảy tối đa; bệ đỡ quá cao/thấp thì người nhảy vào rồi leo ngược lại)",
+      "khao_sat_tiem_can": [
+        "Cực hạn bẫy nông (Et tiến sát Ec hoặc Ev): n1 hoặc p1 bùng nổ hàm mũ, USRH -> 0 (bẫy nông không thể tái hợp)",
+        "Cực hạn bẫy sâu chính giữa dải (Et = Ei): USRH đạt cực đại đối xứng, thời gian sống tối thiểu"
+      ]
+    },
+    {
+      "mpt_id": "2.3.3",
+      "tieu_de": "Tái hợp bề mặt, mật độ liên kết treo và vận tốc tái hợp bề mặt trong cấu trúc bán dẫn màng mỏng",
+      "trang_sach_goc": "Slide 22; Sze tr. 50–52; Neamen tr. 212–215",
+      "hinh_goc": [
+        "Hình 2.18 (Slide 22): Giản đồ cấu trúc liên kết treo (Dangling Bonds) trên bề mặt sạch của bán dẫn Silic"
+      ],
+      "he_thuc_cot_tru": "U_s = S \\cdot \\Delta p_s = (v_{\\mathrm{th}} \\sigma_s N_{st}) \\Delta p_s",
+      "phuong_trinh_trung_gian": [
+        "D_p \\left. \\frac{\\mathrm{d} \\Delta p}{\\mathrm{d}x} \\right|_{x=0} = U_s = S \\cdot \\Delta p(0)",
+        "\\frac{1}{\\tau_{\\mathrm{eff}}} = \\frac{1}{\\tau_{\\mathrm{bulk}}} + \\frac{1}{\\tau_{\\mathrm{surface}}} \\approx \\frac{1}{\\tau_{\\mathrm{bulk}}} + \\frac{2 S}{W} \\quad \\left( \\text{khi } \\frac{S W}{2 D_p} \\ll 1 \\right)"
+      ],
+      "an_du_co_hoc": "Mô hình hội trường có tường sơn keo dính chuột (phòng lớn bulk an toàn; hành lang nanomet hẹp khiến ai cũng chạm tường sau vài bước và bị nuốt chửng ngay lập tức)",
+      "khao_sat_tiem_can": [
+        "Cực hạn bề mặt lý tưởng thụ động hóa hoàn hảo (S -> 0): tau_eff -> tau_bulk",
+        "Cực hạn bề mặt nuốt vô hạn (S -> vô cùng): nồng độ hạt tải bề mặt triệt tiêu Delta p(0) = 0, tốc độ bị khống chế bởi khuếch tán ra biên"
+      ]
+    },
+    {
+      "mpt_id": "2.3.4",
+      "tieu_de": "Tái hợp Auger ba hạt mang điện ở mật độ kích thích cao và hiện tượng suy giảm hiệu suất lượng tử",
+      "trang_sach_goc": "Slide 23; Sze tr. 52–54; Neamen tr. 216–218",
+      "hinh_goc": [
+        "Hình 2.19 (Slide 23): Sơ đồ cơ chế vi mô tái hợp Auger truyền năng lượng cho hạt thứ ba"
+      ],
+      "do_thi_mo_phong": "[Mo_Phong]_So_sanh_4_co_che_tai_hop.png",
+      "he_thuc_cot_tru": "U_{\\mathrm{Auger}} = C_n n^2 p + C_p n p^2 \\approx C_n n^2 \\Delta p = \\frac{\\Delta p}{\\tau_{\\mathrm{Auger}}}",
+      "phuong_trinh_trung_gian": [
+        "U_{\\mathrm{Auger}} = R_{\\mathrm{Auger}} - G_{\\mathrm{Auger}} = (C_n n + C_p p) (n p - n_i^2) \\approx C_n n^2 \\Delta p",
+        "\\frac{1}{\\tau_{\\mathrm{eff}}} = \\frac{1}{\\tau_{\\mathrm{SRH}}} + \\frac{1}{\\tau_{\\mathrm{rad}}} + \\frac{1}{\\tau_{\\mathrm{Auger}}} + \\frac{1}{\\tau_{\\mathrm{surface}}} = \\frac{1}{\\tau_{\\mathrm{SRH}}} + B n + C_n n^2 + \\frac{2 S}{W}"
+      ],
+      "an_du_co_hoc": "Mô hình bàn bi-a nén chặt bóng chen chúc (va chạm trắng-đỏ đập văng bóng vàng thứ ba bay đi với tốc độ cao không phát ra tiếng kêu mà biến thành lò nhiệt hỗn loạn)",
+      "khao_sat_tiem_can": [
+        "Cực hạn nồng độ thấp (n < 10^17 cm^-3): Auger không đáng kể, SRH và bề mặt thống trị",
+        "Cực hạn nồng độ siêu cao (n > 10^18 cm^-3): U_Auger ~ n^3 tăng áp đảo bức xạ U_rad ~ n^2, gây suy giảm hiệu suất IQE (Efficiency Droop)"
+      ]
+    }
+  ],
+  "khoi_5_cer": {
+    "ca_benh": [
+      {
+        "id": "2.3A",
+        "tieu_de": "Bẫy điểm mù suy giảm hiệu suất lượng tử LED (Efficiency Droop) do xem nhẹ cơ chế Auger",
+        "noi_dung": "LED InGaN/GaN xanh lam có IQE đạt cực đại 85% tại J = 10 A/cm^2 nhưng tụt dốc xuống dưới 45% tại J = 200 A/cm^2. Báo cáo quy cho tăng sai hỏng SRH.",
+        "yeu_cau": "Claim - Evidence - Reasoning chứng minh SRH (An) không thể gây tụt dốc ở dòng cao, khẳng định vai trò thống trị của Auger (Cn^3) và đề xuất mở rộng thể tích giếng lượng tử."
+      },
+      {
+        "id": "2.3B",
+        "tieu_de": "Bẫy điểm mù trong kiểm chuẩn phiến Silic pin mặt trời bằng phương pháp phân rã huỳnh quang vi sóng (μ-PCD)",
+        "noi_dung": "Phiến Si loại p dày W = 150 μm chưa thụ động hóa đo được tau_meas = 15 μs; kỹ sư vội vã kết luận mẻ Si bị nhiễm độc kim loại nặng Fe/Cu trong khối.",
+        "yeu_cau": "Claim - Evidence - Reasoning phân tích quy tắc Matthiessen, chứng minh tau_meas bị khống chế bởi tái hợp bề mặt S = 10^4 cm/s và giải trình tác dụng của ngâm cồn I-ốt."
+      }
+    ],
+    "silent_drop": {
+      "tieu_de": "Giới hạn vật lý tối hậu Auger trong Silic siêu tinh khiết",
+      "cau_hoi": "Trong phiến Si siêu tinh khiết FZ (Nt -> 0) thụ động hóa hoàn hảo (S -> 0), khi chiếu laser công suất cao đưa n = 10^19 cm^-3, cơ chế nào thiết lập giới hạn thời gian sống tối hậu và tại sao tiếp tục tinh chế độ sạch không còn tác dụng?"
+    }
+  }
+}
