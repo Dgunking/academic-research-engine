@@ -125,3 +125,44 @@ class CurriculumBlueprint(pydantic.BaseModel):
     terminology_contracts: List[TerminologyEntry] = pydantic.Field(
         description="Danh mục các giao ước danh pháp song ngữ chuẩn hóa"
     )
+
+    @pydantic.model_validator(mode="after")
+    def validate_dag_acyclic(self) -> "CurriculumBlueprint":
+        """
+        Kiểm tra tính phi chu trình (Acyclic) của mạng DAG tri thức bằng Giải thuật Kahn.
+        Bảo đảm không tồn tại quan hệ phụ thuộc vòng kín (Circular/Deadlock Dependencies).
+        """
+        all_nodes = {node.node_id for node in self.dag_nodes}
+        for edge in self.dag_edges:
+            all_nodes.add(edge.source_node)
+            all_nodes.add(edge.target_node)
+
+        if not all_nodes:
+            return self
+
+        adj_list: Dict[str, List[str]] = {nid: [] for nid in all_nodes}
+        in_degree: Dict[str, int] = {nid: 0 for nid in all_nodes}
+
+        for edge in self.dag_edges:
+            adj_list[edge.source_node].append(edge.target_node)
+            in_degree[edge.target_node] += 1
+
+        queue = [nid for nid, deg in in_degree.items() if deg == 0]
+        visited_count = 0
+
+        while queue:
+            curr = queue.pop(0)
+            visited_count += 1
+            for neighbor in adj_list[curr]:
+                in_degree[neighbor] -= 1
+                if in_degree[neighbor] == 0:
+                    queue.append(neighbor)
+
+        if visited_count < len(all_nodes):
+            cyclic_nodes = [nid for nid, deg in in_degree.items() if deg > 0]
+            raise ValueError(
+                f"Phát hiện chu trình kín (Cyclic Dependency) trong DAG tri thức: {cyclic_nodes}. "
+                f"Đồ thị vi phạm nguyên tắc DAG Acyclic theo Giải thuật Kahn."
+            )
+
+        return self

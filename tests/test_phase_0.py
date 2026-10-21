@@ -128,6 +128,41 @@ class TestPhase0Schemas(unittest.TestCase):
         self.assertEqual(len(obj.dag_nodes), 1)
         self.assertEqual(len(obj.mpt_specifications), 1)
 
+    def test_02b_blueprint_kahn_cycle_detection(self):
+        """Kiểm thử Giải thuật Kahn phát hiện chu trình kín (Cyclic Dependency) trong DAG."""
+        # 1. Đồ thị hợp lệ (Acyclic: NODE_1 -> NODE_2 -> NODE_3)
+        valid_blueprint = {
+            "course_name": "Quang học và Quang điện tử",
+            "chapter_index": 2,
+            "section_index": 1,
+            "section_title": "Vật lý Bán dẫn & Laser Diode",
+            "source_documents": ["Slide.pdf"],
+            "dag_nodes": [
+                {"node_id": "NODE_1", "concept_title": "C1", "bloom_level": "Hiểu", "first_principles_root": "R1"},
+                {"node_id": "NODE_2", "concept_title": "C2", "bloom_level": "Hiểu", "first_principles_root": "R2"},
+                {"node_id": "NODE_3", "concept_title": "C3", "bloom_level": "Hiểu", "first_principles_root": "R3"},
+            ],
+            "dag_edges": [
+                {"source_node": "NODE_1", "target_node": "NODE_2", "relation_type": "prerequisite"},
+                {"source_node": "NODE_2", "target_node": "NODE_3", "relation_type": "prerequisite"},
+            ],
+            "mpt_specifications": [],
+            "terminology_contracts": []
+        }
+        obj = CurriculumBlueprint.model_validate(valid_blueprint)
+        self.assertIsNotNone(obj)
+
+        # 2. Đồ thị chu trình kín (Cyclic: NODE_1 -> NODE_2 -> NODE_3 -> NODE_1)
+        cyclic_blueprint = dict(valid_blueprint)
+        cyclic_blueprint["dag_edges"] = [
+            {"source_node": "NODE_1", "target_node": "NODE_2", "relation_type": "prerequisite"},
+            {"source_node": "NODE_2", "target_node": "NODE_3", "relation_type": "prerequisite"},
+            {"source_node": "NODE_3", "target_node": "NODE_1", "relation_type": "prerequisite"},
+        ]
+        with self.assertRaises(pydantic.ValidationError) as ctx:
+            CurriculumBlueprint.model_validate(cyclic_blueprint)
+        self.assertIn("Cyclic Dependency", str(ctx.exception))
+
     def test_03_manifest_contract_constraints(self):
         """Kiểm thử ràng buộc cứng của Hợp đồng 2: VisualAssetManifest (TripleBuffer)."""
         valid_item = {
