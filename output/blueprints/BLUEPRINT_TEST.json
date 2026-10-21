@@ -1,0 +1,105 @@
+{
+  "course_name": "Quang học và Quang điện tử",
+  "chapter_index": 2,
+  "section_index": 1,
+  "section_title": "Vật lý Bán dẫn & Laser Diode",
+  "source_documents": [
+    "Slide_Chuong_2.pdf",
+    "Giao_Trinh_Chuong_2.pdf"
+  ],
+  "dag_nodes": [
+    {
+      "node_id": "NODE_2_1_1",
+      "concept_title": "Dải năng lượng & Vùng cấm trực tiếp GaAs",
+      "bloom_level": "Hiểu",
+      "first_principles_root": "Phương trình Schrödinger trong thế tuần hoàn Bloch",
+      "core_equation_latex": "E_g(T) = E_g(0) - \\frac{\\alpha \\cdot T^2}{T + \\beta}"
+    },
+    {
+      "node_id": "NODE_2_1_2",
+      "concept_title": "Nghịch đảo độ tích lũy & Điều kiện phát xạ kích thích",
+      "bloom_level": "Phân tích",
+      "first_principles_root": "Định luật bảo toàn năng lượng & Thống kê Fermi-Dirac",
+      "core_equation_latex": "E_{Fc} - E_{Fv} > h \\cdot \\nu > E_g"
+    },
+    {
+      "node_id": "NODE_2_1_3",
+      "concept_title": "Dòng ngưỡng & Cân bằng hạt tải laser diode",
+      "bloom_level": "Vận dụng",
+      "first_principles_root": "Phương trình liên tục hạt tải & Định luật bảo toàn hạt",
+      "core_equation_latex": "I_{\\text{th}} = \\frac{q \\cdot V_{\\text{act}} \\cdot N_{\\text{th}}}{\\tau_n}"
+    }
+  ],
+  "dag_edges": [
+    {
+      "source_node": "NODE_2_1_1",
+      "target_node": "NODE_2_1_2",
+      "relation_type": "prerequisite"
+    },
+    {
+      "source_node": "NODE_2_1_2",
+      "target_node": "NODE_2_1_3",
+      "relation_type": "causal"
+    }
+  ],
+  "mpt_specifications": [
+    {
+      "mpt_id": "MPT_2_1_1",
+      "title": "Cơ chế vi mô của vùng cấm bán dẫn trực tiếp và phát xạ tái hợp",
+      "core_proposition": "GaAs là bán dẫn vùng cấm trực tiếp cho phép tái hợp bức xạ trực tiếp giữa electron đáy dải dẫn và lỗ trống đỉnh dải hóa trị mà không cần phonon bảo toàn động lượng.",
+      "prerequisite_mpt_ids": [],
+      "visual_requirement": {
+        "visual_type": "MATLAB_SIMULATION",
+        "description": "Đặc tuyến dải năng lượng E(k) của GaAs so với Si",
+        "physical_variables": [
+          "E",
+          "k",
+          "E_g"
+        ],
+        "suggested_model": "Kane 2-band k.p"
+      },
+      "target_equations": [
+        "E(k) = E_c + \\frac{\\hbar^2 \\cdot k^2}{2 \\cdot m^*_e}"
+      ]
+    },
+    {
+      "mpt_id": "MPT_2_1_2",
+      "title": "Điều kiện Bernard-Duraffourg và cơ chế nghịch đảo hạt tải",
+      "core_proposition": "Laser diode chỉ đạt được khuếch đại quang học khi hiệu hai mức quasi-Fermi vượt quá năng lượng photon phát xạ.",
+      "prerequisite_mpt_ids": [
+        "MPT_2_1_1"
+      ],
+      "visual_requirement": {
+        "visual_type": "SCHEMATIC_DIAGRAM",
+        "description": "Sơ đồ dải năng lượng dị thể kép DH khi phân cực thuận",
+        "physical_variables": [
+          "E_Fc",
+          "E_Fv",
+          "qV_a"
+        ],
+        "suggested_model": "Double Heterostructure"
+      },
+      "target_equations": [
+        "E_{Fc} - E_{Fv} > h \\cdot \\nu"
+      ]
+    }
+  ],
+  "terminology_contracts": [
+    {
+      "term_en": "threshold current",
+      "term_vi": "dòng ngưỡng",
+      "symbol_latex": "I_{\\text{th}}",
+      "standard_unit_si": "mA",
+      "iso_standard_ref": "ISO 80000",
+      "decree_30_case": "lower"
+    },
+    {
+      "term_en": "quasi-fermi level",
+      "term_vi": "mức quasi-fermi",
+      "symbol_latex": "E_{Fc}",
+      "standard_unit_si": "eV",
+      "iso_standard_ref": "ISO 80000",
+      "decree_30_case": "lower"
+    }
+  ]
+}
