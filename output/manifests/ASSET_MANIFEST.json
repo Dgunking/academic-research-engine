@@ -1,0 +1,39 @@
+{
+  "section_id": "MUC_TEST",
+  "total_assets": 1,
+  "assets": [
+    {
+      "asset_id": "FIG_2_1_1_STRUCTURAL",
+      "mpt_reference_id": "MPT_2_1_1",
+      "asset_type": "MATLAB_SIMULATION_PLOT",
+      "file_path_local": "D:\\antigravity\\academic-research-engine\\output\\figures\\Mo_Phong_MPT_2_1_1_Structural_Band.png",
+      "aspect_ratio": "6.5:4.2",
+      "matlab_palette_colors_used": [
+        "#0072BD",
+        "#D95319",
+        "#7E2F8E",
+        "#7F7F7F"
+      ],
+      "geometry_audit": {
+        "envelope_clearance_percent": 8.5,
+        "min_font_size_pt": 10.0,
+        "layout_collision_detected": false,
+        "dpi": 300,
+        "file_size_bytes": 167248
+      },
+      "pedagogical_caption": {
+        "chain_1_origin": "Mô phỏng giải tích dải năng lượng GaAs theo mô hình Kane 2-band k.p ở nhiệt độ 300 K.",
+        "chain_2_physical_feature": "Dải dẫn có độ cong lớn do khối lượng hiệu dụng electron nhỏ (me* = 0.067 m0), dải hóa trị phân tách thành lỗ trống nặng và nhẹ.",
+        "chain_3_mathematical_link": "Liên hệ phương trình parabol tiệm cận: $E(k) = E_0 \\pm \\frac{\\hbar^2 \\cdot k^2}{2 \\cdot m^*}$.",
+        "chain_4_threshold_inflection": "Điểm cực trị tại tâm vùng Brillouin k = 0, vùng cấm trực tiếp Eg = 1.424 eV.",
+        "chain_5_engineering_insight": "Vùng cấm trực tiếp bảo toàn xung lượng giúp tăng cường xác suất tái hợp bức xạ trong diode phát quang và laser diode."
+      },
+      "semiconductor_parameters": {
+        "Eg_eV": 1.424,
+        "temperature_K": 300.0,
+        "me_eff": 0.067,
+        "mhh_eff": 0.45
+      }
+    }
+  ]
+}

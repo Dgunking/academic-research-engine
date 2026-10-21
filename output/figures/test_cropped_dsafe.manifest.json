@@ -1,0 +1,9 @@
+{
+  "image_file": "test_cropped_dsafe.png",
+  "sha256": "2d9ef22fc3d29b8bb3e5180b33d8c83a8337decf848d2157c929e1002d4edf54",
+  "timestamp": "2026-10-21T18:43:06.033829",
+  "dpi": 300,
+  "file_size_bytes": 922,
+  "asset_type": "DSAFE_ORIGINAL_CROP",
+  "mpt_id": "MPT_DRY_RUN_2_1"
+}
