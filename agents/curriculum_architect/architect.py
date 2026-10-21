@@ -273,6 +273,24 @@ class CurriculumArchitect:
             entries.append(entry)
         return entries
 
+    @staticmethod
+    def infer_target_material(text: str) -> Optional[str]:
+        """
+        Nhận diện và trích xuất đích danh vật liệu bán dẫn từ ngữ cảnh bài giảng (Slide/Sách).
+        Đối chiếu với danh mục vật liệu bán dẫn chuẩn SEMICONDUCTORS_300K.
+        """
+        if not text:
+            return None
+        candidate_materials = ["AlGaAs", "InGaAsP", "InGaAs", "AlGaInP", "GaAs", "InP", "GaN", "Si", "Ge"]
+        for mat in candidate_materials:
+            pattern = rf"\b{re.escape(mat)}\b"
+            if re.search(pattern, text, flags=re.IGNORECASE):
+                for std_mat in ["GaAs", "InP", "GaN", "AlGaAs", "InGaAsP", "Si", "Ge"]:
+                    if mat.lower() == std_mat.lower():
+                        return std_mat
+                return mat
+        return None
+
     # =========================================================================
     # ĐIỀU PHỐI TỔNG THỂ: TẠO LẬP HỢP ĐỒNG CURRICULUM BLUEPRINT
     # =========================================================================
@@ -309,7 +327,15 @@ class CurriculumArchitect:
         for m in raw_mpt_specs:
             vis_req = None
             if "visual_requirement" in m and m["visual_requirement"]:
-                vis_req = VisualRequirement.model_validate(m["visual_requirement"])
+                v_data = dict(m["visual_requirement"])
+                if not v_data.get("target_material"):
+                    context_text = f"{m.get('title', '')} {m.get('core_proposition', '')} {v_data.get('description', '')}"
+                    inferred_mat = self.infer_target_material(context_text)
+                    if inferred_mat:
+                        v_data["target_material"] = inferred_mat
+                if "operating_temperature_k" not in v_data or v_data["operating_temperature_k"] is None:
+                    v_data["operating_temperature_k"] = 300.0
+                vis_req = VisualRequirement.model_validate(v_data)
             
             mpt = MicroPointTopicSpec(
                 mpt_id=m["mpt_id"],

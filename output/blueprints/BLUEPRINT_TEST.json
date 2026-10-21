@@ -56,7 +56,9 @@
           "k",
           "E_g"
         ],
-        "suggested_model": "Kane 2-band k.p"
+        "suggested_model": "Kane 2-band k.p",
+        "target_material": "GaAs",
+        "operating_temperature_k": 300.0
       },
       "target_equations": [
         "E(k) = E_c + \\frac{\\hbar^2 \\cdot k^2}{2 \\cdot m^*_e}"
@@ -77,7 +79,9 @@
           "E_Fv",
           "qV_a"
         ],
-        "suggested_model": "Double Heterostructure"
+        "suggested_model": "Double Heterostructure",
+        "target_material": null,
+        "operating_temperature_k": 300.0
       },
       "target_equations": [
         "E_{Fc} - E_{Fv} > h \\cdot \\nu"

@@ -103,7 +103,9 @@ class TestPhase1CurriculumArchitect(unittest.TestCase):
             visual_type="MATLAB_SIMULATION",
             description="Đặc tuyến dải năng lượng E(k)",
             physical_variables=["E", "k", "E_g"],
-            suggested_model="Varshni & Kane"
+            suggested_model="Varshni & Kane",
+            target_material="GaAs",
+            operating_temperature_k=300.0
         )
         mpt = MicroPointTopicSpec(
             mpt_id="MPT_TEST_1",
@@ -116,6 +118,12 @@ class TestPhase1CurriculumArchitect(unittest.TestCase):
         self.assertEqual(mpt.mpt_id, "MPT_TEST_1")
         self.assertEqual(mpt.visual_requirement.visual_type, "MATLAB_SIMULATION")
         self.assertIn("E_g", mpt.visual_requirement.physical_variables)
+        self.assertEqual(mpt.visual_requirement.target_material, "GaAs")
+        self.assertEqual(mpt.visual_requirement.operating_temperature_k, 300.0)
+
+        # Kiểm tra tự động suy luận vật liệu từ văn bản ngữ cảnh
+        inferred = self.architect.infer_target_material("Mô phỏng laser bán dẫn InP và giếng lượng tử InGaAsP")
+        self.assertEqual(inferred, "InGaAsP")
 
     def test_05_atcc_terminology_standardization(self):
         """Kiểm thử Thuật toán 10 (ATCC): Chuẩn hóa danh mục danh pháp song ngữ."""

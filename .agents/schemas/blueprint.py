@@ -60,6 +60,14 @@ class VisualRequirement(pydantic.BaseModel):
         default=None,
         description="Mô hình toán-lý đề xuất (ví dụ: Rate Equations, 8-band k.p, Varshni)"
     )
+    target_material: Optional[str] = pydantic.Field(
+        default=None,
+        description="Đích danh vật liệu bán dẫn chỉ định từ ngữ cảnh học liệu (ví dụ: GaAs, InP, GaN, AlGaAs)"
+    )
+    operating_temperature_k: Optional[float] = pydantic.Field(
+        default=300.0,
+        description="Nhiệt độ hoạt động chỉ định theo Kelvin (mặc định 300.0 K chuẩn phòng thí nghiệm)"
+    )
 
 
 class MicroPointTopicSpec(pydantic.BaseModel):
