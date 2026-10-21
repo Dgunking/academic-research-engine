@@ -53,12 +53,14 @@
         {
           "step_index": 1,
           "explanation_vi": "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Xuất phát từ phương trình vi phân vận tốc nhóm của electron trong tinh thể. Lấy đạo hàm bậc hai của hàm năng lượng theo vector sóng:",
-          "step_equation_latex": "\\frac{d^2E}{dk^2} = \\frac{\\hbar^2}{m^*_e}"
+          "step_equation_latex": "\\frac{d^2E}{dk^2} = \\frac{\\hbar^2}{m^*_e}",
+          "step_nature": "EXACT_ALGEBRAIC"
         },
         {
           "step_index": 2,
           "explanation_vi": "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tích phân hai vế theo biến vector sóng <i>k</i> với điều kiện biên tại tâm vùng <i>k</i> = 0 thì <i>E</i>(0) = <i>E<sub>c</sub></i> và đạo hàm triệt tiêu do tính đối xứng chẵn:",
-          "step_equation_latex": "E(k) = E_c + \\int_0^k \\frac{\\hbar^2 \\cdot k'}{m^*_e} dk' = E_c + \\frac{\\hbar^2 \\cdot k^2}{2 \\cdot m^*_e}"
+          "step_equation_latex": "E(k) = E_c + \\int_0^k \\frac{\\hbar^2 \\cdot k'}{m^*_e} dk' = E_c + \\frac{\\hbar^2 \\cdot k^2}{2 \\cdot m^*_e}",
+          "step_nature": "EXACT_ALGEBRAIC"
         }
       ],
       "stage_4_variation_sweeps": "Khảo sát biến thể theo nhiệt độ vận hành <i>T</i>: Bề rộng vùng cấm <i>E<sub>g</sub></i>(<i>T</i>) của GaAs thu hẹp dần khi nhiệt độ tăng tuân theo định luật bán thực nghiệm Varshni với thông số mạng tinh thể thực nghiệm. Tại nhiệt độ phòng <i>T</i> = 300 K, <i>E<sub>g</sub></i> đạt giá trị chuẩn 1.424 eV. Điểm cực trị tại tâm vùng Brillouin k = 0, vùng cấm trực tiếp Eg = 1.424 eV. Khi giảm kích thước hình học <i>d</i> xuống dưới bán kính Bohr exciton, hiệu ứng giam cầm lượng tử biến đổi dải liên tục thành các mức dải con rời rạc, làm dịch chuyển đỉnh hấp thụ quang về phía bước sóng ngắn (Blue-shift).",

@@ -234,6 +234,15 @@ class OrchestrationKernel:
             # BƯỚC 5: ĐÁNH GIÁ KẾT QUẢ & ĐIỀU HƯỚNG HYBRID SELF-HEALING
             # -------------------------------------------------------------
             if audit_report.overall_verdict == "PASS_100_PERCENT":
+                # Chuyển giao nguyên tử an toàn vào Drive nếu có cấu hình
+                drive_pdf_path = None
+                if self.config.drive_destination_dir and os.path.isdir(self.config.drive_destination_dir):
+                    dest_file = os.path.join(
+                        self.config.drive_destination_dir, os.path.basename(pdf_path)
+                    )
+                    atomic_replace(pdf_path, dest_file)
+                    drive_pdf_path = dest_file
+
                 # Kiểm tra Rào cản Phê duyệt Sample Gate cho Mục X.1
                 is_sample_section = (section_index == 1)
                 if is_sample_section and run_mode == RunMode.SAMPLE_GATE and not approved_sample:
@@ -254,6 +263,7 @@ class OrchestrationKernel:
                         payload_path=payload_path,
                         report_path=report_path,
                         pdf_path=pdf_path,
+                        drive_pdf_path=drive_pdf_path,
                         navigation_anchors=anchors,
                         fsm_history=self.fsm.export_history(),
                     )
@@ -263,15 +273,6 @@ class OrchestrationKernel:
                     FSMState.COMPLETED,
                     reason=f"Xuất bản thành công {section_id} đạt chuẩn PASS 100%",
                 )
-
-                # Chuyển giao nguyên tử an toàn vào Drive nếu có cấu hình
-                drive_pdf_path = None
-                if self.config.drive_destination_dir and os.path.isdir(self.config.drive_destination_dir):
-                    dest_file = os.path.join(
-                        self.config.drive_destination_dir, os.path.basename(pdf_path)
-                    )
-                    atomic_replace(pdf_path, dest_file)
-                    drive_pdf_path = dest_file
 
                 anchors = self.format_navigation_anchors(
                     current_blueprint, current_draft, pdf_path, audit_report
