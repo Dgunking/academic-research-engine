@@ -2,6 +2,7 @@
 ### Động cơ Tác nhân Tự trị Nghiên cứu & Chế bản Chuyên khảo Vật lý Bán dẫn
 
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![CI Test Suite](https://github.com/Dgunking/academic-research-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/Dgunking/academic-research-engine/actions/workflows/ci.yml)
 [![Pydantic v2](https://img.shields.io/badge/pydantic-v2.7+-green.svg)](https://docs.pydantic.dev/)
 [![ReportLab](https://img.shields.io/badge/reportlab-v4.1+-orange.svg)](https://www.reportlab.com/)
 [![SymPy CAS](https://img.shields.io/badge/sympy-CAS-brightgreen.svg)](https://www.sympy.org/)
