@@ -1,0 +1,61 @@
+{
+  "course_name": "Cơ sở quang học và quang điện tử",
+  "chapter_index": 2,
+  "section_index": 1,
+  "section_title": "Cơ chế Tái hợp Bức xạ & Không Bức xạ trong Laser Diode",
+  "source_documents": [
+    "Slide_Chuong_2_Vat_Ly_Ban_Dan_HUST.pdf",
+    "Giao_Trinh_Quang_Dien_Tu_HUST.pdf"
+  ],
+  "dag_nodes": [
+    {
+      "node_id": "NODE_MUC_2_1_1",
+      "concept_title": "Cơ chế bán dẫn Cơ chế Tái hợp Bức xạ & Không Bức xạ trong Laser Diode",
+      "bloom_level": "Hiểu",
+      "first_principles_root": "Phương trình dải năng lượng E(k)",
+      "core_equation_latex": null
+    }
+  ],
+  "dag_edges": [],
+  "mpt_specifications": [
+    {
+      "mpt_id": "MPT_2_1_1",
+      "title": "Cơ chế vi mô của Cơ chế Tái hợp Bức xạ & Không Bức xạ trong Laser Diode",
+      "core_proposition": "Phân tích giải tích dải năng lượng và quang học của Cơ chế Tái hợp Bức xạ & Không Bức xạ trong Laser Diode.",
+      "prerequisite_mpt_ids": [],
+      "visual_requirement": {
+        "visual_type": "MATLAB_SIMULATION",
+        "description": "Đồ thị giải tích dải năng lượng của Cơ chế Tái hợp Bức xạ & Không Bức xạ trong Laser Diode",
+        "physical_variables": [
+          "E",
+          "k",
+          "E_g"
+        ],
+        "suggested_model": "Kane 2-band k.p",
+        "target_material": "GaAs",
+        "operating_temperature_k": 300.0
+      },
+      "target_equations": [
+        "E(k) = E_c + \\frac{\\hbar^2 \\cdot k^2}{2 \\cdot m^*_e}"
+      ]
+    }
+  ],
+  "terminology_contracts": [
+    {
+      "term_en": "",
+      "term_vi": "",
+      "symbol_latex": "",
+      "standard_unit_si": "",
+      "iso_standard_ref": "ISO 80000",
+      "decree_30_case": "lower"
+    },
+    {
+      "term_en": "",
+      "term_vi": "",
+      "symbol_latex": "",
+      "standard_unit_si": "",
+      "iso_standard_ref": "ISO 80000",
+      "decree_30_case": "lower"
+    }
+  ]
+}

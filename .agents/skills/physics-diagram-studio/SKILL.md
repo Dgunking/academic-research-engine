@@ -46,14 +46,18 @@ Kỹ năng chuyên sâu phục vụ trực quan hóa học thuật, đồ thị 
 2. **Mô phỏng Loại 2 — Đặc tuyến Hoạt động & Quét Đánh đổi (Performance & Trade-off Sweep):**
    - *Vị trí tích hợp:* Đặt tại Giai đoạn 4 (Phân tích biến thể & Khảo sát tiệm cận).
    - *Mục tiêu:* Thực chứng phòng thí nghiệm & đánh đổi thiết kế: khảo sát cực hạn tiệm cận ($T \to 0$ vs. $300\text{ K}$, $\omega \to 0$ vs. $\infty$), đặc tuyến hoạt động $I\text{–}V$, $L\text{–}I\text{–}V$ thực tế có điện trở vi phân $R_s$, dòng ngưỡng $I_{\text{th}}$, và quét mảng tham số công nghệ (nhiệt độ $T$, bề rộng giếng $L_z$).
-   - *Thẻ Tham số Bóc tách (Detached Parameter Card):* Bắt buộc nhúng ngay dưới đồ thị Loại 2 theo dạng inline badge:  
-     `↳ [Vật liệu]: ... | [Thông số quét]: ... | [Hệ quả Lab & Sai số]: R² = ..., ...`.
+   - *Thẻ Tham số Bóc tách (Detached Parameter Card):* Bắt buộc nhúng ngay dưới đồ thị theo dạng inline badge khớp 1-1 với 3 khóa dữ liệu chuẩn của ReportLab:  
+     `↳ [Hệ vật liệu]: ... | [Thông số quét]: ... | [Hệ quả Lab]: ...`  
+     Khóa cứng cú pháp 3 trường trong `parameter_card`: `material_system`, `sweep_parameters`, `lab_metrics`. Định dạng 100% bằng thẻ HTML (`<i>`, `<sub>`, `<sup>`) và Unicode bản địa, cấm gạch chéo `/`, cấm gạch dưới `_`, cấm số mũ thô `^` để triệt tiêu hoàn toàn lỗi fallback về `'N/A | N/A | N/A'`.
 
 ---
 
 ## 3. Quy Chuẩn Đồ Họa MATLAB R2014b+ & Triple Buffer Envelope
 
-- **Hình học chuẩn khi vẽ:** `figsize=(6.5, 4.2)` inches, xuất ảnh `dpi=300`, `bbox_inches='tight'`.
+- **Hình học chuẩn khi vẽ & Chống vỡ trang in A4:**
+  * Kích thước chuẩn đồ thị đơn: `figsize=(6.5, 4.2)` hoặc `(6.8, 4.4)` inches (chiều rộng $W \le 7{,}0\text{ in}$, chiều cao $H \le 4{,}8\text{ in}$), xuất ảnh `dpi=300`, `bbox_inches='tight'`.
+  * **CẤM TUYỆT ĐỐI xếp chồng dọc 2 panel (`2 rows, 1 col`, $H > 5{,}2\text{ in}$)** khi cả hai đều sử dụng External Top Banner Legend. Bố cục này gây ra 2 thảm họa kỹ thuật: (1) Cụm tiêu đề và chú giải của panel dưới đè trực tiếp lên nhãn trục $x$ của panel trên; (2) Chiều cao tổng thể vượt quá $73\%$ trang A4 ReportLab làm vỡ luồng phân trang và cắt cụt tiêu đề giai đoạn kế tiếp.
+  * **Quy chuẩn phân tách:** Khi có 2 đồ thị liên quan, **bắt buộc bóc tách thành 2 tệp ảnh độc lập tự chứa**: Hình (a) nhúng tại Giai đoạn 3 (Dẫn xuất vi mô), Hình (b) nhúng tại Giai đoạn 4 (Tiệm cận & Thực chiến).
 - **Bảng màu 6 đường chuẩn MATLAB Hex:**
   * Đường chính (Line 1): `#0072BD` (Xanh lam đậm) — `linewidth=2.0`
   * Đường đối chiếu 1 (Line 2): `#D95319` (Cam đỏ) — `linewidth=2.0`
@@ -62,15 +66,19 @@ Kỹ năng chuyên sâu phục vụ trực quan hóa học thuật, đồ thị 
   * Đường tiệm cận / Mức chuẩn: `#77AC30` (Xanh lục) hoặc `#7F7F7F` (Xám) — `linewidth=1.2, linestyle='--'`
 - **Spines & Ticks:** 4 cạnh khung bao `#1F1F1F` đóng hộp, vạch chia (ticks) hướng vào trong (`direction='in'`) ở cả 4 cạnh. Lưới tọa độ: `linestyle='--'`, `linewidth=0.6`, `color='#E0E0E0'`.
 - **Typography font serif:** Tiêu đề 12,5–13,0 pt in đậm; Nhãn trục 11,5–12,0 pt (`Tên đại lượng $Ký hiệu$ [Đơn vị SI]`); Ticks 9,5–10,0 pt; Legend & Callout 10,0–10,5 pt (nền trắng ngà `#F8F9FA`, viền `#CED4DA`).
+- **Chuẩn Bố Cục Báo Cáo Kỹ Thuật Phòng Lab & Dashboard Phân Tích (Lab Technical Report & Analytical Dashboard Standard):**
+  * **Cấu trúc 3 tầng tự chứa (Self-Contained Standalone):** `[Tiêu đề Title in đậm]` $\to$ `[Hộp Legend dạng External Top Banner]` $\to$ `[Khung trục dữ liệu Axes]` $\to$ `[Caption 3 mắt xích ReportLab]`. Cho phép đồ thị độc lập trích xuất sang slide thuyết trình hoặc báo cáo tuần mà không bị phụ thuộc vào văn bản xung quanh.
+  * **Bố cục External Top Banner Legend:** `ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.02), ncol=2/3, frameon=True, fancybox=False, edgecolor="#222222", framealpha=0.95)` đặt hoàn toàn phía trên khung trục tọa độ, giải phóng 100% lòng đồ thị cho đường cong vật lý, vạch tiệm cận và nhãn callout.
+  * **Động cơ dãn cách Tiêu đề - Legend ($\delta_{\text{title-legend}} \ge 20.0\text{ pt}$):** Bắt buộc duy trì khoảng hở hình học tối thiểu $\ge 20.0\text{ pt}$ ($\approx 90\text{ px}$ ở $300\text{ DPI}$) giữa đáy chữ tiêu đề (`title.y0`) và đỉnh viền hộp Legend (`legend.y1`). Tích hợp hàm `auto_space_title_legend(fig, ax, min_gap_pt=20.0)` từ `scripts.viz_legend_utils` điều chỉnh `_set_title_offset_trans`. Tuyệt đối cấm để chữ tiêu đề chạm sát hoặc đè lên viền hộp Legend.
 - **Thuật toán Chống Đè Chữ & Bộ Ba Vùng Giới Hạn Vô Hình (Triple Buffer Envelope):**
   * $\delta_{\text{geom}} \ge 8\%$: Khoảng cách từ mép hộp chú thích đến **TẤT CẢ các đường nét vẽ trên đồ thị** tối thiểu 8% biên độ trục. Phạm vi bảo vệ áp dụng bình đẳng cho: đường dữ liệu thực tế, **đường nét đứt tiệm cận (Asymptotic Lines)**, đường bao hình (Envelopes), đường đối chiếu lý thuyết, và các vạch ranh giới (`axvline`, `axhline`). **Tuyệt đối cấm hộp chú thích cắt qua, đè lên hoặc che khuất bất kỳ phần nào của đường nét đứt tiệm cận hay đường cong vật lý.**
   * $\delta_{\text{box}} \ge 6\text{ pt}$: Khoảng cách cách ly giữa các hộp chú thích (Callouts) với nhau và giữa hộp chú thích với hộp Legend tối thiểu 6 pt (~0,02–0,03 normalized), tuyệt đối không chạm đè hoặc giao cắt.
   * $\delta_{\text{spine}} \ge 5\%$: Khoảng cách từ hộp chữ đến 4 đường viền bao trục tối thiểu 5% để không bao giờ bị cắt mép hoặc chạm vào khung trục.
   * **Kỷ luật Độ rộng Hộp Chú Thích (Callout Line Wrapping):** Tại các vùng có đường cong dốc hoặc đường tiệm cận đi xiên, độ dài mỗi dòng chữ trong Callout tối đa 20–25 ký tự, ngắt dòng 2–3 nhịp súc tích (ví dụ: `Vùng $r \le R$:\n$E(r) \propto r$`) để giữ bề rộng hộp nhỏ gọn, triệt tiêu nguy cơ mép phải hộp phình rộng đè vào đường nét đứt tiệm cận.
   * **Chiến lược Hành lang Trống (Corridor Strategy):** Tận dụng tối đa các khoảng thở tự nhiên (như hành lang giữa đường tiệm cận suy giảm $1/r, 1/r^2$ và Legend phía trên) để bố trí Callout, kết hợp khóa mỏ neo `ha='left', va='bottom'`.
-  * **Quy tắc Nới Trục Tự Động:** Nếu không đủ khoảng trống trên hình, kịch bản tự động nới rộng biên độ trục y thêm 20–35% (`y_span = y_max - y_min; ax.set_ylim(y_min, y_max + 0.30 * y_span)`) để tạo vùng đệm an toàn cho Callout và Legend; **tuyệt đối không thu nhỏ cỡ chữ (giữ cố định $\ge 10.0\text{ pt}$)**.
+  * **Quy tắc Khoảng Thở Trục & Chống Trôi Tọa Độ:** Chủ động mở rộng khoảng thở bằng `ax.margins(x=0.08, y=0.18)` ngay khi vẽ các đường dữ liệu; **khóa cứng `expand_limits=False`** trong bộ giải bố cục để chống trôi dạt điểm neo và biến dạng thang đo; tuyệt đối không thu nhỏ cỡ chữ (giữ cố định $\ge 10.0\text{ pt}$).
   * **Quy Chuẩn Phân Số Trên Hình Vẽ (Luật 14):** 100% công thức toán trong Callout, Legend, title, xlabel, ylabel bắt buộc hiển thị dạng phân số gạch ngang chuẩn LaTeX $\frac{a}{b}$ (`\frac{a}{b}`), triệt tiêu hoàn toàn dấu gạch chéo `/`.
-  * **Quy trình Tiền kiểm Bắt buộc (Mandatory Pre-Flight Geometry Assertion):** 100% kịch bản kết xuất đồ thị bắt buộc phải chạy hàm kiểm định hình học định lượng `assert_triple_buffer_geometry(fig, ax)` từ `matlab_plot_engine.py` (kiểm tra toàn diện cỡ chữ $\ge 10.0\text{ pt}$, 3 vùng đệm Triple Buffer, và quét cạn Luật 14 Zero-Slash-Fractions). Nghiêm cấm lưu tệp ảnh `.png` hoặc bàn giao chuyên khảo khi chưa đạt `PASS 100%`.
+  * **Quy trình Tiền kiểm & Ký số Manifest Bắt buộc (Mandatory Pre-Flight & Manifest Gate):** 100% kịch bản kết xuất đồ thị bắt buộc phải sử dụng động cơ `physics_viz_lock.py` (Thuật toán 13 ZT-GVLE), gọi `assert_triple_buffer_geometry(fig, ax)` và xuất ảnh qua `export_with_sidecar_manifest(fig, output_png_path, parameter_card=...)` sinh tệp `.manifest.json`. Tham số `parameter_card` bắt buộc truyền đủ 3 khóa chuẩn hóa: `material_system`, `sweep_parameters`, `lab_metrics` với chuỗi định dạng HTML hợp lệ. Nghiêm cấm lưu tệp ảnh `.png` hoặc bàn giao chuyên khảo khi chưa đạt `PASS 100%` (0 đè chữ, 0 đè đường, 0 tràn khung, 0 rò rỉ N/A).
 
 ---
 
@@ -101,7 +109,6 @@ def auto_crop_slide_image(input_path: str, output_path: str, pad: int = 10):
     return input_path
 
 # 2. KHỞI TẠO CANVAS & CẤU HÌNH KHUNG VIỀN CHUẨN MATLAB R2014b+ (Spines & Inward Ticks)
-fig, ax = plt.subplots(figsize=(6.5, 4.2), dpi=300)
 
 for spine in ax.spines.values():
     spine.set_color('#1F1F1F')
@@ -175,7 +182,6 @@ Quản trị việc trích xuất ảnh slide bài giảng theo 4 phân hệ c�
 
 ### 5.3. Thuật Toán Khóa Cứng Hình Học Đồ Thị & Bố Trí Nhãn Tối Ưu (ZT-GVLE Engine — Thuật Toán 13)
 Giải pháp triệt để ngăn chặn méo mó tỷ lệ, đè chữ và sai lệch hình học khi nhúng vào ReportLab:
-1. **A4 Canvas Width Lock ( \le 7.0\text{ in}$):** Khóa cứng chiều rộng canvas đồ thị tối đa 7.0 inches để tương thích hoàn hảo với khổ A4 (8.27 in) trừ đi 2 lề ReportLab (40 pt mỗi bên = 1.11 in, vùng in 515.27 pt = 7.16 in). Tuyệt đối nghiêm cấm mở rộng canvas theo phương ngang kiểu igsize=(12, 5) khi cần vẽ 2 đồ thị; bắt buộc chuyển sang bố cục xếp chồng dọc 1 cột (1-column vertical stacking, ví dụ igsize=(6.5, 8.0)) hoặc phân tách thành 2 tệp ảnh độc lập igsize=(6.5, 4.2).
 2. **Dense Raster Pixel Obstacle Cloud:** Trích xuất ma trận điểm ảnh vật cản với bước nhảy $\Delta s \le 2.5\text{ px}$ từ toàn bộ đường cong dữ liệu, vạch ngưỡng và đường tiệm cận nét đứt, biến chúng thành tập hợp chướng ngại vật định lượng.
 3. **Continuous Elliptical Equi-Clearance Label Placement:** Tối ưu hóa vị trí nhãn và hộp Callout bằng hàm khoảng cách elip đẳng cự, bảo đảm khoảng đệm an toàn tới mọi điểm ảnh vật cản, loại bỏ hoàn toàn hiện tượng nhãn đè lên đường cong hoặc che khuất đường tiệm cận.
 4. **Detached Parameter Card:** Thẻ tham số vật lý và thông số linh kiện được bóc tách thành một dải huy hiệu độc lập bên ngoài hoặc ngay dưới axes, không nhồi nhét vào bên trong đồ thị gây quá tải diện tích hiển thị.

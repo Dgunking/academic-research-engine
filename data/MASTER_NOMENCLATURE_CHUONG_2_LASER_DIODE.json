@@ -1,0 +1,147 @@
+{
+  "hoc_phan": "Laser Diode - Cấu trúc và Nguyên lý",
+  "chuong": "Chương 2: Phương pháp tiếp cận hiện tượng luận đối với laser diode",
+  "atcc_version": "2026.10",
+  "symbols": [
+    {
+      "symbol": "N",
+      "html": "<i>N</i>",
+      "vn_term": "Mật độ hạt tải",
+      "en_term": "Carrier density",
+      "unit": "m^-3 / cm^-3"
+    },
+    {
+      "symbol": "S",
+      "html": "<i>S</i>",
+      "vn_term": "Mật độ photon",
+      "en_term": "Photon density",
+      "unit": "m^-3 / cm^-3"
+    },
+    {
+      "symbol": "I",
+      "html": "<i>I</i>",
+      "vn_term": "Dòng điện tiêm",
+      "en_term": "Injection current",
+      "unit": "A / mA"
+    },
+    {
+      "symbol": "I_th",
+      "html": "<i>I</i><sub>th</sub>",
+      "vn_term": "Dòng ngưỡng laser",
+      "en_term": "Threshold current",
+      "unit": "A / mA"
+    },
+    {
+      "symbol": "eta_i",
+      "html": "<i>η</i><sub>i</sub>",
+      "vn_term": "Hiệu suất lượng tử nội",
+      "en_term": "Internal quantum efficiency",
+      "unit": "không thứ nguyên"
+    },
+    {
+      "symbol": "eta_d",
+      "html": "<i>η</i><sub>d</sub>",
+      "vn_term": "Hiệu suất lượng tử vi phân",
+      "en_term": "Differential quantum efficiency",
+      "unit": "không thứ nguyên"
+    },
+    {
+      "symbol": "Gamma",
+      "html": "<i>Γ</i>",
+      "vn_term": "Hệ số giam giữ quang học",
+      "en_term": "Optical confinement factor",
+      "unit": "không thứ nguyên"
+    },
+    {
+      "symbol": "v_g",
+      "html": "<i>v</i><sub>g</sub>",
+      "vn_term": "Vận tốc nhóm ánh sáng",
+      "en_term": "Optical group velocity",
+      "unit": "m/s"
+    },
+    {
+      "symbol": "g",
+      "html": "<i>g</i>",
+      "vn_term": "Độ lợi vật liệu",
+      "en_term": "Material gain",
+      "unit": "cm^-1"
+    },
+    {
+      "symbol": "g_th",
+      "html": "<i>g</i><sub>th</sub>",
+      "vn_term": "Độ lợi ngưỡng",
+      "en_term": "Threshold gain",
+      "unit": "cm^-1"
+    },
+    {
+      "symbol": "tau_p",
+      "html": "<i>τ</i><sub>p</sub>",
+      "vn_term": "Thời gian sống photon trong hốc",
+      "en_term": "Cavity photon lifetime",
+      "unit": "s / ps"
+    },
+    {
+      "symbol": "tau",
+      "html": "<i>τ</i>",
+      "vn_term": "Thời gian sống hạt tải",
+      "en_term": "Carrier lifetime",
+      "unit": "s / ns"
+    },
+    {
+      "symbol": "A",
+      "html": "<i>A</i>",
+      "vn_term": "Hệ số tái hợp phi bức xạ SRH",
+      "en_term": "SRH recombination coefficient",
+      "unit": "s^-1"
+    },
+    {
+      "symbol": "B",
+      "html": "<i>B</i>",
+      "vn_term": "Hệ số tái hợp bức xạ tự phát",
+      "en_term": "Radiative recombination coefficient",
+      "unit": "cm^3/s"
+    },
+    {
+      "symbol": "C",
+      "html": "<i>C</i>",
+      "vn_term": "Hệ số tái hợp không bức xạ Auger",
+      "en_term": "Auger recombination coefficient",
+      "unit": "cm^6/s"
+    },
+    {
+      "symbol": "alpha_i",
+      "html": "<i>α</i><sub>i</sub>",
+      "vn_term": "Hệ số suy hao nội hốc",
+      "en_term": "Internal optical loss",
+      "unit": "cm^-1"
+    },
+    {
+      "symbol": "alpha_m",
+      "html": "<i>α</i><sub>m</sub>",
+      "vn_term": "Hệ số tổn hao gương",
+      "en_term": "Mirror loss coefficient",
+      "unit": "cm^-1"
+    },
+    {
+      "symbol": "omega_R",
+      "html": "<i>ω</i><sub>R</sub>",
+      "vn_term": "Tần số góc cộng hưởng hồi phục",
+      "en_term": "Relaxation resonance angular frequency",
+      "unit": "rad/s"
+    },
+    {
+      "symbol": "f_R",
+      "html": "<i>f</i><sub>R</sub>",
+      "vn_term": "Tần số cộng hưởng hồi phục",
+      "en_term": "Relaxation resonance frequency",
+      "unit": "GHz"
+    },
+    {
+      "symbol": "Z_th",
+      "html": "<i>Z</i><sub>th</sub>",
+      "vn_term": "Trở kháng nhiệt linh kiện",
+      "en_term": "Thermal impedance",
+      "unit": "K/W"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "chapter": 3,
+  "subject": "Cơ sở vật lý và công nghệ nano",
+  "course_code": "PH3470",
+  "nomenclature_entries": [
+    {
+      "term_vi": "Tần số góc dao động riêng",
+      "term_en": "Angular resonant frequency",
+      "symbol": "omega_0",
+      "unit": "rad/s",
+      "definition": "Tần số góc dao động tự nhiên của hệ đàn hồi khi không có lực cản môi trường: omega_0 = sqrt(k / m)."
+    },
+    {
+      "term_vi": "Độ cứng đàn hồi / Hệ số lò xo",
+      "term_en": "Spring constant / Elastic stiffness",
+      "symbol": "k",
+      "unit": "N/m",
+      "definition": "Hệ số tỉ lệ giữa lực đàn hồi phục hồi và độ biến dạng tuyến tính theo định luật Hooke: F = -k x."
+    },
+    {
+      "term_vi": "Khối lượng rút gọn",
+      "term_en": "Reduced mass",
+      "symbol": "mu",
+      "unit": "kg",
+      "definition": "Khối lượng hiệu dụng tương đương trong hệ hai vật tương tác xuyên tâm: mu = (m1 * m2) / (m1 + m2)."
+    },
+    {
+      "term_vi": "Môđun Young đàn hồi",
+      "term_en": "Young's modulus",
+      "symbol": "E",
+      "unit": "Pa",
+      "definition": "Đại lượng đặc trưng cho độ cứng chống biến dạng kéo/nén đơn trục của vật liệu."
+    },
+    {
+      "term_vi": "Mômen quán tính diện tích",
+      "term_en": "Area moment of inertia",
+      "symbol": "I",
+      "unit": "m^4",
+      "definition": "Đặc trưng hình học của tiết diện dầm chống uốn: I = (w * t^3) / 12 đối với thanh chữ nhật."
+    },
+    {
+      "term_vi": "Thế năng tương tác Lennard-Jones",
+      "term_en": "Lennard-Jones potential",
+      "symbol": "U(r)",
+      "unit": "J",
+      "definition": "Mô hình thế tương tác liên nguyên tử 6-12 kết hợp lực đẩy Pauli r^-12 và lực hút van der Waals r^-6."
+    },
+    {
+      "term_vi": "Hệ số phẩm chất cộng hưởng",
+      "term_en": "Resonance quality factor",
+      "symbol": "Q",
+      "unit": "không thứ nguyên",
+      "definition": "Tỉ số giữa năng lượng dự trữ và năng lượng tiêu tán trên mỗi chu kỳ dao động: Q = omega_0 / Delta_omega."
+    },
+    {
+      "term_vi": "Hằng số thời gian nhiệt",
+      "term_en": "Thermal time constant",
+      "symbol": "tau_th",
+      "unit": "s",
+      "definition": "Thời gian đặc trưng để hệ vi mô cân bằng nhiệt độ với môi trường ngoài: tau_th = (L * C_V) / (k_T * A)."
+    },
+    {
+      "term_vi": "Lực cản nhớt Stokes",
+      "term_en": "Stokes viscous drag force",
+      "symbol": "F_Stokes",
+      "unit": "N",
+      "definition": "Lực cản của chất lưu đối với hạt hình cầu bán kính R chuyển động ở số Reynolds thấp: F = 6 * pi * eta * R * v."
+    },
+    {
+      "term_vi": "Hệ số khuếch tán Einstein - Smoluchowski",
+      "term_en": "Diffusion coefficient",
+      "symbol": "D",
+      "unit": "m^2/s",
+      "definition": "Hệ số tỉ lệ trong định luật khuếch tán Fick: D = (k_B * T) / (6 * pi * eta * R)."
+    },
+    {
+      "term_vi": "Mật độ trạng thái điện tử (DOS)",
+      "term_en": "Electronic Density of States",
+      "symbol": "g(E)",
+      "unit": "eV^-1 m^-d",
+      "definition": "Số lượng trạng thái lượng tử khả dụng trên một đơn vị năng lượng và đơn vị thể tích/diện tích/chiều dài."
+    },
+    {
+      "term_vi": "Cộng hưởng Plasmon Bề mặt Cục bộ (LSPR)",
+      "term_en": "Localized Surface Plasmon Resonance",
+      "symbol": "omega_sp",
+      "unit": "rad/s",
+      "definition": "Hiện tượng dao động tập thể cộng hưởng của các electron tự do trong hạt nano kim loại dưới kích thích của sóng điện từ."
+    }
+  ]
+}

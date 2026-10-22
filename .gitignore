@@ -3,19 +3,38 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Temporary files and caches
-*.tmp
-*.jpx
-temp_inspect/
-
 # Virtual environments
 .venv/
 venv/
 ENV/
 env/
 
-# IDE / OS generated files
+# Secrets & Local Environment
+.env
+.env.*
+*.key
+*.token
+credentials.json
+
+# Testing & Temporary Scratch
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+scratch/
+temp_inspect/
+output/test_*
+output/tmp_*
+output/slide_previews/
+*.jpx
+*.bundle
+
+# Operating System & IDE
 .DS_Store
 Thumbs.db
+desktop.ini
 .vscode/
 .idea/
+*.bak
+*.tmp
+*.swp

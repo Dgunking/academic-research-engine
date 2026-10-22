@@ -1,6 +1,6 @@
 {
   "section_id": "MUC_2_1",
-  "audit_timestamp": "2026-10-21T20:09:18.322792",
+  "audit_timestamp": "2026-10-22T17:05:07.800904",
   "overall_verdict": "PASS_100_PERCENT",
   "self_healing_attempt_count": 1,
   "dohg_2_0_results": {
@@ -58,11 +58,11 @@
     }
   },
   "publication_metadata": {
-    "temp_build_path": "C:\\Users\\AD\\AppData\\Local\\Temp\\hust_monograph_MUC_2_1_1792588157878.pdf",
+    "temp_build_path": "C:\\Users\\AD\\AppData\\Local\\Temp\\hust_monograph_MUC_2_1_1792663507383.pdf",
     "final_drive_path": "D:\\antigravity\\academic-research-engine\\output\\pdf\\Chuyen_Khao_Laser_Diode_Muc_2_1_Phase4.pdf",
     "atomic_replace_success": true,
-    "file_size_bytes": 354804,
-    "sha256_checksum": "d724306479143b04cf4734d85949fe6b7c9feed669e830df989c2bf80a9b38b6",
+    "file_size_bytes": 354795,
+    "sha256_checksum": "49774f6719a7efb2cd2d52ab17f4229219fa93937bfb6a097d862874abb361ca",
     "two_pass_total_pages": "Trang 1 / 5",
     "pdf_bookmarks_levels_verified": true
   }

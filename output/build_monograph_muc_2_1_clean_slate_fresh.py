@@ -29,6 +29,7 @@ fig_sim_1 = os.path.join(img_dir, "[Mo_Phong]_Muc_2.1_Cau_Truc_Dai_Nang_Luong_Va
 fig_sim_2 = os.path.join(img_dir, "[Mo_Phong]_Muc_2.1_Dong_Luc_Hoc_Tai_Hop_ABC_Va_Hieu_Suat_Buc_Xa.png")
 
 styles = hpe.get_hust_styles()
+styles["BodyText"] = styles["Body"]
 
 flowables = []
 

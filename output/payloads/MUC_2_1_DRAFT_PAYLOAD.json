@@ -1,0 +1,82 @@
+{
+  "section_id": "MUC_2_1",
+  "section_title": "Cơ chế Tái hợp Bức xạ & Không Bức xạ trong Laser Diode",
+  "cod_rounds_completed": 3,
+  "mpt_payloads": [
+    {
+      "mpt_id": "MPT_2_1_1",
+      "mpt_title": "Cơ chế vi mô của Cơ chế Tái hợp Bức xạ & Không Bức xạ trong Laser Diode",
+      "stage_1_orientation": "Xét bài toán cơ sở trong linh kiện quang điện tử và vật lý bán dẫn: Phân tích giải tích dải năng lượng và quang học của Cơ chế Tái hợp Bức xạ & Không Bức xạ trong Laser Diode. Để nắm bắt bản chất mà không vướng điểm mù chuyên gia, ta thiết lập trực giác vật lý từ nguyên lý đầu thông qua mô hình dải năng lượng và tương tác lượng tử vi mô. Theo mỏ neo trực quan FIG_2_1_1_STRUCTURAL: Mô phỏng giải tích dải năng lượng GaAs theo mô hình Kane 2-band k.p ở nhiệt độ 300 K.",
+      "visual_anchor_id": "FIG_2_1_1_STRUCTURAL",
+      "stage_2_dissection": {
+        "pillar_equation_latex": "E(k) = E_c + \\frac{\\hbar^2 \\cdot k^2}{2 \\cdot m^*_e}",
+        "level_1_overview": "Phương trình cột trụ xuất phát từ xấp xỉ khối lượng hiệu dụng trong gần đúng sóng Bloch. Định luật bảo toàn năng lượng và xung lượng tinh thể điều phối mọi chuyển dời điện tử - lỗ trống. Liên hệ phương trình parabol tiệm cận: <i>E</i>(<i>k</i>) = <i>E</i><sub>0</sub> ± (<i>ħ</i>^2 · <i>k</i>²) phụ thuộc nghịch đảo (2 · <i>m</i><sup>*</sup>).",
+        "level_2_nomenclature_html_table": [
+          {
+            "symbol_html": "<i>E</i>(<i>k</i>)",
+            "name_vi": "Năng lượng trạng thái",
+            "standard_unit_si": "eV",
+            "physical_role": "Mức năng lượng của hạt tải tại vector sóng k"
+          },
+          {
+            "symbol_html": "<i>E<sub>c</sub></i>",
+            "name_vi": "Đáy vùng dẫn",
+            "standard_unit_si": "eV",
+            "physical_role": "Mức thế năng tối thiểu để electron chuyển động tự do"
+          },
+          {
+            "symbol_html": "<i>ħ</i>",
+            "name_vi": "Hằng số Planck rút gọn",
+            "standard_unit_si": "J·s",
+            "physical_role": "Lượng tử tác dụng chuẩn CODATA 2022 (1.054571817 × 10⁻³⁴ J·s)"
+          },
+          {
+            "symbol_html": "<i>m<sup>*</sup><sub>e</sub></i>",
+            "name_vi": "Khối lượng hiệu dụng electron",
+            "standard_unit_si": "kg",
+            "physical_role": "Độ cong đáy vùng dẫn nghịch đảo phản ánh tương tác mạng tinh thể GaAs"
+          },
+          {
+            "symbol_html": "<i>k</i>",
+            "name_vi": "Vector sóng tinh thể",
+            "standard_unit_si": "rad·m⁻¹",
+            "physical_role": "Đại lượng tỷ lệ với xung lượng tinh thể p = ħk"
+          }
+        ],
+        "level_3_asymptotic_and_symmetry": "Phân tích tiệm cận và đối xứng: Khi vector sóng <i>k</i> → 0 (tâm vùng Brillouin Γ), phương trình tiệm cận về đúng đáy vùng dẫn <i>E<sub>c</sub></i>. Tại giới hạn vùng cấm trực tiếp, tính đối xứng chẵn của hàm tán sắc <i>E</i>(<i>k</i>) = <i>E</i>(−<i>k</i>) bảo đảm xung lượng tinh thể triệt tiêu tại đáy vùng dẫn, cho phép electron và lỗ trống tái hợp phát xạ mà không cần phonon hỗ trợ."
+      },
+      "micro_mechanisms": [
+        "Thao tác: Kích thích hạt tải trong bán dẫn GaAs ──> Cơ chế vi mô: Hấp thụ photon có năng lượng lớn hơn bề rộng vùng cấm ──> Biến đổi trạng thái: Electron nhảy từ vùng hóa trị lên vùng dẫn, để lại lỗ trống tự do ══> Đáp ứng vĩ mô: Nồng độ hạt tải không cân bằng tăng vọt, xuất hiện dòng quang",
+        "Thao tác: Thiết lập trạng thái cân bằng chuẩn hạt tải ──> Cơ chế vi mô: Tán xạ electron-phonon nội bộ siêu nhanh cỡ picosecond. Dải dẫn có độ cong lớn do khối lượng hiệu dụng electron nhỏ (me* = 0.067 m0), dải hóa trị phân tách thành lỗ trống nặng và nhẹ. ──> Biến đổi trạng thái: Hạt tải tích lũy cực đại tại"
+      ],
+      "stage_3_guided_derivation": [
+        {
+          "step_index": 1,
+          "explanation_vi": "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Xuất phát từ phương trình vi phân vận tốc nhóm của electron trong tinh thể. Lấy đạo hàm bậc hai của hàm năng lượng theo vector sóng:",
+          "step_equation_latex": "\\frac{d^2E}{dk^2} = \\frac{\\hbar^2}{m^*_e}",
+          "step_nature": "EXACT_ALGEBRAIC"
+        },
+        {
+          "step_index": 2,
+          "explanation_vi": "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tích phân hai vế theo biến vector sóng <i>k</i> với điều kiện biên tại tâm vùng <i>k</i> = 0 thì <i>E</i>(0) = <i>E<sub>c</sub></i> và đạo hàm triệt tiêu do tính đối xứng chẵn:",
+          "step_equation_latex": "E(k) = E_c + \\int_0^k \\frac{\\hbar^2 \\cdot k'}{m^*_e} dk' = E_c + \\frac{\\hbar^2 \\cdot k^2}{2 \\cdot m^*_e}",
+          "step_nature": "EXACT_ALGEBRAIC"
+        }
+      ],
+      "stage_4_variation_sweeps": "Khảo sát biến thể theo nhiệt độ vận hành <i>T</i>: Bề rộng vùng cấm <i>E<sub>g</sub></i>(<i>T</i>) của GaAs thu hẹp dần khi nhiệt độ tăng tuân theo định luật bán thực nghiệm Varshni với thông số mạng tinh thể thực nghiệm. Tại nhiệt độ phòng <i>T</i> = 300 K, <i>E<sub>g</sub></i> đạt giá trị chuẩn 1.424 eV. Điểm cực trị tại tâm vùng Brillouin k = 0, vùng cấm trực tiếp Eg = 1.424 eV. Khi giảm kích thước hình học <i>d</i> xuống dưới bán kính Bohr exciton, hiệu ứng giam cầm lượng tử biến đổi dải liên tục thành các mức dải con rời rạc, làm dịch chuyển đỉnh hấp thụ quang về phía bước sóng ngắn (Blue-shift).",
+      "stage_5_student_challenge_cer": {
+        "challenge_prompt": "Một kỹ sư thiết kế laser diode dị thể GaAs cần xác định bước sóng phát xạ trung tâm tại nhiệt độ 300 K và đánh giá ảnh hưởng của việc tăng nhiệt độ lên 350 K đối với dòng ngưỡng kích thích. Vùng cấm trực tiếp bảo toàn xung lượng giúp tăng cường xác suất tái hợp bức xạ trong diode phát quang và laser diode.",
+        "claim_guidance": "Khẳng định rõ: Bước sóng phát xạ dịch chuyển đỏ (Red-shift) về bước sóng dài hơn và dòng ngưỡng phát xạ kích thích <i>I</i><sub>th</sub> tăng theo hàm mũ đối với nhiệt độ.",
+        "evidence_required": "Sử dụng thông số chuẩn 300 K của GaAs: <i>E<sub>g</sub></i> = 1.424 eV, hằng số Planck <i>h</i> = 4.135667696 × 10⁻¹⁵ eV·s, tốc độ ánh sáng <i>c</i> = 2.99792458 × 10⁸ m·s⁻¹.",
+        "reasoning_rubric": "Vận dụng mối liên hệ bước sóng photon tỷ lệ nghịch với khoảng cách vùng cấm <i>E<sub>g</sub></i>. Khi <i>T</i> tăng từ 300 K lên 350 K, sự giãn nở mạng tinh thể và tán xạ phonon làm giảm <i>E<sub>g</sub></i>, dẫn đến bước sóng tăng (dịch đỏ). Đồng thời, hàm phân bố Fermi-Dirac bị trải rộng làm giảm mật độ nghịch đảo độ tích lũy tại đỉnh dải, buộc dòng bơm phải tăng cao hơn để bù đắp tổn hao ngưỡng.",
+        "misconception_warning": "Ngộ nhận thường gặp: Sinh viên hay nhầm lẫn rằng nhiệt độ tăng làm tăng động năng electron nên bước sóng photon phát ra phải có năng lượng cao hơn (dịch xanh). Bản chất quang lượng tử quy định năng lượng photon phụ thuộc trực tiếp vào khoảng cách vùng cấm <i>E<sub>g</sub></i>, vốn thu hẹp khi nhiệt độ tăng."
+      }
+    }
+  ],
+  "linter_pre_check": {
+    "passed": true,
+    "raw_latex_leaks_count": 0,
+    "slash_fraction_count": 0,
+    "raw_subscript_count": 0
+  }
+}

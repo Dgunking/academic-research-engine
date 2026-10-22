@@ -1,0 +1,84 @@
+{
+  "chapter": 3,
+  "subject": "Cơ sở vật lý và công nghệ nano",
+  "course_code": "PH3470",
+  "instructor": "PGS. TS. Nguyễn Hữu Lâm (Viện Vật lý kỹ thuật - HUST)",
+  "title": "Đặc trưng của vật liệu khi kích thước giảm (What happens at the nanoscale?)",
+  "source_document": "Bài 3-Properties.pdf",
+  "total_slides": 48,
+  "textbook_reference": "Edward L. Wolf (2006), Nanophysics and nanotechnology, Wiley-VCH Verlag GmbH & Co. KgaA, Chapter 3",
+  "sections": [
+    {
+      "section_id": "3.1",
+      "title": "Cơ học thang nano, dao động tử điều hòa và định luật tỉ lệ tần số",
+      "english_title": "Nanoscale Mechanics, Harmonic Oscillators and Frequency Scaling Laws",
+      "slides_range": "Slide 1 - 21",
+      "key_topics": [
+        "Nghịch lý cơ học cổ điển và thế giới nano: Cỗ máy Antikythera, giới hạn cơ học Newton đối với nguyên tử và electron",
+        "Phương trình động lực học dao động điều hòa của dầm cantilever AFM và dao động liên kết giữa hai nguyên tử trong mạng tinh thể",
+        "Nghiệm dao động điều hòa, tần số riêng omega = sqrt(k/m), năng lượng dao động toàn phần và thế năng điều hòa parabol",
+        "Mô tả lượng tử của dao động tử điều hòa: Năng lượng E_n = (n + 1/2) hbar omega, hàm sóng Hermite, phân bố xác suất lượng tử vs cổ điển, nguyên lý tương ứng Bohr",
+        "Yếu tố lực cản môi trường: Dao động tắt dần, dao động cưỡng bức, hiện tượng cộng hưởng và hệ số phẩm chất Q",
+        "Thế tương tác Lennard-Jones giữa hai nguyên tử: Lực tương tác F = -nabla U, khoảng cách cân bằng r_0 và gần đúng điều hòa bậc hai",
+        "Độ võng và độ cứng đàn hồi của dầm cantilever AFM (k = 3EI/L^3 = E w t^3 / 4 L^3)",
+        "Định luật tỉ lệ kích thước (Scaling laws): k tỉ lệ L, m tỉ lệ L^3 suy ra omega tỉ lệ 1/L, tần số dao động siêu cao ở thang nano (100 nm đạt ~15 GHz)",
+        "Hệ thống bài toán định lượng: Bài 1 (Phân tử CO dao động trục, khối lượng rút gọn, tần số và bước sóng hồng ngoại), Bài 2 (Thay thế đồng vị O/C và tỉ lệ khối lượng L^3), Bài 3 (Cắt ngắn chiều dài liên kết L' = L/2 suy ra K' = 2K)"
+      ]
+    },
+    {
+      "section_id": "3.2",
+      "title": "Nhiệt động học vi mô, động học chất lưu Stokes và chuyển động khuếch tán Brown",
+      "english_title": "Microscopic Thermodynamics, Stokes Fluid Dynamics and Brownian Diffusion",
+      "slides_range": "Slide 22 - 28",
+      "key_topics": [
+        "Trao đổi nhiệt vi mô qua cầu dẫn nhiệt nano, định luật dẫn nhiệt Fourier dQ/dt = k_T A (T - T_0)/L = C_V dT/dt",
+        "Nghiệm suy giảm hàm mũ nhiệt độ, hằng số thời gian nhiệt tau_th = L C_V / (k_T A)",
+        "Định luật tỉ lệ nhiệt: V tỉ lệ L^3, A tỉ lệ L^2 suy ra tau_th tỉ lệ L^2, chênh lệch nhiệt độ dT tỉ lệ L, hệ quả tản nhiệt tức thời và đồng nhất nhiệt độ ở thang nano",
+        "Cơ học chất lưu nhớt ở thang nano: Lực cản nhớt Stokes F = 6 pi eta R v",
+        "Tốc độ rơi giới hạn cân bằng trọng lực v = m g / (6 pi eta R) = 2 rho g R^2 / (9 eta)",
+        "Nghịch lý tốc độ rơi: So sánh hạt vi mô 10 micromet (v = 23 mm/s) vs hạt nano 15 nm (v = 13 nm/s)",
+        "Giới hạn của cơ học Newton ở thang nano: Chuyển động nhiệt Brown chiếm ưu thế áp đảo so với lắng trọng trường",
+        "Khuếch tán vi hạt: Hệ số khuếch tán Einstein - Smoluchowski D = k_B T / (6 pi eta R), chiều dài khuếch tán bình phương trung bình x_rms = sqrt(4 D t)",
+        "Hiện tượng ma sát siêu trơn thang phân tử (Superlubricity) ở Graphite và Carbon Nanotubes do trượt không ma sát và không tương thích mạng"
+      ]
+    },
+    {
+      "section_id": "3.3",
+      "title": "Mật độ trạng thái điện tử (DOS), ống nano carbon và hiện tượng giam hãm phonon",
+      "english_title": "Electronic Density of States (DOS), Carbon Nanotubes and Phonon Confinement",
+      "slides_range": "Slide 29 - 37",
+      "key_topics": [
+        "Hình thái học đa dạng của cấu trúc nano (Morphology): Các dạng tinh thể ZnO (nanowires, nanorods, nanobelts, nanoflowers)",
+        "Mật độ trạng thái điện tử (DOS) theo số chiều: Bulk 3D (sqrt(E)), Quantum Well 2D (bậc thang), Quantum Wire 1D (nghịch đảo căn bậc hai - điểm kỳ dị Van Hove), Quantum Dot 0D (hàm delta delta(E))",
+        "Cấu trúc dải năng lượng và tính chất điện tử của Ống nano carbon (CNT): Vector chiral C_h = n a_1 + m a_2, góc chiral theta, quy tắc kim loại (n - m = 3q) vs bán dẫn",
+        "Hiện tượng giam hãm phonon (Phonon Confinement Effect): Phổ tán xạ Raman của hạt nano tinh thể CeO2 và TiO2, mô hình Campbell - Fauchet / Richter - Wang - Ley, sự dịch đỉnh và mở rộng vạch phổ Raman",
+        "Tính chất từ và chuyển pha phụ thuộc kích thước: Sự suy giảm nhiệt độ Curie chuyển pha sắt từ - thuận từ và sắt điện trong gốm nano PbTiO3, hiệu ứng siêu thuận từ (Superparamagnetism)"
+      ]
+    },
+    {
+      "section_id": "3.4",
+      "title": "Hiệu ứng bề mặt, năng lượng bề mặt và các ứng dụng xúc tác - cảm biến nano",
+      "english_title": "Surface Effects, Surface Energy and Nanocatalysis - Nanosensor Applications",
+      "slides_range": "Slide 38 - 43",
+      "key_topics": [
+        "Khoa học bề mặt và liên diện (Surface & Interface Science): Bùng nổ diện tích bề mặt riêng, tỉ số S/V = 3/R, tỉ lệ nguyên tử bề mặt tăng vọt",
+        "Trực quan hóa diện tích bề mặt: Góc nhìn phô mai Pháp (French cheese perspective)",
+        "Năng lượng bề mặt (Surface Energy) và độ bất ổn định nhiệt động học: Liên kết chưa bão hòa, hiện tượng tụ tập hạt nano (Agglomeration) và chín muồi Ostwald",
+        "Ứng dụng xúc tác nano (Nanocatalysis): Tâm hoạt tính (active sites), diện tích phản ứng tăng vọt, tối ưu hóa vật liệu kim loại quý",
+        "Ứng dụng cảm biến nano (Nanosensors & Biosensors): Tỉ số S/V cao cải thiện độ nhạy và giới hạn phát hiện (LOD), cơ chế nhận diện chìa khóa - ổ khóa phân tử"
+      ]
+    },
+    {
+      "section_id": "3.5",
+      "title": "Tính chất điện quang, cộng hưởng plasmon bề mặt (LSPR) và chấm lượng tử bán dẫn",
+      "english_title": "Electro-Optical Properties, Localized Surface Plasmon Resonance (LSPR) and Quantum Dots",
+      "slides_range": "Slide 44 - 48",
+      "key_topics": [
+        "Đặc tính điện và hiệu ứng giam hãm lượng tử: Mở rộng vùng cấm E_g(R), hiện tượng dịch chuyển xanh (Blue shift), chuyển pha kim loại - bán dẫn ở kích thước siêu nhỏ (hiệu ứng Kubo)",
+        "Tương tác quang học toàn phần: Cân bằng quang thông I_0 = T + A + R + S, vai trò của tán xạ Rayleigh và hấp thụ cộng hưởng",
+        "Hạt nano kim loại và Cộng hưởng Plasmon Bề mặt Cục bộ (LSPR): Dao động tập thể của electron tự do, lý thuyết Mie, điều kiện Fröhlich, màu sắc rực rỡ của keo nano Au và Ag",
+        "Chấm lượng tử bán dẫn (Quantum Dots): Mức năng lượng gián đoạn, phát xạ huỳnh quang đơn sắc, điều khiển màu sắc phát xạ theo kích thước hạt"
+      ]
+    }
+  ]
+}

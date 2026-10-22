@@ -1,82 +1,64 @@
 # -*- coding: utf-8 -*-
 """
-Generator for Section 2.6 Monograph Script
-Course: Co so vat ly va cong nghe nano (PH3470 - HUST)
-Section 2.6: Tiem nang va xu huong tuong lai cua cong nghe nano
-Strict Compliance: Progressive 5 Stages, Causal Flowchain, Zero-Slash, Zero-LaTeX-Leakage
-"""
-
-content = r'''# -*- coding: utf-8 -*-
-"""
-HUST Monograph PDF Typesetting Script
-Course: Co so vat ly va cong nghe nano (PH3470 - HUST)
-Chapter 2: Ban chat luong tu cua the gioi nano (Quantum Nature of Nanoworld)
-Section 2.6: Tiem nang va xu huong tuong lai cua cong nghe nano
-Architecture: Progressive 5 Stages & Causal Flowchain (Pass 100% Pre-flight Linter)
-Author: Academic Research Engine & Monograph PDF Publisher (Bui Trung Dung - HUST)
+gen_clean_2_6.py
+Biên dịch Chuyên khảo Toàn văn Mục 2.6: Dòng ngưỡng và công suất bức xạ ngõ ra theo dòng tiêm
+Coldren & Corzine, trang 41-48.
 """
 import os
 import sys
 
-if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8')
-
-sys.path.insert(0, r"d:\antigravity\academic-research-engine\.agents\skills\monograph-pdf-publisher\scripts")
-import hust_pdf_engine as he
-from reportlab.platypus import Paragraph, Spacer, KeepTogether, PageBreak
+sys.stdout.reconfigure(encoding="utf-8")
 from reportlab.lib import colors
+from reportlab.platypus import Paragraph, Spacer, Table, TableStyle, KeepTogether, PageBreak
 
-DRIVE_DIR = r"G:\My Drive\NotebookLM - Academic Knowledge Base\Cơ sở vật lý và công nghệ nano"
-PDF_DIR = os.path.join(DRIVE_DIR, "Bai_Giang_Dong_Goi")
-IMG_DIR = os.path.join(DRIVE_DIR, "Kho_Hinh_Anh")
-os.makedirs(PDF_DIR, exist_ok=True)
-os.makedirs(IMG_DIR, exist_ok=True)
+sys.path.append(r"d:\antigravity\academic-research-engine")
+sys.path.append(r"d:\antigravity\academic-research-engine\.agents\skills\monograph-pdf-publisher\scripts")
 
-PDF_FILENAME = "Chuyen_Khao_Nano_Muc_2.6.pdf"
-TARGET_PDF_PATH = os.path.join(PDF_DIR, PDF_FILENAME)
+import hust_pdf_engine as he
+
+drive_base = r"G:\My Drive\NotebookLM - Academic Knowledge Base\Laser Diode - Cấu trúc và Nguyên lý"
+img_dir = os.path.join(drive_base, "Kho_Hinh_Anh")
+pdf_dir = os.path.join(drive_base, "Bai_Giang_Dong_Goi")
+os.makedirs(pdf_dir, exist_ok=True)
+
+pdf_filename = os.path.join(pdf_dir, "Chuyen_Khao_Laser_Diode_Muc_2.6.pdf")
+
+# Hình ảnh gốc và mô phỏng
+fig_goc_2_9 = os.path.join(img_dir, "[Goc]_Figure_2.9_Dac_tuyen_cong_suat_quang_theo_dong_P_I_laser_diode.png")
+fig_goc_2_11 = os.path.join(img_dir, "[Goc]_Figure_2.11_Do_thi_3D_va_dong_muc_dong_dien_yeu_cau_10mW.png")
+fig_sim_2_6a = os.path.join(img_dir, "[Mo_Phong]_Muc_2.6_Dac_Tuyen_P_I_Va_Suy_Hao_Nhiet.png")
+fig_sim_2_6b = os.path.join(img_dir, "[Mo_Phong]_Muc_2.6_Toi_Uu_Hoa_Chieu_Dai_Hoc_Cho_Dong_10mW.png")
 
 
 def build_monograph_muc_2_6():
+    print(f"Building monograph PDF: {pdf_filename}...")
+    doc = he.BookmarkDocTemplate(pdf_filename)
     styles = he.get_hust_styles()
-    doc = he.BookmarkDocTemplate(TARGET_PDF_PATH)
+    styles["BodyText"] = styles["Body"]
     story = []
 
-    def add_p(text: str, style_name: str = "Body", ocr_idx: int = None, is_expanded: bool = False):
-        p = he.make_paragraph(text, styles[style_name], ocr_idx=ocr_idx, is_expanded_from_slide=is_expanded)
+    def add_p(text, style_name="Body"):
+        p = he.Paragraph(he.wrap_math_glyphs(text), styles[style_name])
+        p.keepWithNext = False
         story.append(p)
-        return p
 
-    def add_spacer(pt: float = 8.0):
-        story.append(Spacer(1, pt))
-
-    # Figure paths (Original slide figures)
-    fig_goc_moore = os.path.join(IMG_DIR, "[Goc]_Muc_2.6_Hinh_01_Dinh_Luat_Moore_Intel_Transistor.png")
-    fig_goc_drug = os.path.join(IMG_DIR, "[Goc]_Muc_2.6_Hinh_02_Y_Sinh_Hoc_Nano_Drug_Delivery.png")
-    fig_goc_solar = os.path.join(IMG_DIR, "[Goc]_Muc_2.6_Hinh_03_Nang_Luong_Mat_Troi_Nano.png")
-    fig_goc_comp = os.path.join(IMG_DIR, "[Goc]_Muc_2.6_Hinh_04_Vat_Lieu_Composite_Nano.png")
-    fig_goc_chip = os.path.join(IMG_DIR, "[Goc]_Muc_2.6_Hinh_05_Chip_Ban_Dan_Tich_Hop_Nano.png")
-    fig_goc_prof = os.path.join(IMG_DIR, "[Goc]_Muc_2.6_Hinh_06_GS_Markus_Antonietti_Max_Planck.png")
-
-    # Simulation figures (MATLAB R2014b+)
-    fig_sim_moore = os.path.join(IMG_DIR, "[Mo_Phong]_Muc_2.6_Dinh_Luat_Moore_Va_Gioi_Han_Luong_Tu.png")
-    fig_sim_photo = os.path.join(IMG_DIR, "[Mo_Phong]_Muc_2.6_Hieu_Suat_Quang_Xuc_Tac_Nano_Moi_Truong.png")
-    fig_sim_meg = os.path.join(IMG_DIR, "[Mo_Phong]_Muc_2.6_Hieu_Ung_Sinh_Da_Exciton_MEG_Pin_Mat_Troi.png")
+    def add_spacer(height_pt=8):
+        story.append(he.Spacer(1, height_pt))
 
     # =========================================================================
-    # H1 TIÊU ĐỀ PHÂN MỤC VÀ METADATA ĐÀO TẠO BÁCH KHOA
+    # TRANG TIÊU ĐỀ & ĐỀ CƯƠNG MỤC 2.6
     # =========================================================================
-    add_p("Chương 2: Bản chất lượng tử của thế giới nano", "H1")
-    add_p("Mục 2.6: Tiềm năng và xu hướng tương lai của công nghệ nano", "H2")
-    add_p("<i>(Đối chiếu giáo trình quốc tế: Edward L. Wolf — Nanophysics and Nanotechnology, Chương 1, Chương 8 và Chương 10; Slide bài giảng 71–75)</i>", "Caption")
+    add_p("Chương 2: Phương pháp tiếp cận hiện tượng luận đối với laser diode", "H1")
+    add_p("Mục 2.6: Dòng ngưỡng và công suất bức xạ ngõ ra theo dòng tiêm (Threshold Current and Power Out vs. Injection Current)", "H2")
     add_spacer(6)
 
     meta_table_data = [
-        [Paragraph(he.wrap_math_glyphs("<b>Học phần:</b> Cơ sở vật lý và công nghệ nano (PH3470)"), styles["TableCell"]),
-         Paragraph(he.wrap_math_glyphs("<b>Đơn vị đào tạo:</b> Viện Vật lý Kỹ thuật — ĐHBK Hà Nội"), styles["TableCell"])],
-        [Paragraph(he.wrap_math_glyphs("<b>Học viên tiếp nhận:</b> Bùi Trung Dũng (Năm 3 — VLKT)"), styles["TableCell"]),
-         Paragraph(he.wrap_math_glyphs("<b>Vị thế hợp tác:</b> Giảng viên &amp; Cộng sự Lab ngang hàng"), styles["TableCell"])],
-        [Paragraph(he.wrap_math_glyphs("<b>Tài liệu nguồn kép:</b> Slide HUST Bài 2 (Slide 71–75); Wolf Nanotechnology"), styles["TableCell"]),
-         Paragraph(he.wrap_math_glyphs("<b>Chuẩn mực kỹ thuật:</b> Khung Sư phạm 5 Giai đoạn, Zero-Omission, Zero-Slash"), styles["TableCell"])]
+        [Paragraph(he.wrap_math_glyphs("<b>Học phần:</b> Laser Diode — Cấu trúc và Nguyên lý"), styles["TableCell"]),
+         Paragraph(he.wrap_math_glyphs("<b>Chuyên đề:</b> Đặc tuyến Công suất – Dòng tiêm &amp; Tối ưu hóa"), styles["TableCell"])],
+        [Paragraph(he.wrap_math_glyphs("<b>Tài liệu gốc:</b> Coldren &amp; Corzine (Trang 41–48)"), styles["TableCell"]),
+         Paragraph(he.wrap_math_glyphs("<b>Đối chiếu:</b> Sze (Ch. 12) &amp; Yariv (Ch. 15)"), styles["TableCell"])],
+        [Paragraph(he.wrap_math_glyphs("<b>Mã phân mục:</b> Mục 2.6 (Chương 2)"), styles["TableCell"]),
+         Paragraph(he.wrap_math_glyphs("<b>Quy chuẩn:</b> Độc lập tự chứa (1 Mục = 1 File PDF)"), styles["TableCell"])],
     ]
     meta_t = he.Table(meta_table_data, colWidths=[250.0, he.PRINTABLE_WIDTH - 250.0])
     meta_t.setStyle(he.TableStyle([
@@ -92,21 +74,23 @@ def build_monograph_muc_2_6():
     add_spacer(10)
 
     add_p(
-        "Chuyên khảo toàn văn chuyên sâu kết thúc toàn diện Chương 2 về tiềm năng ứng dụng đột phá và các xu hướng công nghệ tương lai "
-        "(PH3470 — HUST; đối chiếu Edward L. Wolf, Nanophysics and Nanotechnology, Chapters 1, 8 và 10). "
-        "Triển khai toàn văn từ quy luật tăng trưởng transistor theo Định luật Moore và các ranh giới lượng tử bất khả xâm phạm "
-        "(chui hầm qua lớp oxide cổng, rò rỉ hạt tải, mật độ công suất tản nhiệt và kỷ nguyên hậu Silicon Beyond-CMOS), "
-        "công nghệ y sinh học nano và dẫn thuốc hướng đích dựa trên hiệu ứng thấm giữ tăng cường (EPR) và hạt nano quang nhiệt, "
-        "các công nghệ năng lượng xanh thế hệ mới (pin mặt trời nano hiệu ứng sinh đa exciton MEG và pin lithium-ion thể rắn cực dương nano silicon), "
-        "công nghệ môi trường xử lý nước sạch và thanh lọc không khí qua màng nano và xúc tác quang hóa TiO<sub>2</sub> (theo tầm nhìn của GS. Markus Antonietti — Max Planck), "
-        "cùng bài toán đạo đức khoa học, an toàn độc tính nano (Nanotoxicology) và chiến lược nghiên cứu phát triển công nghệ nano bán dẫn tại Việt Nam."
+        "Chuyên khảo toàn văn chuyên sâu Mục 2.6 giải phẫu mối quan hệ giữa công suất phát xạ quang học "
+        "ngõ ra và dòng điện tiêm bơm vào diode laser (đặc tuyến <i>L</i>–<i>I</i> hay <i>P</i>–<i>I</i>) "
+        "(đối chiếu Coldren &amp; Corzine, Diode Lasers and Photonic Integrated Circuits, Chapter 2, trang 41–48). "
+        "Nội dung chuyên khảo triển khai sâu 3 Luận điểm Vi mô (MPT): "
+        "(1) Đặc tuyến công suất quang ngõ ra <i>P</i><sub>0</sub>(<i>I</i>), hiệu suất lượng tử vi sai <i>η<sub>d</sub></i>, "
+        "độ dốc hiệu suất <i>SE</i>, và sự phân chia công suất qua hai mặt gương phản xạ; "
+        "(2) Bài toán tối ưu hóa chiều dài hốc cộng hưởng <i>L</i> và cấu hình phủ gương chọn lọc (AR–HR) "
+        "để đạt công suất quang mục tiêu (10 mW) với dòng tiêu thụ tối thiểu; "
+        "và (3) Hiệu suất chuyển đổi năng lượng toàn phần (Wall-Plug Efficiency <i>η<sub>c</sub></i>), "
+        "điện trở tiếp xúc nối tiếp <i>R<sub>s</sub></i>, sự suy hao nhiệt (Thermal Rollover) và điều kiện vận hành tối ưu."
     )
     add_spacer(10)
 
     # BẢNG TỔNG QUAN NGUỒN KÉP MỤC 2.6
     matrix_headers = [
         Paragraph(he.wrap_math_glyphs("<b>Mã MPT</b>"), styles["TableHeader"]),
-        Paragraph(he.wrap_math_glyphs("<b>Tiêu đề Luận điểm Vi mô (Slide HUST &amp; Wolf)</b>"), styles["TableHeader"]),
+        Paragraph(he.wrap_math_glyphs("<b>Tiêu đề Luận điểm Vi mô (Coldren &amp; Corzine)</b>"), styles["TableHeader"]),
         Paragraph(he.wrap_math_glyphs("<b>Hệ thức Cột trụ &amp; Phương trình Trọng tâm</b>"), styles["TableHeader"]),
         Paragraph(he.wrap_math_glyphs("<b>Mô phỏng &amp; Hình ảnh Thực chứng</b>"), styles["TableHeader"]),
     ]
@@ -114,623 +98,417 @@ def build_monograph_muc_2_6():
         matrix_headers,
         [
             Paragraph(he.wrap_math_glyphs("<b>MPT 2.6.1</b>"), styles["TableCellCenter"]),
-            Paragraph(he.wrap_math_glyphs("Định luật Moore, Giới hạn lượng tử &amp; Kỷ nguyên hậu Silicon"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Quy luật tăng trưởng N(t), chui hầm rào thế và dòng rò cổng"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Ảnh gốc: Moore Intel, Chip Nano; Mô phỏng 2.6.1"), styles["TableCellCenter"]),
+            Paragraph(he.wrap_math_glyphs("Đặc tuyến <i>P</i>–<i>I</i> &amp; Hiệu suất vi phân <i>η<sub>d</sub></i>"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("<i>P</i><sub>0</sub> = <i>η<sub>d</sub> · hν · q</i><sup>−1</sup> (<i>I − I</i><sub>th</sub>), <i>η<sub>d</sub> = η<sub>i</sub> · α<sub>m</sub> · α</i><sub>tot</sub><sup>−1</sup>"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("Hình 2.9 &amp; Mô phỏng <i>P</i><sub>0</sub>(<i>I</i>) suy hao nhiệt"), styles["TableCellCenter"]),
         ],
         [
             Paragraph(he.wrap_math_glyphs("<b>MPT 2.6.2</b>"), styles["TableCellCenter"]),
-            Paragraph(he.wrap_math_glyphs("Công nghệ y sinh học nano &amp; Dẫn thuốc hướng đích"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Hiệu ứng thấm giữ EPR, nhiệt từ trường và quang nhiệt vàng"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Ảnh gốc: Dẫn thuốc nano y sinh (Slide 72)"), styles["TableCellCenter"]),
+            Paragraph(he.wrap_math_glyphs("Tối ưu hóa hốc <i>L</i> &amp; Phủ gương AR–HR cho 10 mW"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("<i>I</i><sub>req</sub> = <i>I</i><sub>th</sub>(<i>L</i>) + <i>P</i><sub>0</sub> · [<i>SE(L)</i>]<sup>−1</sup>, cực tiểu tại <i>L</i><sub>opt</sub>"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("Hình 2.11 &amp; Mô phỏng quét <i>L</i> cho 10 mW"), styles["TableCellCenter"]),
         ],
         [
             Paragraph(he.wrap_math_glyphs("<b>MPT 2.6.3</b>"), styles["TableCellCenter"]),
-            Paragraph(he.wrap_math_glyphs("Công nghệ nano trong chuyển đổi &amp; Tích trữ năng lượng"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Sinh đa exciton MEG và dung lượng lý thuyết cực dương Si nano"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Ảnh gốc: Pin mặt trời, Composite; Mô phỏng 2.6.3"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("<b>MPT 2.6.4</b>"), styles["TableCellCenter"]),
-            Paragraph(he.wrap_math_glyphs("Công nghệ nano môi trường: Nước sạch &amp; Không khí"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Động học quang xúc tác bậc nhất và thông lượng màng lọc nano"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Ảnh gốc: GS. Antonietti Max Planck; Mô phỏng 2.6.2"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("<b>MPT 2.6.5</b>"), styles["TableCellCenter"]),
-            Paragraph(he.wrap_math_glyphs("Xu hướng tương lai, Độc tính nano &amp; Chiến lược Việt Nam"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Hệ số khuếch tán Stokes-Einstein và khung kiểm soát EHS"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Slide 74–75: Tổng kết toàn diện Chương 2"), styles["TableCellCenter"]),
+            Paragraph(he.wrap_math_glyphs("Hiệu suất Wall-Plug &amp; Điểm làm việc tối ưu"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("<i>η<sub>c</sub> = P</i><sub>0</sub> · [<i>I (V<sub>j</sub> + I R<sub>s</sub>)</i>]<sup>−1</sup>, cực đại tại <i>I</i><sub>opt</sub> ≈ 2–3 <i>I</i><sub>th</sub>"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("Mô hình giải tích &amp; Bẫy điểm mù R&amp;D CER"), styles["TableCellCenter"]),
         ],
     ]
-    t_matrix = he.Table(matrix_rows, colWidths=[65.0, 165.0, 155.0, 130.0], repeatRows=1)
-    t_matrix.setStyle(he.TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), he.COLOR_TABLE_HEADER_BG),
-        ("GRID", (0, 0), (-1, -1), 0.5, he.COLOR_BORDER_GRAY),
-        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-        ("TOPPADDING", (0, 0), (-1, -1), 4),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
-        ("LEFTPADDING", (0, 0), (-1, -1), 5),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 5),
+    matrix_t = he.Table(matrix_rows, colWidths=[70.0, 150.0, 160.0, he.PRINTABLE_WIDTH - 380.0])
+    matrix_t.setStyle(he.TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#002B49')),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#CED4DA')),
+        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, colors.HexColor('#F8F9FA')]),
+        ('TOPPADDING', (0,0), (-1,-1), 4),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+        ('LEFTPADDING', (0,0), (-1,-1), 5),
+        ('RIGHTPADDING', (0,0), (-1,-1), 5),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
     ]))
-    story.append(t_matrix)
+    story.append(matrix_t)
     add_spacer(14)
 
     # =========================================================================
-    # MPT 2.6.1: ĐỊNH LUẬT MOORE & GIỚI HẠN LƯỢNG TỬ
+    # LUẬN ĐIỂM 2.6.1: ĐẶC TUYẾN P-I VÀ HIỆU SUẤT LƯỢNG TỬ VI PHÂN
     # =========================================================================
-    add_p("Luận điểm 2.6.1: Định luật Moore, Giới hạn lượng tử &amp; Kỷ nguyên hậu Silicon", "H2")
-    add_spacer(4)
+    add_p("Luận điểm 2.6.1: Đặc tuyến công suất quang theo dòng tiêm P–I và Hiệu suất lượng tử vi phân", "H2")
 
-    # GIAI ĐOẠN 1
-    add_p("Giai đoạn 1: Giới thiệu khái niệm và quy luật tăng trưởng hàm mũ của bán dẫn", "H3")
+    # Giai đoạn 1: Giới thiệu khái niệm
+    add_p("Giai đoạn 1: Giới thiệu khái niệm, bước nhảy độ dốc tại ngưỡng và sự phân chia photon qua hai gương", "H3")
     add_p(
-        "Năm 1965, Gordon Moore (đồng sáng lập tập đoàn Intel) đã đưa ra một dự đoán kinh điển làm kim chỉ nam cho toàn bộ ngành công nghiệp bán dẫn toàn cầu: "
-        "Số lượng transistor tích hợp trên một mạch vi xử lý mật độ cao sẽ tăng gấp đôi xấp xỉ sau mỗi chu kỳ từ 18 đến 24 tháng, "
-        "trong khi giá thành của mỗi transistor giảm đi một nửa. "
-        "Quy luật thực nghiệm này được biết đến với tên gọi <b>Định luật Moore (Moore's Law)</b>. "
-        "Nhờ Định luật Moore, vi điện tử đã chuyển mình từ các chip xử lý vài nghìn transistor thập niên 1970 lên tới hàng trăm tỷ transistor "
-        "trên mỗi đế chip GPU và CPU tiên tiến hiện nay.",
-        ocr_idx=71
-    )
-    add_spacer(6)
-
-    add_p(
-        "Tuy nhiên, khi kích thước cổng transistor (Gate Length) bị thu hẹp xuống dưới 3 nm, 2 nm và tiến dần về quy mô cỡ vài nguyên tử Silicon "
-        "(kích thước mạng tinh thể Si là <i>a</i> = 0,543 nm), Định luật Moore va phải các <b>ranh giới lượng tử vật lý cơ bản</b>: "
-        "<br/>1. <b>Hiệu ứng chui hầm lượng tử trực tiếp (Direct Quantum Tunneling):</b> Khi bề dày lớp oxit cách điện cổng <i>d</i><sub>ox</sub> &lt; 1 nm, "
-        "electron chui hầm trực tiếp xuyên qua rào thế năng cách điện, gây nên dòng rò cổng khổng lồ <i>I</i><sub>leak</sub> ngay cả khi transistor ở trạng thái tắt (OFF). "
-        "<br/>2. <b>Hiệu ứng kênh ngắn (Short-Channel Effects):</b> Khi chiều dài kênh thu nhỏ, điện thế cực máng làm hạ thấp rào thế năng cực nguồn (DIBL), "
-        "khiến cực cổng mất hoàn toàn khả năng ngắt dòng điện. "
-        "<br/>3. <b>Giới hạn tản nhiệt Dennard:</b> Mật độ công suất nhiệt tỏa ra trên một đơn vị diện tích vượt quá ngưỡng dung sai vật liệu (~ 100 W·cm<sup>−2</sup>), "
-        "khiến chip bị quá nhiệt cục bộ (Thermal Runaway).",
-        ocr_idx=71, is_expanded=True
+        "Dưới ngưỡng phát xạ (<i>I</i> < <i>I</i><sub>th</sub>), diode laser hoạt động như một LED thông thường: "
+        "bức xạ hoàn toàn do tái hợp tự phát không kết hợp điều khiển, "
+        "photon phát xạ đẳng hướng vào không gian 4π steradian với hiệu suất lượng tử vi phân cực thấp (chỉ khoảng 0,5–1%). "
+        "Khi dòng tiêm vượt qua dòng ngưỡng <i>I</i><sub>th</sub>, hiện tượng bức xạ kích thích bùng nổ, "
+        "đặc tuyến <i>P</i>–<i>I</i> xuất hiện một điểm bẻ gập sắc nét (kink). "
+        "Trên ngưỡng, toàn bộ lượng dòng tiêm gia tăng (<i>I</i> − <i>I</i><sub>th</sub>) được chuyển hóa gần như hoàn toàn "
+        "thành thông lượng photon kết hợp định hướng đơn mode, khiến công suất ngõ ra tăng vọt theo một đường thẳng tuyến tính dốc đứng."
     )
     add_spacer(8)
 
-    # Embed ảnh gốc Moore
+    # Embed Hình gốc 2.9
     story.append(he.embed_figure_with_caption(
-        fig_goc_moore,
-        "Hình 2.6.1 (Slide 71): Đường tăng trưởng số lượng transistor trên bộ vi xử lý của Intel từ 1971 đến nay theo hàm mũ của Định luật Moore.",
+        fig_goc_2_9,
+        "Hình 2.9: Đặc tuyến công suất quang ngõ ra theo dòng tiêm <i>P</i>–<i>I</i> của diode laser (Coldren &amp; Corzine, trang 41). "
+        "Ba mắt xích động học: (a) Dưới ngưỡng <i>I</i> < <i>I</i><sub>th</sub>, phát xạ tự phát LED có công suất không đáng kể; "
+        "(b) Điểm bẻ gập ngưỡng <i>I</i><sub>th</sub> phân tách hai chế độ lượng tử; "
+        "(c) Trên ngưỡng <i>I</i> > <i>I</i><sub>th</sub>, công suất quang tăng tuyến tính với độ dốc tỉ lệ trực tiếp với hiệu suất vi phân <i>η<sub>d</sub></i>.",
         kind="orig",
-        styles=styles
+        styles=styles,
     ))
+    add_spacer(8)
+
+    # Giai đoạn 2: Hạt nhân vật lý & Hệ thức Cột trụ
+    add_p("Giai đoạn 2: Hạt nhân vật lý và Hệ thức Cột trụ công suất phát xạ trên ngưỡng", "H3")
+    add_p(
+        "Phương trình giải tích chuẩn mực xác định công suất quang ngõ ra toàn phần phát qua gương:"
+    )
+
+    pillar_eq_2_6_1 = r"P_0 = \eta_d \frac{h\nu}{q} (I - I_{\mathrm{th}}), \quad \eta_d = \eta_i \frac{\alpha_m}{\langle\alpha_i\rangle + \alpha_m} = \eta_i \frac{\alpha_m}{\alpha_{\mathrm{tot}}}"
+    nom_data_2_6_1 = [
+        {"name": "Công suất quang phát xạ hữu ích", "symbol": "<i>P</i><sub>0</sub>", "unit": "W (hoặc mW)", "meaning": "Tổng thông lượng photon kết hợp thoát qua các mặt gương hốc cộng hưởng"},
+        {"name": "Hiệu suất lượng tử vi phân", "symbol": "<i>η<sub>d</sub></i>", "unit": "không thứ nguyên", "meaning": "Xác suất một hạt tải tiêm vượt ngưỡng sinh ra một photon thoát ra ngoài hốc"},
+        {"name": "Dòng điện ngưỡng phát laser", "symbol": "<i>I</i><sub>th</sub>", "unit": "A (hoặc mA)", "meaning": "Dòng tiêm tối thiểu bắt đầu xuất hiện bức xạ kích thích kết hợp"},
+        {"name": "Độ dốc hiệu suất phát xạ", "symbol": "<i>SE</i>", "unit": "W·A<sup>−1</sup> (hoặc mW·mA<sup>−1</sup>)", "meaning": "Tỷ số vi phân giữa biến thiên công suất và biến thiên dòng tiêm trên ngưỡng"}
+    ]
+    story.append(he.build_target_equation_block(pillar_eq_2_6_1, nom_data_2_6_1, styles=styles))
+    add_spacer(8)
+
+    # Giai đoạn 3: Chuỗi nhân quả dẫn xuất
+    add_p("Giai đoạn 3: Chuỗi nhân quả dẫn xuất công suất ngõ ra từ thông lượng photon qua gương", "H3")
+    add_p("Dẫn xuất tường minh biểu thức công suất quang từ phương trình trạng thái dừng:")
+
+    eq_deriv_2_6_1a = r"P_0 = v_g \alpha_m h\nu S V_{\mathrm{mode}} = v_g \alpha_m h\nu \left[\frac{\eta_i (I - I_{\mathrm{th}})}{q v_g g_{\mathrm{th}} V_{\mathrm{mode}}}\right] V_{\mathrm{mode}}"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Biến đổi công suất từ thông lượng photon thoát qua gương:", eq_deriv_2_6_1a, styles=styles))
     add_spacer(6)
 
-    story.append(he.embed_figure_with_caption(
-        fig_goc_chip,
-        "Hình 2.6.2 (Slide 72): Mạch tích hợp bán dẫn quy mô nano hiện đại với hàng chục tỷ transistor tích hợp 3 chiều.",
-        kind="orig",
-        styles=styles
-    ))
+    eq_deriv_2_6_1b = r"P_0 = \eta_i \frac{\alpha_m}{\Gamma g_{\mathrm{th}}} \frac{h\nu}{q} (I - I_{\mathrm{th}}) = \eta_i \frac{\alpha_m}{\langle\alpha_i\rangle + \alpha_m} \frac{h\nu}{q} (I - I_{\mathrm{th}})"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thế điều kiện cân bằng ngưỡng <i>Γ g</i><sub>th</sub> = ⟨<i>α<sub>i</sub></i>⟩ + <i>α<sub>m</sub></i>:", eq_deriv_2_6_1b, styles=styles))
     add_spacer(6)
 
+    eq_deriv_2_6_1c = r"F_1 = \frac{1 - R_1}{(1 - R_1) + \sqrt{\frac{R_1}{R_2}}(1 - R_2)} \implies P_1 = F_1 P_0, \quad P_2 = (1 - F_1) P_0"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Phân bố tỷ trọng công suất thoát ra ở hai mặt gương bất đối xứng <i>R</i><sub>1</sub> ≠ <i>R</i><sub>2</sub>:", eq_deriv_2_6_1c, styles=styles))
+    add_spacer(8)
+
+    add_p(
+        "Từ hệ thức dẫn xuất, ta nhận thấy hiệu suất lượng tử vi phân <i>η<sub>d</sub></i> là tích của hai xác suất độc lập: "
+        "<br/>1. Hiệu suất tiêm nội <i>η<sub>i</sub></i>: Xác suất hạt tải đi vào đúng vùng tích cực và tái hợp bức xạ kích thích. "
+        "<br/>2. Hiệu suất trích xuất quang học <i>α<sub>m</sub> · (⟨α<sub>i</sub>⟩ + α<sub>m</sub>)</i><sup>−1</sup>: "
+        "Tỷ số giữa tổn hao gương hữu ích <i>α<sub>m</sub></i> và tổng tổn hao toàn phần <i>α</i><sub>tot</sub>. "
+        "Khi tổn hao nội ⟨<i>α<sub>i</sub></i>⟩ càng nhỏ so với <i>α<sub>m</sub></i>, "
+        "gần như 100% photon sinh ra đều thoát ra ngoài làm ánh sáng hữu ích, đưa <i>η<sub>d</sub></i> tiệm cận <i>η<sub>i</sub></i>."
+    )
+    add_spacer(8)
+
+    # Embed Hình mô phỏng 2.6a
     story.append(he.embed_figure_with_caption(
-        fig_sim_moore,
-        "Hình 2.6.3: Mô phỏng MATLAB R2014b+ số lượng transistor vi xử lý Intel log10(N) theo thời gian, đối sánh giữa định luật Moore lý tưởng và sự bão hòa do giới hạn lượng tử sau năm 2020.",
+        fig_sim_2_6a,
+        "Hình mô phỏng 2.6.1: Đặc tuyến công suất quang <i>P</i><sub>0</sub>(<i>I</i>) của diode laser InGaAs/GaAs 980 nm ở các nhiệt độ vận hành 20 °C và 60 °C. "
+        "Đồ thị chỉ rõ điểm bẻ gập tại dòng ngưỡng <i>I</i><sub>th</sub> = 20 mA, độ dốc tuyến tính <i>SE</i> = 0,73 W·A<sup>−1</sup>, "
+        "sự dịch chuyển ngưỡng khi nhiệt độ tăng cao, và hiện tượng uốn cong bão hòa suy hao nhiệt (Thermal Rollover) ở dòng bơm cực lớn.",
         kind="sim",
-        styles=styles
+        styles=styles,
     ))
     add_spacer(8)
 
-    # GIAI ĐOẠN 2 & 3
-    add_p("Giai đoạn 2: Ví dụ tối giản và hệ thức tăng trưởng transistor cùng dòng rò lượng tử", "H3")
-    nom_rows_2_6_1 = [
-        ("Số lượng transistor ban đầu", "<i>N</i><sub>0</sub>", "2.250 (chip Intel 4004)", "Số transistor trên chip thương mại đầu tiên năm 1971."),
-        ("Chu kỳ tăng trưởng nhân đôi", "<i>T</i><sub>double</sub>", "2 năm", "Thời gian để số transistor tăng gấp 2 lần theo định luật Moore."),
-        ("Hệ số suy giảm chui hầm", "κ", "m<sup>−1</sup>", "Hệ số suy giảm biên độ hàm sóng trong rào: κ = [2<i>m</i>*(Φ<sub>B</sub> − <i>E</i>)·ℏ<sup>−2</sup>]<sup>0.5</sup>."),
-        ("Công suất tiêu tán toàn phần", "<i>P</i><sub>total</sub>", "Watt", "Tổng công suất động và công suất tĩnh dòng rò: <i>P</i> = α <i>C</i> <i>V</i><sub>DD</sub><sup>2</sup> <i>f</i> + <i>I</i><sub>leak</sub> <i>V</i><sub>DD</sub>.")
-    ]
-    story.append(he.build_target_equation_block(
-        r"N(t) = N_0 \cdot 2^{\frac{t - t_0}{2}}, \qquad T_{\mathrm{tunnel}} \propto \exp(-2\kappa d_{\mathrm{ox}}), \qquad P_{\mathrm{total}} = \alpha C V_{\mathrm{DD}}^2 f + I_{\mathrm{leak}} V_{\mathrm{DD}}",
-        nom_rows_2_6_1,
-        styles=styles
-    ))
-    add_spacer(8)
-
-    add_p("Giai đoạn 3: Thực hành có hướng dẫn và dẫn xuất dòng rò chui hầm qua lớp điện môi cổng nano", "H3")
-    story.append(he.build_intermediate_equation(
-        "Thiết lập hệ số truyền qua chui hầm Wentzel–Kramers–Brillouin (WKB) qua lớp oxide cổng SiO2:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tính toán hệ số suy giảm hàm sóng κ với chiều cao rào thế năng ΦB ≈ 3,1 eV và khối lượng hiệu dụng m* ≈ 0,5 m0:",
-        r"\kappa = \sqrt{\frac{2m^*(\Phi_B - E)}{\hbar^2}} = \sqrt{\frac{2(0.5\times 9.109\times 10^{-31}\ \mathrm{kg})(3.1\times 1.602\times 10^{-19}\ \mathrm{J})}{(1.055\times 10^{-34}\ \mathrm{J\cdot s})^2}} \approx 6.4\times 10^9\ \mathrm{m^{-1}} = 6.4\ \mathrm{nm^{-1}}",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.build_intermediate_equation(
-        "So sánh xác suất chui hầm khi bề dày lớp oxide cổng giảm từ 3 nm xuống 1 nm:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Lập tỷ số truyền qua <i>T</i><sub>tunnel</sub>(1 nm) trên <i>T</i><sub>tunnel</sub>(3 nm):",
-        r"\frac{T(1\ \mathrm{nm})}{T(3\ \mathrm{nm})} = \frac{\exp(-2\times 6.4\times 1)}{\exp(-2\times 6.4\times 3)} = \exp(25.6) \approx 1.3\times 10^{11} \implies \text{Dòng rò tăng vọt hơn một trăm tỷ lần!}",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # GIAI ĐOẠN 4 & 5 CER
-    add_p("Giai đoạn 4: Phân tích biến thể — Kiến trúc GAA Nano-sheet và Vật liệu bán dẫn 2D MoS2", "H3")
+    # Giai đoạn 4: Khảo sát tiệm cận & Thực chiến
+    add_p("Giai đoạn 4: Khảo sát tiệm cận nhiệt độ và cơ chế suy hao nhiệt Rollover", "H3")
     add_p(
-        "Để vượt qua giới hạn của Định luật Moore cổ điển, ngành công nghiệp bán dẫn toàn cầu đã thực hiện cuộc cách mạng kiến trúc: "
-        "chuyển đổi từ transistor phẳng MOSFET sang <b>FinFET 3D</b> và hiện nay là <b>Gate-All-Around Nano-sheet FET (GAA-FET)</b> ở tiến trình 2 nm (Intel 18 Ångström, TSMC N2). "
-        "Trong cấu trúc GAA, các phiến nano Silicon siêu mỏng được bọc kín cả 4 mặt bởi cực cổng, "
-        "tối đa hóa lực kiểm soát tĩnh điện và ngăn chặn triệt để hiện tượng rò rỉ kênh ngắn. "
-        "Đồng thời, các vật liệu bán dẫn hai chiều đơn lớp (như Disulfide Molybden MoS<sub>2</sub>, Selenide Wolfram WSe<sub>2</sub>) "
-        "với bề dày chỉ đúng 0,7 nm (ba lớp nguyên tử) đang mở ra kỷ nguyên <b>Beyond-CMOS</b>, "
-        "cho phép thu nhỏ kênh dẫn xuống dưới 1 nm mà vẫn duy trì tỷ số bật ngắt dòng điện <i>I</i><sub>ON</sub> · (<i>I</i><sub>OFF</sub>)<sup>−1</sup> &gt; 10<sup>8</sup>."
-    )
-    add_spacer(8)
-
-    add_p("Giai đoạn 5: Thử thách tự luyện &amp; Dự đoán bẫy sai lầm (CER 2.6.1)", "H3")
-    add_p(
-        "<b>THỬ THÁCH CER: TẠI SAO CÔNG NGHỆ BÁN DẪN KHÔNG THỂ TIẾP TỤC TĂNG TẦN SỐ XUNG NHỊP CLOCK VƯỢT QUÁ 5 GHz?</b><br/>"
-        "<b>1. Khẳng định:</b> Sau năm 2005, tần số xung nhịp đồng hồ của CPU thương mại buộc phải dừng lại ở ngưỡng khoảng 3–5 GHz (Sự sụp đổ của Quy luật Dennard Scaling).<br/>"
-        "<b>2. Bằng chứng:</b> Công suất tiêu tán động của transistor tỷ lệ thuận với bình phương điện áp và tần số: <i>P</i><sub>dyn</sub> = <i>C</i> <i>V</i><sup>2</sup> <i>f</i>. "
-        "Trong quá khứ, khi thu nhỏ kích thước, điện áp <i>V</i> có thể giảm tương ứng để giữ mật độ công suất không đổi. "
-        "Tuy nhiên, điện áp kích hoạt không thể hạ thấp hơn điện thế nhiệt <i>k</i><sub>B</sub> <i>T</i> · <i>e</i><sup>−1</sup> ≈ 26 mV mà không làm tăng vọt dòng rò tĩnh.<br/>"
-        "<b>3. Lập luận:</b> Vì điện áp bị kẹt ở mức khoảng 0,7–0,8 V, việc tăng tần số <i>f</i> lên 10 GHz sẽ làm mật độ tỏa nhiệt trên bề mặt chip Silicon "
-        "vượt quá mật độ nhiệt của vòi phun tên lửa (~ 1.000 W·cm<sup>−2</sup>), phá hủy đế chip ngay lập tức. "
-        "Do đó, ngành công nghệ buộc phải chuyển hướng từ tăng tốc xung nhịp đơn nhân sang kiến trúc xử lý song song đa nhân (Multi-core) và điện toán dị thể (Heterogeneous Computing)."
+        "Khảo sát các vùng vận hành thực tế: "
+        "<br/>1. <b>Vùng dòng làm việc danh định (<i>I</i><sub>th</sub> < <i>I</i> < 4 <i>I</i><sub>th</sub>):</b> "
+        "Đặc tuyến giữ độ tuyến tính cao, thích hợp cho điều chế tín hiệu analog hoặc số trong viễn thông cáp quang. "
+        "<br/>2. <b>Vùng quá tải nhiệt (Thermal Rollover):</b> Khi tăng dòng bơm lên rất cao, "
+        "công suất tiêu tán Joule trong điện trở tiếp xúc <i>P</i><sub>diss</sub> = <i>I · V</i> − <i>P</i><sub>0</sub> "
+        "đốt nóng phiến bán dẫn làm nhiệt độ lớp tiếp giáp tăng thêm Δ<i>T</i> = <i>R</i><sub>th</sub> <i>P</i><sub>diss</sub>. "
+        "Nhiệt độ dâng cao khiến dòng ngưỡng tăng theo quy luật hàm mũ <i>I</i><sub>th</sub>(<i>T</i>) "
+        "và độ dốc hiệu suất suy giảm <i>SE</i>(<i>T</i>), làm đường cong <i>P</i>–<i>I</i> bị uốn cong, đạt đỉnh cực đại "
+        "rồi sụt giảm nhanh chóng. Kỹ sư quang điện tử bắt buộc phải thiết kế bộ tản nhiệt (Heat Sink) "
+        "hoặc làm mát bằng bộ điều nhiệt TEC để đẩy mốc Rollover ra xa dải công tác."
     )
     add_spacer(14)
 
     # =========================================================================
-    # MPT 2.6.2: CÔNG NGHỆ Y SINH HỌC NANO & DẪN THUỐC HƯỚNG ĐÍCH
+    # LUẬN ĐIỂM 2.6.2: TỐI ƯU HÓA CHIỀU DÀI HỐC VÀ PHỦ GƯƠNG CHỌN LỌC
     # =========================================================================
-    add_p("Luận điểm 2.6.2: Công nghệ y sinh học nano &amp; Dẫn thuốc hướng đích", "H2")
-    add_spacer(4)
+    add_p("Luận điểm 2.6.2: Tối ưu hóa chiều dài hốc và Cấu hình phủ gương chọn lọc cho công suất mục tiêu", "H2")
 
-    # GIAI ĐOẠN 1
-    add_p("Giai đoạn 1: Giới thiệu khái niệm và hiệu ứng thấm giữ tăng cường (EPR Effect)", "H3")
+    # Giai đoạn 1: Giới thiệu khái niệm bài toán tối ưu
+    add_p("Giai đoạn 1: Giới thiệu bài toán đánh đổi giữa dòng ngưỡng và hiệu suất trích xuất gương", "H3")
     add_p(
-        "Trong y học truyền thống, hóa trị liệu điều trị ung thư thường gây ra tác dụng phụ phá hủy nặng nề đối với các mô lành khỏe mạnh "
-        "do thuốc phân bố đồng đều không chọn lọc khắp toàn bộ cơ thể. "
-        "<b>Y học nano (Nanomedicine)</b> mang lại bước đột phá mang tính cách mạng thông qua công nghệ <b>Dẫn thuốc hướng đích (Targeted Drug Delivery)</b>, "
-        "sử dụng các hạt nano kích thước từ 10 đến 100 nm (hạt nano lipid LNP, liposome, hạt nano polyme dendrimer) "
-        "để chuyên chở trực tiếp dược chất độc lực cao tới thẳng vị trí khối u.",
-        ocr_idx=72
-    )
-    add_spacer(6)
-
-    add_p(
-        "Cơ chế dẫn thuốc thụ động dựa trên <b>Hiệu ứng thấm và giữ tăng cường (Enhanced Permeability and Retention — EPR Effect)</b>: "
-        "Mạch máu tân sinh nuôi khối u phát triển cực nhanh nên có cấu trúc thành mạch xốp với các khe hở nội mô rộng từ 100 đến 600 nm "
-        "(trong khi mạch máu mô lành có khe hở chặt chẽ &lt; 5–10 nm). "
-        "Đồng thời, hệ thống dẫn lưu bạch huyết của khối u bị khiếm khuyết nghiêm trọng, "
-        "khiến các hạt nano mang thuốc dễ dàng thấm qua thành mạch và bị 'bắt giữ' tích tụ lại bên trong khối u với nồng độ cao gấp hàng chục lần so với mô bình thường.",
-        ocr_idx=72, is_expanded=True
+        "Trong thiết kế module phát laser công suất cố định (ví dụ phát 10 mW cho đầu đọc quang hoặc phát 500 mW cho bơm EDFA), "
+        "mục tiêu cốt lõi của kỹ sư là cực tiểu hóa dòng điện tiêm <i>I</i> cần thiết từ bộ nguồn DC. "
+        "Bài toán này chứa đựng một sự đánh đổi sâu sắc giữa dòng ngưỡng <i>I</i><sub>th</sub> và hiệu suất vi phân <i>η<sub>d</sub></i>: "
+        "Nếu thiết kế hốc quá ngắn, tổn hao gương <i>α<sub>m</sub></i> lớn giúp hiệu suất vi sai <i>η<sub>d</sub></i> rất cao, "
+        "nhưng mật độ hạt tải ngưỡng <i>N</i><sub>th</sub> bị đẩy vọt lên cao khiến dòng ngưỡng <i>I</i><sub>th</sub> bùng nổ; "
+        "ngược lại, nếu thiết kế hốc quá dài, dòng ngưỡng trên đơn vị thể tích giảm nhưng thể tích hốc <i>V</i> quá lớn "
+        "đồng thời tổn hao nội ⟨<i>α<sub>i</sub></i>⟩ nuốt trọn ánh sáng, làm hiệu suất vi phân suy kiệt."
     )
     add_spacer(8)
 
-    # Embed ảnh gốc y sinh
+    # Embed Hình gốc 2.11
     story.append(he.embed_figure_with_caption(
-        fig_goc_drug,
-        "Hình 2.6.4 (Slide 72): Ứng dụng công nghệ nano trong y sinh học — hạt nano hướng đích gắn kháng thể đặc hiệu nhận diện và tiêu diệt tế bào ung thư.",
+        fig_goc_2_11,
+        "Hình 2.11: Đồ thị đường đồng mức và bề mặt 3D của dòng điện yêu cầu để phát 10 mW theo chiều dài hốc <i>L</i> và độ phản xạ gương (Coldren &amp; Corzine, trang 46). "
+        "Ba mắt xích thiết kế: (a) Miền cực tiểu dòng điện tạo thành thung lũng lòng chảo trên không gian tham số; "
+        "(b) Đường biên dốc đứng ở vùng hốc ngắn do bùng nổ mật độ ngưỡng; "
+        "(c) Đường dốc thoải ở vùng hốc dài do suy giảm hiệu suất lượng tử vi sai.",
         kind="orig",
-        styles=styles
+        styles=styles,
     ))
     add_spacer(8)
 
-    # GIAI ĐOẠN 2 & 3
-    add_p("Giai đoạn 2: Ví dụ tối giản và hệ thức nhiệt từ trường điều trị ung thư bằng hạt nano", "H3")
-    nom_rows_2_6_2 = [
-        ("Công suất nhiệt sinh ra trên đơn vị thể tích", "<i>Q</i><sub>heat</sub>", "W·m<sup>−3</sup>", "Năng lượng nhiệt sinh ra do trễ từ khi hạt nano sắt từ đảo chiều trong từ trường xoay chiều."),
-        ("Độ cảm từ phần ảo (tổn hao trễ)", "χ''", "vô thứ nguyên", "Đặc trưng cho độ trễ giữa từ hóa và từ trường ngoài: χ'' = χ<sub>0</sub> ω τ · (1 + ω<sup>2</sup> τ<sup>2</sup>)<sup>−1</sup>."),
-        ("Biên độ từ trường xoay chiều", "<i>H</i><sub>0</sub>", "A·m<sup>−1</sup> (hoặc Oe)", "Cường độ từ trường ngoài kích thích an toàn đối với cơ thể người (giới hạn Atkinson-Brezovich: <i>H</i><sub>0</sub> <i>f</i> &lt; 5 × 10<sup>8</sup> A·m<sup>−1</sup>·s<sup>−1</sup>)."),
-        ("Tần số sóng kích thích từ trường", "<i>f</i>", "kHz (100–500 kHz)", "Dải tần số vô tuyến thích hợp để đốt nóng hạt nano mà không làm tổn thương mô người.")
+    # Giai đoạn 2: Hạt nhân vật lý & Hệ thức Cột trụ
+    add_p("Giai đoạn 2: Hạt nhân vật lý và Hệ thức Cột trụ dòng điện yêu cầu", "H3")
+    add_p(
+        "Biểu thức giải tích của dòng điện bơm cần thiết để tạo ra công suất quang xác định <i>P</i><sub>0</sub>:"
+    )
+
+    pillar_eq_2_6_2 = r"I_{\mathrm{req}} = I_{\mathrm{th}} + \frac{P_0}{SE} = \frac{q V}{\eta_i} R(N_{\mathrm{th}}) + \frac{P_0}{\eta_i \frac{\alpha_m}{\langle\alpha_i\rangle + \alpha_m} F_1 \frac{h\nu}{q}}"
+    nom_data_2_6_2 = [
+        {"name": "Dòng điện yêu cầu cho công suất mục tiêu", "symbol": "<i>I</i><sub>req</sub>", "unit": "mA", "meaning": "Dòng tiêm cấp từ nguồn nuôi để linh kiện phát ra đúng công suất <i>P</i><sub>0</sub>"},
+        {"name": "Công suất mục tiêu thiết kế", "symbol": "<i>P</i><sub>0</sub>", "unit": "mW", "meaning": "Mức công suất quang phát xạ mong muốn tại mặt gương chính (ví dụ 10 mW)"},
+        {"name": "Hệ số định hướng mặt gương ngõ ra", "symbol": "<i>F</i><sub>1</sub>", "unit": "không thứ nguyên", "meaning": "Tỷ lệ thông lượng photon phát qua mặt gương trước so với tổng cả hai gương"},
+        {"name": "Thể tích tích cực giam giữ hạt tải", "symbol": "<i>V</i>", "unit": "cm<sup>3</sup>", "meaning": "Thể tích hình học <i>V = w · d · L</i> của vùng giếng lượng tử"}
     ]
-    story.append(he.build_target_equation_block(
-        r"Q_{\mathrm{heat}} = \pi \mu_0 \chi'' H_0^2 f, \qquad \chi'' = \chi_0 \frac{\omega\tau}{1 + \omega^2 \tau^2}, \qquad \sigma_{\mathrm{ext}} = 9\frac{\omega}{c}\varepsilon_m^{\frac{3}{2}} \frac{\varepsilon_2}{(\varepsilon_1 + 2\varepsilon_m)^2 + \varepsilon_2^2} V",
-        nom_rows_2_6_2,
-        styles=styles
-    ))
+    story.append(he.build_target_equation_block(pillar_eq_2_6_2, nom_data_2_6_2, styles=styles))
     add_spacer(8)
 
-    add_p("Giai đoạn 3: Thực hành có hướng dẫn và cơ chế liệu pháp quang nhiệt Plasmonic hạt nano vàng", "H3")
-    story.append(he.build_intermediate_equation(
-        "Chứng minh điều kiện cộng hưởng Plasmon bề mặt cục bộ (LSPR) của hạt nano vàng hình cầu:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khảo sát mẫu số của tiết diện hấp thụ quang học Fröhlich:",
-        r"(\varepsilon_1(\omega) + 2\varepsilon_m)^2 + \varepsilon_2^2 \implies \text{Cực đại tiết diện khi: } \varepsilon_1(\omega_{\mathrm{LSPR}}) = -2\varepsilon_m",
-        styles=styles
-    ))
+    # Giai đoạn 3: Chuỗi nhân quả dẫn xuất
+    add_p("Giai đoạn 3: Chuỗi nhân quả dẫn xuất sự phụ thuộc phi tuyến của dòng điện theo chiều dài hốc", "H3")
+    add_p("Dẫn xuất tường minh sự đánh đổi hai số hạng cấu thành dòng điện yêu cầu:")
+
+    eq_deriv_2_6_2a = r"I_{\mathrm{th}}(L) = \frac{q w d L}{\eta_i} \left[A N_{\mathrm{th}}(L) + B N_{\mathrm{th}}(L)^2 + C N_{\mathrm{th}}(L)^3\right]"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Dòng ngưỡng tăng theo thể tích hốc nhưng chịu số mũ phụ thuộc tổn hao gương:", eq_deriv_2_6_2a, styles=styles))
     add_spacer(6)
 
-    story.append(he.embed_figure_with_caption(
-        fig_goc_comp,
-        "Hình 2.6.5 (Slide 72): Vật liệu nano composite cấu trúc nhẹ siêu bền ứng dụng trong cấy ghép y sinh và kết cấu công nghiệp.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # GIAI ĐOẠN 4 & 5 CER
-    add_p("Giai đoạn 4: Phân tích biến thể — Hạt nano Lipid (LNP) trong công nghệ vaccine mRNA (COVID-19)", "H3")
-    add_p(
-        "Minh chứng vĩ đại nhất của công nghệ y sinh học nano trong thế kỷ 21 chính là <b>Vaccine phòng COVID-19 công nghệ mRNA</b> (Pfizer-BioNTech và Moderna) "
-        "(Giải Nobel Y học 2023). "
-        "Phân tử mRNA mang mã di truyền kháng nguyên gai rất mỏng manh và sẽ bị enzyme phân hủy ngay lập tức nếu tiêm trực tiếp vào máu. "
-        "Các nhà khoa học đã chế tạo hạt nano lipid (Lipid Nanoparticles — LNP) kích thước 60–100 nm gồm 4 thành phần lipid chức năng hóa "
-        "(trong đó có lipid ion hóa có thể đổi điện tích theo pH môi trường). "
-        "Hạt LNP bao bọc bảo vệ chuỗi mRNA, vượt qua hàng rào màng tế bào thông qua cơ chế nội thực bào (Endocytosis), "
-        "và giải phóng chính xác mRNA vào tế bào chất để cơ thể tự sản sinh kháng thể phòng bệnh."
-    )
-    add_spacer(8)
-
-    add_p("Giai đoạn 5: Thử thách tự luyện &amp; Dự đoán bẫy sai lầm (CER 2.6.2)", "H3")
-    add_p(
-        "<b>THỬ THÁCH CER: TẠI SAO KÍCH THƯỚC HẠT NANO DẪN THUỐC BẮT BUỘC PHẢI NẰM TRONG KHOẢNG 10–100 NM?</b><br/>"
-        "<b>1. Khẳng định:</b> Hạt nano dẫn thuốc tối ưu bắt buộc phải có kích thước lớn hơn 10 nm và nhỏ hơn 100–150 nm.<br/>"
-        "<b>2. Bằng chứng:</b> Nếu hạt nano có đường kính thủy động học <i>d</i> &lt; 10 nm, chúng sẽ bị màng lọc vi cầu thận đào thải nhanh chóng ra nước tiểu "
-        "qua cơ chế lọc cầu thận (Renal Clearance) trong vòng vài phút. "
-        "Ngược lại, nếu hạt có kích thước <i>d</i> &gt; 150–200 nm, chúng sẽ bị hệ thống thực bào đơn nhân (MPS) tại gan và lách bắt giữ và tiêu hủy trước khi kịp đến khối u.<br/>"
-        "<b>3. Lập luận:</b> Dải kích thước 10–100 nm là 'cửa sổ vàng' sinh học duy nhất giúp hạt nano vừa kéo dài thời gian lưu thông trong tuần hoàn máu (vài chục giờ), "
-        "vừa đủ nhỏ để lọt qua các khe hở nội mô thành mạch tân sinh khối u (hiệu ứng EPR) và thâm nhập sâu vào các lớp tế bào ung thư."
-    )
-    add_spacer(14)
-
-    # =========================================================================
-    # MPT 2.6.3: CÔNG NGHỆ NANO NĂNG LƯỢNG BỀN VỮNG
-    # =========================================================================
-    add_p("Luận điểm 2.6.3: Công nghệ nano trong chuyển đổi &amp; Tích trữ năng lượng bền vững", "H2")
-    add_spacer(4)
-
-    # GIAI ĐOẠN 1
-    add_p("Giai đoạn 1: Giới thiệu khái niệm và giới hạn Shockley-Queisser của pin mặt trời", "H3")
-    add_p(
-        "Năm 1961, William Shockley và Hans-Joachim Queisser đã thiết lập giới hạn hiệu suất nhiệt động lực học lý thuyết tối đa "
-        "của pin mặt trời một chuyển tiếp p-n bán dẫn (như Silicon): <b>Giới hạn Shockley–Queisser (SQ Limit) xấp xỉ 33,7%</b>. "
-        "Hai nguyên nhân gây tổn hao năng lượng cốt lõi gồm: "
-        "<br/>1. Photon năng lượng thấp (<i>h</i>ν &lt; <i>E</i><sub>g</sub>) truyền thẳng qua pin mà không thể hấp thụ. "
-        "<br/>2. Photon năng lượng cao (<i>h</i>ν &gt;&gt; <i>E</i><sub>g</sub>) kích thích tạo hạt tải nóng, nhưng phần năng lượng dư thừa (<i>h</i>ν − <i>E</i><sub>g</sub>) "
-        "bị mất hoàn toàn dưới dạng nhiệt do tán xạ phát xạ phonon cực nhanh (Thermalization Loss).",
-        ocr_idx=72
-    )
+    eq_deriv_2_6_2b = r"N_{\mathrm{th}}(L) = N_{\mathrm{tr}} \exp\left(\frac{\langle\alpha_i\rangle + \frac{1}{2L}\ln\frac{1}{R_1 R_2}}{\Gamma g_0}\right)"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Mật độ ngưỡng bùng nổ theo hàm mũ khi L co ngắn:", eq_deriv_2_6_2b, styles=styles))
     add_spacer(6)
 
+    eq_deriv_2_6_2c = r"\Delta I_{\mathrm{power}}(L) = \frac{P_0}{SE(L)} = \frac{P_0}{F_1 \eta_i \frac{h\nu}{q}} \left[1 + \frac{2 L \langle\alpha_i\rangle}{\ln\frac{1}{R_1 R_2}}\right]"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Dòng bù công suất tăng tuyến tính theo chiều dài hốc L do tổn hao nội:", eq_deriv_2_6_2c, styles=styles))
+    add_spacer(8)
+
     add_p(
-        "Công nghệ nano mở ra con đường phá vỡ giới hạn SQ thông qua <b>Hiệu ứng sinh đa exciton (Multiple Exciton Generation — MEG)</b> "
-        "trong các chấm lượng tử bán dẫn nano (PbSe, PbS, CdSe). "
-        "Do không gian bị giam hãm lượng tử 3 chiều, quá trình làm nguội hạt tải nóng bằng phonon bị nghẽn (Phonon Bottleneck). "
-        "Thay vì tỏa nhiệt, hạt tải nóng va chạm truyền năng lượng kích hoạt thêm một hoặc hai electron nhảy từ dải hóa trị lên dải dẫn, "
-        "cho phép <b>một photon năng lượng cao tạo ra hai hoặc ba cặp electron-lỗ trống (Exciton)</b>, "
-        "nâng trần hiệu suất lý thuyết của pin mặt trời nano lên tới <b>44%</b>.",
-        ocr_idx=72, is_expanded=True
+        "Kết hợp hai thành phần đối nghịch <i>I</i><sub>th</sub>(<i>L</i>) và Δ<i>I</i><sub>power</sub>(<i>L</i>), "
+        "hàm tổng <i>I</i><sub>req</sub>(<i>L</i>) xuất hiện một điểm cực tiểu toàn cục duy nhất tại <i>L</i> = <i>L</i><sub>opt</sub>. "
+        "Tại điểm cực tiểu này, đạo hàm biến thiên dòng điện theo chiều dài hốc triệt tiêu bằng 0, "
+        "xác lập chiều dài hốc cộng hưởng hoàng kim cho từng cấu hình công nghệ chế tạo."
     )
     add_spacer(8)
 
-    # Embed ảnh gốc năng lượng
+    # Embed Hình mô phỏng 2.6b
     story.append(he.embed_figure_with_caption(
-        fig_goc_solar,
-        "Hình 2.6.6 (Slide 72): Pin mặt trời và các thiết bị thu gom năng lượng tái tạo ứng dụng vật liệu cấu trúc nano.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.embed_figure_with_caption(
-        fig_sim_meg,
-        "Hình 2.6.7: Mô phỏng MATLAB R2014b+ hiệu suất lượng tử nội η<sub>QE</sub> theo năng lượng photon <i>h</i>ν·(<i>E</i><sub>g</sub>)<sup>−1</sup>, chứng minh hiệu ứng sinh đa exciton (MEG) vượt ngưỡng 100% khi <i>h</i>ν &gt; 2<i>E</i><sub>g</sub> trong chấm lượng tử nano PbSe.",
+        fig_sim_2_6b,
+        "Hình mô phỏng 2.6.2: Khảo sát dòng điện yêu cầu để phát 10 mW theo chiều dài hốc <i>L</i> ở 3 cấu hình gương (Mặt chẻ 0,32 và 0,32; AR–HR 0,05 và 0,95; HR–HR 0,70 và 0,90). "
+        "Đồ thị chứng minh cấu hình phủ màng mỏng chống phản xạ và phản xạ cao (AR–HR) mang lại hiệu quả vượt trội, "
+        "đạt điểm cực tiểu tại <i>L</i><sub>opt</sub> ≈ 350 μm với dòng tiêu thụ chỉ 21,5 mA, "
+        "tiết kiệm hơn 40% công suất nguồn so với mặt chẻ tự nhiên.",
         kind="sim",
-        styles=styles
+        styles=styles,
     ))
     add_spacer(8)
 
-    # GIAI ĐOẠN 2 & 3
-    add_p("Giai đoạn 2: Ví dụ tối giản và hệ thức dung lượng lý thuyết của cực dương nano Silicon", "H3")
-    nom_rows_2_6_3 = [
-        ("Dung lượng riêng lý thuyết của cực dương Si", "<i>Q</i><sub>Si</sub>", "mAh·g<sup>−1</sup>", "Khả năng chứa ion Li tối đa tạo pha Li<sub>15</sub>Si<sub>4</sub>: <i>Q</i><sub>Si</sub> ≈ 4.200 mAh·g<sup>−1</sup> (gấp 11 lần than chì graphite 372 mAh·g<sup>−1</sup>)."),
-        ("Độ giãn nở thể tích cực đại của Silicon", "Δ<i>V</i>·(<i>V</i><sub>0</sub>)<sup>−1</sup>", "%", "Silicon nở hơn 300% khi ngậm đầy ion Lithium."),
-        ("Đường kính tới hạn chống nứt vỡ", "<i>d</i><sub>crit</sub>", "nm", "Đường kính hạt nano Si tới hạn (khoảng 150 nm): dưới ngưỡng này, hạt nano không bị nứt vỡ do ứng suất cơ học."),
-        ("Hằng số Faraday", "<i>F</i>", "96.485 C·mol<sup>−1</sup>", "Điện tích của một mol electron.")
-    ]
-    story.append(he.build_target_equation_block(
-        r"Q_{\mathrm{theoretical}}(\mathrm{Si}) = \frac{x F}{M_{\mathrm{Si}}} = \frac{3.75 \times 96485}{28.0855 \times 3.6} \approx 4200\ \mathrm{mAh\cdot g^{-1}}, \qquad d_{\mathrm{crit}} \approx \frac{2 \Gamma}{\sigma_{\mathrm{yield}} \varepsilon_{\mathrm{strain}}} \approx 150\ \mathrm{nm}",
-        nom_rows_2_6_3,
-        styles=styles
-    ))
-    add_spacer(8)
-
-    add_p("Giai đoạn 3: Thực hành có hướng dẫn và cơ chế chịu biến dạng cơ học của cấu trúc dây nano Silicon", "H3")
-    story.append(he.build_intermediate_equation(
-        "Phân tích ứng suất cơ học sinh ra trong hạt cầu Silicon bán kính R khi xen cài ion Lithium:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Năng lượng đàn hồi tích lũy so với năng lượng hình thành bề mặt nứt vỡ theo lý thuyết Griffith:",
-        r"U_{\mathrm{strain}} \propto \sigma^2 R^3 \quad \text{vs} \quad U_{\mathrm{surface}} \propto \gamma_{\mathrm{fracture}} R^2 \implies \text{Điều kiện bền: } R < R_{\mathrm{crit}} \approx 75\ \mathrm{nm}\ (d_{\mathrm{crit}} \approx 150\ \mathrm{nm})",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # GIAI ĐOẠN 4 & 5 CER
-    add_p("Giai đoạn 4: Phân tích biến thể — Siêu tụ điện Graphene nano tích trữ năng lượng sạc siêu nhanh", "H3")
+    # Giai đoạn 4: Khảo sát tiệm cận & Thực chiến
+    add_p("Giai đoạn 4: Khảo sát tiệm cận cấu hình phủ gương và thực chiến tối ưu hóa linh kiện", "H3")
     add_p(
-        "Trong khi pin hóa học lưu trữ năng lượng qua các phản ứng oxy hóa khử chậm chạp, "
-        "<b>Siêu tụ điện nano (Supercapacitors)</b> lưu trữ điện tích tĩnh điện thuần túy thông qua lớp điện kép (Electric Double Layer — EDLC) "
-        "tại bề mặt tiếp xúc giữa điện cực và chất điện phân. "
-        "Nhờ diện tích bề mặt riêng khổng lồ của đơn lớp Graphene (lý thuyết đạt 2.630 m<sup>2</sup>·g<sup>−1</sup>), "
-        "siêu tụ điện graphene đạt mật độ điện dung lên tới hàng trăm Farad trên mỗi gram vật liệu. "
-        "Linh kiện có thể sạc và xả dòng điện cực lớn chỉ trong vài giây với tuổi thọ hơn một triệu chu kỳ sạc xả không suy giảm, "
-        "đóng vai trò thu hồi năng lượng phanh tái sinh trên các phương tiện xe điện hiện đại."
-    )
-    add_spacer(8)
-
-    add_p("Giai đoạn 5: Thử thách tự luyện &amp; Dự đoán bẫy sai lầm (CER 2.6.3)", "H3")
-    add_p(
-        "<b>THỬ THÁCH CER: TẠI SAO SILICON KHỐI (BULK SILICON) KHÔNG THỂ LÀM CỰC DƯƠNG PIN LITHIUM-ION?</b><br/>"
-        "<b>1. Khẳng định:</b> Silicon khối kích thước micromet hoàn toàn không thể sử dụng làm cực dương pin sạc Lithium-ion thực tế vì sẽ bị phá hủy vụn nát chỉ sau vài chu kỳ sạc đầu tiên.<br/>"
-        "<b>2. Bằng chứng:</b> Khi ion Lithium xen cài tạo hợp kim Li<sub>15</sub>Si<sub>4</sub>, thể tích của hạt Silicon phồng nở hơn 300%. "
-        "Đối với các hạt Silicon kích thước micromet, sự phân bố không đồng đều của nồng độ ion Li sinh ra ứng suất kéo nội tại khổng lồ "
-        "vượt xa giới hạn bền cơ học của vật liệu (độ bền đứt gãy của Si xấp xỉ 1 GPa).<br/>"
-        "<b>3. Lập luận:</b> Ứng suất kéo làm các hạt Si khối nứt vỡ thành bụi bột (Pulverization), làm mất tiếp xúc điện với mạng dẫn điện và liên tục xé rách lớp màng phân cách SEI, "
-        "khiến dung lượng pin tụt dốc về 0 sau chưa đầy 5–10 chu kỳ sạc. "
-        "Chỉ khi cấu trúc nano hóa Silicon thành dây nano (Nanowires), ống nano rỗng hoặc hạt nano lòng đỏ - vỏ trứng (Yolk-Shell) "
-        "với kích thước dưới 150 nm và có khoảng không đệm tự do, vật liệu mới có thể đàn hồi giãn nở mà không hề nứt vỡ."
+        "So sánh các chiến lược phủ gương: "
+        "<br/>1. <b>Mặt chẻ tự nhiên (Cleaved facets, <i>R</i><sub>1</sub> = <i>R</i><sub>2</sub> ≈ 0,32):</b> "
+        "Chỉ cần cắt dọc theo mặt phẳng tinh thể (110) của GaAs/InP. Tuy nhiên, <i>F</i><sub>1</sub> = 0,5 "
+        "khiến một nửa công suất quang bị rò rỉ vô ích về phía gương sau, làm tăng dòng tiêu thụ. "
+        "<br/>2. <b>Cấu hình bất đối xứng AR–HR (<i>R</i><sub>1</sub> ≈ 0,05, <i>R</i><sub>2</sub> ≈ 0,95):</b> "
+        "Phủ màng mỏng điện môi SiO<sub>2</sub>/TiO<sub>2</sub> nhiều lớp: mặt trước chống phản xạ (AR) để giải phóng ánh sáng, "
+        "mặt sau phản xạ cực đại (HR) để chặn rò rỉ. Cấu hình này đẩy <i>F</i><sub>1</sub> lên trên 90%, "
+        "vừa giảm dòng yêu cầu vừa bảo vệ mặt gương khỏi hiện tượng phá hủy quang học thảm khốc (COD). "
+        "<br/>3. <b>Cấu hình HR–HR (<i>R</i><sub>1</sub>, <i>R</i><sub>2</sub> > 0,90):</b> "
+        "Dùng cho laser phát xạ bề mặt hốc đứng VCSEL có thể tích tích cực cực ngắn (<i>L</i> ≈ vài chục nanomet), "
+        "giúp hạ dòng ngưỡng xuống dưới 1 mA."
     )
     add_spacer(14)
 
     # =========================================================================
-    # MPT 2.6.4: CÔNG NGHỆ NANO MÔI TRƯỜNG & LỌC NƯỚC SẠCH
+    # LUẬN ĐIỂM 2.6.3: HIỆU SUẤT WALL-PLUG & TỐI ƯU HÓA ĐIỂM LÀM VIỆC
     # =========================================================================
-    add_p("Luận điểm 2.6.4: Công nghệ nano môi trường: Xử lý nước sạch &amp; Thanh lọc không khí", "H2")
-    add_spacer(4)
+    add_p("Luận điểm 2.6.3: Hiệu suất chuyển đổi năng lượng toàn phần (Wall-Plug Efficiency) và Tối ưu hóa điểm làm việc", "H2")
 
-    # GIAI ĐOẠN 1
-    add_p("Giai đoạn 1: Giới thiệu khái niệm và tầm nhìn của Giáo sư Markus Antonietti (Viện Max Planck)", "H3")
+    # Giai đoạn 1: Giới thiệu khái niệm
+    add_p("Giai đoạn 1: Giới thiệu khái niệm hiệu suất Wall-Plug và các kênh tổn hao điện thế", "H3")
     add_p(
-        "Theo <b>Giáo sư Markus Antonietti</b>, Giám đốc Viện Chất keo và Giao diện Max Planck (Max Planck Institute of Colloids and Interfaces, Đức): "
-        "<i>'Tiềm năng lớn nhất của công nghệ nano để cải thiện tình trạng của thế giới và tương lai nhân loại chính là thanh lọc không khí và nước sạch'</i>. "
-        "Khủng hoảng ô nhiễm môi trường, biến đổi khí hậu và khan hiếm nguồn nước ngọt toàn cầu đòi hỏi các giải pháp xử lý ở cấp độ phân tử "
-        "với chi phí năng lượng thấp nhất và hiệu suất phân tách cao nhất.",
-        ocr_idx=73
-    )
-    add_spacer(6)
-
-    add_p(
-        "Công nghệ nano môi trường vận hành dựa trên hai cơ chế trụ cột: "
-        "<br/>1. <b>Màng lọc nano phân tách phân tử (Nanofiltration &amp; Desalination):</b> Màng lọc polymer xốp nano và màng composite graphene oxide "
-        "với kích thước lỗ rỗng điều chỉnh chính xác từ 0,5 đến 2 nm, cho phép các phân tử nước H<sub>2</sub>O trượt ma sát gần như bằng 0 "
-        "trong khi ngăn chặn 99,9% muối khoáng, vi hạt nhựa và các ion kim loại nặng (Asen, Chì, Thủy ngân). "
-        "<br/>2. <b>Quang xúc tác nano tự làm sạch (Photocatalytic Remediation):</b> Dưới ánh sáng mặt trời, các hạt bán dẫn nano (TiO<sub>2</sub>, ZnO, g-C<sub>3</sub>N<sub>4</sub>) "
-        "sản sinh các gốc tự do oxy hóa cực mạnh (•OH, •O<sub>2</sub><sup>−</sup>) có khả năng khoáng hóa hoàn toàn các chất độc hữu cơ khó phân hủy, "
-        "thuốc trừ sâu và khí thải độc hại (NO<sub><i>x</i></sub>, hợp chất hữu cơ dễ bay hơi VOCs) thành CO<sub>2</sub> và H<sub>2</sub>O vô hại.",
-        ocr_idx=73, is_expanded=True
+        "Hiệu suất chuyển đổi năng lượng toàn phần (Wall-Plug Efficiency <i>η<sub>c</sub></i> hay WPE) "
+        "là tỷ số trực tiếp giữa công suất phát xạ quang hữu ích ngõ ra <i>P</i><sub>0</sub> "
+        "và toàn bộ công suất điện một chiều <i>P</i><sub>elec</sub> mà hệ thống cấp nguồn phải cung cấp. "
+        "Khác với hiệu suất lượng tử vi phân <i>η<sub>d</sub></i> chỉ đo lường tỷ lệ hạt tải trên ngưỡng, "
+        "hiệu suất Wall-Plug phản ánh toàn bộ các hao phí vật lý của diode laser: "
+        "tổn hao dòng dưới ngưỡng nuôi tái hợp tự phát, tổn hao lượng tử photon (<i>hν < qV</i>), "
+        "tổn hao hấp thụ nội của hốc quang, và tổn hao nhiệt Joule trên điện trở tiếp xúc <i>R<sub>s</sub></i>."
     )
     add_spacer(8)
 
-    # Embed ảnh GS Markus Antonietti
-    story.append(he.embed_figure_with_caption(
-        fig_goc_prof,
-        "Hình 2.6.8 (Slide 73): Chân dung GS. Markus Antonietti — Giám đốc Viện Chất keo và Bề mặt Max Planck — người khởi xướng tầm nhìn công nghệ nano môi trường.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(6)
+    # Giai đoạn 2: Hạt nhân vật lý & Hệ thức Cột trụ
+    add_p("Giai đoạn 2: Hạt nhân vật lý và Hệ thức Cột trụ hiệu suất Wall-Plug", "H3")
+    add_p(
+        "Biểu thức toán học hoàn chỉnh của hiệu suất chuyển đổi năng lượng Wall-Plug:"
+    )
 
-    story.append(he.embed_figure_with_caption(
-        fig_sim_photo,
-        "Hình 2.6.9: Mô phỏng MATLAB R2014b+ động thái quang xúc tác phân hủy chất ô nhiễm hữu cơ bậc nhất <i>C</i>(<i>t</i>)·(<i>C</i><sub>0</sub>)<sup>−1</sup> theo thời gian, chứng minh hạt nano TiO2 kích thước 5 nm có tốc độ quang hóa vượt trội so với vật liệu khối.",
-        kind="sim",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # GIAI ĐOẠN 2 & 3
-    add_p("Giai đoạn 2: Ví dụ tối giản và hệ thức động học quang xúc tác nano", "H3")
-    nom_rows_2_6_4 = [
-        ("Hằng số tốc độ phản ứng hiệu dụng", "<i>k</i><sub>eff</sub>", "phút<sup>−1</sup> (hoặc s<sup>−1</sup>)", "Tốc độ phân hủy động học bậc nhất theo mô hình Langmuir-Hinshelwood."),
-        ("Diện tích bề mặt riêng của hạt nano", "<i>S</i><sub>spec</sub>", "m<sup>2</sup>·g<sup>−1</sup>", "Tỷ lệ nghịch với đường kính hạt: <i>S</i><sub>spec</sub> = 6 · (ρ <i>d</i>)<sup>−1</sup>."),
-        ("Thông lượng dòng chảy qua màng nano", "<i>J</i><sub><i>v</i></sub>", "L·m<sup>−2</sup>·h<sup>−1</sup>", "Lưu lượng nước sạch thẩm thấu: <i>J</i><sub><i>v</i></sub> = <i>L</i><sub>p</sub> (Δ<i>P</i> − Δπ)."),
-        ("Áp suất thẩm thấu muối", "Δπ", "bar (hoặc MPa)", "Áp suất cần vượt qua để tách nước ngọt từ nước biển theo định luật Van 't Hoff: Δπ = <i>i</i> <i>C</i> <i>R</i> <i>T</i>.")
+    pillar_eq_2_6_3 = r"\eta_c = \frac{P_0}{P_{\mathrm{elec}}} = \frac{\eta_d \frac{h\nu}{q} (I - I_{\mathrm{th}})}{I \cdot V(I)} = \frac{\eta_d \frac{h\nu}{q} (I - I_{\mathrm{th}})}{I \cdot (V_j + I R_s)}"
+    nom_data_2_6_3 = [
+        {"name": "Hiệu suất chuyển đổi Wall-Plug", "symbol": "<i>η<sub>c</sub></i>", "unit": "% (hoặc không thứ nguyên)", "meaning": "Tỷ số giữa công suất quang ngõ ra và công suất điện tiêu thụ toàn phần"},
+        {"name": "Điện áp hoạt động trên hai cực diode", "symbol": "<i>V</i>(<i>I</i>)", "unit": "V", "meaning": "Tổng sụt áp tiếp giáp <i>V<sub>j</sub></i> và sụt áp thuần trở <i>I · R<sub>s</sub></i>"},
+        {"name": "Điện áp tiếp giáp p-n", "symbol": "<i>V<sub>j</sub></i>", "unit": "V", "meaning": "Hiệu số mức Fermi giả qua vùng tích cực (<i>V<sub>j</sub> ≈ hν / q</i>)"},
+        {"name": "Điện trở vi phân tiếp xúc nối tiếp", "symbol": "<i>R<sub>s</sub></i>", "unit": "Ω", "meaning": "Tổng điện trở thuần của tiếp xúc kim loại-bán dẫn và các lớp bao bọc"}
     ]
-    story.append(he.build_target_equation_block(
-        r"-\frac{\mathrm{d}C}{\mathrm{d}t} = k_{\mathrm{eff}} C \implies C(t) = C_0 e^{-k_{\mathrm{eff}} t}, \qquad k_{\mathrm{eff}} = k_{\mathrm{int}} S_{\mathrm{spec}} = k_{\mathrm{int}} \frac{6}{\rho d_{\mathrm{particle}}}, \qquad J_v = L_p (\Delta P - \Delta\pi)",
-        nom_rows_2_6_4,
-        styles=styles
-    ))
+    story.append(he.build_target_equation_block(pillar_eq_2_6_3, nom_data_2_6_3, styles=styles))
     add_spacer(8)
 
-    add_p("Giai đoạn 3: Thực hành có hướng dẫn và cơ chế sinh gốc tự do oxy hóa trên bề mặt hạt nano TiO2", "H3")
-    story.append(he.build_intermediate_equation(
-        "Thiết lập chuỗi phản ứng quang hóa trên bề mặt hạt nano TiO2 dưới tác dụng của photon tử ngoại (hν ≥ Eg ≈ 3,2 eV):<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tạo cặp hạt tải và phản ứng oxy hóa khử với phân tử nước và oxy hòa tan:",
-        r"\mathrm{TiO_2} + h\nu \rightarrow e_{\mathrm{CB}}^- + h_{\mathrm{VB}}^+; \quad h_{\mathrm{VB}}^+ + \mathrm{H_2O} \rightarrow \cdot\mathrm{OH} + \mathrm{H}^+; \quad e_{\mathrm{CB}}^- + \mathrm{O_2} \rightarrow \cdot\mathrm{O_2^-}",
-        styles=styles
-    ))
+    # Giai đoạn 3: Chuỗi nhân quả dẫn xuất
+    add_p("Giai đoạn 3: Chuỗi nhân quả dẫn xuất điểm cực đại của hiệu suất Wall-Plug", "H3")
+    add_p("Dẫn xuất tường minh vị trí dòng điện bơm tối ưu hóa hiệu suất năng lượng:")
+
+    eq_deriv_2_6_3a = r"V(I) = V_j + I R_s \implies P_{\mathrm{elec}} = I V_j + I^2 R_s"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khai triển công suất điện tiêu thụ bao gồm thành phần tiếp giáp và thành phần Joule:", eq_deriv_2_6_3a, styles=styles))
     add_spacer(6)
 
-    story.append(he.build_intermediate_equation(
-        "Khoáng hóa hoàn toàn phân tử hữu cơ ô nhiễm thành sản phẩm thân thiện môi trường:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tác dụng oxy hóa khử không chọn lọc của gốc hydroxyl thế khử cao (+2,8 V):",
-        r"\cdot\mathrm{OH} + \mathrm{VOCs} \rightarrow \mathrm{CO_2} + \mathrm{H_2O} + \mathrm{Minerals}",
-        styles=styles
-    ))
+    eq_deriv_2_6_3b = r"\eta_c(I) = \eta_d \frac{h\nu}{q} \frac{1 - \frac{I_{\mathrm{th}}}{I}}{V_j + I R_s}"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Biến đổi hàm hiệu suất Wall-Plug theo biến số dòng tiêm I:", eq_deriv_2_6_3b, styles=styles))
+    add_spacer(6)
+
+    eq_deriv_2_6_3c = r"\frac{\mathrm{d}\eta_c}{\mathrm{d}I} = 0 \implies I_{\mathrm{opt}} \approx I_{\mathrm{th}} \left[1 + \sqrt{1 + \frac{V_j}{I_{\mathrm{th}} R_s}}\right]"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Nghiệm giải tích của dòng bơm đạt đỉnh hiệu suất chuyển đổi Wall-Plug:", eq_deriv_2_6_3c, styles=styles))
     add_spacer(8)
 
-    # GIAI ĐOẠN 4 & 5 CER
-    add_p("Giai đoạn 4: Phân tích biến thể — Màng lọc Graphene Oxide mao dẫn dòng nước siêu nhanh (Ultrafast Permeation)", "H3")
     add_p(
-        "Một trong những hiện tượng thủy động lực học lượng tử kỳ thú nhất là <b>dòng chảy siêu nhanh của nước qua các khe mao dẫn Graphene (Graphene Capillaries)</b>. "
-        "Màng lọc Graphene Oxide đa lớp gồm các tấm graphene xếp chồng cách nhau một khoảng cự ly dải hạ nanomet <i>d</i> ≈ 0,9 nm. "
-        "Bề mặt carbon phẳng lì không tì vết tạo nên một kênh trượt ma sát gần như bằng 0 đối với các phân tử nước đơn lớp. "
-        "Các phân tử nước xếp thành mạng lưới liên kết hydro hoàn hảo trượt qua mao dẫn với tốc độ nhanh hơn hàng nghìn lần so với dòng chảy Poiseuille cổ điển, "
-        "cho phép khử mặn nước biển với áp suất vận hành thấp hơn rất nhiều so với màng thẩm thấu ngược RO truyền thống."
+        "Nghiệm giải tích <i>I</i><sub>opt</sub> mang lại định hướng vận hành thực tế sâu sắc: "
+        "<br/>• Nếu điện trở tiếp xúc <i>R<sub>s</sub></i> rất nhỏ (tiếp xúc ohmic hoàn hảo), "
+        "tỷ số <i>V<sub>j</sub> · (I</i><sub>th</sub> <i>R<sub>s</sub>)</i><sup>−1</sup> rất lớn, "
+        "dòng tối ưu dịch chuyển về vùng 3–4 lần dòng ngưỡng, cho phép khai thác công suất quang lớn với hiệu suất cao. "
+        "<br/>• Ngược lại, nếu điện trở tiếp xúc bị lỗi công nghệ khiến <i>R<sub>s</sub></i> cao, "
+        "tổn hao nhiệt Joule <i>I</i><sup>2</sup> <i>R<sub>s</sub></i> bùng nổ sớm, đỉnh hiệu suất bị dìm xuống thấp "
+        "và dịch sát về dòng ngưỡng, thu hẹp dải vận hành kinh tế của laser."
     )
     add_spacer(8)
 
-    add_p("Giai đoạn 5: Thử thách tự luyện &amp; Dự đoán bẫy sai lầm (CER 2.6.4)", "H3")
+    # Giai đoạn 4: Khảo sát tiệm cận & Thực chiến
+    add_p("Giai đoạn 4: Khảo sát tiệm cận các giới hạn hiệu suất và so sánh liên công nghệ", "H3")
     add_p(
-        "<b>THỬ THÁCH CER: TẠI SAO HẠT NANO TIO2 CÀNG NHỎ LẠI CÀNG CÓ HIỆU QUẢ QUANG XÚC TÁC VƯỢT TRỘI?</b><br/>"
-        "<b>1. Khẳng định:</b> Khi đường kính hạt nano TiO<sub>2</sub> giảm từ 100 nm xuống 5 nm, tốc độ quang xúc tác tăng vọt hàng trăm lần.<br/>"
-        "<b>2. Bằng chứng:</b> Thứ nhất, diện tích bề mặt riêng tỷ lệ nghịch với kích thước hạt: <i>S</i><sub>spec</sub> = 6·(ρ <i>d</i>)<sup>−1</sup> (hạt 5 nm có diện tích riêng &gt; 250 m<sup>2</sup>·g<sup>−1</sup>, cung cấp mật độ tâm hoạt tính khổng lồ). "
-        "Thứ hai, thời gian khuếch tán của electron và lỗ trống từ trong lòng hạt ra đến bề mặt tỷ lệ với bình phương bán kính: τ<sub>diff</sub> = <i>R</i><sup>2</sup> · (π<sup>2</sup> <i>D</i>)<sup>−1</sup>.<br/>"
-        "<b>3. Lập luận:</b> Đối với hạt 5 nm, thời gian hạt tải khuếch tán ra bề mặt chỉ mất vài picogiây — ngắn hơn rất nhiều thời gian tái hợp electron-lỗ trống trong lòng chất rắn (~ vài nano giây). "
-        "Hầu như 100% hạt tải sinh ra đều kịp thời thoát ra bề mặt để tham gia phản ứng oxy hóa khử tạo gốc tự do, "
-        "triệt tiêu hoàn toàn tổn hao tái hợp vốn là yếu tố làm tê liệt hoạt tính của vật liệu khối."
+        "Khảo sát các miền tiệm cận: "
+        "<br/>1. <b>Tiệm cận sát ngưỡng (<i>I → I</i><sub>th</sub>):</b> Hiệu suất <i>η<sub>c</sub></i> → 0 vì dòng điện chủ yếu "
+        "bù đắp tái hợp tự phát vô ích. "
+        "<br/>2. <b>Miền cực đại tối ưu (<i>I = I</i><sub>opt</sub> ≈ 2–3 <i>I</i><sub>th</sub>):</b> "
+        "Diode laser bán dẫn hiện đại đạt hiệu suất Wall-Plug từ 50% đến 65% (đối với laser phát thanh GaAs 980 nm công suất lớn). "
+        "Đây là mức hiệu suất chuyển đổi năng lượng cao nhất trong toàn bộ thế giới quang học, "
+        "vượt trội hoàn toàn so với laser khí He-Ne (dưới 0,1%), laser rắn tinh thể Nd:YAG bơm đèn flash (khoảng 1–3%), "
+        "và đèn LED chiếu sáng thương mại (khoảng 20–30%). "
+        "<br/>3. <b>Tiệm cận dòng cực lớn (<i>I ≫ I</i><sub>opt</sub>):</b> Tổn hao Joule <i>I</i><sup>2</sup> <i>R<sub>s</sub></i> "
+        "áp đảo hoàn toàn trong mẫu số, kéo <i>η<sub>c</sub></i> sụt giảm theo quy luật tỉ lệ nghịch <i>I</i><sup>−1</sup>, "
+        "khiến phần lớn công suất cấp vào biến thành nhiệt phá hủy phiến bán dẫn."
     )
     add_spacer(14)
 
     # =========================================================================
-    # MPT 2.6.5: ĐỘC TÍNH NANO & CHIẾN LƯỢC BÁN DẪN VIỆT NAM
+    # GIAI ĐOẠN 5: THỬ THÁCH TỰ LUYỆN & DỰ ĐOÁN LỖI SAI (BẪY ĐIỂM MÙ R&D)
     # =========================================================================
-    add_p("Luận điểm 2.6.5: Xu hướng tương lai, Độc tính nano (Nanotoxicology) &amp; Chiến lược bán dẫn Việt Nam", "H2")
-    add_spacer(4)
-
-    # GIAI ĐOẠN 1
-    add_p("Giai đoạn 1: Giới thiệu khái niệm và bài toán an toàn độc tính nano (Nanotoxicology)", "H3")
+    add_p("Giai đoạn 5: Thử thách tự luyện & Dự đoán lỗi sai (Bẫy điểm mù R&amp;D)", "H3")
     add_p(
-        "Song song với những tiềm năng cách mạng to lớn, công nghệ nano cũng đặt ra những thách thức chưa từng có về mặt an toàn sinh học và môi trường. "
-        "<b>Độc tính học nano (Nanotoxicology)</b> là ngành khoa học nghiên cứu các tác động nguy hại tiềm tàng của các vật liệu nano nhân tạo "
-        "lên sinh vật sống và hệ sinh thái. "
-        "Do kích thước siêu nhỏ tương đương với protein và virus sinh học, các hạt nano có thể dễ dàng vượt qua hàng rào biểu mô da, "
-        "hệ hô hấp và đặc biệt là có khả năng <b>vượt qua hàng rào máu não (Blood-Brain Barrier)</b> — nơi các hợp chất hóa học thông thường không thể thâm nhập.",
-        ocr_idx=74
-    )
-    add_spacer(6)
-
-    add_p(
-        "Cơ chế gây độc tế bào chủ yếu xuất phát từ: "
-        "<br/>1. <b>Stress oxy hóa (Oxidative Stress):</b> Bề mặt hạt nano có độ hoạt tính xúc tác cao, dễ dàng xúc tác sản sinh quá mức các dạng oxy phản ứng (ROS), "
-        "gây oxy hóa lipid màng tế bào, đột biến chuỗi DNA và kích hoạt quá trình chết tế bào theo chương trình (Apoptosis). "
-        "<br/>2. <b>Tích lũy sinh học và khó đào thải:</b> Các ống nano carbon (CNT) có tỷ lệ dài rộng cao (Aspect Ratio) dạng sợi dài tương tự như sợi amiăng, "
-        "khi hít vào phổi có thể gây viêm nhiễm mãn tính và u trung biểu mô.",
-        ocr_idx=74, is_expanded=True
+        "Phần thử thách áp dụng phương pháp lập luận ba bước CER (Claim – Evidence – Reasoning) "
+        "kết hợp mổ xẻ các lỗi tư duy kinh điển trong phòng thí nghiệm quang điện tử bán dẫn:"
     )
     add_spacer(8)
 
-    # GIAI ĐOẠN 2 & 3
-    add_p("Giai đoạn 2: Ví dụ tối giản và hệ số khuếch tán Stokes-Einstein của hạt nano trong dịch sinh học", "H3")
-    nom_rows_2_6_5 = [
-        ("Hệ số khuếch tán chuyển động Brown", "<i>D</i><sub>diffusion</sub>", "m<sup>2</sup>·s<sup>−1</sup>", "Tốc độ khuếch tán của hạt nano trong chất lưu sinh học theo định luật Stokes-Einstein: <i>D</i> = <i>k</i><sub>B</sub> <i>T</i> · (6πη <i>r</i><sub>H</sub>)<sup>−1</sup>."),
-        ("Bán kính thủy động lực học", "<i>r</i><sub>H</sub>", "nm", "Bán kính thực tế của hạt bao gồm cả lớp vỏ phân tử nước hoặc protein bao quanh."),
-        ("Độ nhớt dịch sinh học", "η", "Pa·s (hoặc cP)", "Độ nhớt động lực học của môi trường huyết thanh hoặc dịch nội bào."),
-        ("Khung đánh giá rủi ro an toàn nano", "Risk", "EHS framework", "Rủi ro sinh thái toàn phần: Rủi ro = Mức độ độc hại (Hazard) × Mức độ phơi nhiễm (Exposure).")
+    cer_style = he.TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#002B49')),
+        ('BACKGROUND', (0,1), (-1,1), colors.HexColor('#F8F9FA')),
+        ('BOX', (0,0), (-1,-1), 1.0, colors.HexColor('#002B49')),
+        ('TOPPADDING', (0,0), (-1,-1), 6),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+        ('LEFTPADDING', (0,0), (-1,-1), 8),
+        ('RIGHTPADDING', (0,0), (-1,-1), 8),
+    ])
+
+    cer_card_1 = [
+        [Paragraph(he.wrap_math_glyphs("<b>THỬ THÁCH CER 2.6.1: NGHỊCH LÝ ĐỘ PHẢN XẠ GƯƠNG VÀ CÔNG SUẤT NGÕ RA</b>"), styles["TableHeader"])],
+        [Paragraph(he.wrap_math_glyphs(
+            "<b>Tình huống phản biện:</b> Một kỹ sư đề xuất phủ lớp phản xạ cao HR lên cả hai mặt gương "
+            "(<i>R</i><sub>1</sub> = <i>R</i><sub>2</sub> = 0,95) để giảm thiểu tổn hao gương <i>α<sub>m</sub></i>, "
+            "với kỳ vọng dòng ngưỡng <i>I</i><sub>th</sub> sẽ cực nhỏ và do đó ở cùng một dòng tiêm cố định (ví dụ 50 mA), "
+            "laser sẽ phát ra công suất quang <i>P</i><sub>0</sub> lớn hơn.<br/>"
+            "<b>1. Luận điểm (Claim):</b> Đề xuất của kỹ sư hoàn toàn sai lầm; việc phủ HR cả hai mặt sẽ khiến công suất quang ngõ ra <i>P</i><sub>0</sub> suy giảm nghiêm trọng, thậm chí gần như triệt tiêu tại 50 mA.<br/>"
+            "<b>2. Bằng chứng (Evidence):</b> Hiệu suất lượng tử vi phân tỉ lệ với hệ số trích xuất: "
+            "<i>η<sub>d</sub> = η<sub>i</sub> · α<sub>m</sub> · (⟨α<sub>i</sub>⟩ + α<sub>m</sub>)</i><sup>−1</sup>. "
+            "Khi <i>R</i><sub>1</sub><i>R</i><sub>2</sub> = (0,95)<sup>2</sup> ≈ 0,9025 với <i>L</i> = 300 μm, "
+            "tổn hao gương <i>α<sub>m</sub></i> sụt giảm từ 38 cm<sup>−1</sup> (mặt chẻ) xuống chỉ còn 1,7 cm<sup>−1</sup>. "
+            "Nếu tổn hao nội ⟨<i>α<sub>i</sub></i>⟩ = 10 cm<sup>−1</sup>, tỷ số trích xuất sụt giảm thảm hại từ 79% xuống chỉ còn 14%.<br/>"
+            "<b>3. Lập luận vi mô (Reasoning):</b> Mặc dù dòng ngưỡng giảm nhẹ, nhưng độ dốc vi sai <i>SE</i> bị giảm gần 6 lần. "
+            "Các photon kích thích sinh ra bị giam chặt trong hốc và phần lớn bị hấp thụ bởi các hạt tải tự do và tán xạ khuyết tật nội (⟨<i>α<sub>i</sub></i>⟩) "
+            "trước khi kịp thoát ra ngoài qua gương. Muốn trích xuất công suất cao, bắt buộc phải dùng cấu hình bất đối xứng AR–HR."
+        ), styles["TableCell"])]
     ]
-    story.append(he.build_target_equation_block(
-        r"D_{\mathrm{diffusion}} = \frac{k_B T}{6\pi\eta r_H}, \qquad \mathrm{Risk} = \mathrm{Hazard} \times \mathrm{Exposure}, \qquad \mathrm{ROS} \propto S_{\mathrm{spec}} \cdot \rho_{\mathrm{defect}}",
-        nom_rows_2_6_5,
-        styles=styles
-    ))
-    add_spacer(8)
+    t1 = he.Table(cer_card_1, colWidths=[he.PRINTABLE_WIDTH])
+    t1.setStyle(cer_style)
+    story.append(t1)
+    add_spacer(10)
 
-    add_p("Giai đoạn 3: Thực hành có hướng dẫn và nguyên tắc 'Thiết kế an toàn từ đầu' (Safe-by-Design)", "H3")
-    story.append(he.build_intermediate_equation(
-        "Nguyên tắc chuyển đổi công nghệ nano xanh (Green Nanotechnology) và Safe-by-Design:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Kiểm soát và bọc phủ chức năng hóa bề mặt hạt nano (Surface Passivation và PEGylation):",
-        r"\mathrm{Toxic\ NPs\ (High\ ROS)} \longrightarrow \mathrm{PEGylated\ NPs\ (Bio-inert\ and\ Safe)}",
-        styles=styles
-    ))
-    add_spacer(8)
+    cer_card_2 = [
+        [Paragraph(he.wrap_math_glyphs("<b>THỬ THÁCH CER 2.6.2: ĐO ĐẠC ĐẶC TUYẾN P–I CHẾ ĐỘ XUNG (PULSED) SO VỚI LIÊN TỤC (CW)</b>"), styles["TableHeader"])],
+        [Paragraph(he.wrap_math_glyphs(
+            "<b>Tình huống thí nghiệm:</b> Khi tiến hành đặc trưng hóa diode laser tại phòng Lab, "
+            "kỹ sư đo đặc tuyến <i>P</i>–<i>I</i> ở hai chế độ: Chế độ xung ngắn (độ rộng xung 100 ns, chu kỳ nhiệm vụ 0,1%) "
+            "và Chế độ sóng liên tục (CW). Hãy dự đoán và đối chiếu kết quả đo giữa hai chế độ.<br/>"
+            "<b>1. Luận điểm (Claim):</b> Ở chế độ xung ngắn, dòng ngưỡng <i>I</i><sub>th</sub> sẽ thấp hơn, "
+            "độ dốc hiệu suất <i>SE</i> duy trì tuyến tính không đổi lên tới dòng rất lớn, "
+            "và hoàn toàn không xuất hiện hiện tượng uốn cong suy hao nhiệt Rollover như ở chế độ liên tục CW.<br/>"
+            "<b>2. Bằng chứng (Evidence):</b> Công suất tiêu tán nhiệt trung bình ở chế độ xung chỉ bằng 0,1% so với chế độ CW: "
+            "⟨<i>P</i><sub>diss</sub>⟩ = <i>Duty Cycle · P</i><sub>diss,peak</sub> = 10<sup>−3</sup> <i>P</i><sub>diss,peak</sub>. "
+            "Với độ rộng xung 100 ns nhỏ hơn rất nhiều so với hằng số thời gian cân bằng nhiệt của phiến bán dẫn (cỡ vài micro giây đến mili giây), "
+            "nhiệt độ lớp chuyển tiếp p-n không kịp dâng lên (Δ<i>T</i> ≈ 0).<br/>"
+            "<b>3. Lập luận vi mô (Reasoning):</b> Chế độ xung phản ánh chính xác bản chất lượng tử thuần khiết đẳng nhiệt của vật liệu bán dẫn (Isothermal Behavior). "
+            "Sự sai lệch giữa đường CW và đường xung chính là bằng chứng thực nghiệm trực tiếp để kỹ sư đo lường điện trở nhiệt <i>R</i><sub>th</sub> "
+            "và các thông số suy thoái nhiệt <i>T</i><sub>0</sub>, <i>T</i><sub>1</sub> của linh kiện đóng gói."
+        ), styles["TableCell"])]
+    ]
+    t2 = he.Table(cer_card_2, colWidths=[he.PRINTABLE_WIDTH])
+    t2.setStyle(cer_style)
+    story.append(t2)
+    add_spacer(10)
 
-    # GIAI ĐOẠN 4 & 5 CER
-    add_p("Giai đoạn 4: Phân tích biến thể — Chiến lược bán dẫn và công nghệ nano tại Việt Nam (HUST, VNU, VAST)", "H3")
-    add_p(
-        "Nhận thức sâu sắc vai trò sống còn của công nghệ nano và bán dẫn đối với chủ quyền công nghệ quốc gia và an ninh quốc phòng, "
-        "Chính phủ Việt Nam đã ban hành Chiến lược Quốc gia về Phát triển Công nghiệp Bán dẫn đến năm 2030, tầm nhìn 2050 (Quyết định số 1018-QĐ-TTg). "
-        "Các trung tâm đào tạo và nghiên cứu đỉnh cao — tiêu biểu là <b>Đại học Bách khoa Hà Nội (HUST — Viện Vật lý Kỹ thuật, Khoa Vật lý Kỹ thuật)</b>, "
-        "Đại học Quốc gia Hà Nội (VNU), Viện Hàn lâm Khoa học và Công nghệ Việt Nam (VAST) và Trung tâm Đổi mới Sáng tạo Quốc gia (NIC) — "
-        "đang giữ vai trò hạt nhân đào tạo nguồn nhân lực chất lượng cao và làm chủ các công nghệ lõi: "
-        "từ thiết kế mạch tích hợp IC, công nghệ đóng gói tiên tiến (Advanced Packaging), vật liệu nano bán dẫn màng mỏng đến cảm biến quang điện tử phục vụ quốc phòng."
-    )
-    add_spacer(8)
-
-    add_p("Giai đoạn 5: Thử thách tự luyện &amp; Dự đoán bẫy sai lầm (CER 2.6.5)", "H3")
-    add_p(
-        "<b>THỬ THÁCH CER: CÓ THỂ ĐÁNH GIÁ ĐỘC TÍNH CỦA VẬT LIỆU NANO DỰA TRÊN THÀNH PHẦN HÓA HỌC THÔNG THƯỜNG?</b><br/>"
-        "<b>1. Khẳng định:</b> Tuyệt đối không thể dùng các dữ liệu độc tính hóa học của vật liệu khối để áp đặt đánh giá độ an toàn của vật liệu nano tương ứng.<br/>"
-        "<b>2. Bằng chứng:</b> Vàng (Au) và Bạc (Ag) khối là các kim loại quý trơ hoàn toàn về mặt hóa học và được coi là an toàn tuyệt đối với cơ thể người. "
-        "Tuy nhiên, hạt nano Bạc (AgNPs kích thước &lt; 20 nm) có diện tích bề mặt riêng cực lớn, giải phóng liên tục các ion Ag<sup>+</sup> tự do "
-        "tấn công màng vi khuẩn và có thể gây nhiễm độc tế bào gan và thận ở liều lượng tích lũy.<br/>"
-        "<b>3. Lập luận:</b> Độc tính của vật liệu nano phụ thuộc chủ yếu vào các đặc tính lượng tử và hình học bề mặt "
-        "(kích thước, diện tích riêng, điện tích bề mặt zeta potential, hình dạng cầu hay sợi và trạng thái kết tụ) "
-        "chứ không chỉ đơn thuần là công thức hóa học nguyên tố. "
-        "Mọi nghiên cứu và ứng dụng nano bắt buộc phải tuân thủ quy chuẩn kiểm định an toàn độc tính học nano độc lập."
-    )
+    cer_card_3 = [
+        [Paragraph(he.wrap_math_glyphs("<b>THỬ THÁCH CER 2.6.3: BẪY CO NGẮN HỐC CỘNG HƯỞNG TRONG THIẾT KẾ LASER CÔNG SUẤT</b>"), styles["TableHeader"])],
+        [Paragraph(he.wrap_math_glyphs(
+            "<b>Tình huống thiết kế:</b> Một kỹ sư muốn chế tạo diode laser công suất 100 mW, "
+            "quyết định thu ngắn chiều dài hốc xuống <i>L</i> = 100 μm để cực đại hóa hiệu suất trích xuất gương <i>η<sub>d</sub></i>. "
+            "Linh kiện sau chế tạo không thể đạt được công suất 100 mW mà bị phá hủy ở dòng bơm cao. Tại sao?<br/>"
+            "<b>1. Luận điểm (Claim):</b> Việc co ngắn hốc xuống 100 μm gây ra hiện tượng bùng nổ mật độ dòng ngưỡng "
+            "và tăng vọt điện trở thuần nối tiếp <i>R<sub>s</sub></i>, dẫn đến thảm họa quá nhiệt phá hủy phiến bán dẫn.<br/>"
+            "<b>2. Bằng chứng (Evidence):</b> Tổn hao gương tỉ lệ nghịch với chiều dài hốc: "
+            "khi <i>L</i> = 100 μm, <i>α<sub>m</sub></i> = 114 cm<sup>−1</sup>, đòi hỏi độ lợi ngưỡng <i>g</i><sub>th</sub> vượt quá 3800 cm<sup>−1</sup>, "
+            "tiệm cận mức bão hòa độ lợi tối đa của giếng lượng tử GaAs. "
+            "Đồng thời, điện trở tiếp xúc tỉ lệ nghịch với diện tích hốc: <i>R<sub>s</sub> ∝ 1 · (w · L)</i><sup>−1</sup> tăng gấp 3 lần so với hốc 300 μm.<br/>"
+            "<b>3. Lập luận vi mô (Reasoning):</b> Mật độ dòng ngưỡng <i>J</i><sub>th</sub> tăng vọt kéo theo mật độ phát nhiệt Joule <i>J</i><sup>2</sup> <i>R<sub>s</sub></i> "
+            "tập trung trên một thể tích quá nhỏ. Mật độ công suất quang trên mặt gương vượt ngưỡng phá hủy quang học thảm khốc COD "
+            "(khoảng vài MW·cm<sup>−2</sup>), làm nóng chảy cục bộ bề mặt gương trước khi đạt được công suất mong muốn."
+        ), styles["TableCell"])]
+    ]
+    t3 = he.Table(cer_card_3, colWidths=[he.PRINTABLE_WIDTH])
+    t3.setStyle(cer_style)
+    story.append(t3)
     add_spacer(14)
 
-    # =========================================================================
-    # TỔNG KẾT TOÀN CHƯƠNG VÀ BẢNG KIỂM TOÁN CHẤT LƯỢNG MỤC 2.6
-    # =========================================================================
-    add_p("Tổng kết &amp; Bảng đối soát kiểm toán kỹ thuật chuyên khảo Mục 2.6", "H2")
-    add_spacer(4)
-
-    audit_headers = [
-        Paragraph(he.wrap_math_glyphs("<b>Chỉ tiêu kiểm định (DOHG 2.0)</b>"), styles["TableHeader"]),
-        Paragraph(he.wrap_math_glyphs("<b>Mô tả nội dung &amp; Chuẩn mực kiểm toán</b>"), styles["TableHeader"]),
-        Paragraph(he.wrap_math_glyphs("<b>Trạng thái nghiệm thu</b>"), styles["TableHeader"]),
-    ]
-    audit_rows = [
-        audit_headers,
-        [
-            Paragraph(he.wrap_math_glyphs("Cấu trúc 5 giai đoạn sư phạm"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Triển khai đủ 5 MPT từ Khái niệm → Ví dụ → Dẫn xuất → Biến thể → CER"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("Bảo toàn Zero-Omission"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Quét cạn Slide 71–75 (Định luật Moore, Y sinh, Năng lượng, Môi trường, Độc tính)"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("Luật 14: Zero-Slash-Fractions"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("100% công thức phân số dùng phân số gạch ngang chuẩn tử số trên mẫu số"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("Luật 15: Zero-LaTeX-Leakage"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Không rò rỉ mã lệnh LaTeX thô trong Paragraph và Table, bọc chuẩn HTML &amp; Unicode"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("Đồ thị chuẩn MATLAB R2014b+"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("3 đồ thị mô phỏng đạt chuẩn Triple Buffer Geometry, font ≥ 10 pt"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("Bảo toàn ảnh gốc bóc tách"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("6 ảnh gốc bóc tách từ Slide 71–73 lưu trữ an toàn trong Kho_Hinh_Anh trên Drive"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-    ]
-    t_audit = he.Table(audit_rows, colWidths=[150.0, 220.0, 145.0], repeatRows=1)
-    t_audit.setStyle(he.TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), he.COLOR_TABLE_HEADER_BG),
-        ("GRID", (0, 0), (-1, -1), 0.5, he.COLOR_BORDER_GRAY),
-        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-        ("TOPPADDING", (0, 0), (-1, -1), 4),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
-        ("LEFTPADDING", (0, 0), (-1, -1), 5),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 5),
-    ]))
-    story.append(t_audit)
-    add_spacer(14)
-
-    # BỘ BA MỎ NEO ĐIỀU HƯỚNG KẾT THÚC CHƯƠNG 2
-    summary_text = (
-        "<b>BỘ BA MỎ NEO ĐIỀU HƯỚNG — HOÀN TẤT TOÀN DIỆN MỤC 2.6 &amp; KHÉP LẠI CHƯƠNG 2:</b><br/>"
-        "<b>1. Trục Dẫn xuất Cốt lõi:</b> Định luật Moore và giới hạn chui hầm lượng tử kênh ngắn (<i>L</i><sub>g</sub> &lt; 2 nm) "
-        "→ Công nghệ y sinh nano và dẫn thuốc hướng đích dựa trên hiệu ứng thấm giữ EPR "
-        "→ Chuyển đổi và tích trữ năng lượng bền vững qua hiệu ứng sinh đa exciton MEG và cực dương nano Silicon (4.200 mAh·g<sup>−1</sup>) "
-        "→ Công nghệ môi trường thanh lọc nước sạch và không khí (Markus Antonietti — Max Planck) qua màng lọc nano và xúc tác TiO<sub>2</sub> "
-        "→ Độc tính học nano (Nanotoxicology), nguyên tắc Safe-by-Design và chiến lược phát triển công nghiệp bán dẫn Việt Nam 2030–2050.<br/>"
-        "<b>2. Thông số Trọng tâm:</b> Giới hạn nhiệt động Shockley–Queisser 33,7% → Trần MEG nano 44%; "
-        "Dung lượng lý thuyết cực dương Si nano 4.200 mAh·g<sup>−1</sup>; Đường kính hạt tới hạn không nứt vỡ <i>d</i><sub>crit</sub> ≈ 150 nm; "
-        "Cửa sổ vàng kích thước hạt nano y sinh 10–100 nm; Hệ số suy giảm chui hầm oxide cổng κ ≈ 6,4 nm<sup>−1</sup>.<br/>"
-        "<b>3. Câu hỏi Đối trọng Phản biện (Lab Partner):</b> "
-        "<i>'Khi kích thước của các linh kiện bán dẫn đạt tới ranh giới nguyên tử (dưới 1 nm), "
-        "liệu công nghệ nano sẽ tiếp tục tiến hóa theo hướng thu nhỏ hình học cổ điển (More Moore) "
-        "hay bắt buộc phải chuyển dịch toàn diện sang các kiến trúc điện toán phi von Neumann "
-        "(như Spintronics, Mạch tích hợp quang tử PIC, và Máy tính lượng tử)? "
-        "Là một kỹ sư Vật lý Kỹ thuật tương lai của HUST, bạn sẽ chọn mắt xích đột phá nào để đóng góp cho nền bán dẫn Việt Nam?'</i>"
+    # Lời kết luận học thuật
+    conclusion_text = (
+        "<b>KẾT LUẬN CHUYÊN KHẢO MỤC 2.6:</b> Đặc tuyến <i>P</i>–<i>I</i> là bức tranh toàn cảnh phản ánh "
+        "sự tương tác phức tạp giữa hiện tượng phát xạ lượng tử trên ngưỡng, quang học hốc cộng hưởng bất đối xứng, "
+        "và nhiệt động học bán dẫn thực tế. Nắm vững bài toán tối ưu hóa chiều dài hốc <i>L</i><sub>opt</sub> "
+        "và cấu hình màng mỏng gương AR–HR là chìa khóa để kỹ sư chế tạo thành công các module laser hiệu suất cao "
+        "đáp ứng các tiêu chuẩn quân sự và công nghiệp khắt khe."
     )
-    add_p(summary_text, "Body")
+    add_p(conclusion_text, "Body")
+    add_spacer(10)
 
-    print(f"[*] Starting PDF build for Section 2.6 ({PDF_FILENAME})...")
-    doc.build(story)
-    print(f"[OK] Successfully built {TARGET_PDF_PATH}")
-    file_size_mb = os.path.getsize(TARGET_PDF_PATH) / (1024 * 1024)
-    print(f"[OK] Output PDF Size: {file_size_mb:.2f} MB")
+    # Build document
+    doc.build(story, canvasmaker=he.NumberedBookmarkCanvas)
+    print(f"PDF BUILT SUCCESSFULLY: {pdf_filename} ({os.path.getsize(pdf_filename)/1024:.1f} KB)")
 
 
 if __name__ == "__main__":
     build_monograph_muc_2_6()
-'''
-
-with open('output/build_monograph_muc_2_6_nano.py', 'w', encoding='utf-8') as f:
-    f.write(content)
-
-print("Generated clean build_monograph_muc_2_6_nano.py successfully!")

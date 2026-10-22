@@ -1,91 +1,67 @@
 # -*- coding: utf-8 -*-
 """
-Generator for Section 2.5 Monograph Script
-Course: Co so vat ly va cong nghe nano (PH3470 - HUST)
-Section 2.5: Ban chat va cong nghe nano luong tu (Vuong viu, EPR, Bell, Nobel 2022)
-Strict Compliance: Progressive 5 Stages, Causal Flowchain, Zero-Slash, Zero-LaTeX-Leakage
-"""
-
-content = r'''# -*- coding: utf-8 -*-
-"""
-HUST Monograph PDF Typesetting Script
-Course: Co so vat ly va cong nghe nano (PH3470 - HUST)
-Chapter 2: Ban chat luong tu cua the gioi nano (Quantum Nature of Nanoworld)
-Section 2.5: Ban chat va cong nghe nano luong tu (Vuong viu, EPR, Bell, Nobel 2022)
-Architecture: Progressive 5 Stages & Causal Flowchain (Pass 100% Pre-flight Linter)
-Author: Academic Research Engine & Monograph PDF Publisher (Bui Trung Dung - HUST)
+gen_clean_2_5.py
+Chế bản chuyên khảo toàn văn PDF cho Mục 2.5: Điều kiện ngưỡng hoặc trạng thái dừng của độ lợi trong laser.
 """
 import os
 import sys
 
-if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8')
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
-sys.path.insert(0, r"d:\antigravity\academic-research-engine\.agents\skills\monograph-pdf-publisher\scripts")
-import hust_pdf_engine as he
-from reportlab.platypus import Paragraph, Spacer, KeepTogether, PageBreak
 from reportlab.lib import colors
+from reportlab.platypus import Paragraph, Spacer, Table, TableStyle, KeepTogether, PageBreak
 
-DRIVE_DIR = r"G:\My Drive\NotebookLM - Academic Knowledge Base\Cơ sở vật lý và công nghệ nano"
-PDF_DIR = os.path.join(DRIVE_DIR, "Bai_Giang_Dong_Goi")
-IMG_DIR = os.path.join(DRIVE_DIR, "Kho_Hinh_Anh")
-os.makedirs(PDF_DIR, exist_ok=True)
-os.makedirs(IMG_DIR, exist_ok=True)
+sys.path.append(r"d:\antigravity\academic-research-engine\.agents\skills\monograph-pdf-publisher\scripts")
+import hust_pdf_engine as he
 
-PDF_FILENAME = "Chuyen_Khao_Nano_Muc_2.5.pdf"
-TARGET_PDF_PATH = os.path.join(PDF_DIR, PDF_FILENAME)
+drive_dir = r"G:\My Drive\NotebookLM - Academic Knowledge Base\Laser Diode - Cấu trúc và Nguyên lý"
+img_dir = os.path.join(drive_dir, "Kho_Hinh_Anh")
+pdf_dir = os.path.join(drive_dir, "Bai_Giang_Dong_Goi")
+os.makedirs(pdf_dir, exist_ok=True)
+
+pdf_filename = os.path.join(pdf_dir, "Chuyen_Khao_Laser_Diode_Muc_2.5.pdf")
+
+# Tài nguyên hình ảnh
+fig_goc_2_7 = os.path.join(img_dir, "[Goc]_Figure_2.7_Mo_hinh_ho_chua_tren_nguong_co_dap_tran.png")
+fig_goc_2_8 = os.path.join(img_dir, "[Goc]_Figure_2.8_Do_loi_theo_mat_do_hat_tai_va_hien_tuong_clamping.png")
+fig_goc_2_10 = os.path.join(img_dir, "[Goc]_Figure_2.10_Do_loi_mode_theo_mat_do_hat_tai_tiem_va_ton_hao.png")
+fig_sim_2_5a = os.path.join(img_dir, "[Mo_Phong]_Muc_2.5_Do_Loi_Vat_Lieu_Va_Ghim_Do_Loi.png")
+fig_sim_2_5b = os.path.join(img_dir, "[Mo_Phong]_Muc_2.5_Kep_Chat_Hat_Tai_Va_Photon.png")
 
 
 def build_monograph_muc_2_5():
+    print(f"Building monograph PDF: {pdf_filename}...")
     styles = he.get_hust_styles()
-    doc = he.BookmarkDocTemplate(TARGET_PDF_PATH)
+    styles["BodyText"] = styles["Body"]
+    doc = he.BookmarkDocTemplate(pdf_filename)
     story = []
 
-    def add_p(text: str, style_name: str = "Body", ocr_idx: int = None, is_expanded: bool = False):
-        p = he.make_paragraph(text, styles[style_name], ocr_idx=ocr_idx, is_expanded_from_slide=is_expanded)
-        story.append(p)
-        return p
+    def add_p(text, style_name="Body"):
+        safe_text = he.wrap_math_glyphs(text)
+        story.append(he.make_paragraph(safe_text, styles[style_name]))
 
-    def add_spacer(pt: float = 8.0):
+    def add_spacer(pt=8):
         story.append(Spacer(1, pt))
 
-    # Figure paths (Original slide figures)
-    fig_goc_01 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_01_Khoa_Hoc_Nano_Luong_Tu.png")
-    fig_goc_02 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_02_Do_Ket_Hop_Luong_Tu_Coherence.png")
-    fig_goc_03 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_03_Su_Chong_Chat_Luong_Tu.png")
-    fig_goc_04 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_04_Cap_Hat_Roi_Luong_Tu.png")
-    fig_goc_05 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_05_Nghich_Ly_EPR_1935.png")
-    fig_goc_06 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_06_Phep_Do_EPR_Vi_Tri_Dong_Luong.png")
-    fig_goc_07 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_07_Mo_Hinh_Bien_An_Dia_Phuong.png")
-    fig_goc_08 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_08_Mo_Hinh_Luong_Tu_Cap_Hat_Roi.png")
-    fig_goc_09 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_09_Bat_Dang_Thuc_Bell_Gioi_Han.png")
-    fig_goc_10 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_10_John_Clauser_Berkeley_1976.png")
-    fig_goc_11 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_11_Thi_Nghiem_Clauser_1972.png")
-    fig_goc_12 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_12_Thi_Nghiem_Alain_Aspect_1982.png")
-    fig_goc_13 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_13_Thi_Nghiem_Anton_Zeilinger.png")
-    fig_goc_14 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_14_Ung_Dung_Vat_Lieu_Nano_Luong_Tu.png")
-    fig_goc_15 = os.path.join(IMG_DIR, "[Goc]_Muc_2.5_Hinh_15_Cong_Nghe_Nano_Luong_Tu_Tuong_Lai.png")
-
-    # Simulation figures (MATLAB R2014b+)
-    fig_sim_bell = os.path.join(IMG_DIR, "[Mo_Phong]_Muc_2.5_Bat_Dang_Thuc_Bell_CHSH.png")
-    fig_sim_corr = os.path.join(IMG_DIR, "[Mo_Phong]_Muc_2.5_Tuong_Quan_Phan_Cuc_Photon_Vuong_Viu.png")
-    fig_sim_decoh = os.path.join(IMG_DIR, "[Mo_Phong]_Muc_2.5_Suy_Giam_Do_Ket_Hop_Decoherence_Qubit.png")
-
     # =========================================================================
-    # H1 TIÊU ĐỀ PHÂN MỤC VÀ METADATA ĐÀO TẠO BÁCH KHOA
+    # TRANG TIÊU ĐỀ & ĐỀ CƯƠNG MỤC 2.5
     # =========================================================================
-    add_p("Chương 2: Bản chất lượng tử của thế giới nano", "H1")
-    add_p("Mục 2.5: Bản chất và công nghệ nano lượng tử (Vướng víu, EPR, Bell, Nobel 2022)", "H2")
-    add_p("<i>(Đối chiếu giáo trình quốc tế: Edward L. Wolf — Nanophysics and Nanotechnology, Chương 2 và Chương 9; Slide bài giảng 54–70)</i>", "Caption")
+    add_p("Chương 2: Phương pháp tiếp cận hiện tượng luận đối với laser diode", "H1")
+    add_p("Mục 2.5: Điều kiện ngưỡng hoặc trạng thái dừng của độ lợi trong laser (Threshold or Steady-State Condition in Lasers)", "H2")
     add_spacer(6)
 
     meta_table_data = [
-        [Paragraph(he.wrap_math_glyphs("<b>Học phần:</b> Cơ sở vật lý và công nghệ nano (PH3470)"), styles["TableCell"]),
-         Paragraph(he.wrap_math_glyphs("<b>Đơn vị đào tạo:</b> Viện Vật lý Kỹ thuật — ĐHBK Hà Nội"), styles["TableCell"])],
-        [Paragraph(he.wrap_math_glyphs("<b>Học viên tiếp nhận:</b> Bùi Trung Dũng (Năm 3 — VLKT)"), styles["TableCell"]),
-         Paragraph(he.wrap_math_glyphs("<b>Vị thế hợp tác:</b> Giảng viên &amp; Cộng sự Lab ngang hàng"), styles["TableCell"])],
-        [Paragraph(he.wrap_math_glyphs("<b>Tài liệu nguồn kép:</b> Slide HUST Bài 2 (Slide 54–70); Wolf Nanotechnology"), styles["TableCell"]),
-         Paragraph(he.wrap_math_glyphs("<b>Chuẩn mực kỹ thuật:</b> Khung Sư phạm 5 Giai đoạn, Zero-Omission, Zero-Slash"), styles["TableCell"])]
+        [Paragraph(he.wrap_math_glyphs("<b>Học phần:</b> Laser Diode — Cấu trúc và Nguyên lý"), styles["TableCell"]),
+         Paragraph(he.wrap_math_glyphs("<b>Chuyên đề:</b> Động học Trạng thái Dừng &amp; Ngưỡng Laser"), styles["TableCell"])],
+        [Paragraph(he.wrap_math_glyphs("<b>Tài liệu gốc:</b> Coldren &amp; Corzine (Trang 37–41)"), styles["TableCell"]),
+         Paragraph(he.wrap_math_glyphs("<b>Đối chiếu:</b> Yariv (Ch. 15) &amp; Sze (Ch. 12)"), styles["TableCell"])],
+        [Paragraph(he.wrap_math_glyphs("<b>Mã phân mục:</b> Mục 2.5 (Chương 2)"), styles["TableCell"]),
+         Paragraph(he.wrap_math_glyphs("<b>Quy chuẩn:</b> Độc lập tự chứa (1 Mục = 1 File PDF)"), styles["TableCell"])],
     ]
     meta_t = he.Table(meta_table_data, colWidths=[250.0, he.PRINTABLE_WIDTH - 250.0])
     meta_t.setStyle(he.TableStyle([
@@ -101,21 +77,19 @@ def build_monograph_muc_2_5():
     add_spacer(10)
 
     add_p(
-        "Chuyên khảo toàn văn chuyên sâu về bản chất vật lý lượng tử nền tảng và các ứng dụng cách mạng trong công nghệ nano hiện đại "
-        "(PH3470 — HUST; đối chiếu Edward L. Wolf, Nanophysics and Nanotechnology, Chapters 2 và 9). "
-        "Triển khai toàn văn từ nguyên lý chồng chất trạng thái và độ gắn kết lượng tử (Quantum Coherence), "
-        "hiện tượng rối lượng tử (Quantum Entanglement) và Nghịch lý EPR lịch sử (1935), "
-        "dẫn xuất giải tích Định lý Bell và Bất đẳng thức Bell–CHSH chứng minh sự sụp đổ của các lý thuyết biến ẩn địa phương cổ điển, "
-        "phân tích chi tiết bộ ba thí nghiệm thực chứng lịch sử đạt Giải Nobel Vật lý 2022 của John Clauser, Alain Aspect và Anton Zeilinger, "
-        "cùng các hướng phát triển mũi nhọn của công nghệ nano lượng tử: Qubit nano (chấm lượng tử và tiếp giáp Josephson siêu dẫn), "
-        "phân phối khóa mật mã lượng tử (QKD) và cảm biến từ trường hạ nano bằng tâm khuyết tật kim cương NV."
+        "Chuyên khảo toàn văn chuyên sâu Mục 2.5 giải phẫu bản chất động học của sự chuyển pha từ trạng thái phát xạ tự phát "
+        "dưới ngưỡng sang trạng thái tự dao động phát laser dừng trên ngưỡng "
+        "(đối chiếu Coldren &amp; Corzine, Diode Lasers and Photonic Integrated Circuits, Chapter 2, trang 37–41). "
+        "Hệ thống làm sáng tỏ 3 mắt xích vật lý: (1) Mô hình hồ chứa tương đương có đập tràn phát xạ kích thích (Spillway); "
+        "(2) Phương trình độ lợi vật liệu bán dẫn phi tuyến <i>g(N)</i> và hiện tượng ghim độ lợi tại ngưỡng (Gain Clamping); "
+        "và (3) Cơ chế kẹp chặt mật độ hạt tải (Carrier Clamping) và biểu thức giải tích xác lập dòng ngưỡng <i>I</i><sub>th</sub>."
     )
     add_spacer(10)
 
     # BẢNG TỔNG QUAN NGUỒN KÉP MỤC 2.5
     matrix_headers = [
         Paragraph(he.wrap_math_glyphs("<b>Mã MPT</b>"), styles["TableHeader"]),
-        Paragraph(he.wrap_math_glyphs("<b>Tiêu đề Luận điểm Vi mô (Slide HUST &amp; Wolf)</b>"), styles["TableHeader"]),
+        Paragraph(he.wrap_math_glyphs("<b>Tiêu đề Luận điểm Vi mô (Coldren &amp; Corzine)</b>"), styles["TableHeader"]),
         Paragraph(he.wrap_math_glyphs("<b>Hệ thức Cột trụ &amp; Phương trình Trọng tâm</b>"), styles["TableHeader"]),
         Paragraph(he.wrap_math_glyphs("<b>Mô phỏng &amp; Hình ảnh Thực chứng</b>"), styles["TableHeader"]),
     ]
@@ -123,793 +97,351 @@ def build_monograph_muc_2_5():
         matrix_headers,
         [
             Paragraph(he.wrap_math_glyphs("<b>MPT 2.5.1</b>"), styles["TableCellCenter"]),
-            Paragraph(he.wrap_math_glyphs("Khoa học nano lượng tử, Gắn kết lượng tử &amp; Chồng chất"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Trạng thái chồng chất, ma trận mật độ và thời gian decoherence"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Ảnh gốc: Khoa học nano, Coherence; Mô phỏng 2.5.3"), styles["TableCellCenter"]),
+            Paragraph(he.wrap_math_glyphs("Mô hình hồ chứa trên ngưỡng &amp; Đập tràn phát xạ"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("<i>R</i><sub>st</sub> = <i>v<sub>g</sub> g S</i>, lưu lượng tràn ∝ (<i>I</i> − <i>I</i><sub>th</sub>)"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("Hình 2.7 (Tr. 38) Mô hình hồ chứa có đập tràn"), styles["TableCellCenter"]),
         ],
         [
             Paragraph(he.wrap_math_glyphs("<b>MPT 2.5.2</b>"), styles["TableCellCenter"]),
-            Paragraph(he.wrap_math_glyphs("Rối lượng tử (Quantum Entanglement) &amp; Nghịch lý EPR 1935"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("4 trạng thái cơ sở Bell, tương quan spin và xung đột tính địa phương"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Ảnh gốc: Cặp hạt rối, EPR 1935 (Slide 59–61)"), styles["TableCellCenter"]),
+            Paragraph(he.wrap_math_glyphs("Đặc tuyến độ lợi <i>g(N)</i> &amp; Ghim độ lợi tại ngưỡng"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("<i>g(N)</i> = <i>g</i><sub>0</sub> ln(<i>N</i> · <i>N</i><sub>tr</sub><sup>−1</sup>), <i>Γ g</i><sub>th</sub> = ⟨<i>α<sub>i</sub></i>⟩ + <i>α<sub>m</sub></i>"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("Hình 2.8 &amp; Mô phỏng <i>g(N)</i> ghim tại ngưỡng"), styles["TableCellCenter"]),
         ],
         [
             Paragraph(he.wrap_math_glyphs("<b>MPT 2.5.3</b>"), styles["TableCellCenter"]),
-            Paragraph(he.wrap_math_glyphs("Định lý Bell &amp; Bất đẳng thức Bell–CHSH"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Giới hạn cổ điển |S| ≤ 2 và cực đại Tsirelson 2√2"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Ảnh gốc: Biến ẩn, Giới hạn Bell; Mô phỏng 2.5.1"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("<b>MPT 2.5.4</b>"), styles["TableCellCenter"]),
-            Paragraph(he.wrap_math_glyphs("Bộ ba thí nghiệm Nobel 2022 (Clauser, Aspect, Zeilinger)"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Đóng kín kẽ hở định vị và viễn tải lượng tử"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Ảnh gốc: Clauser, Aspect, Zeilinger; Mô phỏng 2.5.2"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("<b>MPT 2.5.5</b>"), styles["TableCellCenter"]),
-            Paragraph(he.wrap_math_glyphs("Ứng dụng công nghệ nano: Qubit nano, QKD &amp; Cảm biến"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Qubit siêu dẫn Transmon, phân phối khóa BB84 và tâm màu NV"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Ảnh gốc: Thiết bị nano, Tương lai nano (Slide 69–70)"), styles["TableCellCenter"]),
+            Paragraph(he.wrap_math_glyphs("Kẹp chặt hạt tải &amp; Dòng ngưỡng giải tích <i>I</i><sub>th</sub>"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("<i>N</i> = <i>N</i><sub>th</sub> (hằng số), <i>I</i><sub>th</sub> = <i>q V</i> · <i>η<sub>i</sub></i><sup>−1</sup> (<i>A N</i><sub>th</sub> + <i>B N</i><sub>th</sub><sup>2</sup> + <i>C N</i><sub>th</sub><sup>3</sup>)"), styles["TableCell"]),
+            Paragraph(he.wrap_math_glyphs("Hình 2.10 &amp; Mô phỏng kẹp chặt <i>N</i> và <i>S</i>"), styles["TableCellCenter"]),
         ],
     ]
-    t_matrix = he.Table(matrix_rows, colWidths=[65.0, 165.0, 155.0, 130.0], repeatRows=1)
-    t_matrix.setStyle(he.TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), he.COLOR_TABLE_HEADER_BG),
-        ("GRID", (0, 0), (-1, -1), 0.5, he.COLOR_BORDER_GRAY),
-        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-        ("TOPPADDING", (0, 0), (-1, -1), 4),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
-        ("LEFTPADDING", (0, 0), (-1, -1), 5),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 5),
+    matrix_t = he.Table(matrix_rows, colWidths=[70.0, 150.0, 160.0, he.PRINTABLE_WIDTH - 380.0])
+    matrix_t.setStyle(he.TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#002B49')),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#CED4DA')),
+        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, colors.HexColor('#F8F9FA')]),
+        ('TOPPADDING', (0,0), (-1,-1), 4),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+        ('LEFTPADDING', (0,0), (-1,-1), 5),
+        ('RIGHTPADDING', (0,0), (-1,-1), 5),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
     ]))
-    story.append(t_matrix)
+    story.append(matrix_t)
     add_spacer(14)
 
     # =========================================================================
-    # MPT 2.5.1: GẮN KẾT LƯỢNG TỬ & CHỒNG CHẤT TRẠNG THÁI
+    # LUẬN ĐIỂM 2.5.1: MÔ HÌNH HỒ CHỨA TRÊN NGƯỠNG & ĐẬP TRÀN
     # =========================================================================
-    add_p("Luận điểm 2.5.1: Khoa học nano lượng tử, Sự gắn kết lượng tử &amp; Chồng chất trạng thái", "H2")
-    add_spacer(4)
+    add_p("Luận điểm 2.5.1: Mô hình hồ chứa trên ngưỡng và Cơ chế đập tràn phát xạ kích thích", "H2")
 
-    # GIAI ĐOẠN 1
-    add_p("Giai đoạn 1: Giới thiệu khái niệm và bản chất sóng của vật thể nano", "H3")
+    # Giai đoạn 1: Giới thiệu khái niệm & Cơ chế đập tràn
+    add_p("Giai đoạn 1: Giới thiệu khái niệm, sự chuyển tiếp dòng chảy hạt tải và cơ chế đập tràn", "H3")
     add_p(
-        "Khoa học nano lượng tử (Quantum Nanoscience) là lĩnh vực nghiên cứu giao thoa liên ngành đặt tại ranh giới giữa khoa học nano và cơ học lượng tử. "
-        "Trọng tâm của lĩnh vực này là khai thác trực tiếp các hiệu ứng lượng tử vi mô thuần khiết — đặc biệt là tính kết hợp pha sóng, "
-        "sự chồng chất trạng thái và vướng víu lượng tử — để kiến tạo nên các vật liệu và linh kiện thế hệ mới có tính năng vượt xa các giới hạn vật lý cổ điển.",
-        ocr_idx=56
-    )
-    add_spacer(6)
-
-    add_p(
-        "Theo cơ học lượng tử, mọi hạt vi mô và cấu trúc nano đều mang bản chất sóng. "
-        "<b>Sự gắn kết lượng tử (Quantum Coherence)</b> đặc trưng cho khả năng duy trì mối quan hệ pha xác định giữa các thành phần hàm sóng theo thời gian. "
-        "Khi một hệ lượng tử tương tác với môi trường nhiệt xung quanh (thông qua tán xạ phonon, dao động mạng tinh thể hoặc nhiễu điện từ), "
-        "mối quan hệ pha này dần bị phá hủy ngẫu nhiên, dẫn đến quá trình <b>suy giảm độ kết hợp (Decoherence)</b>. "
-        "Khả năng duy trì sự gắn kết lượng tử ở nhiệt độ phòng hoặc nhiệt độ cryostat là chìa khóa sống còn quyết định sự thành bại của mọi linh kiện nano lượng tử.",
-        ocr_idx=57, is_expanded=True
-    )
-    add_spacer(6)
-
-    add_p(
-        "Đồng thời, <b>Nguyên lý chồng chất lượng tử (Quantum Superposition)</b> khẳng định rằng: "
-        "Nếu |0⟩ và |1⟩ là hai trạng thái lượng tử trực chuẩn hợp lệ của một hệ nano hai mức (Two-Level System), "
-        "thì tổ hợp tuyến tính bất kỳ |ψ⟩ = α|0⟩ + β|1⟩ cũng là một trạng thái lượng tử hoàn toàn hợp lệ, "
-        "với α và β là các biên độ xác suất phức thỏa mãn điều kiện chuẩn hóa: |α|<sup>2</sup> + |β|<sup>2</sup> = 1.",
-        ocr_idx=58
+        "Ở chế độ dưới ngưỡng (Mục 2.2), hạt tải chỉ thoát ra qua 3 lỗ thủng tự nhiên dưới đáy hồ (SRH, tự phát, Auger). "
+        "Mực nước trong hồ (tương ứng với mật độ hạt tải <i>N</i>) dâng cao dần khi ta tăng lưu lượng bơm dòng tiêm. "
+        "Khi mực nước chạm đúng mép đập tràn ở độ cao <i>N</i><sub>th</sub>, điều kiện ngưỡng phát laser được thỏa mãn: "
+        "độ lợi mode vừa vặn bù trừ toàn bộ tổn hao hốc. "
+        "Ngay lập tức, kênh phát xạ kích thích mở toang như một đập tràn thủy điện khổng lồ. "
+        "Mọi giọt nước (hạt tải) bơm thêm vượt trên ngưỡng <i>I</i><sub>th</sub> đều bị cuốn phăng qua đập tràn "
+        "để chuyển hóa trực tiếp thành photon kết hợp, giữ cho mực nước trong hồ không thể dâng cao thêm được nữa."
     )
     add_spacer(8)
 
-    # Embed ảnh gốc
+    # Embed Hình gốc 2.7
     story.append(he.embed_figure_with_caption(
-        fig_goc_01,
-        "Hình 2.5.1 (Slide 56): Khoa học nano lượng tử đặt tại giao lộ giữa khoa học nano và vật lý lượng tử, khai thác chồng chất và rối lượng tử trong cấu trúc nano.",
+        fig_goc_2_7,
+        "Hình 2.7: Mô hình hồ chứa hạt tải tương đương của diode laser ở chế độ trên ngưỡng (Coldren &amp; Corzine, trang 38). "
+        "Ba mắt xích cơ học: (a) Lưu lượng bơm dòng tiêm vượt ngưỡng <i>I</i> > <i>I</i><sub>th</sub>; "
+        "(b) Mực nước trong hồ bị khóa cứng tại độ cao đập tràn tương ứng mật độ ngưỡng <i>N</i><sub>th</sub>; "
+        "(c) Kênh xả lũ đập tràn phát xạ kích thích chuyển hóa toàn bộ dòng thặng dư thành photon hữu ích.",
         kind="orig",
-        styles=styles
+        styles=styles,
     ))
+    add_spacer(8)
+
+    # Giai đoạn 2: Hạt nhân vật lý & Hệ thức Cột trụ
+    add_p("Giai đoạn 2: Hạt nhân vật lý và Hệ thức Cột trụ cân bằng hồ chứa trên ngưỡng", "H3")
+    add_p(
+        "Phương trình cân bằng dòng chảy hạt tải tại trạng thái dừng trên ngưỡng:"
+    )
+
+    pillar_eq_2_5_1 = r"\frac{\eta_i I}{q V} = R(N_{\mathrm{th}}) + R_{\mathrm{st}} = \left(A N_{\mathrm{th}} + B N_{\mathrm{th}}^2 + C N_{\mathrm{th}}^3\right) + v_g g S"
+    nom_data_2_5_1 = [
+        {"name": "Tốc độ phát xạ kích thích", "symbol": "<i>R</i><sub>st</sub>", "unit": "cm<sup>−3</sup>·s<sup>−1</sup>", "meaning": "Số lượng cặp hạt tải tái hợp phát xạ photon kết hợp trên một đơn vị thể tích trong một giây"},
+        {"name": "Mật độ hạt tải ngưỡng", "symbol": "<i>N</i><sub>th</sub>", "unit": "cm<sup>−3</sup>", "meaning": "Mật độ hạt tải tại đó độ lợi cân bằng chính xác với tổn hao"},
+        {"name": "Mật độ photon trong mode", "symbol": "<i>S</i>", "unit": "cm<sup>−3</sup>", "meaning": "Số photon kết hợp tích lũy trong thể tích mode quang"},
+        {"name": "Độ lợi quang học ngưỡng", "symbol": "<i>g</i>", "unit": "cm<sup>−1</sup>", "meaning": "Độ lợi vật liệu tại trạng thái dừng trên ngưỡng (bằng <i>g</i><sub>th</sub>)"}
+    ]
+    story.append(he.build_target_equation_block(pillar_eq_2_5_1, nom_data_2_5_1, styles=styles))
+    add_spacer(8)
+
+    # Giai đoạn 3: Chuỗi nhân quả dẫn xuất
+    add_p("Giai đoạn 3: Chuỗi nhân quả dẫn xuất sự phân chia dòng tiêm hữu ích trên ngưỡng", "H3")
+    add_p("Dẫn xuất tường minh mối quan hệ giữa tốc độ phát xạ kích thích và dòng vượt ngưỡng:")
+
+    eq_deriv_2_5_1a = r"I_{\mathrm{th}} = \frac{q V}{\eta_i} R(N_{\mathrm{th}}) = \frac{q V}{\eta_i} \left(A N_{\mathrm{th}} + B N_{\mathrm{th}}^2 + C N_{\mathrm{th}}^3\right)"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Định nghĩa dòng điện ngưỡng từ tốc độ tái hợp tự nhiên:", eq_deriv_2_5_1a, styles=styles))
     add_spacer(6)
 
-    story.append(he.embed_figure_with_caption(
-        fig_goc_02,
-        "Hình 2.5.2 (Slide 57): Khái niệm sự gắn kết lượng tử (Quantum Coherence) — khả năng duy trì liên hệ pha sóng trước các nhiễu loạn nhiệt của môi trường.",
-        kind="orig",
-        styles=styles
-    ))
+    eq_deriv_2_5_1b = r"\frac{\eta_i I}{q V} - \frac{\eta_i I_{\mathrm{th}}}{q V} = v_g g S \implies v_g g S = \frac{\eta_i (I - I_{\mathrm{th}})}{q V}"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tốc độ phát xạ kích thích tỉ lệ trực tiếp với dòng vượt ngưỡng:", eq_deriv_2_5_1b, styles=styles))
     add_spacer(6)
 
+    eq_deriv_2_5_1c = r"S = \frac{\eta_i \tau_p}{q V_{\mathrm{mode}}} (I - I_{\mathrm{th}}) \quad (I \ge I_{\mathrm{th}})"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Mật độ photon tăng trưởng tuyến tính nghiêm ngặt trên ngưỡng:", eq_deriv_2_5_1c, styles=styles))
+    add_spacer(8)
+
+    add_p(
+        "Phương trình trên phản ánh sự phân chia dòng điện tuyệt đối trên ngưỡng: "
+        "dòng điện dưới ngưỡng <i>I</i><sub>th</sub> dùng để 'giữ chân' mực nước hạt tải tại đập tràn "
+        "và duy trì các kênh tái hợp tự nhiên không đổi. "
+        "Toàn bộ lượng dòng tiêm bổ sung (<i>I − I</i><sub>th</sub>) được chuyển hóa 100% với hiệu suất vi sai "
+        "thành thông lượng photon kết hợp của chùm tia laser."
+    )
+    add_spacer(8)
+
+    # Giai đoạn 4: Khảo sát tiệm cận & Thực chiến
+    add_p("Giai đoạn 4: Khảo sát tiệm cận công suất bơm và giới hạn bão hòa đập tràn", "H3")
+    add_p(
+        "Khảo sát các miền tiệm cận: "
+        "<br/>1. <b>Tiệm cận sát ngưỡng (<i>I → I</i><sub>th</sub>):</b> Mật độ photon <i>S</i> bắt đầu thoát khỏi nhiễu tự phát, "
+        "tăng vọt với độ dốc lớn. Hiện tượng kết hợp quang học bắt đầu chiếm lĩnh. "
+        "<br/>2. <b>Dòng bơm cực lớn (<i>I ≫ I</i><sub>th</sub>):</b> Mật độ photon trong hốc tăng cao đến mức gây ra hiện tượng cháy lỗ không gian (Spatial Hole Burning) "
+        "và suy giảm độ lợi phi tuyến (Gain Compression). Khi đó, mực nước có thể hơi dâng nhẹ cục bộ, "
+        "đòi hỏi kỹ sư phải kiểm soát nhiệt độ để chống hiện tượng tắt ngưỡng (thermal rollover)."
+    )
+    add_spacer(14)
+
+    # =========================================================================
+    # LUẬN ĐIỂM 2.5.2: ĐẶC TUYẾN ĐỘ LỢI VẬT LIỆU & GHIM ĐỘ LỢI
+    # =========================================================================
+    add_p("Luận điểm 2.5.2: Phương trình độ lợi vật liệu phi tuyến g(N) và Hiện tượng ghim độ lợi tại ngưỡng", "H2")
+
+    # Giai đoạn 1: Giới thiệu khái niệm độ lợi phi tuyến
+    add_p("Giai đoạn 1: Giới thiệu khái niệm, sự chuyển tiếp từ hấp thụ sang khuếch đại và mật độ trong suốt", "H3")
+    add_p(
+        "Khi mật độ hạt tải <i>N</i> còn nhỏ, xác suất hấp thụ kích thích lớn hơn phát xạ kích thích, "
+        "môi trường bán dẫn đóng vai trò là môi trường hấp thụ quang học (độ lợi âm <i>g</i> < 0). "
+        "Khi tiêm hạt tải đến một giá trị tới hạn gọi là mật độ trong suốt <i>N</i><sub>tr</sub> (Transparency Carrier Density), "
+        "hai mức Fermi giả phân tách bằng đúng năng lượng photon phát xạ <i>E<sub>Fc</sub> − E<sub>Fv</sub> = hν</i>. "
+        "Tại điểm này, tốc độ phát xạ kích thích cân bằng chính xác với tốc độ hấp thụ kích thích, độ lợi vật liệu bằng 0. "
+        "Vượt qua <i>N</i><sub>tr</sub>, độ lợi vật liệu <i>g(N)</i> trở nên dương và tăng trưởng phi tuyến theo quy luật logarit."
+    )
+    add_spacer(8)
+
+    # Embed Hình gốc 2.8
     story.append(he.embed_figure_with_caption(
-        fig_sim_decoh,
-        "Hình 2.5.3: Mô phỏng MATLAB R2014b+ động thái suy giảm độ tinh khiết Tr(ρ<sup>2</sup>) do giải kết pha (Decoherence) của Qubit nano ở các thang nhiệt độ 15 mK, 4,2 K và 300 K.",
+        fig_goc_2_8,
+        "Hình 2.8: Đặc tuyến độ lợi theo mật độ hạt tải và minh họa hiện tượng kẹp chặt độ lợi trên ngưỡng (Coldren &amp; Corzine, trang 39). "
+        "Ba mắt xích động học: (a) Mật độ trong suốt <i>N</i><sub>tr</sub> tại đó độ lợi chuyển từ âm sang dương; "
+        "(b) Đường cong độ lợi tăng trưởng logarit dưới ngưỡng; "
+        "(c) Sự ghim cứng đường cong độ lợi tại mức tổn hao hốc <i>g</i><sub>th</sub> khi dòng tiêm vượt ngưỡng.",
+        kind="orig",
+        styles=styles,
+    ))
+    add_spacer(8)
+
+    # Giai đoạn 2: Hạt nhân vật lý & Hệ thức Cột trụ
+    add_p("Giai đoạn 2: Hạt nhân vật lý và Hệ thức Cột trụ hàm độ lợi logarit", "H3")
+    add_p(
+        "Mô hình giải tích logarit kinh điển của Coldren &amp; Corzine mô tả độ lợi vật liệu giếng lượng tử:"
+    )
+
+    pillar_eq_2_5_2 = r"g(N) = g_0 \ln\left(\frac{N}{N_{\mathrm{tr}}}\right), \quad \Gamma g_{\mathrm{th}} = \langle\alpha_i\rangle + \alpha_m \implies g_{\mathrm{th}} = \frac{1}{\Gamma} \left[\langle\alpha_i\rangle + \frac{1}{2L}\ln\left(\frac{1}{R_1 R_2}\right)\right]"
+    nom_data_2_5_2 = [
+        {"name": "Hệ số độ lợi vật liệu kinh nghiệm", "symbol": "<i>g</i><sub>0</sub>", "unit": "cm<sup>−1</sup>", "meaning": "Độ dốc tỉ lệ đặc trưng của hệ vật liệu giếng lượng tử (thường từ 1200 đến 2500 cm<sup>−1</sup>)"},
+        {"name": "Mật độ hạt tải trong suốt", "symbol": "<i>N</i><sub>tr</sub>", "unit": "cm<sup>−3</sup>", "meaning": "Mật độ hạt tải tối thiểu để triệt tiêu sự hấp thụ nội (≈ 1,2–1,8 × 10<sup>18</sup> cm<sup>−3</sup> ở 300 K)"},
+        {"name": "Độ lợi vật liệu tại ngưỡng", "symbol": "<i>g</i><sub>th</sub>", "unit": "cm<sup>−1</sup>", "meaning": "Độ lợi vật liệu tối thiểu cần thiết để cân bằng tổng tổn hao hốc"},
+        {"name": "Độ lợi mode tại ngưỡng", "symbol": "<i>Γ g</i><sub>th</sub>", "unit": "cm<sup>−1</sup>", "meaning": "Độ lợi hiệu dụng của mode quang tại ngưỡng"}
+    ]
+    story.append(he.build_target_equation_block(pillar_eq_2_5_2, nom_data_2_5_2, styles=styles))
+    add_spacer(8)
+
+    # Giai đoạn 3: Chuỗi nhân quả dẫn xuất
+    add_p("Giai đoạn 3: Chuỗi nhân quả dẫn xuất mật độ hạt tải ngưỡng <i>N</i><sub>th</sub> từ mô hình logarit", "H3")
+    add_p("Dẫn xuất tường minh mật độ hạt tải tại ngưỡng phát laser:")
+
+    eq_deriv_2_5_2a = r"g(N_{\mathrm{th}}) = g_{\mathrm{th}} \implies g_0 \ln\left(\frac{N_{\mathrm{th}}}{N_{\mathrm{tr}}}\right) = g_{\mathrm{th}}"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thiết lập phương trình cân bằng tại ngưỡng:", eq_deriv_2_5_2a, styles=styles))
+    add_spacer(6)
+
+    eq_deriv_2_5_2b = r"\ln\left(\frac{N_{\mathrm{th}}}{N_{\mathrm{tr}}}\right) = \frac{g_{\mathrm{th}}}{g_0} \implies N_{\mathrm{th}} = N_{\mathrm{tr}} \exp\left(\frac{g_{\mathrm{th}}}{g_0}\right)"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Nghiệm giải tích của mật độ hạt tải ngưỡng:", eq_deriv_2_5_2b, styles=styles))
+    add_spacer(6)
+
+    eq_deriv_2_5_2c = r"N_{\mathrm{th}} = N_{\mathrm{tr}} \exp\left(\frac{\langle\alpha_i\rangle + \alpha_m}{\Gamma g_0}\right)"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Biểu thức toàn phần liên hệ mật độ ngưỡng với toàn bộ thông số hốc:", eq_deriv_2_5_2c, styles=styles))
+    add_spacer(8)
+
+    add_p(
+        "Hệ thức giải tích trên mang ý nghĩa thiết kế sống còn: "
+        "mật độ hạt tải ngưỡng <i>N</i><sub>th</sub> tăng theo hàm mũ của tổng tổn hao hốc (⟨<i>α<sub>i</sub></i>⟩ + <i>α<sub>m</sub></i>). "
+        "Nếu tổn hao tăng gấp đôi, mật độ ngưỡng sẽ tăng theo cấp số nhân, kéo theo dòng ngưỡng bùng nổ theo hàm bậc ba (do tái hợp Auger <i>C N</i><sup>3</sup>). "
+        "Vì vậy, giảm thiểu tổn hao nội ⟨<i>α<sub>i</sub></i>⟩ và tăng hệ số giam giữ <i>Γ</i> là hai chìa khóa quyết định để hạ thấp dòng ngưỡng linh kiện."
+    )
+    add_spacer(8)
+
+    # Embed Hình mô phỏng 2.5a (Độ lợi vật liệu & Ghim độ lợi tại ngưỡng)
+    story.append(he.embed_figure_with_caption(
+        fig_sim_2_5a,
+        "Hình mô phỏng 2.5.1: Đặc tuyến độ lợi vật liệu <i>g(N)</i> theo mật độ hạt tải trong giếng lượng tử GaAs ở 300 K. "
+        "Đồ thị vạch rõ mốc mật độ trong suốt <i>N</i><sub>tr</sub> = 1,5 × 10<sup>18</sup> cm<sup>−3</sup>, "
+        "mức độ lợi ngưỡng <i>g</i><sub>th</sub> ≈ 833 cm<sup>−1</sup>, và sự ghim cứng tuyệt đối của độ lợi trên ngưỡng (Gain Clamping) "
+        "khi dòng tiêm tiếp tục tăng cao.",
         kind="sim",
-        styles=styles
+        styles=styles,
     ))
     add_spacer(8)
 
-    # GIAI ĐOẠN 2
-    add_p("Giai đoạn 2: Ví dụ tối giản và biểu diễn ma trận mật độ của trạng thái chồng chất", "H3")
-    nom_rows_2_5_1 = [
-        ("Biên độ xác suất trạng thái", "α, β", "số phức vô thứ nguyên", "Thỏa mãn điều kiện bảo toàn xác suất toàn phần: |α|<sup>2</sup> + |β|<sup>2</sup> = 1."),
-        ("Ma trận mật độ trạng thái", "ρ", "ma trận 2 × 2", "Biểu diễn trạng thái lượng tử tổng quát: phần tử đường chéo là xác suất, ngoài đường chéo là độ kết hợp."),
-        ("Thời gian hồi phục năng lượng dọc", "<i>T</i><sub>1</sub>", "giây (hoặc μs)", "Thời gian electron mất năng lượng kích thích để rơi về trạng thái cơ bản."),
-        ("Thời gian giải kết pha ngang", "<i>T</i><sub>2</sub>", "giây (hoặc μs)", "Thời gian suy giảm các phần tử kết hợp ngoài đường chéo: (<i>T</i><sub>2</sub>)<sup>−1</sup> = (2<i>T</i><sub>1</sub>)<sup>−1</sup> + (<i>T</i><sub>φ</sub>)<sup>−1</sup>.")
-    ]
-    story.append(he.build_target_equation_block(
-        r"|\psi\rangle = \alpha |0\rangle + \beta |1\rangle, \qquad \rho = \begin{pmatrix} |\alpha|^2 & \alpha\beta^* e^{-\frac{t}{T_2}} \\ \alpha^*\beta e^{-\frac{t}{T_2}} & |\beta|^2 \end{pmatrix}, \qquad \frac{1}{T_2} = \frac{1}{2T_1} + \frac{1}{T_\phi}",
-        nom_rows_2_5_1,
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # GIAI ĐOẠN 3
-    add_p("Giai đoạn 3: Thực hành có hướng dẫn và dẫn xuất suy giảm độ tinh khiết trạng thái", "H3")
-    story.append(he.build_intermediate_equation(
-        "Thiết lập ma trận mật độ toàn phần của Qubit nano ở trạng thái chồng chất đối xứng (|0⟩ + |1⟩)·(√2)<sup>−1</sup>:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Biểu diễn dưới dạng toán tử chiếu ket-bra:",
-        r"\rho(0) = |\psi\rangle\langle\psi| = \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \implies \rho(t) = \frac{1}{2}\begin{pmatrix} 1 & e^{-\frac{t}{T_2}} \\ e^{-\frac{t}{T_2}} & 1 \end{pmatrix}",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.build_intermediate_equation(
-        "Dẫn xuất độ tinh khiết (Purity) của trạng thái lượng tử theo thời gian chuẩn hóa:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tính vết của bình phương ma trận mật độ Tr(ρ<sup>2</sup>):",
-        r"\mathrm{Tr}(\rho^2) = \rho_{00}^2 + \rho_{11}^2 + 2|\rho_{01}|^2 = \frac{1}{4} + \frac{1}{4} + 2\left(\frac{1}{4}e^{-\frac{2t}{T_2}}\right) = \frac{1}{2}\left(1 + e^{-\frac{2t}{T_2}}\right)",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.build_intermediate_equation(
-        "Phân tích giới hạn tiệm cận khi thời gian t tiến tới vô cùng (mất hoàn toàn độ kết hợp pha):<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khảo sát trạng thái hỗn hợp cực đại (Maximally Mixed State):",
-        r"\lim_{t\to\infty} \rho(t) = \frac{1}{2}\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \implies \mathrm{Tr}(\rho^2) = \frac{1}{2} \quad (\text{Trạng thái cổ điển mất hoàn toàn pha lượng tử})",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # Embed ảnh gốc chồng chất
-    story.append(he.embed_figure_with_caption(
-        fig_goc_03,
-        "Hình 2.5.4 (Slide 58): Nguyên lý chồng chất trạng thái — tổ hợp tuyến tính của các trạng thái trực giao tạo nên một trạng thái lượng tử mới hợp lệ.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # GIAI ĐOẠN 4
-    add_p("Giai đoạn 4: Phân tích biến thể — Giao thoa kế Aharonov-Bohm trong dây nano lượng tử", "H3")
+    # Giai đoạn 4: Khảo sát tiệm cận & Thực chiến
+    add_p("Giai đoạn 4: Khảo sát tiệm cận chiều dài hốc và tối ưu hóa mật độ ngưỡng", "H3")
     add_p(
-        "Trong các cấu trúc dây nano kim loại hoặc bán dẫn dạng vòng kín kích thước hạ micromet (vòng Aharonov–Bohm), "
-        "khi chiều dài chu vi vòng nhỏ hơn chiều dài kết hợp pha của electron (<i>L</i> &lt; <i>L</i><sub>φ</sub> ≈ (<i>D</i>·τ<sub>φ</sub>)<sup>0.5</sup>), "
-        "sóng electron bị tách thành hai nhánh truyền theo hai nửa vòng rồi giao thoa với nhau tại lối ra. "
-        "Khi đặt một từ thông phi từ trường Φ xuyên qua tâm vòng, hiệu số pha lượng tử giữa hai nhánh biến thiên theo hệ thức: "
-        "Δφ = <i>e</i>Φ · ℏ<sup>−1</sup>. "
-        "Điện trở của vòng nano dao động tuần hoàn theo từ thông với chu kỳ lượng tử đúng bằng <i>h</i>·<i>e</i><sup>−1</sup>. "
-        "Hiệu ứng Aharonov–Bohm là minh chứng thực nghiệm không thể chối cãi cho thấy thế vector từ trường <i>A</i> tác động trực tiếp lên pha sóng electron "
-        "ngay cả ở những vùng không gian mà từ trường <i>B</i> = rot <i>A</i> hoàn toàn triệt tiêu."
-    )
-    add_spacer(8)
-
-    # GIAI ĐOẠN 5 CER
-    add_p("Giai đoạn 5: Thử thách tự luyện &amp; Dự đoán bẫy sai lầm (CER 2.5.1)", "H3")
-    add_p(
-        "<b>BẪY SUY LUẬN VỀ TRẠNG THÁI CHỒNG CHẤT SO VỚI XÁC SUẤT CỔ ĐIỂN:</b><br/>"
-        "Một kỹ sư vi điện tử cho rằng: Trạng thái chồng chất (|0⟩ + |1⟩)·(√2)<sup>−1</sup> của Qubit thực chất chỉ là một hệ cổ điển "
-        "có 50% khả năng đang ở bit 0 và 50% khả năng đang ở bit 1, do người quan sát chưa mở hộp để đo lường mà thôi.<br/><br/>"
-        "<b>CHUỖI LẬP LUẬN BÁC BỎ CER CHUẨN MỰC:</b><br/>"
-        "<b>1. Khẳng định:</b> Quan điểm của kỹ sư hoàn toàn sai lầm. Trạng thái chồng chất lượng tử là một trạng thái thuần nhất (Pure State) mang thông tin pha sóng, "
-        "khác biệt bản chất với trạng thái hỗn hợp cổ điển (Mixed State) thiếu thông tin.<br/>"
-        "<b>2. Bằng chứng:</b> Nếu áp dụng cổng biến đổi Hadamard <i>H</i> lên trạng thái chồng chất (|0⟩ + |1⟩)·(√2)<sup>−1</sup>, "
-        "hai thành phần biên độ giao thoa triệt tiêu lẫn nhau ở nhánh |1⟩ và giao thoa tăng cường ở nhánh |0⟩, đưa hệ về chính xác 100% trạng thái |0⟩. "
-        "Ngược lại, nếu là hỗn hợp xác suất cổ điển cân bằng 50% và 50%, việc áp dụng cổng logic luôn cho ra kết quả ngẫu nhiên mà không bao giờ có hiện tượng giao thoa sóng.<br/>"
-        "<b>3. Lập luận:</b> Trạng thái chồng chất lượng tử chứa đựng số hạng liên kết pha (phần tử ngoài đường chéo trong ma trận mật độ: ρ<sub>01</sub> ≠ 0), "
-        "cho phép các đường truyền lượng tử can thiệp triệt tiêu hoặc cộng hưởng lẫn nhau. "
-        "Đây chính là cội nguồn sức mạnh tính toán song song lượng tử mà máy tính cổ điển không bao giờ có thể mô phỏng hiệu quả."
+        "Khảo sát các trường hợp thiết kế: "
+        "<br/>1. <b>Hốc quá ngắn (<i>L</i> nhỏ hơn 150 μm):</b> Tổn hao gương <i>α<sub>m</sub></i> quá lớn khiến số mũ vượt quá 2, <i>N</i><sub>th</sub> tăng vọt tới vùng bão hòa độ lợi, linh kiện không thể phát laser. "
+        "<br/>2. <b>Hốc tối ưu (<i>L</i> từ 300 đến 600 μm):</b> Tổn hao gương vừa đủ nhỏ (30–40 cm<sup>−1</sup>), bảo đảm <i>N</i><sub>th</sub> nằm trong vùng dốc tuyến tính của hàm logarit, đạt hiệu suất vận hành cao nhất."
     )
     add_spacer(14)
 
     # =========================================================================
-    # MPT 2.5.2: RỐI LƯỢNG TỬ & NGHỊCH LÝ EPR (1935)
+    # LUẬN ĐIỂM 2.5.3: KẸP CHẶT HẠT TẢI & DÒNG NGƯỠNG GIẢI TÍCH
     # =========================================================================
-    add_p("Luận điểm 2.5.2: Rối lượng tử (Quantum Entanglement) &amp; Nghịch lý EPR 1935", "H2")
-    add_spacer(4)
+    add_p("Luận điểm 2.5.3: Cơ chế kẹp chặt hạt tải (Carrier Clamping) và Dòng ngưỡng giải tích <i>I</i><sub>th</sub>", "H2")
 
-    # GIAI ĐOẠN 1
-    add_p("Giai đoạn 1: Giới thiệu khái niệm và trạng thái vướng víu không thể tách biến", "H3")
+    # Giai đoạn 1: Giới thiệu khái niệm kẹp chặt hạt tải
+    add_p("Giai đoạn 1: Giới thiệu khái niệm kẹp chặt hạt tải và phương trình vi phân tốc độ photon", "H3")
     add_p(
-        "<b>Rối lượng tử (Quantum Entanglement — Vướng víu lượng tử)</b> là hiện tượng kỳ lạ và đặc thù nhất của thế giới lượng tử: "
-        "trạng thái của hai hay nhiều hạt lượng tử liên kết mật thiết với nhau đến mức trạng thái của mỗi hạt không thể mô tả độc lập "
-        "tách rời khỏi các hạt còn lại, bất kể khoảng cách không gian giữa chúng xa đến bao nhiêu năm ánh sáng.",
-        ocr_idx=59
-    )
-    add_spacer(6)
-
-    add_p(
-        "Năm 1935, Albert Einstein cùng hai cộng sự Boris Podolsky và Nathan Rosen công bố bài báo lịch sử đề xuất <b>Nghịch lý EPR</b>: "
-        "<i>'Liệu mô tả của cơ học lượng tử về thực tại vật lý có thể xem là đầy đủ?'</i> (Can Quantum-Mechanical Description of Physical Reality be Considered Complete?). "
-        "Họ lập luận rằng: nếu hai hạt trong một cặp vướng víu được tách rời ra xa nhau tùy ý, việc đo lường trạng thái của hạt thứ nhất "
-        "sẽ làm sụp đổ tức thời hàm sóng và xác định chắc chắn trạng thái của hạt thứ hai. "
-        "Einstein gọi hiện tượng này là 'hành động ma quái từ xa' (Spooky action at a distance) và cho rằng nó vi phạm nguyên lý giới hạn vận tốc ánh sáng "
-        "của Thuyết tương đối hẹp. EPR kết luận cơ học lượng tử là một lý thuyết 'chưa hoàn chỉnh' và phải có những <b>biến số ẩn địa phương (Local Hidden Variables)</b> "
-        "đã quy định trước kết quả đo ngay từ khi hai hạt được tạo ra.",
-        ocr_idx=60, is_expanded=True
-    )
-    add_spacer(6)
-
-    add_p(
-        "Cụ thể, nếu phép đo xác định vị trí của hạt thứ nhất thì có thể suy ra vị trí của hạt thứ hai; "
-        "tương tự nếu đo động lượng thì suy ra động lượng hạt thứ hai. "
-        "EPR cho rằng hạt thứ hai phải chứa sẵn thông tin xác định cả vị trí và động lượng từ trước khi đo, "
-        "điều dường như mâu thuẫn trực tiếp với Nguyên lý bất định Heisenberg.",
-        ocr_idx=61
+        "Tại sao độ lợi quang học lại bị ghim cứng? Câu trả lời nằm ở phương trình vi phân tốc độ photon: "
+        "tốc độ biến thiên mật độ photon theo thời gian triệt tiêu ở trạng thái dừng, cho phương trình: "
+        "(<i>Γ v<sub>g</sub> g</i> − <i>v<sub>g</sub> α</i><sub>tot</sub>) <i>S</i> = 0. "
+        "Ở chế độ phát laser khi đã tích lũy mật độ photon kết hợp trong hốc (<i>S</i> > 0), "
+        "đại lượng trong ngoặc bắt buộc phải triệt tiêu chính xác bằng 0: <i>Γ g = α</i><sub>tot</sub>. "
+        "Vì độ lợi <i>g</i> là hàm đơn điệu tăng theo mật độ hạt tải <i>N</i>, "
+        "việc độ lợi <i>g</i> bị ghim tại <i>g</i><sub>th</sub> kéo theo hệ quả tất yếu: "
+        "mật độ hạt tải <i>N</i> cũng bị kẹp chặt không đổi tại giá trị <i>N</i><sub>th</sub> trên toàn bộ dải dòng tiêm trên ngưỡng."
     )
     add_spacer(8)
 
-    # Embed ảnh gốc EPR
+    # Embed Hình gốc 2.10
     story.append(he.embed_figure_with_caption(
-        fig_goc_04,
-        "Hình 2.5.5 (Slide 59): Minh họa trực quan cặp hạt bị rối lượng tử — trạng thái của hai hạt liên hệ tức thời với nhau bất kể cự ly không gian.",
+        fig_goc_2_10,
+        "Hình 2.10: Đặc tuyến độ lợi mode quang học theo mật độ hạt tải tiêm và vị trí cân bằng với tổn hao hốc (Coldren &amp; Corzine, trang 40). "
+        "Ba mắt xích cân bằng: (a) Điểm cân bằng dừng <i>Γ g</i><sub>th</sub> = ⟨<i>α<sub>i</sub></i>⟩ + <i>α<sub>m</sub></i>; "
+        "(b) Dưới ngưỡng, độ lợi tăng dần khi tiêm hạt tải; "
+        "(c) Trên ngưỡng, mật độ hạt tải bị kẹp chặt tại <i>N</i><sub>th</sub>.",
         kind="orig",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.embed_figure_with_caption(
-        fig_goc_05,
-        "Hình 2.5.6 (Slide 60): Nghịch lý EPR (1935) — Einstein, Podolsky và Rosen đặt câu hỏi nghi vấn về tính hoàn chỉnh của Cơ học lượng tử.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.embed_figure_with_caption(
-        fig_goc_06,
-        "Hình 2.5.7 (Slide 61): Phép đo đồng thời vị trí và động lượng trong cặp hạt EPR và mâu thuẫn biểu kiến với nguyên lý bất định Heisenberg.",
-        kind="orig",
-        styles=styles
+        styles=styles,
     ))
     add_spacer(8)
 
-    # GIAI ĐOẠN 2 & 3
-    add_p("Giai đoạn 2: Ví dụ tối giản và 4 trạng thái cơ sở Bell", "H3")
-    nom_rows_2_5_2 = [
-        ("Trạng thái Bell singlet", "|Ψ<sup>−</sup>⟩", "spin = 0", "Cặp hạt đối xứng quay hoàn toàn: (|01⟩ − |10⟩)·(√2)<sup>−1</sup>."),
-        ("Trạng thái Bell triplet", "|Ψ<sup>+</sup>⟩", "spin = 1", "Trạng thái đối xứng hoán vị: (|01⟩ + |10⟩)·(√2)<sup>−1</sup>."),
-        ("Trạng thái Bell cùng pha", "|Φ<sup>+</sup>⟩", "spin = 1", "Hai hạt luôn cùng trạng thái: (|00⟩ + |11⟩)·(√2)<sup>−1</sup>."),
-        ("Hàm tương quan spin lượng tử", "<i>E</i>(<i>a</i>, <i>b</i>)", "−1 đến +1", "Kỳ vọng tích kết quả đo spin theo hai hướng định chuẩn: <i>E</i>(<i>a</i>, <i>b</i>) = −<i>a</i> · <i>b</i> = −cos θ<sub><i>ab</i></sub>.")
+    # Giai đoạn 2: Hạt nhân vật lý & Hệ thức Cột trụ
+    add_p("Giai đoạn 2: Hạt nhân vật lý và Hệ thức Cột trụ dòng điện ngưỡng giải tích", "H3")
+    add_p(
+        "Biểu thức giải tích của dòng điện ngưỡng toàn phần:"
+    )
+
+    pillar_eq_2_5_3 = r"I_{\mathrm{th}} = \frac{q V}{\eta_i} R(N_{\mathrm{th}}) = \frac{q V}{\eta_i} \left(A N_{\mathrm{th}} + B N_{\mathrm{th}}^2 + C N_{\mathrm{th}}^3\right)"
+    nom_data_2_5_3 = [
+        {"name": "Dòng điện ngưỡng phát laser", "symbol": "<i>I</i><sub>th</sub>", "unit": "A (hoặc mA)", "meaning": "Dòng tiêm tối thiểu bắt đầu xuất hiện bức xạ kích thích kết hợp"},
+        {"name": "Mật độ hạt tải ngưỡng", "symbol": "<i>N</i><sub>th</sub>", "unit": "cm<sup>−3</sup>", "meaning": "Mật độ hạt tải kẹp chặt không đổi trên ngưỡng"},
+        {"name": "Thể tích vùng tích cực", "symbol": "<i>V</i>", "unit": "cm<sup>3</sup>", "meaning": "Thể tích hình học lõi giam giữ <i>V = d · w · L</i>"},
+        {"name": "Hiệu suất tiêm nội tại ngưỡng", "symbol": "<i>η<sub>i</sub></i>", "unit": "không thứ nguyên", "meaning": "Tỷ lệ hạt tải tiêm đi vào vùng tích cực tại ngưỡng"}
     ]
-    story.append(he.build_target_equation_block(
-        r"|\Phi^{\pm}\rangle = \frac{|00\rangle \pm |11\rangle}{\sqrt{2}}, \qquad |\Psi^{\pm}\rangle = \frac{|01\rangle \pm |10\rangle}{\sqrt{2}}, \qquad E(a, b) = -\vec{a}\cdot\vec{b} = -\cos\theta_{ab}",
-        nom_rows_2_5_2,
-        styles=styles
-    ))
+    story.append(he.build_target_equation_block(pillar_eq_2_5_3, nom_data_2_5_3, styles=styles))
     add_spacer(8)
 
-    add_p("Giai đoạn 3: Thực hành có hướng dẫn và chứng minh tính không thể phân tách của trạng thái Bell", "H3")
-    story.append(he.build_intermediate_equation(
-        "Chứng minh toán học trạng thái Bell |Φ+⟩ không thể phân tích thành tích tensor của hai trạng thái đơn lẻ:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Giả thiết phản chứng |Φ+⟩ = (a|0⟩ + b|1⟩) ⊗ (c|0⟩ + d|1⟩):",
-        r"(a|0\rangle + b|1\rangle) \otimes (c|0\rangle + d|1\rangle) = ac|00\rangle + ad|01\rangle + bc|10\rangle + bd|11\rangle \equiv \frac{1}{\sqrt{2}}|00\rangle + 0|01\rangle + 0|10\rangle + \frac{1}{\sqrt{2}}|11\rangle",
-        styles=styles
-    ))
+    # Giai đoạn 3: Chuỗi nhân quả dẫn xuất
+    add_p("Giai đoạn 3: Chuỗi nhân quả dẫn xuất tỷ trọng các thành phần dòng ngưỡng", "H3")
+    add_p("Dẫn xuất phân rã dòng ngưỡng thành 3 thành phần vi mô riêng biệt:")
+
+    eq_deriv_2_5_3a = r"I_{\mathrm{th}} = I_{\mathrm{srh}} + I_{\mathrm{rad}} + I_{\mathrm{aug}} = \frac{q V}{\eta_i} A N_{\mathrm{th}} + \frac{q V}{\eta_i} B N_{\mathrm{th}}^2 + \frac{q V}{\eta_i} C N_{\mathrm{th}}^3"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Phân tách dòng ngưỡng theo ba kênh tái hợp:", eq_deriv_2_5_3a, styles=styles))
     add_spacer(6)
 
-    story.append(he.build_intermediate_equation(
-        "Thiết lập hệ phương trình đại số đối sánh các hệ số biên độ xác suất:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Đồng nhất các phần tử biên độ:",
-        r"ac = \frac{1}{\sqrt{2}}, \quad bd = \frac{1}{\sqrt{2}}, \quad ad = 0, \quad bc = 0",
-        styles=styles
-    ))
+    eq_deriv_2_5_3b = r"J_{\mathrm{th}} = \frac{I_{\mathrm{th}}}{w L} = \frac{q d}{\eta_i} \left(A N_{\mathrm{th}} + B N_{\mathrm{th}}^2 + C N_{\mathrm{th}}^3\right)"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Mật độ dòng ngưỡng tính trên một đơn vị diện tích:", eq_deriv_2_5_3b, styles=styles))
     add_spacer(6)
 
-    story.append(he.build_intermediate_equation(
-        "Bác bỏ giả thiết phản chứng và khẳng định tính vướng víu không tách biến:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Từ ad = 0 suy ra a = 0 hoặc d = 0, dẫn tới mâu thuẫn trực tiếp:",
-        r"a = 0 \implies ac = 0 \neq \frac{1}{\sqrt{2}} \quad \text{hoặc} \quad d = 0 \implies bd = 0 \neq \frac{1}{\sqrt{2}} \implies \text{Không thể phân tách (Entangled!)}",
-        styles=styles
-    ))
+    eq_deriv_2_5_3c = r"d \to 10\ \mathrm{nm}\ (\mathrm{QW}) \implies J_{\mathrm{th}} \approx 100 - 300\ \mathrm{A}\cdot\mathrm{cm}^{-2} \quad (\text{giảm 50 lần so với DH 200 nm})"
+    story.append(he.build_intermediate_equation("↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Ưu thế vượt bậc của cấu trúc giếng lượng tử trong việc hạ thấp dòng ngưỡng:", eq_deriv_2_5_3c, styles=styles))
     add_spacer(8)
 
-    # GIAI ĐOẠN 4 & 5 CER
-    add_p("Giai đoạn 4: Phân tích biến thể — Giao thức viễn tải lượng tử (Quantum Teleportation)", "H3")
     add_p(
-        "Năm 1993, Charles Bennett và các cộng sự đã biến 'nghịch lý ma quái' của EPR thành một giao thức truyền tin kỳ diệu: <b>Viễn tải lượng tử (Quantum Teleportation)</b>. "
-        "Giao thức cho phép truyền trạng thái lượng tử chưa biết |ψ⟩ của một hạt tại vị trí <i>A</i> (Alice) đến hạt tại vị trí <i>B</i> (Bob) "
-        "mà không cần dịch chuyển bản thân hạt vật chất qua không gian. "
-        "Bằng cách sử dụng một cặp hạt vướng víu EPR chia sẻ từ trước giữa <i>A</i> và <i>B</i>, kết hợp phép đo cơ sở Bell tại <i>A</i> "
-        "và gửi hai bit thông tin cổ điển qua kênh thông thường cho <i>B</i>, Bob có thể áp dụng một phép biến đổi đơn vị thích hợp "
-        "để khôi phục lại nguyên vẹn 100% trạng thái |ψ⟩ ban đầu. "
-        "Viễn tải lượng tử là xương sống cho các mạng Internet lượng tử nano toàn cầu."
+        "Từ phương trình mật độ dòng ngưỡng <i>J</i><sub>th</sub>, ta thấy rõ: "
+        "dòng ngưỡng tỉ lệ thuận trực tiếp với bề dày vùng tích cực <i>d</i>. "
+        "Chuyển từ cấu trúc dị thể kép DH (<i>d</i> = 200 nm) sang cấu trúc giếng lượng tử đơn SQW (<i>d</i> = 8 nm) "
+        "làm giảm thể tích vùng tích cực 25 lần, cho phép đưa mật độ dòng ngưỡng từ 1000–5000 A/cm<sup>2</sup> "
+        "xuống chỉ còn 100–200 A/cm<sup>2</sup>, giải phóng hoàn toàn linh kiện khỏi nguy cơ phá hủy do quá nhiệt."
     )
     add_spacer(8)
 
-    add_p("Giai đoạn 5: Thử thách tự luyện &amp; Dự đoán bẫy sai lầm (CER 2.5.2)", "H3")
-    add_p(
-        "<b>THỬ THÁCH CER: CÓ THỂ DÙNG VƯỚNG VÍU LƯỢNG TỬ ĐỂ TRUYỀN THÔNG TIN NHANH HƠN VẬN TỐC ÁNH SÁNG?</b><br/>"
-        "<b>1. Khẳng định:</b> Tuyệt đối không thể truyền tải bất kỳ thông tin hữu ích nào nhanh hơn ánh sáng bằng hiện tượng rối lượng tử (Định lý cấm truyền tin siêu sáng — No-Communication Theorem).<br/>"
-        "<b>2. Bằng chứng:</b> Khi Alice thực hiện phép đo trên hạt của mình, kết quả đo luôn ngẫu nhiên hoàn toàn (50% |0⟩ và 50% |1⟩). "
-        "Bob nhìn vào ma trận mật độ rút gọn của hạt mình: ρ<sub>B</sub> = Tr<sub>A</sub>(ρ<sub>AB</sub>) = 0,5 I (ma trận đơn vị). "
-        "Bất kể Alice đo theo trục nào hay không đo, ma trận mật độ của Bob hoàn toàn không đổi.<br/>"
-        "<b>3. Lập luận:</b> Để nhận ra mối tương quan vướng víu giữa hai hạt, Bob bắt buộc phải đối chiếu kết quả đo của mình với kết quả đo của Alice "
-        "thông qua một kênh liên lạc cổ điển (như cáp quang hoặc sóng vô tuyến) truyền tối đa bằng vận tốc ánh sáng <i>c</i>. "
-        "Do đó, cơ học lượng tử hòa hợp tuyệt đối với Thuyết tương đối hẹp, không hề cho phép truyền tin tức tức thời."
-    )
-    add_spacer(14)
-
-    # =========================================================================
-    # MPT 2.5.3: ĐỊNH LÝ BELL & BẤT ĐẲNG THỨC BELL–CHSH
-    # =========================================================================
-    add_p("Luận điểm 2.5.3: Định lý Bell &amp; Bất đẳng thức Bell–CHSH", "H2")
-    add_spacer(4)
-
-    # GIAI ĐOẠN 1
-    add_p("Giai đoạn 1: Giới thiệu khái niệm và bước ngoặt triết học thực nghiệm của John Bell (1964)", "H3")
-    add_p(
-        "Trong suốt gần ba thập kỷ sau bài báo EPR (1935), cuộc tranh luận giữa Albert Einstein và Niels Bohr về bản chất của cơ học lượng tử "
-        "chỉ dừng lại ở phạm trù tranh biện triết học, bởi giới khoa học cho rằng các lý thuyết biến ẩn địa phương đưa ra các dự đoán thực nghiệm giống hệt cơ học lượng tử. "
-        "Năm 1964, nhà vật lý lý thuyết người Bắc Ireland <b>John Stewart Bell</b> đã tạo nên một bước ngoặt vĩ đại nhất trong lịch sử vật lý thế kỷ 20 "
-        "bằng việc chứng minh rằng: <i>Bất kỳ lý thuyết vật lý nào thỏa mãn hai giả thiết cổ điển cơ bản — Tính hiện thực (Realism) và Tính địa phương (Locality) — "
-        "đều phải tuân theo một giới hạn toán học khắt khe về độ tương quan thống kê giữa hai hạt</i>.",
-        ocr_idx=62
-    )
-    add_spacer(6)
-
-    add_p(
-        "Hai tiên đề cổ điển nền tảng của Bell bao gồm: "
-        "<br/>1. <b>Tính hiện thực (Realism):</b> Các đại lượng vật lý có giá trị xác định khách quan độc lập với hành động đo lường của con người (được quy định bởi biến ẩn λ). "
-        "<br/>2. <b>Tính địa phương (Locality):</b> Kết quả đo tại một vị trí <i>A</i> không thể phụ thuộc tức thời vào thiết lập góc đo hay kết quả đo tại vị trí <i>B</i> ở khoảng cách không thời gian xa.",
-        ocr_idx=63, is_expanded=True
-    )
-    add_spacer(6)
-
-    add_p(
-        "Năm 1969, John Clauser, Michael Horne, Abner Shimony và Richard Holt đã khái quát hóa bất đẳng thức Bell thành dạng thực nghiệm đo lường trực tiếp: "
-        "<b>Bất đẳng thức Bell–CHSH</b>. "
-        "Nếu thế giới tuân theo các lý thuyết biến ẩn địa phương cổ điển, đại lượng tổ hợp tương quan <i>S</i> không bao giờ được phép vượt quá giá trị 2: "
-        "|<i>S</i>| ≤ 2. "
-        "Ngược lại, Cơ học lượng tử dự đoán rằng đối với một cặp photon hoặc spin vướng víu, đại lượng <i>S</i> có thể vi phạm giới hạn này "
-        "và đạt tới cực đại Tsirelson: <i>S</i><sub>max</sub> = 2√2 ≈ 2,828.",
-        ocr_idx=64
-    )
-    add_spacer(8)
-
-    # Embed ảnh gốc Bell
+    # Embed Hình mô phỏng 2.5b (Kẹp chặt hạt tải & Tăng trưởng photon trên ngưỡng)
     story.append(he.embed_figure_with_caption(
-        fig_goc_07,
-        "Hình 2.5.8 (Slide 62): Mô hình lý thuyết cổ điển cặp quả bóng chứa biến ẩn địa phương — mỗi quả bóng mang sẵn màu sắc quy định từ trước.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.embed_figure_with_caption(
-        fig_goc_08,
-        "Hình 2.5.9 (Slide 63): Mô hình Cơ học lượng tử về cặp hạt bị rối lượng tử — trạng thái chỉ thực sự xác định khi phép đo diễn ra.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.embed_figure_with_caption(
-        fig_sim_bell,
-        "Hình 2.5.10: Mô phỏng MATLAB R2014b+ Bất đẳng thức Bell–CHSH S(θ) theo góc lệch máy phân tích, chứng minh vi phạm rõ rệt vùng cổ điển |S| ≤ 2 và đạt cực đại Tsirelson 2√2 tại θ = 45°.",
+        fig_sim_2_5b,
+        "Hình mô phỏng 2.5.2: Minh chứng định lượng hiện tượng kẹp chặt hạt tải (Carrier Clamping) và sự bùng nổ mật độ photon trên ngưỡng. "
+        "Dưới ngưỡng (<i>I</i> < <i>I</i><sub>th</sub>), mật độ hạt tải tăng theo căn bậc hai của dòng tiêm trong khi photon hầu như bằng 0. "
+        "Ngay khi vượt qua <i>I</i><sub>th</sub>, mật độ hạt tải bị khóa cứng tuyệt đối tại 1,0, và 100% dòng bơm tăng thêm chuyển hóa thành photon kết hợp.",
         kind="sim",
-        styles=styles
+        styles=styles,
     ))
     add_spacer(8)
 
-    # GIAI ĐOẠN 2 & 3
-    add_p("Giai đoạn 2: Ví dụ tối giản và hệ thức bất đẳng thức Bell–CHSH", "H3")
-    nom_rows_2_5_3 = [
-        ("Thiết lập góc đo của Alice", "<i>a</i>, <i>a</i>'", "hướng không gian", "Hai góc phân cực độc lập của máy đo phía Alice."),
-        ("Thiết lập góc đo của Bob", "<i>b</i>, <i>b</i>'", "hướng không gian", "Hai góc phân cực độc lập của máy đo phía Bob."),
-        ("Đại lượng tương quan Bell–CHSH", "<i>S</i>", "vô thứ nguyên", "Tổ hợp đại số 4 tương quan: <i>S</i> = <i>E</i>(<i>a</i>, <i>b</i>) − <i>E</i>(<i>a</i>, <i>b</i>') + <i>E</i>(<i>a</i>', <i>b</i>) + <i>E</i>(<i>a</i>', <i>b</i>')."),
-        ("Giới hạn Tsirelson (Boris Tsirelson 1980)", "<i>S</i><sub>Tsirelson</sub>", "2√2 ≈ 2,828", "Giới hạn tối đa tuyệt đối mà cơ học lượng tử có thể đạt được.")
-    ]
-    story.append(he.build_target_equation_block(
-        r"S = E(a, b) - E(a, b') + E(a', b) + E(a', b'), \qquad |S_{\mathrm{classical}}| \le 2, \qquad S_{\mathrm{quantum}}^{\max} = 2\sqrt{2} \approx 2.828",
-        nom_rows_2_5_3,
-        styles=styles
-    ))
-    add_spacer(8)
-
-    add_p("Giai đoạn 3: Thực hành có hướng dẫn và dẫn xuất giải tích vi phạm Bell–CHSH", "H3")
-    story.append(he.build_intermediate_equation(
-        "Chứng minh toán học bất đẳng thức Bell–CHSH trong lý thuyết biến ẩn địa phương cổ điển:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Biểu diễn kết quả đo A(a, λ) = ±1 và B(b, λ) = ±1 phụ thuộc biến ẩn λ:",
-        r"A(a,\lambda) B(b,\lambda) - A(a,\lambda) B(b',\lambda) = A(a,\lambda) B(b,\lambda)\left[1 \pm B(b',\lambda) B(a',\lambda)\right] - A(a',\lambda) B(b',\lambda)\left[1 \mp B(b,\lambda) A(a,\lambda)\right]",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.build_intermediate_equation(
-        "Lấy trị tuyệt đối và áp dụng bất đẳng thức tam giác tích phân trên toàn không gian biến ẩn:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Do A và B nhận giá trị ±1:",
-        r"|A(a,\lambda)B(b,\lambda) - A(a,\lambda)B(b',\lambda) + A(a',\lambda)B(b,\lambda) + A(a',\lambda)B(b',\lambda)| \le 2 \implies |S_{\mathrm{classical}}| \le \int \rho(\lambda)\cdot 2\ \mathrm{d}\lambda = 2",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.build_intermediate_equation(
-        "Dẫn xuất giá trị cực đại Tsirelson của Cơ học lượng tử tại cấu hình góc đối xứng tối ưu:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Chọn các góc a = 0°, b = 45°, a' = 90°, b' = 135°:",
-        r"E(a,b) = \frac{\sqrt{2}}{2}, \quad E(a,b') = -\frac{\sqrt{2}}{2}, \quad E(a',b) = \frac{\sqrt{2}}{2}, \quad E(a',b') = \frac{\sqrt{2}}{2} \implies S = 4\left(\frac{\sqrt{2}}{2}\right) = 2\sqrt{2} \approx 2.828 > 2",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # Embed ảnh gốc giới hạn Bell
-    story.append(he.embed_figure_with_caption(
-        fig_goc_09,
-        "Hình 2.5.11 (Slide 64): Giới hạn của bất đẳng thức Bell — nếu làm thí nghiệm đủ lớn, mọi lý thuyết biến ẩn đều không thể vượt quá ngưỡng xác định.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # GIAI ĐOẠN 4 & 5 CER
-    add_p("Giai đoạn 4: Phân tích biến thể — Giao thức phân phối khóa lượng tử Ekert91 dựa trên vi phạm Bell", "H3")
+    # Giai đoạn 4: Khảo sát tiệm cận & Thực chiến
+    add_p("Giai đoạn 4: Khảo sát tiệm cận nhiệt độ và định luật thực nghiệm Pankove", "H3")
     add_p(
-        "Năm 1991, Artur Ekert đã phát minh ra giao thức mật mã lượng tử <b>Ekert91 (E91)</b> dựa trên việc kiểm tra trực tiếp bất đẳng thức Bell–CHSH. "
-        "Alice và Bob nhận các photon vướng víu từ một nguồn nano phát photon đơn. "
-        "Họ ngẫu nhiên chọn các góc phân cực để đo. "
-        "Khi đối chiếu một phần dữ liệu công khai, nếu đại lượng <i>S</i> vi phạm bất đẳng thức Bell (|<i>S</i>| &gt; 2 và tiến sát 2√2), "
-        "Alice và Bob được đảm bảo tuyệt đối bởi các định luật vật lý cơ bản rằng: "
-        "kênh liên lạc hoàn toàn không có kẻ nghe trộm (Eve), bởi bất kỳ sự can thiệp đo lường nào của bên thứ ba "
-        "đều làm sụp đổ hàm sóng vướng víu và kéo đại lượng <i>S</i> tụt về giới hạn cổ điển |<i>S</i>| ≤ 2. "
-        "Bảo mật trong E91 là bảo mật cấp độ định luật vật lý tự nhiên (Device-Independent Security)."
-    )
-    add_spacer(8)
-
-    add_p("Giai đoạn 5: Thử thách tự luyện &amp; Dự đoán bẫy sai lầm (CER 2.5.3)", "H3")
-    add_p(
-        "<b>THỬ THÁCH CER: TẠI SAO GIÁ TRỊ S TRONG CƠ HỌC LƯỢNG TỬ KHÔNG THỂ VƯỢT QUÁ 2√2?</b><br/>"
-        "<b>1. Khẳng định:</b> Giá trị <i>S</i> trong tự nhiên bị chặn trên tuyệt đối bởi 2√2 (Giới hạn Tsirelson) và không thể đạt tới giá trị cực đại toán học bằng 4.<br/>"
-        "<b>2. Bằng chứng:</b> Về mặt đại số thuần túy, <i>S</i> = <i>A</i><sub>1</sub> <i>B</i><sub>1</sub> − <i>A</i><sub>1</sub> <i>B</i><sub>2</sub> + <i>A</i><sub>2</sub> <i>B</i><sub>1</sub> + <i>A</i><sub>2</sub> <i>B</i><sub>2</sub> có thể đạt giá trị bằng 4 (khi ba số hạng bằng +1 và một số hạng bằng −1 và có dấu trừ đằng trước — gọi là hộp Popescu–Rohrlich (PR-box)). "
-        "Tuy nhiên, toán tử lượng tử <i>Ŝ</i><sup>2</sup> có dạng: <i>Ŝ</i><sup>2</sup> = 4 <i>I</i> − [<i>Â</i><sub>1</sub>, <i>Â</i><sub>2</sub>] ⊗ [<i>B̂</i><sub>1</sub>, <i>B̂</i><sub>2</sub>].<br/>"
-        "<b>3. Lập luận:</b> Vì chuẩn của giao hoán tử hai toán tử Pauli chuẩn hóa tối đa bằng 2: ||[<i>Â</i><sub>1</sub>, <i>Â</i><sub>2</sub>]|| ≤ 2, "
-        "ta có: ||<i>Ŝ</i><sup>2</sup>|| ≤ 4 + 4 = 8, kéo theo ||<i>Ŝ</i>|| ≤ √8 = 2√2. "
-        "Nếu tự nhiên cho phép <i>S</i> &gt; 2√2 (như trong mô hình hộp PR-box), các bên có thể truyền tin tức tức thời vi phạm thuyết tương đối hẹp. "
-        "Giới hạn Tsirelson 2√2 chính là ranh giới kỳ diệu cân bằng giữa tính phi địa phương lượng tử và nguyên lý nhân quả tương đối tính."
+        "Sự phụ thuộc nhiệt độ của dòng ngưỡng tuân theo định luật hàm mũ thực nghiệm Pankove: "
+        "<br/><i>I</i><sub>th</sub>(<i>T</i>) = <i>I</i><sub>0</sub> exp(<i>T · T</i><sub>0</sub><sup>−1</sup>). "
+        "<br/>Trong đó <i>T</i><sub>0</sub> là nhiệt độ đặc trưng của linh kiện: "
+        "<br/>• Với laser bước sóng ngắn GaAs/AlGaAs (0,85 μm), <i>T</i><sub>0</sub> đạt 120–180 K (rất ổn định với nhiệt độ). "
+        "<br/>• Với laser bước sóng dài InGaAsP/InP (1,3–1,55 μm), <i>T</i><sub>0</sub> chỉ đạt 50–70 K do ảnh hưởng áp đảo của tái hợp Auger và rò rỉ nhiệt, "
+        "khiến linh kiện bắt buộc phải tích hợp bộ làm lạnh nhiệt điện TEC trong các module truyền thông đường dài."
     )
     add_spacer(14)
 
     # =========================================================================
-    # MPT 2.5.4: BỘ BA THÍ NGHIỆM LỊCH SỬ NOBEL 2022
+    # GIAI ĐOẠN 5: THỬ THÁCH TỰ LUYỆN CER & ĐIỂM MÙ THIẾT KẾ
     # =========================================================================
-    add_p("Luận điểm 2.5.4: Bộ ba thí nghiệm Nobel 2022 (Clauser, Aspect, Zeilinger)", "H2")
-    add_spacer(4)
+    add_p("Giai đoạn 5: Thử thách tự luyện & Dự đoán lỗi sai (Bẫy điểm mù R&amp;D)", "H3")
 
-    # GIAI ĐOẠN 1
-    add_p("Giai đoạn 1: Giới thiệu khái niệm và hành trình nửa thế kỷ kiểm chứng bất đẳng thức Bell", "H3")
-    add_p(
-        "Giải Nobel Vật lý năm 2022 được trao cho ba nhà thực nghiệm tiên phong: <b>John F. Clauser (Mỹ), Alain Aspect (Pháp) và Anton Zeilinger (Áo)</b> "
-        "với lời vinh danh: <i>'Cho các thí nghiệm với các photon vướng víu, chứng minh sự vi phạm các bất đẳng thức Bell và mở đường cho khoa học thông tin lượng tử'</i>. "
-        "Đây là sự khẳng định tối cao của cộng đồng khoa học toàn cầu đối với việc bác bỏ hoàn toàn quan điểm biến ẩn địa phương của Einstein "
-        "và khẳng định tính đúng đắn của Cơ học lượng tử.",
-        ocr_idx=65
-    )
-    add_spacer(6)
-
-    add_p(
-        "Năm 1972, John Clauser và Stuart Freedman tại Đại học UC Berkeley đã chế tạo thí nghiệm thực chứng đầu tiên trên thế giới: "
-        "sử dụng quá trình phân rã tầng (Cascade Decay) của nguyên tử Canxi để phát ra các cặp photon vướng víu phân cực bay về hai phía. "
-        "Kết quả đo cho thấy độ tương quan vi phạm bất đẳng thức Bell, ủng hộ tính phi địa phương lượng tử.",
-        ocr_idx=66
-    )
-    add_spacer(6)
-
-    add_p(
-        "Năm 1982, Alain Aspect tại Viện Quang học Orsay (Pháp) đã khắc phục lỗ hổng định vị then chốt (Locality Loophole): "
-        "ông đặt hai máy phân tích phân cực cách xa nhau 6 m và sử dụng các bộ chuyển mạch quang-âm siêu nhanh đổi hướng ngẫu nhiên cứ sau mỗi 10 ns — "
-        "nhanh hơn rất nhiều thời gian ánh sáng truyền giữa hai bên (20 ns), triệt tiêu hoàn toàn khả năng hai máy đo 'giao tiếp bí mật' với nhau.",
-        ocr_idx=67, is_expanded=True
-    )
-    add_spacer(6)
-
-    add_p(
-        "Từ thập niên 1990 trở đi, Anton Zeilinger tại Đại học Vienna (Áo) đã sử dụng nguồn tinh thể phi tuyến chuyển đổi tham số xuống (SPDC) "
-        "để tạo ra các cặp photon vướng víu hoàn hảo, thực hiện thành công thí nghiệm Viễn tải lượng tử (1997) "
-        "và đóng kín toàn bộ các kẽ hở kẽ hở thực nghiệm (Loophole-free Bell test), đặt nền móng vững chắc cho mạng viễn thông lượng tử nano.",
-        ocr_idx=68
-    )
-    add_spacer(8)
-
-    # Embed ảnh gốc Nobel
-    story.append(he.embed_figure_with_caption(
-        fig_goc_10,
-        "Hình 2.5.12 (Slide 65): John Clauser bên cạnh thiết bị thí nghiệm kiểm chứng vướng víu lượng tử thứ hai của mình tại UC Berkeley năm 1976.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.embed_figure_with_caption(
-        fig_goc_11,
-        "Hình 2.5.13 (Slide 66): Sơ đồ thí nghiệm của J. Clauser (1972) sử dụng nguồn nguyên tử Canxi phát cặp photon vướng víu.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.embed_figure_with_caption(
-        fig_goc_12,
-        "Hình 2.5.14 (Slide 67): Mô hình thí nghiệm của Alain Aspect (1982) với hai bộ lọc cách nhau 6 m và chuyển mạch siêu nhanh 10 ns.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.embed_figure_with_caption(
-        fig_goc_13,
-        "Hình 2.5.15 (Slide 68): Mô hình thí nghiệm của Anton Zeilinger chiếu tia laser lên tinh thể phi tuyến tạo cặp photon vướng víu ngẫu nhiên.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.embed_figure_with_caption(
-        fig_sim_corr,
-        "Hình 2.5.16: Mô phỏng MATLAB R2014b+ hàm tương quan phân cực photon E(Δθ) = cos(2Δθ) đối sánh với mô hình tam giác cổ điển và dữ liệu đo thực nghiệm Nobel 2022.",
-        kind="sim",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # GIAI ĐOẠN 2 & 3
-    add_p("Giai đoạn 2: Ví dụ tối giản và tương quan phân cực photon vướng víu", "H3")
-    nom_rows_2_5_4 = [
-        ("Góc lệch máy phân cực", "Δθ = |θ<sub><i>A</i></sub> − θ<sub><i>B</i></sub>|", "độ (hoặc rad)", "Góc xoay tương đối giữa hai kính phân cực tại hai đầu đo."),
-        ("Khoảng cách tách rời thí nghiệm", "<i>L</i>", "mét", "Cự ly truyền không gian giữa hai trạm thu nhận photon (Aspect: 6 m; Zeilinger: 144 km qua đảo Canary)."),
-        ("Thời gian chuyển mạch máy đo", "τ<sub>switch</sub>", "ns", "Thời gian thay đổi góc ngẫu nhiên (Aspect: 10 ns), nhỏ hơn thời gian truyền ánh sáng <i>L</i>·<i>c</i><sup>−1</sup> = 20 ns."),
-        ("Hiệu suất phát hiện photon", "η<sub>det</sub>", "vô thứ nguyên", "Điều kiện đóng kẽ hở phát hiện (Detection Loophole): η<sub>det</sub> &gt; 82,8% đối với trạng thái Bell cực đại.")
+    cer_card = [
+        [Paragraph(he.wrap_math_glyphs("<b>BÀI TOÁN THỬ THÁCH CHẨN ĐOÁN CER 2.5: ĐỘ LỢI CÓ THỰC SỰ BỊ GHIM 100% TRÊN NGƯỠNG KHÔNG?</b>"), styles["TableHeader"])],
+        [Paragraph(he.wrap_math_glyphs(
+            "<b>Bối cảnh bài toán R&amp;D:</b> Trong một báo cáo kỹ thuật, một kỹ sư trẻ khẳng định rằng: "
+            "'Trên ngưỡng phát laser, mật độ hạt tải <i>N</i> và độ lợi quang học <i>g</i> bị kẹp chặt tuyệt đối 100% không đổi tại mọi điểm trong toàn bộ thể tích vùng tích cực, "
+            "do đó phổ phát xạ tự phát đo được từ cạnh bên của laser sẽ giữ nguyên giá trị không tăng thêm dù dòng tiêm tăng gấp 5 lần dòng ngưỡng'. "
+            "Tuy nhiên, khi trưởng phòng đo phổ phát xạ tự phát từ cạnh bên của một laser stripe-geometry ở dòng <i>I</i> = 3 <i>I</i><sub>th</sub>, "
+            "ông quan sát thấy cường độ phát xạ tự phát vẫn tăng thêm khoảng 8–12%.<br/><br/>"
+            "• <b>Luận điểm (Claim):</b> Nhận định của kỹ sư trẻ đúng hay sai? Tại sao cường độ phát xạ tự phát thực tế vẫn tăng nhẹ trên ngưỡng?<br/>"
+            "• <b>Bằng chứng (Evidence):</b> Dựa vào hiện tượng cháy lỗ không gian theo phương ngang (Lateral Spatial Hole Burning) và hiện tượng nén độ lợi phi tuyến (Gain Compression Factor <i>ε</i>) ở mật độ photon cao.<br/>"
+            "• <b>Lập luận (Reasoning):</b> Phân tích sự không đồng nhất về mặt không gian của mật độ photon <i>S(x, y, z)</i>: photon tập trung cao ở tâm mode quang làm tiêu hao hạt tải ở tâm nhanh hơn mép, "
+            "dẫn đến việc hạt tải ở hai rìa ngoài của dải tiếp xúc vẫn tiếp tục tích lũy và phát xạ tự phát tăng thêm."
+        ), styles["TableCell"])]
     ]
-    story.append(he.build_target_equation_block(
-        r"E(\Delta\theta) = \cos(2\Delta\theta), \qquad \Delta\tau_{\mathrm{switch}} < \frac{L}{c} = \frac{6\ \mathrm{m}}{3\times 10^8\ \mathrm{m}\cdot\mathrm{s}^{-1}} = 20\ \mathrm{ns}, \qquad \eta_{\mathrm{det}} > 2(\sqrt{2}-1) \approx 82.8\%",
-        nom_rows_2_5_4,
-        styles=styles
-    ))
-    add_spacer(8)
-
-    add_p("Giai đoạn 3: Thực hành có hướng dẫn và phân tích điều kiện đóng kín kẽ hở định vị (Locality Loophole)", "H3")
-    story.append(he.build_intermediate_equation(
-        "Chứng minh điều kiện cách ly nhân quả không thời gian (Space-like Separation) trong thí nghiệm Alain Aspect:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tính khoảng thời gian ánh sáng truyền cự ly L = 6 m:",
-        r"\Delta t_{\mathrm{light}} = \frac{L}{c} = \frac{6\ \mathrm{m}}{3\times 10^8\ \mathrm{m}\cdot\mathrm{s}^{-1}} = 20\ \mathrm{ns} > \Delta\tau_{\mathrm{switch}} = 10\ \mathrm{ns}",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.build_intermediate_equation(
-        "Phân tích khoảng cách sự kiện bốn chiều Minkowski giữa biến cố chọn góc tại Alice và biến cố đo tại Bob:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khoảng cách không thời gian mang tính không gian (Space-like interval):",
-        r"\Delta s^2 = c^2 (\Delta t)^2 - (\Delta x)^2 = (3\times 10^8\ \mathrm{m}\cdot\mathrm{s}^{-1} \times 10\times 10^{-9}\ \mathrm{s})^2 - (6\ \mathrm{m})^2 = 9 - 36 = -27\ \mathrm{m^2} < 0",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.build_intermediate_equation(
-        "Hệ quả vật lý: Không có bất kỳ tín hiệu nào truyền bằng hoặc chậm hơn vận tốc ánh sáng có thể liên lạc giữa hai đầu:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khẳng định tính phi địa phương thực sự của tự nhiên:",
-        r"\text{Sự sụp đổ hàm sóng mang tính phi địa phương tuyệt đối (Non-local), bác bỏ hoàn toàn biến ẩn địa phương.}",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # GIAI ĐOẠN 4 & 5 CER
-    add_p("Giai đoạn 4: Phân tích biến thể — Mạng vướng víu lượng tử không gian vệ tinh Micius (1.200 km)", "H3")
-    add_p(
-        "Kế thừa và mở rộng công trình của Anton Zeilinger, năm 2017 nhóm nghiên cứu của Jian-Wei Pan đã thực hiện thí nghiệm "
-        "phân phối cặp photon vướng víu từ vệ tinh lượng tử Micius trên quỹ đạo không gian xuống hai trạm mặt đất Delingha và Lijiang "
-        "cách nhau hơn 1.200 km xuyên qua bầu khí quyển Trái Đất. "
-        "Bất đẳng thức Bell bị vi phạm nghiêm ngặt ở cự ly hơn 1.000 km với mức độ tin cậy thống kê vượt trội. "
-        "Đây là bước tiến vĩ đại chứng minh rằng hiện tượng vướng víu lượng tử bảo toàn nguyên vẹn ngay cả ở quy mô toàn cầu."
-    )
-    add_spacer(8)
-
-    add_p("Giai đoạn 5: Thử thách tự luyện &amp; Dự đoán bẫy sai lầm (CER 2.5.4)", "H3")
-    add_p(
-        "<b>THỬ THÁCH CER: TẠI SAO KẼ HỞ PHÁT HIỆN (DETECTION LOOPHOLE) CÓ THỂ LÀM GIẢ MẠO KẾT QUẢ VI PHẠM BELL?</b><br/>"
-        "<b>1. Khẳng định:</b> Nếu hiệu suất thu nhận photon của đầu dò quá thấp (η<sub>det</sub> &lt; 82,8%), một mô hình biến ẩn cổ điển hoàn toàn có thể 'đánh lừa' máy đo, "
-        "tạo ra kết quả biểu kiến vi phạm Bell mà thực tế không hề có vướng víu lượng tử.<br/>"
-        "<b>2. Bằng chứng:</b> Trong các thí nghiệm quang học ban đầu, phần lớn photon bị thất thoát trong sợi quang hoặc không kích hoạt bộ tách sóng quang (hiệu suất chỉ vài chục %). "
-        "Lý thuyết biến ẩn cổ điển có thể giả định rằng: hạt mang chỉ thị 'chỉ cho phép đầu dò ghi nhận' khi góc đo rơi vào cấu hình có lợi, và 'tàng hình' ở các góc đo khác.<br/>"
-        "<b>3. Lập luận:</b> Mẫu thống kê ghi nhận được bị thiên vị nặng nề (Fair Sampling Assumption bị vi phạm). "
-        "Chỉ đến khi các đầu dò siêu dẫn dây nano nano-wire (SNSPD) với hiệu suất thu nhận vượt trên 95% được sử dụng trong các thí nghiệm năm 2015 "
-        "(Delft, Vienna, NIST), kẽ hở phát hiện mới chính thức bị đóng kín vĩnh viễn."
-    )
-    add_spacer(14)
-
-    # =========================================================================
-    # MPT 2.5.5: ỨNG DỤNG CÔNG NGHỆ NANO LƯỢNG TỬ
-    # =========================================================================
-    add_p("Luận điểm 2.5.5: Ứng dụng công nghệ nano lượng tử: Qubit nano, Mật mã lượng tử &amp; Cảm biến lượng tử", "H2")
-    add_spacer(4)
-
-    # GIAI ĐOẠN 1
-    add_p("Giai đoạn 1: Giới thiệu khái niệm và sứ mệnh 'Đưa lượng tử vào mọi thứ' (Quantum in Everything)", "H3")
-    add_p(
-        "Khoa học nano lượng tử đang chuyển mình mạnh mẽ từ các thí nghiệm chứng minh nguyên lý cơ bản trong phòng thí nghiệm "
-        "sang giai đoạn công nghiệp hóa: 'Đưa lượng tử vào mọi thứ' — tích hợp các hiệu ứng lượng tử vào vật liệu, linh kiện và hệ thống nano tích hợp.",
-        ocr_idx=69
-    )
-    add_spacer(6)
-
-    add_p(
-        "Ba trụ cột ứng dụng then chốt định hình tương lai công nghệ bao gồm: "
-        "<br/>1. <b>Máy tính lượng tử nano (Quantum Computing):</b> Sử dụng các Qubit nano làm đơn vị tính toán cơ bản (Qubit spin trong chấm lượng tử Silicon, Qubit siêu dẫn Transmon dựa trên tiếp giáp Josephson nano). "
-        "<br/>2. <b>Truyền thông &amp; Mật mã lượng tử (Quantum Communications):</b> Hệ thống phân phối khóa mật mã an toàn tuyệt đối QKD và mạng lượng tử internet. "
-        "<br/>3. <b>Cảm biến lượng tử siêu nhạy (Quantum Metrology &amp; Sensing):</b> Cảm biến từ trường, điện trường và nhiệt độ ở cấp độ dưới tế bào bằng tâm khuyết tật nguyên tử NV (Nitrogen-Vacancy) trong hạt kim cương nano.",
-        ocr_idx=70, is_expanded=True
-    )
-    add_spacer(8)
-
-    # Embed ảnh gốc ứng dụng
-    story.append(he.embed_figure_with_caption(
-        fig_goc_14,
-        "Hình 2.5.17 (Slide 69): Khoa học nano lượng tử hướng tới việc kết hợp lượng tử vào vật liệu và thiết bị cỡ nano.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.embed_figure_with_caption(
-        fig_goc_15,
-        "Hình 2.5.18 (Slide 70): Khoa học nano lượng tử là nền tảng cốt lõi cho cuộc cách mạng công nghệ nano lượng tử thế hệ thứ hai.",
-        kind="orig",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # GIAI ĐOẠN 2 & 3
-    add_p("Giai đoạn 2: Ví dụ tối giản và hệ thức vật lý của linh kiện Qubit nano", "H3")
-    nom_rows_2_5_5 = [
-        ("Năng lượng Josephson của tiếp giáp nano", "<i>E</i><sub>J</sub>", "J (hoặc GHz)", "Năng lượng ghép cặp hạt tải siêu dẫn Cooper qua lớp oxit nano dày 1–2 nm: <i>E</i><sub>J</sub> = <i>I</i><sub>c</sub> Φ<sub>0</sub> · (2π)<sup>−1</sup>."),
-        ("Năng lượng nạp tĩnh điện Coulomb", "<i>E</i><sub>C</sub>", "J (hoặc GHz)", "Năng lượng nạp một electron lên điện dung tiếp giáp: <i>E</i><sub>C</sub> = <i>e</i><sup>2</sup> · (2<i>C</i><sub>Σ</sub>)<sup>−1</sup>."),
-        ("Tần số chuyển dời Qubit Transmon", "ω<sub>01</sub>", "rad·s<sup>−1</sup> (hoặc GHz)", "Tần số chuyển dời giữa trạng thái |0⟩ và |1⟩: ℏω<sub>01</sub> ≈ (8<i>E</i><sub>J</sub> <i>E</i><sub>C</sub>)<sup>0.5</sup> − <i>E</i><sub>C</sub>."),
-        ("Độ nhạy từ trường của tâm màu NV", "η<sub>B</sub>", "pT·Hz<sup>−0.5</sup>", "Độ nhạy đo từ trường cực đại: η<sub>B</sub> ∝ ℏ · [<i>g</i><sub>e</sub> μ<sub>B</sub> (<i>N</i> <i>T</i><sub>2</sub>*)<sup>0.5</sup>]<sup>−1</sup>.")
-    ]
-    story.append(he.build_target_equation_block(
-        r"E_J = \frac{\Phi_0 I_c}{2\pi}, \qquad E_C = \frac{e^2}{2C_\Sigma}, \qquad \hbar\omega_{01} \approx \sqrt{8 E_J E_C} - E_C, \qquad \eta_B \approx \frac{\hbar}{g_e \mu_B \sqrt{N T_2^*}}",
-        nom_rows_2_5_5,
-        styles=styles
-    ))
-    add_spacer(8)
-
-    add_p("Giai đoạn 3: Thực hành có hướng dẫn và cơ chế phi điều hòa (Anharmonicity) trong Qubit siêu dẫn", "H3")
-    story.append(he.build_intermediate_equation(
-        "Thiết lập Hamiltonian của mạch cộng hưởng phi tuyến Transmon (Tiếp giáp Josephson nano kẹp tụ điện song song):<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khai triển thế năng phi tuyến cosin của tiếp giáp Josephson:",
-        r"\hat{H} = 4 E_C (\hat{n} - n_g)^2 - E_J \cos\hat{\phi} \approx 4 E_C \hat{n}^2 + E_J\left[ \frac{\hat{\phi}^2}{2} - \frac{\hat{\phi}^4}{24} \right]",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.build_intermediate_equation(
-        "Tính toán độ phi điều hòa (Anharmonicity) α = ω12 − ω01 để cô lập hệ hai mức Qubit:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Sử dụng lý thuyết nhiễu loạn bậc nhất cho số hạng phi tuyến bậc 4:",
-        r"\alpha = \hbar(\omega_{12} - \omega_{01}) \approx -E_C \implies \omega_{12} = \omega_{01} - \frac{E_C}{\hbar} \neq \omega_{01}",
-        styles=styles
-    ))
-    add_spacer(6)
-
-    story.append(he.build_intermediate_equation(
-        "Ý nghĩa công nghệ: Nhờ tần số chuyển dời ω12 lệch khỏi ω01 một khoảng Ec, xung vi sóng điều khiển qubit không bị rò rỉ lên mức |2⟩:<br/>"
-        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Cho phép thao tác cổng logic lượng tử đơn Qubit và hai Qubit với độ chính xác cao:",
-        r"\text{Mạch điện tử siêu dẫn nano hoạt động như một nguyên tử nhân tạo hai mức hoàn hảo.}",
-        styles=styles
-    ))
-    add_spacer(8)
-
-    # GIAI ĐOẠN 4 & 5 CER
-    add_p("Giai đoạn 4: Phân tích biến thể — Kính hiển vi từ trường lượng tử bằng tâm khuyết tật NV kim cương nano", "H3")
-    add_p(
-        "Tâm màu khuyết tật Nitơ (NV-center) trong tinh thể kim cương nano kích thước 10–50 nm gồm một nguyên tử Nitơ thay thế và một nút khuyết mạng liền kề. "
-        "Tâm NV có trạng thái spin điện tử <i>S</i> = 1 cực kỳ bền vững, có thể quang học đọc và khởi tạo trạng thái spin ở ngay nhiệt độ phòng (300 K). "
-        "Bằng cách gắn một hạt kim cương nano chứa tâm NV đơn lẻ lên đầu mũi dò của kính hiển vi lực nguyên tử (AFM), "
-        "ta thu được một <b>Kính hiển vi từ trường lượng tử (Scanning NV Magnetometer)</b> có độ phân giải không gian đạt cự ly hạ 10 nm "
-        "và độ nhạy từ trường đạt cấp độ picoTesla. "
-        "Thiết bị cho phép chụp ảnh trực tiếp dòng spin trong các linh kiện spintronics nano và lập bản đồ từ trường của các màng mỏng từ tính hai chiều."
-    )
-    add_spacer(8)
-
-    add_p("Giai đoạn 5: Thử thách tự luyện &amp; Dự đoán bẫy sai lầm (CER 2.5.5)", "H3")
-    add_p(
-        "<b>THỬ THÁCH CER: TẠI SAO PHẢI THIẾT KẾ LINH KIỆN TRANSMON CÓ TỶ SỐ EJ TRÊN EC >> 1?</b><br/>"
-        "<b>1. Khẳng định:</b> Qubit siêu dẫn Transmon bắt buộc phải được thiết kế với tỷ số <i>E</i><sub>J</sub> · (<i>E</i><sub>C</sub>)<sup>−1</sup> ≥ 50 để triệt tiêu độ nhạy cảm đối với nhiễu điện tích môi trường.<br/>"
-        "<b>2. Bằng chứng:</b> Trong mạch Cooper-Pair Box ban đầu (<i>E</i><sub>J</sub> ~ <i>E</i><sub>C</sub>), mức năng lượng phân tán rất mạnh theo điện tích phân cực cổng <i>n</i><sub>g</sub> (độ dốc d<i>E</i>/d<i>n</i><sub>g</sub> rất lớn). "
-        "Nhiễu điện tích 1/<i>f</i> từ các bẫy điện tích nano xung quanh làm dao động tần số chuyển dời, khiến thời gian giải kết pha <i>T</i><sub>2</sub> tụt xuống dưới 1 μs.<br/>"
-        "<b>3. Lập luận:</b> Khi mắc thêm tụ điện shunting dung lượng lớn để hạ <i>E</i><sub>C</sub> và nâng <i>E</i><sub>J</sub> · (<i>E</i><sub>C</sub>)<sup>−1</sup> lên 50–100, "
-        "độ tán xạ mức năng lượng theo điện tích suy giảm theo hàm mũ: Δ<i>E</i> ∝ exp(−(8<i>E</i><sub>J</sub> · (<i>E</i><sub>C</sub>)<sup>−1</sup>)<sup>0.5</sup>) ≈ 0. "
-        "Linh kiện hoàn toàn miễn nhiễm với nhiễu điện tích, nâng thời gian sống kết hợp <i>T</i><sub>2</sub> lên hàng trăm microgiây — tạo nên sự bùng nổ của các bộ xử lý lượng tử Google Sycamore và IBM Eagle."
-    )
-    add_spacer(14)
-
-    # =========================================================================
-    # TỔNG KẾT VÀ BẢNG KIỂM TOÁN CHẤT LƯỢNG MỤC 2.5
-    # =========================================================================
-    add_p("Tổng kết &amp; Bảng đối soát kiểm toán kỹ thuật chuyên khảo Mục 2.5", "H2")
-    add_spacer(4)
-
-    audit_headers = [
-        Paragraph(he.wrap_math_glyphs("<b>Chỉ tiêu kiểm định (DOHG 2.0)</b>"), styles["TableHeader"]),
-        Paragraph(he.wrap_math_glyphs("<b>Mô tả nội dung &amp; Chuẩn mực kiểm toán</b>"), styles["TableHeader"]),
-        Paragraph(he.wrap_math_glyphs("<b>Trạng thái nghiệm thu</b>"), styles["TableHeader"]),
-    ]
-    audit_rows = [
-        audit_headers,
-        [
-            Paragraph(he.wrap_math_glyphs("Cấu trúc 5 giai đoạn sư phạm"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Triển khai đủ 5 MPT từ Khái niệm → Ví dụ → Dẫn xuất → Biến thể → CER"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("Bảo toàn Zero-Omission"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Quét cạn Slide 54–70 (Coherence, Rối EPR, Bell, Nobel 2022, Qubit nano)"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("Luật 14: Zero-Slash-Fractions"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("100% công thức phân số dùng phân số gạch ngang chuẩn tử số trên mẫu số"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("Luật 15: Zero-LaTeX-Leakage"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("Không rò rỉ mã lệnh LaTeX thô trong Paragraph và Table, bọc chuẩn HTML &amp; Unicode"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("Đồ thị chuẩn MATLAB R2014b+"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("3 đồ thị mô phỏng đạt chuẩn Triple Buffer Geometry, font ≥ 10 pt"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-        [
-            Paragraph(he.wrap_math_glyphs("Bảo toàn ảnh gốc bóc tách"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("15 ảnh gốc bóc tách từ Slide 56–70 lưu trữ an toàn trong Kho_Hinh_Anh trên Drive"), styles["TableCell"]),
-            Paragraph(he.wrap_math_glyphs("<b>PASS (100%)</b>"), styles["TableCellCenter"]),
-        ],
-    ]
-    t_audit = he.Table(audit_rows, colWidths=[150.0, 220.0, 145.0], repeatRows=1)
-    t_audit.setStyle(he.TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), he.COLOR_TABLE_HEADER_BG),
-        ("GRID", (0, 0), (-1, -1), 0.5, he.COLOR_BORDER_GRAY),
-        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-        ("TOPPADDING", (0, 0), (-1, -1), 4),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
-        ("LEFTPADDING", (0, 0), (-1, -1), 5),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 5),
+    cer_t = he.Table(cer_card, colWidths=[he.PRINTABLE_WIDTH])
+    cer_t.setStyle(he.TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#002B49')),
+        ('BACKGROUND', (0,1), (-1,1), colors.HexColor('#F8F9FA')),
+        ('BOX', (0,0), (-1,-1), 1.0, colors.HexColor('#002B49')),
+        ('TOPPADDING', (0,0), (-1,-1), 6),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+        ('LEFTPADDING', (0,0), (-1,-1), 8),
+        ('RIGHTPADDING', (0,0), (-1,-1), 8),
     ]))
-    story.append(t_audit)
+    story.append(cer_t)
     add_spacer(14)
 
-    # BỘ BA MỎ NEO ĐIỀU HƯỚNG CUỐI MỤC
-    summary_text = (
-        "<b>BỘ BA MỎ NEO ĐIỀU HƯỚNG — HOÀN TẤT MỤC 2.5:</b><br/>"
-        "<b>1. Trục Dẫn xuất Cốt lõi:</b> Sự gắn kết lượng tử và chồng chất trạng thái (|ψ⟩ = α|0⟩ + β|1⟩) "
-        "→ Nghịch lý EPR và tính vướng víu không tách biến (|Φ<sup>+</sup>⟩, |Ψ<sup>−</sup>⟩) "
-        "→ Bất đẳng thức Bell–CHSH phân định ranh giới giữa thế giới cổ điển (|<i>S</i>| ≤ 2) và lượng tử (2√2 ≈ 2,828) "
-        "→ Bộ ba thí nghiệm lịch sử Nobel 2022 (Clauser đóng kẽ hở đầu tiên, Aspect chuyển mạch siêu nhanh 10 ns, Zeilinger viễn tải lượng tử) "
-        "→ Các ứng dụng nano lượng tử đột phá: Qubit siêu dẫn Transmon phi điều hòa, phân phối khóa an toàn E91 và cảm biến từ nano NV kim cương.<br/>"
-        "<b>2. Thông số Trọng tâm:</b> Cực đại Tsirelson <i>S</i><sub>max</sub> = 2√2 ≈ 2,828; Cự ly chuyển mạch Aspect <i>L</i> = 6 m, τ = 10 ns; "
-        "Hiệu suất ngưỡng đóng kẽ hở phát hiện η<sub>det</sub> &gt; 82,8%; Tỷ số Josephson Transmon <i>E</i><sub>J</sub> · (<i>E</i><sub>C</sub>)<sup>−1</sup> ≥ 50.<br/>"
-        "<b>3. Câu hỏi Đối trọng Phản biện (Lab Partner):</b> "
-        "<i>'Nếu việc đo trạng thái của hạt A làm sụp đổ tức thời trạng thái của hạt B ở cự ly hàng nghìn kilomet, "
-        "tại sao điều này không hề cho phép hai trạm gửi thông điệp mã Morse nhị phân nhanh hơn vận tốc ánh sáng? "
-        "Định lý No-Cloning (cấm sao chép trạng thái lượng tử) đóng vai trò then chốt như thế nào trong việc bảo vệ tính bất khả xâm phạm của thông tin trong các cấu trúc nano?'</i>"
+    # Khâu nối biên độ DOC (Transition Anchor sang Mục 2.6)
+    add_p(
+        "<b>Khâu nối biên độ và Tiền đề chuyển tiếp sang Mục 2.6:</b> "
+        "Mục 2.5 đã giải phẫu trọn vẹn hiện tượng kẹp chặt độ lợi và cơ chế hình thành dòng ngưỡng <i>I</i><sub>th</sub>. "
+        "Khi dòng tiêm vượt ngưỡng (<i>I</i> > <i>I</i><sub>th</sub>), công suất quang ngõ ra <i>P</i><sub>out</sub> sẽ tăng trưởng như thế nào theo dòng điện tiêm <i>I</i>? "
+        "Khái niệm hiệu suất lượng tử vi phân (Differential Quantum Efficiency - <i>η<sub>d</sub></i>) và độ dốc đặc tuyến <i>L–I</i> (Slope Efficiency) được định nghĩa ra sao? "
+        "Các yếu tố nào làm bẻ cong đặc tuyến công suất ở vùng dòng cao (hiện tượng cuộn nhiệt - Thermal Rollover)? "
+        "Tất cả các quy luật vận hành thực nghiệm này sẽ được giải phẫu toàn diện trong <b>Mục 2.6: Dòng ngưỡng và công suất bức xạ ngõ ra theo dòng tiêm</b>."
     )
-    add_p(summary_text, "Body")
 
-    print(f"[*] Starting PDF build for Section 2.5 ({PDF_FILENAME})...")
-    doc.build(story)
-    print(f"[OK] Successfully built {TARGET_PDF_PATH}")
-    file_size_mb = os.path.getsize(TARGET_PDF_PATH) / (1024 * 1024)
-    print(f"[OK] Output PDF Size: {file_size_mb:.2f} MB")
+    doc.build(story, canvasmaker=he.NumberedBookmarkCanvas)
+    print(f"PDF BUILT SUCCESSFULLY: {pdf_filename} ({os.path.getsize(pdf_filename) / 1024:.1f} KB)")
 
 
 if __name__ == "__main__":
     build_monograph_muc_2_5()
-'''
-
-with open('output/build_monograph_muc_2_5_nano.py', 'w', encoding='utf-8') as f:
-    f.write(content)
-
-print("Generated clean build_monograph_muc_2_5_nano.py successfully!")

@@ -1,0 +1,222 @@
+{
+  "lesson_title": "Chương 3: Đặc trưng của vật liệu khi kích thước giảm - Mục 3.2: Nhiệt động học vi mô, động học chất lưu Stokes và chuyển động khuếch tán Brown",
+  "section_id": "Mục 3.2",
+  "source_document_citations": [
+    "Bài 3-Properties.pdf (Slide 22 đến 28), Bộ môn Vật liệu Điện tử - Viện Vật lý Kỹ thuật HUST",
+    "Edward L. Wolf, Nanophysics and Nanotechnology, Wiley-VCH, 2006 (Chapter 3)",
+    "Charles P. Poole Jr., Frank J. Owens, Introduction to Nanotechnology, John Wiley & Sons, 2003"
+  ],
+  "total_pages_estimate": 20,
+  "micro_point_topics": [
+    {
+      "mpt_id": "Luận điểm 3.2.1",
+      "concept_introduction": "Truyền nhiệt vi mô qua cầu dẫn nhiệt nano: Thiết lập phương trình cân bằng nhiệt lượng dQ/dt = k_T A (T - T_0)/L = C_V dT/dt và nghiệm phân rã hàm mũ nhiệt độ.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.2_Hinh_01_Trao_Doi_Nhiet_Va_Hang_So_Thoi_Gian_Tau.png",
+        "interaction_id": "IMG_3.2.1_ORIG_HEAT",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.2.1: Sơ đồ truyền nhiệt vi mô qua cầu nano và sự suy giảm hàm mũ nhiệt độ (Slide 22 HUST)."
+      },
+      "minimal_working_example": "Xác định hằng số thời gian nhiệt tau_th của cầu dẫn nhiệt Silicon có L = 1 um, tiết diện A = 100 nm x 100 nm nối với hạt nano Silicon.",
+      "pillar_equation_latex": "\\frac{\\mathrm{d}Q}{\\mathrm{d}t} = \\frac{k_T A}{L}(T - T_0) = C_V \\frac{\\mathrm{d}T}{\\mathrm{d}t} \\implies T(t) - T_0 = \\Delta T_0 \\mathrm{e}^{-\\frac{t}{\\tau_{\\mathrm{th}}}}, \\quad \\tau_{\\mathrm{th}} = \\frac{L C_V}{k_T A}",
+      "nomenclature_table": [
+        {
+          "name": "Hằng số thời gian nhiệt",
+          "symbol": "\\tau_{\\mathrm{th}}",
+          "unit": "s",
+          "meaning": "Thời gian để độ chênh lệch nhiệt độ suy giảm e lần"
+        },
+        {
+          "name": "Nhiệt dung toàn phần",
+          "symbol": "C_V",
+          "unit": "J/K",
+          "meaning": "Nhiệt dung đẳng tích của khối nano C_V = c_v V = c_v rho L^3"
+        },
+        {
+          "name": "Độ dẫn nhiệt của vật liệu",
+          "symbol": "k_T",
+          "unit": "W/(m K)",
+          "meaning": "Hệ số truyền nhiệt dẫn xuất Fourier của cầu nối nano"
+        },
+        {
+          "name": "Diện tích tiết diện cầu dẫn",
+          "symbol": "A",
+          "unit": "m^2",
+          "meaning": "Diện tích tiếp xúc truyền dẫn nhiệt lượng"
+        },
+        {
+          "name": "Chiều dài cầu dẫn nhiệt",
+          "symbol": "L",
+          "unit": "m",
+          "meaning": "Khoảng cách truyền nhiệt từ hạt nano tới bể nhiệt tản"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thiết lập phương trình vi phân truyền dẫn nhiệt: C_V \\frac{\\mathrm{d}T}{\\mathrm{d}t} = -\\frac{k_T A}{L}(T - T_0).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Phân ly biến số và tích phân từ t = 0 đến t: \\int_{\\Delta T_0}^{\\Delta T} \\frac{\\mathrm{d}(\\Delta T)}{\\Delta T} = -\\frac{k_T A}{L C_V} \\int_0^t \\mathrm{d}t.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Suy ra nghiệm suy giảm hàm mũ: \\Delta T(t) = \\Delta T_0 \\exp(-t / \\tau_{th}) với \\tau_{th} = \\frac{L C_V}{k_T A}."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Khảo sát tỉ lệ kích thước: Do C_V propto L^3 và A propto L^2, ta có tau_th propto L * L^3 / L^2 = L^2. Khi kích thước L giảm 1000 lần (từ 1 mm xuống 1 um), thời gian hồi phục nhiệt tau_th giảm 10^6 lần (từ 1 ms xuống 1 ns), tạo khả năng tản nhiệt siêu tốc ở thang nano."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.2.1: Tính hằng số thời gian nhiệt tau_th cho một hạt nano Vàng đường kính D = 20 nm tản nhiệt vào môi trường nước xung quanh và giải thích tại sao hạt nano Vàng có thể nguội đi gần như tức thời sau khi bị kích thích laser xung femtosecond."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.2.2",
+      "concept_introduction": "Định luật tỉ lệ nhiệt L^2 và đồng nhất nhiệt độ ở thang nano: Phân tích độ chênh lệch nhiệt độ nội tại dT propto L và sự triệt tiêu gradient nhiệt bên trong cấu trúc nano đơn lẻ.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.2_Hinh_02_Dinh_Luat_Ti_Le_Nhiet_Va_Tan_Nhiet_Nano.png",
+        "interaction_id": "IMG_3.2.2_ORIG_THERMAL_SCALING",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.2.2: Định luật tỉ lệ nhiệt tau_th propto L^2 và cơ chế đồng nhất nhiệt độ (Slide 23 HUST)."
+      },
+      "minimal_working_example": "Chứng minh số Biot Bi = h L / k_T << 0.1 đối với hạt nano dẫn đến trạng thái nhiệt đồng nhất tuyệt đối bên trong hạt.",
+      "pillar_equation_latex": "\\Delta T \\propto L, \\quad \\tau_{\\mathrm{th}} \\propto L^2, \\quad \\mathrm{Bi} = \\frac{h L}{k_T} \\to 0",
+      "nomenclature_table": [
+        {
+          "name": "Số Biot không thứ nguyên",
+          "symbol": "Bi",
+          "unit": "không thứ nguyên",
+          "meaning": "Tỉ số giữa trở nhiệt truyền dẫn bên trong và trở nhiệt đối lưu bề mặt"
+        },
+        {
+          "name": "Hệ số trao đổi nhiệt đối lưu",
+          "symbol": "h",
+          "unit": "W/(m^2 K)",
+          "meaning": "Hệ số truyền nhiệt giữa bề mặt hạt và môi trường chất lưu xung quanh"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Chênh lệch nhiệt độ giữa tâm hạt và bề mặt: \\Delta T_{int} \\approx \\frac{q L^2}{6 k_T} với mật độ phát nhiệt q = Q / V propto L^0.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khi L -> 0, \\Delta T_{int} propto L^2 -> 0, dẫn tới nhiệt độ nội tại hoàn toàn đồng nhất."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Hệ quả: Các hạt nano không bao giờ duy trì được gradient nhiệt nội tại."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.2.2: Đánh giá số Biot của chấm lượng tử CdSe bán kính 3 nm."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.2.3",
+      "concept_introduction": "Động học chất lưu nhớt ở số Reynolds thấp và lực cản Stokes: Lực cản F_Stokes = 6 pi eta R v và tốc độ rơi giới hạn cân bằng trọng lực.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.2_Hinh_03_Luc_Can_Nhot_Stokes_Va_Van_Toc_Roi.png",
+        "interaction_id": "IMG_3.2.3_ORIG_STOKES",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.2.3: Lực cản nhớt Stokes và tốc độ rơi giới hạn cân bằng trọng lực (Slide 24 HUST)."
+      },
+      "minimal_working_example": "Tính tốc độ rơi giới hạn của hạt vi mô R = 10 um trong nước (v = 23 mm/s) theo Slide 25 HUST.",
+      "pillar_equation_latex": "F_{\\mathrm{Stokes}} = 6\\pi \\eta R v, \\quad v_{\\mathrm{term}} = \\frac{2(\\rho - \\rho_f) g R^2}{9\\eta}",
+      "nomenclature_table": [
+        {
+          "name": "Độ nhớt động lực học của nước",
+          "symbol": "\\eta",
+          "unit": "Pa s",
+          "meaning": "Độ nhớt của nước tại 300 K (1.002 x 10^-3 Pa s)"
+        },
+        {
+          "name": "Bán kính hình học của hạt",
+          "symbol": "R",
+          "unit": "m",
+          "meaning": "Bán kính hình cầu của hạt vi mô hoặc nano"
+        },
+        {
+          "name": "Tốc độ rơi giới hạn cân bằng",
+          "symbol": "v_{\\mathrm{term}}",
+          "unit": "m/s",
+          "meaning": "Tốc độ khi lực cản nhớt cân bằng lực trọng trường nổi"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Cân bằng lực trọng trường hiệu dụng và lực cản Stokes: \\frac{4}{3}\\pi R^3 (\\rho - \\rho_f) g = 6\\pi \\eta R v.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Giải tìm vận tốc rơi giới hạn: v_{term} = \\frac{2(\\rho - \\rho_f) g R^2}{9\\eta}."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Tốc độ rơi tỉ lệ thuận với R^2: Giảm R 1000 lần thì tốc độ rơi giảm 10^6 lần."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.2.3: Tính vận tốc rơi của hạt nano R = 15 nm theo Slide 26 HUST."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.2.4",
+      "concept_introduction": "Sụp đổ cơ học Newton trước khuếch tán nhiệt Brown: So sánh tốc độ lắng vi mô (23 mm/s) vs nano (13 nm/s), hệ thức Einstein-Smoluchowski và chiều dài khuếch tán x_rms.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.2_Hinh_04_Sup_Do_Co_Hoc_Newton_O_Thang_Nano.png",
+        "interaction_id": "IMG_3.2.4_ORIG_BROWNIAN",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.2.4: Sự áp đảo của chuyển động nhiệt Brown so với lắng trọng trường ở thang nano (Slide 25–27 HUST)."
+      },
+      "minimal_working_example": "Tính hệ số khuếch tán D và chiều dài khuếch tán x_rms trong 1 giây của hạt nano R = 15 nm (Slide 27 HUST).",
+      "pillar_equation_latex": "D = \\frac{k_B T}{6\\pi\\eta R}, \\quad \\langle x^2 \\rangle = 2 D t, \\quad x_{\\mathrm{rms}} = \\sqrt{2 D t}",
+      "nomenclature_table": [
+        {
+          "name": "Hệ số khuếch tán Einstein",
+          "symbol": "D",
+          "unit": "m^2/s",
+          "meaning": "Đại lượng đo tốc độ lan truyền ngẫu nhiên do dao động nhiệt"
+        },
+        {
+          "name": "Chiều dài khuếch tán căn quân phương",
+          "symbol": "x_{\\mathrm{rms}}",
+          "unit": "m",
+          "meaning": "Khoảng dịch chuyển trung bình của hạt sau thời gian t"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thay số R = 15 nm, T = 300 K: D = (1.38 x 10^-23 * 300) / (6 * pi * 1.002 x 10^-3 * 15 x 10^-9) = 1.46 x 10^-11 m^2/s.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Sau t = 1 s, chiều dài khuếch tán x_rms = sqrt(2 * 1.46 x 10^-11 * 1) = 5.4 x 10^-6 m = 5.4 um, lớn hơn quãng đường rơi trọng trường (13 nm) tới 415 lần!"
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Hệ quả: Các hạt nano lơ lửng vĩnh cửu trong dung dịch keo mà không bị sa lắng."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.2.4: Chứng minh giới hạn kích thước hạt nano để khuếch tán Brown chi phối hoàn toàn trọng trường."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.2.5",
+      "concept_introduction": "Hiện tượng ma sát siêu trơn (Superlubricity) ở thang phân tử: Khảo sát cấu trúc Graphite và Ống nano carbon (CNT) trượt không ma sát do không tương thích mạng tinh thể (Incommensurate contact).",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.2_Hinh_06_Hien_Tuong_Sieu_Tron_Graphite_Va_CNT.png",
+        "interaction_id": "IMG_3.2.5_ORIG_SUPERLUBRICITY",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.2.5: Hiện tượng ma sát siêu trơn ở giao diện Graphite và Carbon Nanotubes (Slide 28 HUST)."
+      },
+      "minimal_working_example": "Mô hình Frenkel-Kontorova giải thích sự triệt tiêu lực cản tĩnh khi hai mặt phẳng tinh thể lệch góc quay theta.",
+      "pillar_equation_latex": "F_{\\mathrm{friction}} \\propto \\sum_i \\sin\\left(\\frac{2\\pi x_i}{a}\\right) \\to 0 \\quad (\\text{Incommensurate State})",
+      "nomenclature_table": [
+        {
+          "name": "Lực ma sát tĩnh vi mô",
+          "symbol": "F_{\\mathrm{friction}}",
+          "unit": "N",
+          "meaning": "Tổng lực cản thế năng tuần hoàn giữa hai bề mặt tiếp xúc nguyên tử"
+        },
+        {
+          "name": "Góc xoay lệch mạng",
+          "symbol": "\\theta",
+          "unit": "độ",
+          "meaning": "Góc lệch giữa các vector mạng tinh thể của hai lớp trượt"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khi hai mạng tương thích (commensurate), các nguyên tử rơi đồng loạt vào đáy thế năng, tạo lực cản cực đại.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khi xoay lệch góc theta (incommensurate), một nửa số nguyên tử chịu lực đẩy trong khi nửa kia chịu lực hút, tổng lực thế năng triệt tiêu về 0, ma sát biến mất."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Ứng dụng: Chế tạo ổ bi nano và công tắc cơ lượng tử không bị mài mòn."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.2.5: Phân tích tại sao ma sát siêu trơn chỉ tồn tại ở thang nano mà biến mất ở thang vĩ mô."
+      ]
+    }
+  ]
+}

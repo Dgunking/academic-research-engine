@@ -1,92 +1,181 @@
 {
-  "phan_muc": "Mục 2.1",
-  "chuong": "Chương 2: Phương pháp tiếp cận hiện tượng luận đối với laser diode",
-  "hoc_phan": "Laser Diode - Cấu trúc và Nguyên lý",
-  "hoc_vien": "Bùi Trung Dũng",
-  "nguon_giao_trinh": {
-    "sach_quoc_te": "Coldren & Corzine - Diode Lasers and Photonic Integrated Circuits (Chương 2, tr. 28-34)",
-    "slide_hust": "Slide Chương 2 Laser Diode - Bộ môn Quang học & Quang điện tử ĐHBK Hà Nội"
-  },
-  "cau_truc_mpt": [
+  "lesson_title": "Chương 2: Phương pháp tiếp cận hiện tượng luận đối với laser diode - Mục 2.1: Tiếp cận hiện tượng học đối với Laser Diode",
+  "section_id": "Mục 2.1",
+  "source_document_citations": [
+    "Coldren & Corzine, Diode Lasers and Photonic Integrated Circuits, John Wiley & Sons, Chapter 2 (pp. 28-34)",
+    "S. M. Sze, Kwok K. Ng, Physics of Semiconductor Devices, 3rd Edition, Wiley-Interscience",
+    "Slide Bài giảng Laser Diode - Bộ môn Quang học & Quang điện tử - Viện Vật lý Kỹ thuật HUST"
+  ],
+  "total_pages_estimate": 16,
+  "micro_point_topics": [
     {
-      "mpt_id": "2.1.1",
-      "tieu_de": "Mô hình phương trình tốc độ hạt tải trong vùng tích cực dị thể kép, các kênh tái hợp phi tuyến và phát xạ tự phát trong diode phát quang LED",
-      "trang_sach_goc": "Coldren tr. 28–32",
-      "hinh_goc": [
-        "Figure 2.1 (tr. 29): Giản đồ dải năng lượng DH phân cực thuận",
-        "Figure 2.2 (tr. 30): Mô hình hồ chứa hạt tải và các kênh rò rỉ",
-        "Figure 2.3 (tr. 33): Sơ đồ thoát photon và phản xạ toàn phần trong LED"
+      "mpt_id": "Luận điểm 2.1.1",
+      "concept_introduction": "Triết lý Hiện tượng luận và Cấu trúc Vật lý Dị thể Kép (DH): Bản chất giam giữ kép đồng thời hạt tải và photon trong vùng tích cực mỏng d ~ 0.1-0.2 um nhờ bước nhảy dải năng lượng Delta Ec, Delta Ev và độ chênh chiết suất Delta n.",
+      "visual_anchor": {
+        "image_file_path": "G:\\\\My Drive\\\\NotebookLM - Academic Knowledge Base\\\\Laser Diode - Cấu trúc và Nguyên lý\\\\Kho_Hinh_Anh\\\\[Goc]_Figure_2.1_Gian_do_dai_nang_luong_diode_di_the_kep_DH.png",
+        "interaction_id": "IMG_2.1.1_ORIG_DH_BAND",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.1.1: Giản đồ dải năng lượng của diode dị thể kép (DH) dưới chế độ phân cực thuận, minh họa cơ chế giam giữ hạt tải trong giếng thế vùng tích cực (Coldren & Corzine, trang 29)."
+      },
+      "minimal_working_example": "Cấu trúc GaAs kẹp giữa hai lớp Al0.3Ga0.7As: Delta Eg = 0.374 eV phân chia thành Delta Ec = 0.224 eV và Delta Ev = 0.150 eV, tạo giếng thế năng giam giữ electron và lỗ trống với thế tiếp giáp q Vj = E_Fc - E_Fv.",
+      "pillar_equation_latex": "E_g(z) = E_c(z) - E_v(z), \\quad \\Delta E_c + \\Delta E_v = \\Delta E_g, \\quad q V_j \\approx E_{Fc} - E_{Fv}",
+      "nomenclature_table": [
+        {
+          "name": "Độ rộng vùng cấm",
+          "symbol": "E_g",
+          "unit": "eV",
+          "meaning": "Khoảng cách năng lượng giữa đáy dải dẫn và đỉnh dải hóa trị"
+        },
+        {
+          "name": "Độ gián đoạn dải dẫn",
+          "symbol": "\\Delta E_c",
+          "unit": "eV",
+          "meaning": "Bước nhảy thế năng giam giữ electron tại dị mặt tiếp xúc"
+        },
+        {
+          "name": "Độ gián đoạn dải hóa trị",
+          "symbol": "\\Delta E_v",
+          "unit": "eV",
+          "meaning": "Bước nhảy thế năng giam giữ lỗ trống tại dị mặt tiếp xúc"
+        },
+        {
+          "name": "Điện áp tiếp giáp nội tại",
+          "symbol": "V_j",
+          "unit": "V",
+          "meaning": "Hiệu điện thế phân cực trên vùng chuyển tiếp tích cực"
+        },
+        {
+          "name": "Mức Fermi giả electron và lỗ trống",
+          "symbol": "E_{Fc}, E_{Fv}",
+          "unit": "eV",
+          "meaning": "Các mức Fermi chuẩn mô tả phân bố hạt tải không cân bằng khi tiêm dòng"
+        }
       ],
-      "do_thi_mo_phong": "[Mo_Phong]_Dong_Luc_Hoc_Tai_Hop_ABC_Va_Hieu_Suat_Buc_Xa_LED.png",
-      "he_thuc_cot_tru": "\\frac{\\mathrm{d}N}{\\mathrm{d}t} = \\frac{\\eta_i I}{q V} - R(N) - v_g g S",
-      "phuong_trinh_trung_gian": [
-        "R_{\\mathrm{inj}} = \\frac{\\eta_i I}{q V}",
-        "R(N) = A N + B N^2 + C N^3",
-        "\\tau_n(N) = \\frac{1}{A + B N + C N^2}",
-        "\\eta_{\\mathrm{rad}} = \\frac{B N}{A + B N + C N^2}",
-        "N_{\\mathrm{opt}} = \\sqrt{\\frac{A}{C}}"
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Độ rộng vùng cấm của Al_x Ga_{1-x} As theo nồng độ nhôm x: E_g(x) = 1{,}424 + 1{,}247 x \\ \\mathrm{eV}. Với x = 0{,}30: E_g(0{,}30) = 1{,}424 + 1{,}247(0{,}30) = 1{,}798 \\ \\mathrm{eV}.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Độ chênh lệch vùng cấm toàn phần: \\Delta E_g = 1{,}798 - 1{,}424 = 0{,}374 \\ \\mathrm{eV}.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Phân bố quy tắc Anderson (quy tắc 60:40 chuẩn GaAs/AlGaAs): \\Delta E_c = 0{,}60 \\times 0{,}374 = 0{,}224 \\ \\mathrm{eV} \\ (\\approx 8{,}7 \\ k_B T \\text{ ở 300 K}), \\Delta E_v = 0{,}40 \\times 0{,}374 = 0{,}150 \\ \\mathrm{eV} \\ (\\approx 5{,}8 \\ k_B T \\text{ ở 300 K}). Hàng rào thế năng này hoàn toàn triệt tiêu dòng rò nhiệt của hạt tải ra hai phía lớp bao."
       ],
-      "an_du_co_hoc": "Mô hình hồ chứa nước kim loại có van xả đáy (bơm nước ~ tiêm dòng, mực nước ~ mật độ hạt tải N, 3 van rò rỉ đáy ~ SRH, phát xạ tự phát, Auger)",
-      "khao_sat_tiem_can": [
-        "Cực hạn dòng nhỏ (N -> 0): Bẫy SRH AN chiếm ưu thế, tau_n -> 1/A, eta_rad -> 0",
-        "Cực hạn dòng cực lớn (N -> vô cùng): Auger CN^3 chiếm ưu thế, eta_rad -> 0 (hiện tượng Efficiency Droop)"
+      "variations_and_asymptotic_sweeps": [
+        "Tiệm cận nhiệt độ T -> inf: Chiều cao hàng rào Delta Ec, Delta Ev so với k_B T suy giảm, dẫn đến dòng rò nhiệt tràn bờ (carrier overflow), làm suy thoái dòng ngưỡng theo hàm mũ I_th(T) = I_0 exp(T/T_0)."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 2.1.1: Tại sao nếu sử dụng homojunction (tiếp giáp đồng chất GaAs p-n) thay vì dị thể kép DH GaAs/AlGaAs, mật độ dòng ngưỡng ở 300 K lại tăng vọt từ ~ 1 kA/cm^2 lên đến > 50 kA/cm^2 khiến linh kiện bị phá hủy tức thì trước khi đạt ngưỡng phát laser?"
       ]
     },
     {
-      "mpt_id": "2.1.2",
-      "tieu_de": "Mô hình photon trong hốc cộng hưởng, hệ số giam giữ quang, điều kiện cân bằng ngưỡng và hiện tượng kẹp hạt tải",
-      "trang_sach_goc": "Coldren tr. 32–41",
-      "hinh_goc": [
-        "Figure 2.8 & 2.9 (tr. 38, 40): Kẹp hạt tải độ lợi và đặc tuyến P-I laser diode"
+      "mpt_id": "Luận điểm 2.1.2",
+      "concept_introduction": "Mô hình Hồ chứa Nước Tương đương và Động học Tái hợp Hạt tải Dưới Ngưỡng: Tốc độ bơm hạt tải G = eta_i I / (q V) đối trọng với 3 kênh tái hợp vi mô tự nhiên R(N) = A N + B N^2 + C N^3 và định nghĩa thời gian sống hạt tải tau(N).",
+      "visual_anchor": {
+        "image_file_path": "G:\\\\My Drive\\\\NotebookLM - Academic Knowledge Base\\\\Laser Diode - Cấu trúc và Nguyên lý\\\\Kho_Hinh_Anh\\\\[Goc]_Figure_2.2_Mo_hinh_ho_chua_hat_tai_duoi_nguong.png",
+        "interaction_id": "IMG_2.1.2_ORIG_RESERVOIR_SUB_TH",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.1.2: Mô hình hồ chứa tương đương mô tả động học nạp và thoát hạt tải trong vùng tích cực dị thể kép dưới ngưỡng (Coldren & Corzine, trang 30)."
+      },
+      "minimal_working_example": "Với thể tích tích cực V = 0.1 um x 2 um x 300 um = 6.0 x 10^-17 m^3, dòng tiêm 1 mA ở hiệu suất nội eta_i = 0.85 tạo tốc độ sinh G = 8.84 x 10^25 m^-3 s^-1, cân bằng với tốc độ tái hợp tổng cộng R(N).",
+      "pillar_equation_latex": "\\frac{\\mathrm{d}N}{\\mathrm{d}t} = \\frac{\\eta_i I}{q V} - (A N + B N^2 + C N^3) = G - R(N), \\quad \\tau(N) = \\frac{1}{A + B N + C N^2}",
+      "nomenclature_table": [
+        {
+          "name": "Mật độ hạt tải tiêm",
+          "symbol": "N",
+          "unit": "m^-3",
+          "meaning": "Mật độ hạt tải không cân bằng tích tụ trong vùng tích cực"
+        },
+        {
+          "name": "Dòng tiêm ngoài",
+          "symbol": "I",
+          "unit": "A",
+          "meaning": "Cường độ dòng điện phân cực thuận đi qua linh kiện"
+        },
+        {
+          "name": "Hiệu suất lượng tử nội",
+          "symbol": "\\eta_i",
+          "unit": "không thứ nguyên",
+          "meaning": "Tỷ lệ hạt tải tiêm đi vào và nằm lại trong vùng tích cực"
+        },
+        {
+          "name": "Thể tích vùng tích cực",
+          "symbol": "V",
+          "unit": "m^3",
+          "meaning": "Thể tích không gian giam giữ hạt tải V = d . w . L"
+        },
+        {
+          "name": "Thời gian sống hạt tải vi phân",
+          "symbol": "\\tau(N)",
+          "unit": "s",
+          "meaning": "Thời gian sống trung bình của electron trước khi tái hợp"
+        }
       ],
-      "he_thuc_cot_tru": "\\frac{\\mathrm{d}S}{\\mathrm{d}t} = \\left(\\Gamma v_g g - \\frac{1}{\\tau_p}\\right) S + \\Gamma R_{\\mathrm{sp}}'",
-      "phuong_trinh_trung_gian": [
-        "r_1 r_2 \\exp[(\\Gamma g - \\alpha_i)L] \\exp(-2\\mathrm{j}\\beta L) = 1",
-        "\\Gamma g_{\\mathrm{th}} = \\alpha_i + \\frac{1}{2L} \\ln\\left(\\frac{1}{R_1 R_2}\\right) = \\alpha_i + \\alpha_m",
-        "P_{\\mathrm{out}} = \\eta_d \\frac{h\\nu}{q} (I - I_{\\mathrm{th}})"
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Phương trình bảo toàn hạt tải toàn phần trong thể tích V: \\frac{\\mathrm{d}(N V)}{\\mathrm{d}t} = \\frac{\\eta_i I}{q} - R(N) V.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Chia cả hai vế cho thể tích V không đổi: \\frac{\\mathrm{d}N}{\\mathrm{d}t} = \\frac{\\eta_i I}{q V} - R(N).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khai triển đa thức tái hợp ABC: R(N) = A N + B N^2 + C N^3. Khi ở trạng thái dừng dưới ngưỡng (\\mathrm{d}N/\\mathrm{d}t = 0): \\frac{\\eta_i I}{q V} = A N + B N^2 + C N^3 = \\frac{N}{\\tau(N)}."
       ],
-      "an_du_co_hoc": "Mô hình đập tràn thoát lũ tự động (cao trình đập 10m ~ tổn hao hốc, nước tràn đập ~ dòng photon laser kích thích, mực nước bị kẹp cứng ở 10m ~ kẹp hạt tải tại N_th)",
-      "khao_sat_tiem_can": [
-        "Cực hạn gương lý tưởng (R1*R2 -> 1): alpha_m -> 0, Gamma*g_th -> alpha_i, eta_d -> 0",
-        "Cực hạn hốc hở (R1*R2 -> 0): alpha_m -> vô cùng, laser không thể phát xung"
+      "variations_and_asymptotic_sweeps": [
+        "Khi mật độ hạt tải thấp (N << 10^17 cm^-3): Kênh SRH A N chiếm ưu thế, thời gian sống không đổi tau ~ 1/A. Khi mật độ trung bình (10^17 <= N <= 10^18 cm^-3): Kênh bức xạ tự phát B N^2 chiếm ưu thế, tau ~ 1/(B N). Khi mật độ cao tiếp cận ngưỡng (N >= 2 x 10^18 cm^-3): Tái hợp Auger C N^3 tăng vọt theo bậc 3, gây suy thoái hiệu suất bức xạ."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 2.1.2: Tại sao ở các laser bước sóng dài (InGaAsP/InP phát xạ 1.3 um và 1.55 um), dòng ngưỡng lại nhạy cảm với nhiệt độ hơn rất nhiều so với laser ngắn GaAs 0.85 um? Hãy liên hệ với hệ số Auger C và độ rộng vùng cấm Eg."
       ]
     },
     {
-      "mpt_id": "2.1.3",
-      "tieu_de": "Động lực học điều chế tín hiệu nhỏ, khung dao động tương đương RLC bậc hai và các kỹ thuật đặc trưng hóa thực nghiệm laser",
-      "trang_sach_goc": "Coldren tr. 48–61",
-      "hinh_goc": [
-        "Figure 2.12 (tr. 50): Đáp ứng tần số điều chế tín hiệu nhỏ laser diode"
+      "mpt_id": "Luận điểm 2.1.3",
+      "concept_introduction": "Khung Phương trình Tốc độ Ghép Hạt tải – Photon và Tương đương Khung Dao động RLC: Hệ phương trình vi phân phi tuyến ghép cặp giữa mật độ hạt tải N(t) và mật độ photon S(t), tương đương hình thức với mạch dao động RLC phi tuyến giải thích sự xuất hiện của dao động hồi phục.",
+      "visual_anchor": {
+        "image_file_path": "G:\\\\My Drive\\\\NotebookLM - Academic Knowledge Base\\\\Laser Diode - Cấu trúc và Nguyên lý\\\\Kho_Hinh_Anh\\\\[Mo_Phong]_Muc_2.1_Dong_Luc_Hoc_Tai_Hop_ABC_Va_Hieu_Suat_Buc_Xa.png",
+        "interaction_id": "IMG_2.1.3_SIM_ABC_DYNAMICS",
+        "aspect_ratio": "6.8:7.8",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 2.1.3: Mô phỏng giải tích 300 K động lực học các kênh tái hợp vi mô A, B, C và hiệu suất lượng tử nội droop do hiệu ứng Auger."
+      },
+      "minimal_working_example": "Hệ phương trình vi phân tốc độ ghép cặp: dN/dt = G - R(N) - v_g g S; dS/dt = Gamma v_g g S - S / tau_p + Gamma beta_sp B N^2.",
+      "pillar_equation_latex": "\\frac{\\mathrm{d}N}{\\mathrm{d}t} = \\frac{\\eta_i I}{q V} - R(N) - v_g g S, \\quad \\frac{\\mathrm{d}S}{\\mathrm{d}t} = \\Gamma v_g g S - \\frac{S}{\\tau_p} + \\Gamma \\beta_{\\mathrm{sp}} R_{\\mathrm{sp}}",
+      "nomenclature_table": [
+        {
+          "name": "Mật độ photon trong hốc",
+          "symbol": "S",
+          "unit": "m^-3",
+          "meaning": "Mật độ photon trung bình trong thể tích mode quang"
+        },
+        {
+          "name": "Vận tốc nhóm ánh sáng",
+          "symbol": "v_g",
+          "unit": "m/s",
+          "meaning": "Vận tốc truyền pha/nhóm quang học v_g = c / n_g"
+        },
+        {
+          "name": "Độ lợi vật liệu quang",
+          "symbol": "g",
+          "unit": "m^-1",
+          "meaning": "Hệ số khuếch đại quang học do phát xạ kích thích"
+        },
+        {
+          "name": "Thời gian sống photon",
+          "symbol": "\\tau_p",
+          "unit": "s",
+          "meaning": "Thời gian suy hao photon khỏi hốc do tổn hao nội và gương"
+        },
+        {
+          "name": "Hệ số ghép tự phát",
+          "symbol": "\\beta_{\\mathrm{sp}}",
+          "unit": "không thứ nguyên",
+          "meaning": "Tỷ lệ photon phát xạ tự phát rơi đúng vào mode quang phát laser"
+        }
       ],
-      "do_thi_mo_phong": "[Mo_Phong]_Dong_Luc_Hoc_Bat_Tat_Xung_Laser_Diode_Relaxation_Oscillation.png",
-      "he_thuc_cot_tru": "H(\\omega) = \\frac{\\omega_R^2}{\\omega_R^2 - \\omega^2 + \\mathrm{j} \\omega \\gamma}, \\qquad \\omega_R \\approx \\sqrt{\\frac{v_g a S_0}{\\tau_p}}",
-      "phuong_trinh_trung_gian": [
-        "I(t) = I_0 + i_1 \\mathrm{e}^{\\mathrm{j}\\omega t}, \\quad N(t) = N_0 + n_1 \\mathrm{e}^{\\mathrm{j}\\omega t}, \\quad S(t) = S_0 + s_1 \\mathrm{e}^{\\mathrm{j}\\omega t}",
-        "g(N) \\approx g(N_0) + a n_1 \\mathrm{e}^{\\mathrm{j}\\omega t}",
-        "s_1(\\omega) = \\frac{\\gamma_{SN} \\frac{\\eta_i i_1}{q V}}{\\omega_R^2 - \\omega^2 + \\mathrm{j}\\omega \\gamma}",
-        "f_{3\\mathrm{dB}} = \\sqrt{1 + \\sqrt{2}} f_R \\approx 1{,}55 f_R"
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tốc độ phát xạ kích thích trên đơn vị thể tích: R_{st} = v_g g S. Mỗi photon sinh ra lấy đi một cặp electron-lỗ trống.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tốc độ sinh photon vào mode laser: \\Gamma v_g g S, với \\Gamma là tỷ lệ trường quang phủ lên vùng tích cực.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tổn hao photon khỏi hốc cộng hưởng qua hai gương và hấp thụ tự do: -\\frac{S}{\\tau_p} = -v_g (\\alpha_i + \\alpha_m) S.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Cộng thêm phần đóng góp bức xạ tự phát vào mode dao động: +\\Gamma \\beta_{\\mathrm{sp}} R_{\\mathrm{sp}}(N)."
       ],
-      "an_du_co_hoc": "Mô hình con lắc lò xo trao đổi động năng - thế năng trong dầu giảm chấn (thế năng lò xo ~ hạt tải N, động năng quả nặng ~ photon S, khối lượng quán tính ~ quán tính photon/cuộn cảm ảo, độ nhớt dầu ~ hệ số tắt dần gamma)",
-      "khao_sat_tiem_can": [
-        "Cực hạn tần số thấp (omega -> 0): H(omega) -> 1 (0 dB), photon bám sát dòng bơm",
-        "Cực hạn tần số siêu cao (omega >> omega_R): |H(omega)| ~ omega_R^2 / omega^2, suy giảm -40 dB/decade"
+      "variations_and_asymptotic_sweeps": [
+        "Dưới ngưỡng (S -> 0): Số hạng phát xạ kích thích v_g g S triệt tiêu, hệ phương trình suy biến thành động học nạp hạt tải của LED. Trên ngưỡng (I > I_th): Phát xạ kích thích bùng nổ, g bị kẹp cứng tại g_th, toàn bộ dòng bơm phụ trội chuyển hóa thành mật độ photon S."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 2.1.3: Hãy phân tích tương đương giải tích giữa hệ phương trình tốc độ ghép N-S với mạch dao động RLC: Điện tích q_c tương đương đại lượng nào, điện áp tụ C tương đương đại lượng nào, và điện cảm L đại diện cho trễ quang hay trễ hạt tải?"
       ]
     }
-  ],
-  "khoi_5_cer": {
-    "ca_benh": [
-      {
-        "id": "2.1A",
-        "tieu_de": "Hiện tượng trễ bật xung t_d và hiệu ứng mẫu (Pattern Effect) trong laser diode Fabry-Perot 10 Gbps",
-        "noi_dung": "Laser diode InGaAsP/InP 1,55 μm phân cực dưới ngưỡng I_bias = 0,5 I_th, kích xung 10 Gbps với I_pulse = 2 I_th. Ghi nhận trễ bật xung t_d ~ 0,8 ns và pattern effect.",
-        "yeu_cau": "Claim - Evidence - Reasoning xác định nguyên nhân vi mô, dẫn xuất t_d và giải pháp phân cực tĩnh."
-      },
-      {
-        "id": "2.1B",
-        "tieu_de": "Sự bão hòa tần số cộng hưởng hồi phục f_R và hiện tượng san phẳng đáp ứng điều chế ở dòng bơm cao",
-        "noi_dung": "Khi đo S21, dòng I_0 > 4 I_th làm đỉnh f_R bão hòa ở 12 GHz và suy giảm, hệ số tắt dần gamma tăng vọt làm phẳng đường cong.",
-        "yeu_cau": "Claim - Evidence - Reasoning xác định cơ chế phi tuyến vi mô (hệ số nén epsilon, trở kháng nhiệt Z_th) và giới hạn K-factor."
-      }
-    ]
-  }
+  ]
 }

@@ -1,0 +1,183 @@
+{
+  "lesson_title": "Chương 3: Đặc trưng của vật liệu khi kích thước giảm - Mục 3.4: Hiệu ứng bề mặt, năng lượng bề mặt và các ứng dụng xúc tác - cảm biến nano",
+  "section_id": "Mục 3.4",
+  "source_document_citations": [
+    "Bài 3-Properties.pdf (Slide 38 đến 43), Bộ môn Vật liệu Điện tử - Viện Vật lý Kỹ thuật HUST",
+    "Edward L. Wolf, Nanophysics and Nanotechnology, Wiley-VCH, 2006 (Chapter 3)",
+    "Charles P. Poole Jr., Frank J. Owens, Introduction to Nanotechnology, John Wiley & Sons, 2003"
+  ],
+  "total_pages_estimate": 18,
+  "micro_point_topics": [
+    {
+      "mpt_id": "Luận điểm 3.4.1",
+      "concept_introduction": "Bùng nổ diện tích bề mặt riêng và tỉ số diện tích trên thể tích S/V = 3/R: Phân tích sự gia tăng đột biến của phần trăm nguyên tử nằm ở bề mặt khi kích thước hạt giảm.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.5_Hinh_01_Phan_Chia_Dien_Tich_Be_Mat.png",
+        "interaction_id": "IMG_3.4.1_ORIG_SURFACE_AREA",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.4.1: Sự bùng nổ diện tích bề mặt khi phân chia một khối vật liệu thành các hạt nano (Slide 38 HUST)."
+      },
+      "minimal_working_example": "Tính tỉ lệ diện tích bề mặt S/V cho hạt hình cầu bán kính R và khối lập phương cạnh a.",
+      "pillar_equation_latex": "\\frac{S}{V} = \\frac{3}{R} = \\frac{6}{D}, \\quad F_{\\mathrm{surf}} = 1 - \\left(1 - \\frac{2\\delta}{D}\\right)^3",
+      "nomenclature_table": [
+        {
+          "name": "Tỉ số diện tích trên thể tích",
+          "symbol": "S/V",
+          "unit": "m^-1",
+          "meaning": "Diện tích bề mặt khả dụng trên một đơn vị thể tích vật liệu"
+        },
+        {
+          "name": "Độ dày lớp đơn nguyên tử bề mặt",
+          "symbol": "\\delta",
+          "unit": "nm",
+          "meaning": "Khoảng cách liên nguyên tử đặc trưng (~0.3 nm)"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Hạt cầu thể tích V = (4/3) pi R^3, diện tích S = 4 pi R^2 => S / V = 3 / R.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Hạt D = 2 nm có tới 65% nguyên tử nằm ở bề mặt."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Bề mặt biến từ yếu tố biên không đáng kể ở vĩ mô thành yếu tố chi phối tuyệt đối ở thang nano."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.4.1: Tính diện tích bề mặt của 1 gram hạt nano vàng đường kính 5 nm."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.4.2",
+      "concept_introduction": "Trực quan hóa diện tích bề mặt qua góc nhìn phô mai Pháp (French cheese perspective): Phân chia khối lập phương từ 1 m xuống 1 mm rồi xuống 1 nm làm tăng diện tích từ 6 m^2 lên 6000 km^2.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.5_Hinh_02_Bang_Tang_Dien_Tich_Lap_Phuong.png",
+        "interaction_id": "IMG_3.4.2_ORIG_CHEESE",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.4.2: Bảng phân chia khối lập phương và góc nhìn phô mai Pháp (Slide 39–40 HUST)."
+      },
+      "minimal_working_example": "Chứng minh diện tích tổng cộng S_total = N * 6 a^2 = (V / a^3) * 6 a^2 = 6 V / a tỉ lệ nghịch với cạnh a.",
+      "pillar_equation_latex": "S_{\\mathrm{total}} = \\frac{6 V_0}{a}, \\quad a = 1\\text{ m} \\to S = 6\\text{ m}^2; \\quad a = 1\\text{ nm} \\to S = 6000\\text{ km}^2",
+      "nomenclature_table": [
+        {
+          "name": "Thể tích ban đầu cố định",
+          "symbol": "V_0",
+          "unit": "m^3",
+          "meaning": "Thể tích khối vật liệu vĩ mô (1 m^3)"
+        },
+        {
+          "name": "Kích thước cạnh khối lập phương con",
+          "symbol": "a",
+          "unit": "m",
+          "meaning": "Kích thước hạt sau khi bẻ gãy phân chia"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Số khối con N = V_0 / a^3 = 1 / (10^-9)^3 = 10^27 khối.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Diện tích một khối s_1 = 6 a^2 = 6 * 10^-18 m^2. Tổng diện tích S = 10^27 * 6 * 10^-18 = 6 * 10^9 m^2 = 6000 km^2 (lớn hơn gấp đôi diện tích Hà Nội)."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Sự bùng nổ diện tích bề mặt giải thích khả năng hấp phụ và phản ứng hóa học cực mạnh."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.4.2: So sánh diện tích bề mặt của 1 lon nước ngọt được tán thành các hạt nano 2 nm."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.4.3",
+      "concept_introduction": "Năng lượng bề mặt và độ bất ổn định nhiệt động học: Liên kết chưa bão hòa (dangling bonds), hiện tượng tụ tập hạt nano (Agglomeration) và chín muồi Ostwald (Ostwald ripening).",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.5_Hinh_03_Ket_Tu_Giam_Nang_Luong_Be_Mat.png",
+        "interaction_id": "IMG_3.4.3_ORIG_AGGLOMERATION",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.4.3: Cơ chế giảm năng lượng tự do bề mặt qua hiện tượng kết tụ hạt nano (Slide 41 HUST)."
+      },
+      "minimal_working_example": "Tính biến thiên năng lượng tự do Gibbs khi hai khối lập phương cạnh L kết tụ thành một khối chữ nhật: Delta G = -2 gamma L^2 < 0.",
+      "pillar_equation_latex": "\\Delta G_{\\mathrm{agglom}} = -2 \\gamma L^2 < 0, \\quad c(r) = c_\\infty \\exp\\left(\\frac{2\\gamma V_m}{r R_g T}\\right) \\quad (\\text{Gibbs-Thomson})",
+      "nomenclature_table": [
+        {
+          "name": "Năng lượng bề mặt tự do",
+          "symbol": "\\gamma",
+          "unit": "J/m^2",
+          "meaning": "Năng lượng cần thiết để tạo ra một đơn vị diện tích bề mặt mới"
+        },
+        {
+          "name": "Độ hòa tan cân bằng của hạt bán kính r",
+          "symbol": "c(r)",
+          "unit": "mol/m^3",
+          "meaning": "Độ hòa tan tăng cao ở các hạt có bán kính cong nhỏ theo phương trình Gibbs-Thomson"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Hai hạt lập phương có tổng diện tích 2 * 6 L^2 = 12 L^2.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khi kết tụ, diện tích tiếp xúc biến mất 2 L^2, diện tích còn lại 10 L^2, giải phóng năng lượng Delta G = -2 gamma L^2."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Chín muồi Ostwald: Các hạt nhỏ tan ra và bồi đắp vào các hạt lớn để giảm tổng diện tích."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.4.3: Thiết kế chất hoạt động bề mặt (Surfactant) để ngăn chặn hạt nano kết tụ."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.4.4",
+      "concept_introduction": "Ứng dụng xúc tác nano (Nanocatalysis): Tâm hoạt tính bề mặt (active sites), năng lượng hoạt hóa giảm và hiệu quả kinh tế cắt giảm kim loại quý (Pt, Pd, Au).",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.5_Hinh_04_Co_Che_Xuc_Tac_Nano.png",
+        "interaction_id": "IMG_3.4.4_ORIG_CATALYSIS",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.4.4: Sơ đồ nguyên lý xúc tác hạt nano và giảm khối lượng kim loại quý (Slide 42 HUST)."
+      },
+      "minimal_working_example": "Đánh giá tốc độ phản ứng Arrhenius k = A exp(-E_a / k_B T) khi hạt nano xúc tác làm giảm năng lượng hoạt hóa E_a.",
+      "pillar_equation_latex": "k_{\\mathrm{cat}} = A \\exp\\left(-\\frac{E_{a,\\mathrm{cat}}}{k_B T}\\right), \\quad E_{a,\\mathrm{cat}} < E_{a,0}",
+      "nomenclature_table": [
+        {
+          "name": "Năng lượng hoạt hóa phản ứng",
+          "symbol": "E_a",
+          "unit": "eV",
+          "meaning": "Rào cản thế năng tối thiểu để các phân tử phản ứng va chạm hiệu quả"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Các nguyên tử ở góc và cạnh của hạt nano có số phối trí thấp (undercoordinated atoms), tạo mật độ electron cục bộ cao đóng vai trò tâm hoạt tính xúc tác mạnh mẽ."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Xúc tác nano Pt trong pin nhiên liệu hydro cắt giảm 80% lượng bạch kim cần dùng."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.4.4: Phân tích tại sao Vàng vĩ mô trơ hóa học nhưng hạt nano Vàng 3 nm lại là chất xúc tác cực nhạy cho phản ứng oxy hóa CO."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.4.5",
+      "concept_introduction": "Ứng dụng cảm biến nano (Nanosensors): Độ nhạy cực đại, giới hạn phát hiện (LOD) tới mức đơn phân tử theo cơ chế chìa khóa - ổ khóa (Lock and Key).",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.5_Hinh_05_Co_Che_Cam_Bien_Lock_Key.png",
+        "interaction_id": "IMG_3.4.5_ORIG_SENSOR",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.4.5: Cơ chế nhận diện cảm biến sinh hóa nano theo mô hình Ổ khóa - Chìa khóa (Slide 43 HUST)."
+      },
+      "minimal_working_example": "Độ biến thiên điện trở Delta R / R_0 tỉ lệ thuận với tỉ số S/V khi khí độc bám dính vào bề mặt dây nano SnO2.",
+      "pillar_equation_latex": "\\frac{\\Delta R}{R_0} \\propto \\left(\\frac{S}{V}\\right) \\cdot \\Delta N_{\\mathrm{ads}} \\propto \\frac{1}{D} \\cdot \\theta_{\\mathrm{gas}}",
+      "nomenclature_table": [
+        {
+          "name": "Độ nhạy cảm biến tương đối",
+          "symbol": "\\Delta R / R_0",
+          "unit": "không thứ nguyên",
+          "meaning": "Tỉ số biến thiên điện trở trên điện trở ban đầu khi có khí mục tiêu"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Bề dày lớp nghèo điện tử Debye lambda_D ~ 3-5 nm. Khi đường kính dây nano D ~ 2 lambda_D, toàn bộ tiết diện dây nano bị điều biến, tạo độ nhạy vô hạn."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Cảm biến dây nano có thể phát hiện khí độc ppm/ppb."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.4.5: Giải thích tại sao cảm biến màng mỏng vĩ mô kém nhạy hơn cảm biến dây nano 1000 lần."
+      ]
+    }
+  ]
+}

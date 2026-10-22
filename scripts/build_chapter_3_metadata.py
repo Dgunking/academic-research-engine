@@ -1,0 +1,277 @@
+# -*- coding: utf-8 -*-
+import json
+import os
+
+DATA_DIR = r"d:\antigravity\academic-research-engine\data"
+os.makedirs(DATA_DIR, exist_ok=True)
+
+# 1. MASTER NOMENCLATURE
+nomenclature = {
+  "chapter": 3,
+  "subject": "Cơ sở vật lý và công nghệ nano",
+  "course_code": "PH3470",
+  "nomenclature_entries": [
+    {
+      "term_vi": "Tần số góc dao động riêng",
+      "term_en": "Angular resonant frequency",
+      "symbol": "omega_0",
+      "unit": "rad/s",
+      "definition": "Tần số góc dao động tự nhiên của hệ đàn hồi khi không có lực cản môi trường: omega_0 = sqrt(k / m)."
+    },
+    {
+      "term_vi": "Độ cứng đàn hồi / Hệ số lò xo",
+      "term_en": "Spring constant / Elastic stiffness",
+      "symbol": "k",
+      "unit": "N/m",
+      "definition": "Hệ số tỉ lệ giữa lực đàn hồi phục hồi và độ biến dạng tuyến tính theo định luật Hooke: F = -k x."
+    },
+    {
+      "term_vi": "Khối lượng rút gọn",
+      "term_en": "Reduced mass",
+      "symbol": "mu",
+      "unit": "kg",
+      "definition": "Khối lượng hiệu dụng tương đương trong hệ hai vật tương tác xuyên tâm: mu = (m1 * m2) / (m1 + m2)."
+    },
+    {
+      "term_vi": "Môđun Young đàn hồi",
+      "term_en": "Young's modulus",
+      "symbol": "E",
+      "unit": "Pa",
+      "definition": "Đại lượng đặc trưng cho độ cứng chống biến dạng kéo/nén đơn trục của vật liệu."
+    },
+    {
+      "term_vi": "Mômen quán tính diện tích",
+      "term_en": "Area moment of inertia",
+      "symbol": "I",
+      "unit": "m^4",
+      "definition": "Đặc trưng hình học của tiết diện dầm chống uốn: I = (w * t^3) / 12 đối với thanh chữ nhật."
+    },
+    {
+      "term_vi": "Thế năng tương tác Lennard-Jones",
+      "term_en": "Lennard-Jones potential",
+      "symbol": "U(r)",
+      "unit": "J",
+      "definition": "Mô hình thế tương tác liên nguyên tử 6-12 kết hợp lực đẩy Pauli r^-12 và lực hút van der Waals r^-6."
+    },
+    {
+      "term_vi": "Hệ số phẩm chất cộng hưởng",
+      "term_en": "Resonance quality factor",
+      "symbol": "Q",
+      "unit": "không thứ nguyên",
+      "definition": "Tỉ số giữa năng lượng dự trữ và năng lượng tiêu tán trên mỗi chu kỳ dao động: Q = omega_0 / Delta_omega."
+    },
+    {
+      "term_vi": "Hằng số thời gian nhiệt",
+      "term_en": "Thermal time constant",
+      "symbol": "tau_th",
+      "unit": "s",
+      "definition": "Thời gian đặc trưng để hệ vi mô cân bằng nhiệt độ với môi trường ngoài: tau_th = (L * C_V) / (k_T * A)."
+    },
+    {
+      "term_vi": "Lực cản nhớt Stokes",
+      "term_en": "Stokes viscous drag force",
+      "symbol": "F_Stokes",
+      "unit": "N",
+      "definition": "Lực cản của chất lưu đối với hạt hình cầu bán kính R chuyển động ở số Reynolds thấp: F = 6 * pi * eta * R * v."
+    },
+    {
+      "term_vi": "Hệ số khuếch tán Einstein - Smoluchowski",
+      "term_en": "Diffusion coefficient",
+      "symbol": "D",
+      "unit": "m^2/s",
+      "definition": "Hệ số tỉ lệ trong định luật khuếch tán Fick: D = (k_B * T) / (6 * pi * eta * R)."
+    },
+    {
+      "term_vi": "Mật độ trạng thái điện tử (DOS)",
+      "term_en": "Electronic Density of States",
+      "symbol": "g(E)",
+      "unit": "eV^-1 m^-d",
+      "definition": "Số lượng trạng thái lượng tử khả dụng trên một đơn vị năng lượng và đơn vị thể tích/diện tích/chiều dài."
+    },
+    {
+      "term_vi": "Cộng hưởng Plasmon Bề mặt Cục bộ (LSPR)",
+      "term_en": "Localized Surface Plasmon Resonance",
+      "symbol": "omega_sp",
+      "unit": "rad/s",
+      "definition": "Hiện tượng dao động tập thể cộng hưởng của các electron tự do trong hạt nano kim loại dưới kích thích của sóng điện từ."
+    }
+  ]
+}
+
+with open(os.path.join(DATA_DIR, "MASTER_NOMENCLATURE_CHUONG_3_NANO.json"), "w", encoding="utf-8") as f:
+    json.dump(nomenclature, f, ensure_ascii=False, indent=2)
+print("MASTER_NOMENCLATURE_CHUONG_3_NANO.json written successfully.")
+
+# 2. BLUEPRINT_MUC_3.1_NANO.json
+blueprint_3_1 = {
+  "lesson_title": "Chương 3: Đặc trưng của vật liệu khi kích thước giảm - Mục 3.1: Cơ học thang nano, dao động tử điều hòa và định luật tỉ lệ tần số",
+  "section_id": "Mục 3.1",
+  "source_document_citations": [
+    "Bài 3-Properties.pdf (Slide 1 đến 21), Bộ môn Vật liệu Điện tử - Viện Vật lý Kỹ thuật HUST",
+    "Edward L. Wolf, Nanophysics and Nanotechnology: An Introduction to Modern Concepts in Nanoscience, 2nd Edition, Wiley-VCH, 2006 (Chapter 3)",
+    "Charles P. Poole Jr., Frank J. Owens, Introduction to Nanotechnology, John Wiley & Sons, 2003"
+  ],
+  "total_pages_estimate": 26,
+  "micro_point_topics": [
+    {
+      "mpt_id": "Luận điểm 3.1.1",
+      "concept_introduction": "Nghịch lý cơ học cổ điển và thế giới quan nano: Từ cỗ máy tính toán thiên văn Antikythera (thế kỷ 1 TCN) đến giới hạn sụp đổ của cơ học Newton đối với nguyên tử và electron; thiết lập mô hình dao động tử điều hòa của dầm cantilever AFM và dao động liên kết liên nguyên tử.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.1_Hinh_01_Dong_Ho_Antikythera_Va_Dao_Dong_Dieu_Hoa.png",
+        "interaction_id": "IMG_3.1.1_ORIG_ANTIKYTHERA",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": True,
+        "pedagogical_caption": "Hình 3.1.1: Cỗ máy Antikythera và mô hình hóa vũ trụ như một cỗ máy cơ học cổ điển đối chiếu với dao động tử điều hòa (Slide 3–4 HUST)."
+      },
+      "minimal_working_example": "Mô hình dao động điều hòa của dầm vi cơ điện tử Cantilever chịu lực phục hồi đàn hồi tuyến tính F = -k y và phương trình động lực học Newton m d^2 y / dt^2 + k y = 0.",
+      "pillar_equation_latex": "m \\frac{\\mathrm{d}^2 y}{\\mathrm{d}t^2} + k y = 0 \\implies y(t) = A \\cos(\\omega_0 t + \\varphi), \\quad \\omega_0 = \\sqrt{\\frac{k}{m}}",
+      "nomenclature_table": [
+        {"name": "Độ dời khỏi vị trí cân bằng", "symbol": "y(t)", "unit": "m", "meaning": "Tọa độ biến dạng tức thời của dầm hoặc độ giãn lò xo"},
+        {"name": "Khối lượng quán tính dao động", "symbol": "m", "unit": "kg", "meaning": "Khối lượng hiệu dụng của dầm cantilever hoặc hạt rung động"},
+        {"name": "Độ cứng đàn hồi của dầm", "symbol": "k", "unit": "N/m", "meaning": "Hệ số phản hồi lực tuyến tính theo định luật Hooke"},
+        {"name": "Tần số góc dao động riêng", "symbol": "\\omega_0", "unit": "rad/s", "meaning": "Tần số góc tự nhiên của hệ khi không có suy hao ma sát"},
+        {"name": "Biên độ dao động cực đại", "symbol": "A", "unit": "m", "meaning": "Độ võng hoặc độ dời lớn nhất so với gốc cân bằng"}
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thiết lập phương trình cân bằng lực Newton: F_{net} = m a = m \\frac{\\mathrm{d}^2 y}{\\mathrm{d}t^2} = -k y.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Chuyển vế và chuẩn hóa phương trình vi phân: \\frac{\\mathrm{d}^2 y}{\\mathrm{d}t^2} + \\left(\\frac{k}{m}\\right) y = 0. Đặt \\omega_0^2 = \\frac{k}{m} > 0.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Phương trình đặc trưng \\lambda^2 + \\omega_0^2 = 0 có nghiệm thuần ảo \\lambda = \\pm i \\omega_0. Nghiệm tổng quát điều hòa có dạng y(t) = A \\cos(\\omega_0 t + \\varphi)."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Khảo sát năng lượng: Cơ năng toàn phần E = T + U = \\frac{1}{2}m v(t)^2 + \\frac{1}{2}k y(t)^2 = \\frac{1}{2}k A^2 = const. Khi qua gốc cân bằng y = 0, toàn bộ thế năng biến thành động năng cực đại T_{max} = \\frac{1}{2}m v_{max}^2. Tại điểm biên y = \\pm A, vận tốc triệt tiêu v = 0, toàn bộ năng lượng là thế năng U_{max}."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.1.1: Chứng minh rằng đối với một dầm cantilever có độ cứng k = 0.05 N/m mang đầu dò khối lượng m = 2 ng, tần số dao động tự do đạt xấp xỉ f_0 approx 25.16 kHz, nằm trong dải siêu âm của AFM thương mại."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.1.2",
+      "concept_introduction": "Cơ học dầm công-xôn Cantilever AFM & Thế năng tương tác Parabol: Dẫn xuất độ cứng uốn đàn hồi k = 3EI / L^3 = E w t^3 / (4 L^3) từ lý thuyết đàn hồi Euler-Bernoulli và bản chất thế năng điều hòa parabol U(y) = 1/2 k y^2.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.1_Hinh_02_Dam_Cantilever_Va_Dao_Dong_Hai_Nguyen_Tu.png",
+        "interaction_id": "IMG_3.1.2_ORIG_CANTILEVER",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": True,
+        "pedagogical_caption": "Hình 3.1.2: Dầm cantilever AFM ngàm một đầu và dao động liên kết hai nguyên tử trong mạng tinh thể (Slide 6–8 HUST)."
+      },
+      "minimal_working_example": "Xác định độ cứng uốn k của dầm cantilever Silicon có chiều dài L = 100 um, chiều rộng w = 20 um, độ dày t = 2 um và môđun Young E = 169 GPa.",
+      "pillar_equation_latex": "k = \\frac{3 E I}{L^3} = \\frac{E w t^3}{4 L^3}, \\quad I = \\frac{w t^3}{12}",
+      "nomenclature_table": [
+        {"name": "Môđun Young của Silicon", "symbol": "E", "unit": "Pa", "meaning": "Độ cứng đàn hồi chống biến dạng kéo/nén của tinh thể Si (169 GPa cho hướng <110>)"},
+        {"name": "Mômen quán tính diện tích tiết diện", "symbol": "I", "unit": "m^4", "meaning": "Mômen hình học chống uốn của thanh chữ nhật bề rộng w, chiều dày t"},
+        {"name": "Chiều dài tự do của dầm", "symbol": "L", "unit": "m", "meaning": "Khoảng cách từ ngàm cố định đến điểm đặt lực tại mũi dò"},
+        {"name": "Độ dày thanh dầm", "symbol": "t", "unit": "m", "meaning": "Kích thước theo phương uốn cong (bậc ba trong biểu thức độ cứng)"},
+        {"name": "Chiều rộng thanh dầm", "symbol": "w", "unit": "m", "meaning": "Kích thước bề ngang vuông góc phương uốn"}
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Phương trình vi phân uốn dầm Euler-Bernoulli: E I \\frac{\\mathrm{d}^2 y}{\\mathrm{d}x^2} = M(x) = F (L - x).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tích phân hai lần với điều kiện biên ngàm ngàm y(0) = 0 và y'(0) = 0: y(x) = \\frac{F}{6 E I}(3 L x^2 - x^3).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tại đầu tự do x = L, độ võng cực đại là \\delta = y(L) = \\frac{F L^3}{3 E I}. Theo định luật Hooke F = k \\delta, suy ra k = \\frac{3 E I}{L^3} = \\frac{E w t^3}{4 L^3}."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Độ nhạy hình học phi đối xứng: Độ cứng k phụ thuộc tỉ lệ thuận với lũy thừa bậc ba của độ dày t^3 và tỉ lệ nghịch với lũy thừa bậc ba của chiều dài L^3. Do đó, giảm độ dày t đi một nửa làm giảm độ cứng tới 8 lần (tăng độ nhạy lực), trong khi rút ngắn chiều dài L đi một nửa làm tăng độ cứng tới 8 lần."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.1.2: Một dầm cantilever Silicon có L = 150 um, w = 30 um, t = 1.5 um, E = 169 GPa. Hãy tính độ cứng k và dự đoán độ võng của dầm khi mũi dò tương tác một lực sinh học cực nhỏ F = 100 pN."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.1.3",
+      "concept_introduction": "Mô tả lượng tử của dao động tử điều hòa & Nguyên lý tương ứng Bohr: Giải phương trình Schrödinger với thế parabol, phổ năng lượng gián đoạn En = (n + 1/2) hbar omega, hàm sóng Hermite và phân bố xác suất đối lập giữa cơ học cổ điển và lượng tử.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.1_Hinh_04_Ham_Song_Va_Xac_Suat_Dao_Dong_Tu_Luong_Tu.png",
+        "interaction_id": "IMG_3.1.3_ORIG_QUANTUM_HARMONIC",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": True,
+        "pedagogical_caption": "Hình 3.1.3: Các mức năng lượng lượng tử hóa En và hàm sóng Hermite của dao động tử điều hòa (Slide 11–13 HUST)."
+      },
+      "minimal_working_example": "Khảo sát hệ dao động vĩ mô (hạt phấn hoa khối lượng 100 ng trên sợi lông mi độ cứng k = 0.1 N/m) để xác định số lượng tử n xấp xỉ 10^12, minh chứng nguyên lý tương ứng Bohr.",
+      "pillar_equation_latex": "E_n = \\left(n + \\frac{1}{2}\\right) \\hbar \\omega_0, \\quad \\psi_n(\\xi) = \\frac{1}{\\sqrt{2^n n! \\sqrt{\\pi}}} H_n(\\xi) \\mathrm{e}^{-\\frac{1}{2}\\xi^2}",
+      "nomenclature_table": [
+        {"name": "Số lượng tử dao động", "symbol": "n", "unit": "nguyên (0, 1, 2, ...)", "meaning": "Bậc trạng thái kích thích năng lượng của dao động tử"},
+        {"name": "Năng lượng điểm không (Zero-Point Energy)", "symbol": "E_0 = \\frac{1}{2}\\hbar\\omega_0", "unit": "J hoặc eV", "meaning": "Động năng lượng tử cực tiểu tại nhiệt độ không tuyệt đối (0 K) do nguyên lý Heisenberg"},
+        {"name": "Đa thức Hermite bậc n", "symbol": "H_n(\\xi)", "unit": "không thứ nguyên", "meaning": "Hệ đa thức trực giao biểu diễn phân bố không gian của hàm sóng"},
+        {"name": "Biến số tọa độ chuẩn hóa", "symbol": "\\xi = \\sqrt{\\frac{m \\omega_0}{\\hbar}} x", "unit": "không thứ nguyên", "meaning": "Tọa độ không gian chuẩn hóa theo thang chiều dài dao động lượng tử"},
+        {"name": "Mật độ xác suất cổ điển", "symbol": "p_{\\mathrm{cl}}(x) = \\frac{1}{\\pi \\sqrt{A^2 - x^2}}", "unit": "m^-1", "meaning": "Xác suất tìm hạt tỉ lệ nghịch với vận tốc tức thời p(x) ~ 1/v"}
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Phương trình Schrödinger dừng 1D: -\\frac{\\hbar^2}{2m} \\frac{\\mathrm{d}^2 \\psi}{\\mathrm{d}x^2} + \\frac{1}{2}m \\omega_0^2 x^2 \\psi = E \\psi.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Biến đổi biến số sang tọa độ không thứ nguyên \\xi = \\sqrt{m \\omega_0 / \\hbar} x và năng lượng chuẩn hóa \\epsilon = 2E / (\\hbar \\omega_0): \\frac{\\mathrm{d}^2 \\psi}{\\mathrm{d}\\xi^2} + (\\epsilon - \\xi^2)\\psi = 0.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Điều kiện hàm sóng hội tụ tại vô cùng yêu cầu \\epsilon = 2n + 1, suy ra các mức năng lượng gián đoạn E_n = (n + 1/2) \\hbar \\omega_0."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Tiệm cận cổ điển (Bohr Correspondence): Ở trạng thái cơ bản n = 0, xác suất lượng tử đạt cực đại tại tâm x = 0 (nơi cổ điển có xác suất thấp nhất vì vận tốc lớn nhất). Khi n tăng lên n >> 1 (ví dụ n = 8 hoặc n = 10^12), các gợn sóng xác suất dày đặc và bao hình trung bình hội tụ tuyệt đối về đường cong phân bố cổ điển p_cl(x) = 1 / (pi sqrt(A^2 - x^2))."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.1.3: Giải bài toán Slide 13 HUST — Hạt phấn hoa m = 100 ng rơi trên sợi lông mi có k = 0.1 N/m. Hãy chứng minh độ lệch tĩnh x = 9.8 nm, năng lượng thế đàn hồi E = 4.8 x 10^-18 J, tần số f_n = 5033 Hz, và số lượng tử n xấp xỉ 1.44 x 10^12."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.1.4",
+      "concept_introduction": "Thế tương tác liên nguyên tử Lennard-Jones & Gần đúng điều hòa bậc hai: Mô hình thế thế 6-12 kết hợp lực đẩy Pauli và lực hút van der Waals; xác định khoảng cách cân bằng bền r_0 = 2^(1/6) sigma approx 1.122 sigma, khai triển Taylor xác định độ cứng hiệu dụng k_eff = 72 epsilon / (2^(1/3) sigma^2) approx 57.15 epsilon / sigma^2; phân tích dao động có cản và hệ số phẩm chất Q.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.1_Hinh_07_The_Tuong_Tac_Lennard_Jones_Lien_Nguyen_Tu.png",
+        "interaction_id": "IMG_3.1.4_ORIG_LENNARD_JONES",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": True,
+        "pedagogical_caption": "Hình 3.1.4: Đường cong thế năng tương tác Lennard-Jones và lực liên kết liên nguyên tử (Slide 14–15 HUST)."
+      },
+      "minimal_working_example": "Khai triển Taylor thế Lennard-Jones xung quanh đáy thế r_0 để tìm tần số dao động liên kết của phân tử Argon dimers (Ar_2) với epsilon = 10.3 meV, sigma = 0.34 nm, m_Ar = 39.95 u.",
+      "pillar_equation_latex": "U(r) = 4\\varepsilon \\left[\\left(\\frac{\\sigma}{r}\\right)^{12} - \\left(\\frac{\\sigma}{r}\\right)^6\\right] \\approx -\\varepsilon + \\frac{1}{2} k_{\\mathrm{eff}} (r - r_0)^2, \\quad k_{\\mathrm{eff}} = \\frac{72 \\varepsilon}{2^{1/3} \\sigma^2}",
+      "nomenclature_table": [
+        {"name": "Độ sâu giếng thế liên kết", "symbol": "\\varepsilon", "unit": "J hoặc eV", "meaning": "Năng lượng liên kết cực đại cần cung cấp để bẻ gãy hai nguyên tử ra xa vô cực"},
+        {"name": "Khoảng cách va chạm van der Waals", "symbol": "\\sigma", "unit": "m", "meaning": "Khoảng cách liên nguyên tử tại đó thế tương tác triệt tiêu U(sigma) = 0"},
+        {"name": "Khoảng cách cân bằng bền", "symbol": "r_0 = 2^{1/6} \\sigma", "unit": "m", "meaning": "Vị trí đáy thế năng lượng cực tiểu nơi lực hút và đẩy triệt tiêu nhau hoàn toàn"},
+        {"name": "Độ cứng lò xo hiệu dụng", "symbol": "k_{\\mathrm{eff}}", "unit": "N/m", "meaning": "Đạo hàm bậc hai của thế năng tại đáy thế k_eff = d^2 U / dr^2 |_{r0}"},
+        {"name": "Hệ số phẩm chất cộng hưởng", "symbol": "Q = \\frac{m \\omega_0}{\\gamma}", "unit": "không thứ nguyên", "meaning": "Đại lượng đo độ sắc nét của đỉnh cộng hưởng và mức độ tiêu hao năng lượng"}
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Lực tương tác là gradient âm của thế: F(r) = -\\frac{\\mathrm{d}U}{\\mathrm{d}r} = \\frac{24 \\varepsilon}{\\sigma}\\left[2\\left(\\frac{\\sigma}{r}\\right)^{13} - \\left(\\frac{\\sigma}{r}\\right)^7\\right].",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tại vị trí cân bằng F(r_0) = 0 \\implies 2(\\sigma / r_0)^{13} - (\\sigma / r_0)^7 = 0 \\implies r_0 = 2^{1/6} \\sigma \\approx 1.12246 \\sigma. Thay vào thế cho U(r_0) = 4\\varepsilon [(1/2)^2 - (1/2)] = -\\varepsilon.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Lấy đạo hàm bậc hai tại r_0: \\left.\\frac{\\mathrm{d}^2 U}{\\mathrm{d}r^2}\\right|_{r_0} = \\frac{24 \\varepsilon}{\\sigma^2}\\left[26\\left(\\frac{\\sigma}{r_0}\\right)^{14} - 7\\left(\\frac{\\sigma}{r_0}\\right)^8\\right] = \\frac{24 \\varepsilon}{\\sigma^2}\\left[26(2^{-7/3}) - 7(2^{-4/3})\\right] = \\frac{72 \\varepsilon}{2^{1/3} \\sigma^2} \\approx \\frac{57.146 \\varepsilon}{\\sigma^2}."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Phân tích dao động có cản: Phương trình m d^2 y / dt^2 + gamma dy/dt + k y = 0. Khi có ngoại lực cưỡng bức F_0 cos(omega t), biên độ cộng hưởng A(omega) = F_0 / sqrt(m^2(omega_0^2 - omega^2)^2 + gamma^2 omega^2). Hệ số phẩm chất Q = omega_0 / Delta omega = m omega_0 / gamma. Ở thang nano trong chân không siêu cao, Q có thể đạt từ 10^4 đến 10^6, tạo độ nhạy đo tần số cực đại."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.1.4: Phân tử Nitơ (N2) có epsilon = 1.31 x 10^-21 J và sigma = 0.37 nm. Hãy tính khoảng cách liên kết cân bằng r_0 và độ cứng hiệu dụng k_eff. So sánh giá trị này với liên kết hóa trị ba thực tế của N2 (k ~ 2300 N/m) và giải thích tại sao mô hình Lennard-Jones chỉ phù hợp cho tương tác van der Waals chứ không áp dụng cho liên kết cộng hóa trị."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.1.5",
+      "concept_introduction": "Định luật tỉ lệ kích thước (Scaling Laws) & Hệ thống Bài toán Định lượng Toàn phần: Chứng minh tần số dao động bùng nổ theo tỉ lệ omega tỉ lệ 1/L; giải tích toàn văn Bài 1 (Phân tử CO, khối lượng rút gọn, tần số và bước sóng hồng ngoại), Bài 2 (Hiệu ứng thay thế đồng vị và khối lượng tỉ lệ L^3), Bài 3 (Định luật cắt ngắn chiều dài liên kết L' = L/2 suy ra K' = 2K).",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Mo_Phong]_Muc_3.1_Dinh_Luat_Ti_Le_Tan_So_Theo_Kich_Thuoc.png",
+        "interaction_id": "IMG_3.1.5_SIM_SCALING_LAW",
+        "aspect_ratio": "6.5:4.2",
+        "brand_palette_compliant": True,
+        "pedagogical_caption": "Hình 3.1.5: Đồ thị log-log định luật tỉ lệ kích thước f propto L^-1 từ vĩ mô đến thang nano NEMS đạt ngưỡng 15 GHz tại 100 nm (Slide 18–21 HUST)."
+      },
+      "minimal_working_example": "Tính toán toàn văn Bài toán 1 Slide 19: Phân tử CO có độ cứng K = 1860 N/m, m_C = 12 u, m_O = 16 u (1 u = 1.66 x 10^-27 kg). Xác định khối lượng rút gọn mu, tần số dao động f, và bước sóng bức xạ hồng ngoại lambda.",
+      "pillar_equation_latex": "\\mu = \\frac{m_C m_O}{m_C + m_O}, \\quad f = \\frac{1}{2\\pi}\\sqrt{\\frac{K}{\\mu}}, \\quad \\lambda = \\frac{c}{f}",
+      "nomenclature_table": [
+        {"name": "Độ cứng liên kết phân tử CO", "symbol": "K", "unit": "N/m", "meaning": "Hệ số lò xo liên kết đàn hồi giữa nguyên tử C và O (K = 1860 N/m)"},
+        {"name": "Khối lượng rút gọn của phân tử CO", "symbol": "\\mu", "unit": "kg", "meaning": "mu = (12 * 16) / (12 + 16) u = 6.857 u = 1.138 x 10^-26 kg"},
+        {"name": "Tần số dao động riêng", "symbol": "f", "unit": "Hz", "meaning": "Tần số dao động dọc trục phân tử f = 6.434 x 10^13 Hz"},
+        {"name": "Bước sóng hồng ngoại cộng hưởng", "symbol": "\\lambda", "unit": "m", "meaning": "Bước sóng photon kích thích dao động lambda = c / f = 4.66 um"},
+        {"name": "Hệ số tỉ lệ kích thước", "symbol": "\\alpha", "unit": "m/s", "meaning": "omega = alpha L^-1 theo định luật scaling law"}
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc - Định luật Scaling]: Khi giảm đồng dạng 3 chiều kích thước đặc trưng L: khối lượng m propto rho L^3, độ cứng uốn k propto E w t^3 / L^3 propto L * L^3 / L^3 = L. Tần số góc omega = sqrt(k/m) propto sqrt(L / L^3) = sqrt(1 / L^2) = L^-1.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc - Bài 1]: Khối lượng rút gọn mu = (12 * 16)/(12 + 16) * 1.66054 x 10^-27 kg = 6.8571 * 1.66054 x 10^-27 kg = 1.13866 x 10^-26 kg. Tần số dao động f = (1 / (2*pi)) * sqrt(1860 / (1.13866 x 10^-26)) = 6.434 x 10^13 Hz. Bước sóng tương ứng lambda = (2.9979 x 10^8) / (6.434 x 10^13) = 4.659 x 10^-6 m = 4.66 um (vùng hồng ngoại giữa Mid-IR).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc - Bài 2]: Nếu thay thế C (12) bằng O (16) để tạo phân tử O2 đối xứng: mu' = (16 * 16)/(16 + 16) u = 8 u. Tỉ số khối lượng mu' / mu = 8 / 6.8571 = 1.1667. Tần số f' = f * sqrt(mu / mu') = f * sqrt(6.8571 / 8) = f * 0.9258. Tần số giảm 7.42% do khối lượng rút gọn tăng. Nếu xét hệ đồng nhất m propto L^3: m tăng 1.1667 lần tương ứng kích thước L tăng (1.1667)^(1/3) = 1.0527 lần (tăng 5.27%), khi đó f tỉ lệ nghịch với L suy ra f' = f / 1.0527 = 0.95 f.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc - Bài 3]: Lò xo có chiều dài tự nhiên L và hằng số K. Theo định luật đàn hồi vật liệu, độ cứng lò xo K = E A / L tỉ lệ nghịch với chiều dài L. Khi cắt ngắn lò xo đi một nửa L' = L/2: K' = E A / L' = E A / (L/2) = 2 (E A / L) = 2K. Để tần số không đổi omega = sqrt(K'/m') = omega_0 = sqrt(K/m), khối lượng liên kết cũng phải tăng gấp đôi m' = 2m."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Hệ quả công nghệ NEMS: Một cấu trúc dầm có kích thước L = 100 nm có tần số dao động lên tới 15 GHz (bước sóng điện từ tương ứng lambda = c/f = 3 x 10^8 / 1.5 x 10^10 = 0.02 m = 2 cm ở dải vi ba Ku-band). Điều này cho phép chế tạo các bộ cộng hưởng nano siêu cao tần hoạt động ở nhiệt độ phòng và các cân nano đo khối lượng phân tử với độ nhạy zeptogram (10^-21 g)."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.1.5: Một nhà nghiên cứu chế tạo cảm biến NEMS bằng dầm nano Silicon có kích thước L = 200 nm, w = 40 nm, t = 20 nm. Khi một phân tử protein có khối lượng Delta m bám vào đầu dầm, tần số dao động dịch chuyển một lượng Delta f = -1.2 MHz. Dựa vào định luật tỉ lệ khối lượng và tần số, hãy thiết lập công thức xác định Delta m theo Delta f / f_0 và tính khối lượng chính xác của phân tử protein này."
+      ]
+    }
+  ]
+}
+
+with open(os.path.join(DATA_DIR, "BLUEPRINT_MUC_3.1_NANO.json"), "w", encoding="utf-8") as f:
+    json.dump(blueprint_3_1, f, ensure_ascii=False, indent=2)
+print("BLUEPRINT_MUC_3.1_NANO.json written successfully.")

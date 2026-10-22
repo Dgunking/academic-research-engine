@@ -1,0 +1,197 @@
+{
+  "lesson_title": "Chương 3: Đặc trưng của vật liệu khi kích thước giảm - Mục 3.5: Tính chất điện quang, cộng hưởng plasmon bề mặt (LSPR) và chấm lượng tử bán dẫn",
+  "section_id": "Mục 3.5",
+  "source_document_citations": [
+    "Bài 3-Properties.pdf (Slide 44 đến 48), Bộ môn Vật liệu Điện tử - Viện Vật lý Kỹ thuật HUST",
+    "Edward L. Wolf, Nanophysics and Nanotechnology, Wiley-VCH, 2006 (Chapter 3)",
+    "Charles P. Poole Jr., Frank J. Owens, Introduction to Nanotechnology, John Wiley & Sons, 2003"
+  ],
+  "total_pages_estimate": 19,
+  "micro_point_topics": [
+    {
+      "mpt_id": "Luận điểm 3.5.1",
+      "concept_introduction": "Hiệu ứng giam hãm lượng tử và chuyển pha Kim loại - Bán dẫn (Hiệu ứng Kubo): Sự gián đoạn hóa mức năng lượng delta = E_F / N khi kích thước giảm làm mở ra vùng cấm năng lượng hữu hạn ở hạt nano kim loại.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.5_Hinh_06_Giam_Giu_Mo_Vung_Cam_Kim_Loai.png",
+        "interaction_id": "IMG_3.5.1_ORIG_KUBO",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.5.1: Sự mở vùng cấm năng lượng hữu hạn và chuyển pha kim loại - bán dẫn (Slide 44 HUST)."
+      },
+      "minimal_working_example": "Khoảng cách mức năng lượng Kubo delta = 4 E_F / (3 N). Khi delta > k_B T, hạt kim loại mất tính dẫn điện kim loại và trở thành chất bán dẫn.",
+      "pillar_equation_latex": "\\delta_{\\mathrm{Kubo}} = \\frac{4 E_F}{3 N} = \\frac{4 E_F}{3 \\rho_n V} \\propto \\frac{1}{R^3}",
+      "nomenclature_table": [
+        {
+          "name": "Khoảng cách mức Kubo",
+          "symbol": "\\delta_{\\mathrm{Kubo}}",
+          "unit": "eV",
+          "meaning": "Khoảng cách năng lượng trung bình giữa các mức lượng tử lân cận trong hạt nano"
+        },
+        {
+          "name": "Số lượng electron tự do trong hạt",
+          "symbol": "N",
+          "unit": "nguyên",
+          "meaning": "Tổng số electron dẫn tỉ lệ thuận với thể tích hạt N propto R^3"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Ở kim loại vĩ mô, N ~ 10^23 => delta ~ 10^-22 eV << k_B T, dải năng lượng là liên tục.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Ở hạt nano R = 1 nm, N ~ 100 => delta ~ 0.1 eV >> k_B T (ở 300 K k_B T = 0.026 eV), làm đóng băng chuyển động nhiệt electron, hạt trở thành cách điện/bán dẫn."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Chuyển pha phụ thuộc kích thước và nhiệt độ."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.5.1: Tính nhiệt độ Kubo T_Kubo cho hạt nano nhôm bán kính 1.5 nm."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.5.2",
+      "concept_introduction": "Hiện tượng khóa Coulomb (Coulomb Blockade) & Transistor đơn electron (SET): Năng lượng nạp tĩnh điện E_c = e^2 / (2C) vượt trội năng lượng nhiệt k_B T ngăn cản từng electron đơn lẻ chui qua đảo lượng tử.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\Mo_Phong_Muc_3.5_Do_Thi_02_Coulomb_Blockade_SET.png",
+        "interaction_id": "IMG_3.5.2_SIM_SET",
+        "aspect_ratio": "6.5:4.2",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.5.2: Đặc tuyến I-V khóa Coulomb và dao động dẫn truyền Coulomb trong SET (Mô phỏng ZT-GVLE)."
+      },
+      "minimal_working_example": "Điều kiện quan sát khóa Coulomb: E_c = e^2 / (2C) >> k_B T và điện trở rào xuyên hầm R_T >> h / e^2 = 25.8 kOhm.",
+      "pillar_equation_latex": "E_c = \\frac{e^2}{2 C} \\gg k_B T, \\quad R_T \\gg \\frac{h}{e^2} \\approx 25.8\\ \\mathrm{k}\\Omega, \\quad \\Delta V_g = \\frac{e}{C_g}",
+      "nomenclature_table": [
+        {
+          "name": "Năng lượng nạp Coulomb",
+          "symbol": "E_c",
+          "unit": "eV hoặc J",
+          "meaning": "Năng lượng tĩnh điện cần thiết để nạp thêm một electron vào đảo dẫn"
+        },
+        {
+          "name": "Điện dung tổng cộng của đảo",
+          "symbol": "C",
+          "unit": "F",
+          "meaning": "Tổng điện dung tiếp giáp nguồn, máng và cổng C = C_s + C_d + C_g"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Để hoạt động ở nhiệt độ phòng 300 K (k_B T = 26 meV), yêu cầu E_c >= 260 meV => C <= e^2 / (2 * 260 meV) ~ 0.3 aF (attofarad).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Điện dung của hạt cầu C = 4 pi epsilon_0 epsilon_r R <= 0.3 aF đòi hỏi bán kính R <= 1.5 nm."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Chu kỳ dao động dẫn truyền Coulomb theo điện áp cổng Delta V_g = e / C_g."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.5.2: Thiết kế transistor đơn electron hoạt động ở 300 K."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.5.3",
+      "concept_introduction": "Tương tác quang học toàn phần và cân bằng quang thông: Bảo toàn năng lượng chùm sáng tới I_0 = T + A + R + S và sự áp đảo của tán xạ Rayleigh (S propto R^6 / lambda^4) khi kích thước hạt giảm.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.5_Hinh_07_Tuong_Tac_Quang_Tan_Xa_Hat_Keo.png",
+        "interaction_id": "IMG_3.5.3_ORIG_LIGHT_BALANCE",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.5.3: Cân bằng quang thông I = T + A + R + S trong hệ keo nano (Slide 45 HUST)."
+      },
+      "minimal_working_example": "Định luật tán xạ Rayleigh: Tiết diện tán xạ sigma_sca propto R^6 / lambda^4 so với tiết diện hấp thụ sigma_abs propto R^3 / lambda.",
+      "pillar_equation_latex": "I_0 = T + A + R + S, \\quad \\sigma_{\\mathrm{sca}} = \\frac{8\\pi}{3} k^4 R^6 \\left|\\frac{m^2 - 1}{m^2 + 2}\\right|^2 \\propto \\frac{R^6}{\\lambda^4}",
+      "nomenclature_table": [
+        {
+          "name": "Tiết diện tán xạ Rayleigh",
+          "symbol": "\\sigma_{\\mathrm{sca}}",
+          "unit": "m^2",
+          "meaning": "Xác suất tán xạ ánh sáng của hạt có kích thước nhỏ hơn nhiều bước sóng R << lambda"
+        },
+        {
+          "name": "Chiết suất tương đối",
+          "symbol": "m = n_{\\mathrm{particle}} / n_{\\mathrm{medium}}",
+          "unit": "không thứ nguyên",
+          "meaning": "Tỉ số chiết suất của hạt nano so với môi trường phân tán"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Ở hạt rất nhỏ R <= 10 nm, hấp thụ tỉ lệ R^3 chiếm ưu thế áp đảo so với tán xạ tỉ lệ R^6 (hạt chủ yếu hấp thụ).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khi hạt lớn lên R >= 50 nm, tán xạ R^6 tăng vọt và chi phối độ đục của dung dịch."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Giải thích màu xanh của bầu trời và màu đỏ hoàng hôn theo định luật Rayleigh lambda^-4."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.5.3: So sánh tỉ số tán xạ / hấp thụ của hạt vàng 10 nm vs 80 nm."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.5.4",
+      "concept_introduction": "Cộng hưởng Plasmon Bề mặt Cục bộ (LSPR): Dao động tập thể của electron tự do trong hạt nano kim loại, điều kiện cộng hưởng Fröhlich Re(epsilon_m) = -2 epsilon_d, và màu sắc keo Au/Ag.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.5_Hinh_08_Cong_Huong_Plasmon_LSPR.png",
+        "interaction_id": "IMG_3.5.4_ORIG_LSPR",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.5.4: Hiện tượng cộng hưởng plasmon bề mặt cục bộ LSPR và màu sắc keo vàng đỏ rực rỡ (Slide 46 HUST)."
+      },
+      "minimal_working_example": "Tính bước sóng LSPR của hạt Vàng (520 nm) và Bạc (410 nm) trong nước theo lý thuyết Mie.",
+      "pillar_equation_latex": "\\sigma_{\\mathrm{ext}} = 9\\frac{\\omega}{c}\\varepsilon_m^{3/2} V \\frac{\\varepsilon_2(\\omega)}{[\\varepsilon_1(\\omega) + 2\\varepsilon_m]^2 + \\varepsilon_2(\\omega)^2}, \\quad \\varepsilon_1(\\omega_{\\mathrm{LSPR}}) = -2\\varepsilon_m",
+      "nomenclature_table": [
+        {
+          "name": "Hằng số điện môi của hạt nano",
+          "symbol": "\\varepsilon(\\omega) = \\varepsilon_1 + i \\varepsilon_2",
+          "unit": "không thứ nguyên",
+          "meaning": "Hàm điện môi Drude-Sommerfeld của kim loại quý"
+        },
+        {
+          "name": "Hằng số điện môi môi trường",
+          "symbol": "\\varepsilon_m = n_m^2",
+          "unit": "không thứ nguyên",
+          "meaning": "Chiết suất bình phương của dung môi (nước n_m = 1.33 => epsilon_m = 1.77)"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Mô hình Drude epsilon_1(omega) = 1 - omega_p^2 / omega^2. Thay vào điều kiện Fröhlich 1 - omega_p^2 / omega^2 = -2 epsilon_m.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Suy ra tần số cộng hưởng LSPR: omega_LSPR = omega_p / sqrt(1 + 2 epsilon_m). Khi chiết suất môi trường n_m tăng, omega_LSPR giảm (dịch đỏ bước sóng lambda_LSPR tăng)."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Ứng dụng làm cảm biến sinh học LSPR siêu nhạy đo sự gắn kết phân tử ADN."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.5.4: Tính độ dịch bước sóng LSPR khi kháng thể gắn lên hạt nano vàng."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.5.5",
+      "concept_introduction": "Chấm lượng tử bán dẫn (Quantum Dots): Mô hình Brus giải thích mở rộng vùng cấm E_g(R), năng lượng giam giữ động năng tỉ lệ 1/R^2, thế hút Coulomb tỉ lệ -1/R, và điều khiển màu sắc phát xạ huỳnh quang.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.5_Hinh_09_Phat_Xa_Cham_Luong_Tu.png",
+        "interaction_id": "IMG_3.5.5_ORIG_QD",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.5.5: Phổ phát xạ huỳnh quang đơn sắc điều khiển theo kích thước chấm lượng tử CdSe (Slide 47 HUST)."
+      },
+      "minimal_working_example": "Phương trình Brus tính vùng cấm E_g(R) của chấm lượng tử CdSe với E_{g,bulk} = 1.74 eV, bán kính R từ 1.5 nm đến 4 nm.",
+      "pillar_equation_latex": "E_g(R) = E_{g,\\mathrm{bulk}} + \\frac{\\hbar^2 \\pi^2}{2 m_{eh}^* R^2} - \\frac{1.786 e^2}{4\\pi \\varepsilon_r \\varepsilon_0 R}, \\quad \\frac{1}{m_{eh}^*} = \\frac{1}{m_e^*} + \\frac{1}{m_h^*}",
+      "nomenclature_table": [
+        {
+          "name": "Độ rộng vùng cấm hiệu dụng",
+          "symbol": "E_g(R)",
+          "unit": "eV",
+          "meaning": "Khoảng cách năng lượng giữa trạng thái kích thích đáy dải dẫn và đỉnh dải hóa trị"
+        },
+        {
+          "name": "Khối lượng rút gọn exciton",
+          "symbol": "m_{eh}^*",
+          "unit": "kg",
+          "meaning": "Khối lượng hiệu dụng tương đương của cặp điện tử - lỗ trống"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thành phần giam giữ lượng tử hbar^2 pi^2 / (2 m^* R^2) tỉ lệ 1/R^2 chiếm ưu thế tuyệt đối ở bán kính nhỏ, làm năng lượng phát xạ dịch mạnh về phía xanh (Blue Shift).",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Thay số cho CdSe: Hạt R = 1.5 nm phát xạ xanh lam (lambda = 480 nm, 2.58 eV), hạt R = 4 nm phát xạ đỏ rực rỡ (lambda = 620 nm, 2.0 eV)."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Ứng dụng: Màn hình hiển thị QLED chấm lượng tử gam màu siêu rộng và đánh dấu tế bào ung thư."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.5.5: Tính bán kính chấm lượng tử CdSe để phát ra ánh sáng vàng 580 nm."
+      ]
+    }
+  ]
+}

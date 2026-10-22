@@ -38,6 +38,97 @@ def handle_pre_tool_use(payload: dict) -> dict:
 
     norm_path = os.path.normpath(target_file).lower()
 
+    # 0. KHÓA BẢO MẬT TỐI CAO BẤT BIẾN TOÀN BỘ 13 THUẬT TOÁN CỐT LÕI (LEVEL-0 SUPREME SECURITY MASTER LOCK)
+    CORE_ALGO_PATTERNS = [
+        "physics_viz_lock.py",
+        "13_thuat_toan_cot_loi_master_lock.md",
+        "core_13_algorithms.sha256",
+        "physics_viz_lock.sha256",
+        "hdir_engine.py",
+        "hpde_engine.py",
+        "malae_engine.py",
+        "rvae_engine.py",
+        "parallel_scan_engine.py",
+        "hust_pdf_engine.py",
+        os.path.normpath(".agents/common/cas.py").lower(),
+        os.path.normpath(".agents/common/linter.py").lower(),
+        os.path.normpath(".agents/common/materials.py").lower(),
+        os.path.normpath(".agents/common/terminology.py").lower(),
+        os.path.normpath("agents/curriculum_architect").lower(),
+        os.path.normpath("agents/orchestration_kernel").lower(),
+        os.path.normpath("agents/pedagogical_author").lower(),
+        os.path.normpath("agents/quality_gatekeeper").lower(),
+        os.path.normpath("agents/physics_graphic_artist").lower(),
+        os.path.normpath("agents/curriculum_fidelity_auditor").lower(),
+    ]
+
+    is_core_algo = any(pat in norm_path for pat in CORE_ALGO_PATTERNS)
+    if is_core_algo:
+        auth_granted = False
+        auth_type = "NONE"
+
+        # 1. Kiểm tra Token file xác thực tạm thời (%TEMP%/bui_trung_dung_core_auth.token)
+        temp_auth = os.path.join(tempfile.gettempdir(), "bui_trung_dung_core_auth.token")
+        if os.path.exists(temp_auth):
+            try:
+                mtime = os.path.getmtime(temp_auth)
+                if (datetime.now().timestamp() - mtime) < 300: # 5 phút hiệu lực
+                    with open(temp_auth, "r", encoding="utf-8") as af:
+                        token_str = af.read()
+                        if "BUI_TRUNG_DUNG_CONFIRMED_CORE_OVERRIDE" in token_str or "BUI_TRUNG_DUNG_AUTHORIZED_CORE_ALGORITHM_13" in token_str:
+                            auth_granted = True
+                            auth_type = "TEMP_TOKEN_FILE"
+            except Exception:
+                pass
+
+        # 2. Quét kiểm tra lịch sử hội thoại transcript
+        if not auth_granted:
+            try:
+                brain_dir = os.path.expanduser(r"~\.gemini\antigravity\brain")
+                if os.path.exists(brain_dir):
+                    recent_transcripts = []
+                    for entry in os.scandir(brain_dir):
+                        if entry.is_dir():
+                            t_path = os.path.join(entry.path, ".system_generated", "logs", "transcript.jsonl")
+                            if os.path.exists(t_path):
+                                recent_transcripts.append((os.path.getmtime(t_path), t_path))
+                    recent_transcripts.sort(reverse=True)
+                    if recent_transcripts:
+                        latest_t = recent_transcripts[0][1]
+                        with open(latest_t, "r", encoding="utf-8") as tf:
+                            lines = tf.readlines()[-40:]
+                            
+                            # Xác thực từ khóa chỉ thị / xác nhận tường minh của Bùi Trung Dũng
+                            confirmation_keywords = [
+                                "xác nhận chỉnh sửa thuật toán cốt lõi",
+                                "xác nhận mở khóa thuật toán cốt lõi",
+                                "xác nhận vòng 2/2",
+                                "xác nhận (vòng 2/2)",
+                                "xác nhận (lần 2/2)",
+                                "đồng ý chỉnh sửa thuật toán cốt lõi",
+                                "tiến hành cập nhật thuật toán 13 vào physics_viz_lock.py",
+                                "lệnh chỉ thị trực tiếp của bùi trung dũng"
+                            ]
+                            for l in lines:
+                                l_lower = l.lower()
+                                if any(kw in l_lower for kw in confirmation_keywords):
+                                    auth_granted = True
+                                    auth_type = "TRANSCRIPT_CONFIRMATION"
+                                    break
+            except Exception:
+                pass
+
+        if not auth_granted:
+            reason = (
+                f"LỆNH BỊ TỪ CHỐI (Level-0 Supreme Security Master Lock): Tệp '{target_file}' trực thuộc danh mục 13 Thuật toán Cốt lõi.\n"
+                f"Kỷ luật bảo mật tối cao của Bùi Trung Dũng quy định:\n"
+                f"- Nếu CÓ CHỈ THỊ TRỰC TIẾP từ Bùi Trung Dũng: AI Agent BẮT BUỘC phải hỏi lại xác nhận 1 lần trước khi chỉnh sửa.\n"
+                f"- Nếu KHÔNG CÓ CHỈ THỊ TRỰC TIẾP từ Bùi Trung Dũng: AI Agent BẮT BUỘC phải hỏi xác nhận 2 lần liên tiếp (Vòng 1: Khởi xướng & Vòng 2: Toàn văn Diff) trước khi chỉnh sửa.\n"
+                f"-> Thao tác bị chặn đứng an toàn. Vui lòng hỏi xác nhận với Bùi Trung Dũng trên Chat."
+            )
+            log_audit(f"DENY PreToolUse: {reason}")
+            return {"decision": "deny", "reason": reason}
+
     # 1. Bảo vệ liên kết ảo Google Drive (.gdoc, .gsheet, .gslides)
     virtual_exts = [".gdoc", ".gsheet", ".gslides"]
     if any(norm_path.endswith(ext) for ext in virtual_exts):

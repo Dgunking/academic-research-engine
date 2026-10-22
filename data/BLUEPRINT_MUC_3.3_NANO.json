@@ -1,0 +1,184 @@
+{
+  "lesson_title": "Chương 3: Đặc trưng của vật liệu khi kích thước giảm - Mục 3.3: Mật độ trạng thái điện tử (DOS), ống nano carbon và hiện tượng giam hãm phonon",
+  "section_id": "Mục 3.3",
+  "source_document_citations": [
+    "Bài 3-Properties.pdf (Slide 29 đến 37), Bộ môn Vật liệu Điện tử - Viện Vật lý Kỹ thuật HUST",
+    "Edward L. Wolf, Nanophysics and Nanotechnology, Wiley-VCH, 2006 (Chapter 3)",
+    "Charles P. Poole Jr., Frank J. Owens, Introduction to Nanotechnology, John Wiley & Sons, 2003"
+  ],
+  "total_pages_estimate": 21,
+  "micro_point_topics": [
+    {
+      "mpt_id": "Luận điểm 3.3.1",
+      "concept_introduction": "Hình thái học đa dạng của cấu trúc nano (Morphology): Các dạng tinh thể ZnO (nanowires, nanorods, nanobelts, nanoflowers) và phân loại chiều không gian 0D, 1D, 2D, 3D.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.3_Hinh_02_Hinh_Thai_Hoc_Morphology_Vat_Lieu_ZnO.png",
+        "interaction_id": "IMG_3.3.1_ORIG_MORPHOLOGY",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.3.1: Đa dạng hình thái học tinh thể nano ZnO và phân loại số chiều (Slide 29–30 HUST)."
+      },
+      "minimal_working_example": "Mối liên hệ giữa định hướng tinh thể Wurtzite của ZnO và hướng phát triển dây nano dọc trục c [0001].",
+      "pillar_equation_latex": "d = 0, 1, 2, 3 \\implies \\text{Quantum Dot (0D), Wire (1D), Well (2D), Bulk (3D)}",
+      "nomenclature_table": [
+        {
+          "name": "Số chiều giam giữ lượng tử",
+          "symbol": "d",
+          "unit": "nguyên",
+          "meaning": "Số chiều mà hạt tải tự do chuyển động trong vật liệu"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Phân loại hệ lượng tử theo kích thước tương đối so với bước sóng de Broglie."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Sự chuyển đổi từ dải năng lượng liên tục sang các mức gián đoạn khi giảm chiều."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.3.1: Phân tích cơ chế tạo hình bông hoa nanoflowers của ZnO."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.3.2",
+      "concept_introduction": "Mật độ trạng thái điện tử (DOS) theo số chiều: Dẫn xuất toàn văn hàm DOS cho Bulk 3D (căn bậc hai), Quantum Well 2D (hàm bậc thang Heaviside), Quantum Wire 1D (nghịch đảo căn bậc hai - điểm kỳ dị Van Hove), Quantum Dot 0D (hàm delta Dirac).",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.3_Hinh_04_Bieu_Do_DOS_Theo_Chieu_Khong_Gian_3D_2D_1D_0D.png",
+        "interaction_id": "IMG_3.3.2_ORIG_DOS",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.3.2: Biểu đồ mật độ trạng thái điện tử DOS theo số chiều 3D, 2D, 1D, 0D (Slide 31–32 HUST)."
+      },
+      "minimal_working_example": "Dẫn xuất hàm DOS 1D: g_{1D}(E) = (1/pi hbar) * sqrt(m / (2(E - E_n))) thể hiện điểm kỳ dị Van Hove tại E -> E_n.",
+      "pillar_equation_latex": "g_{3\\mathrm{D}} \\propto \\sqrt{E}, \\quad g_{2\\mathrm{D}} \\propto \\sum_n \\Theta(E - E_n), \\quad g_{1\\mathrm{D}} \\propto \\sum_{n,m} \\frac{1}{\\sqrt{E - E_{n,m}}}, \\quad g_{0\\mathrm{D}} \\propto \\sum_i \\delta(E - E_i)",
+      "nomenclature_table": [
+        {
+          "name": "Hàm mật độ trạng thái điện tử",
+          "symbol": "g(E)",
+          "unit": "eV^-1 m^-d",
+          "meaning": "Số trạng thái điện tử trên một đơn vị năng lượng và thể tích d-chiều"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Tích phân không gian k theo số chiều d và chuyển đổi dN = g(E) dE.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Chứng minh điểm kỳ dị Van Hove trong hệ 1D khi đạo hàm dE/dk = 0."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Ý nghĩa: Tăng cường hấp thụ quang học và hệ số phát xạ kích thích tại điểm kỳ dị Van Hove."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.3.2: So sánh độ sắc nét vạch phát xạ của laser giếng lượng tử 2D vs chấm lượng tử 0D."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.3.3",
+      "concept_introduction": "Ống nano carbon (CNT): Vector chiral C_h = n a_1 + m a_2, góc chiral theta, phân loại cấu trúc Armchair, Zigzag, Chiral và quy tắc kim loại (n - m = 3q) vs bán dẫn.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.3_Hinh_05_Vector_Chiral_Va_Cau_Truc_Ong_Than_CNT.png",
+        "interaction_id": "IMG_3.3.3_ORIG_CNT",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.3.3: Vector chiral C_h và các kiểu cuộn ống nano carbon CNT (Slide 33–34 HUST)."
+      },
+      "minimal_working_example": "Xác định tính chất kim loại hay bán dẫn của CNT (10, 0), (10, 10), (10, 5) và tính vùng cấm E_g = 2 gamma_0 a_cc / d_t.",
+      "pillar_equation_latex": "\\mathbf{C}_h = n \\mathbf{a}_1 + m \\mathbf{a}_2, \\quad d_t = \\frac{a}{\\pi}\\sqrt{n^2 + n m + m^2}, \\quad n - m = 3q \\implies \\text{Kim loại}",
+      "nomenclature_table": [
+        {
+          "name": "Đường kính ống nano carbon",
+          "symbol": "d_t",
+          "unit": "nm",
+          "meaning": "Đường kính hình học của ống đơn vách SWCNT"
+        },
+        {
+          "name": "Năng lượng tích phân nhảy",
+          "symbol": "\\gamma_0",
+          "unit": "eV",
+          "meaning": "Tích phân nhảy xen phủ orbital pi của liên kết C-C (~2.9 eV)"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Cuộn mặt phẳng Graphene 2D với điều kiện biên tuần hoàn k . C_h = 2 pi j.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Điểm Dirac K rơi vào đường cho phép khi và chỉ khi n - m chia hết cho 3."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "1/3 số ống CNT là kim loại, 2/3 là bán dẫn với độ rộng vùng cấm tỉ lệ nghịch với đường kính E_g propto 1/d_t."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.3.3: Tính đường kính và vùng cấm của SWCNT (10, 0)."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.3.4",
+      "concept_introduction": "Hiện tượng giam hãm phonon (Phonon Confinement Effect): Phổ tán xạ Raman của hạt nano tinh thể CeO2 và TiO2, mô hình Campbell - Fauchet, sự dịch đỉnh và mở rộng bất đối xứng của vạch phổ Raman.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.4_Hinh_01_Pho_Tan_Xa_Raman_Giam_Giu_Phonon.png",
+        "interaction_id": "IMG_3.3.4_ORIG_RAMAN",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.3.4: Hiện tượng giam hãm phonon và dịch đỉnh tán xạ Raman trong hạt nano CeO2 (Slide 35–36 HUST)."
+      },
+      "minimal_working_example": "Mô hình Richter-Campbell-Fauchet tích hợp vector sóng q từ 0 đến 1/L phá vỡ quy tắc chọn lọc q = 0.",
+      "pillar_equation_latex": "I(\\omega) \\propto \\int \\frac{|C(0, \\mathbf{q})|^2}{[\\omega - \\omega(\\mathbf{q})]^2 + (\\Gamma_0/2)^2} \\mathrm{d}^3 q",
+      "nomenclature_table": [
+        {
+          "name": "Độ dịch đỉnh Raman",
+          "symbol": "\\Delta \\omega",
+          "unit": "cm^-1",
+          "meaning": "Độ lệch số sóng của đỉnh tán xạ Raman do giảm kích thước hạt"
+        },
+        {
+          "name": "Độ rộng bán phần vạch phổ",
+          "symbol": "\\Gamma",
+          "unit": "cm^-1",
+          "meaning": "Bề rộng nửa độ cao FWHM phản ánh thời gian sống của phonon"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Do giam giữ không gian Delta x ~ L, nguyên lý bất định Delta q ~ 1/L cho phép các phonon q > 0 tham gia tán xạ Raman.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Vì nhánh phonon quang học có độ dốc âm d omega / dq < 0, sự đóng góp của q > 0 làm dịch chuyển đỉnh Raman về phía tần số thấp (redshift) và mở rộng vạch phổ."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Sử dụng độ dịch phổ Raman làm phương pháp quang học không phá hủy để đo kích thước hạt nano."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.3.4: Ước lượng kích thước hạt CeO2 khi đỉnh Raman 465 cm^-1 dịch về 460 cm^-1."
+      ]
+    },
+    {
+      "mpt_id": "Luận điểm 3.3.5",
+      "concept_introduction": "Tính chất từ và chuyển pha phụ thuộc kích thước: Sự suy giảm nhiệt độ Curie chuyển pha sắt từ - thuận từ và sắt điện trong gốm nano PbTiO3, hiệu ứng siêu thuận từ (Superparamagnetism) và giới hạn Néel-Brown.",
+      "visual_anchor": {
+        "image_file_path": "G:\\My Drive\\NotebookLM - Academic Knowledge Base\\Cơ sở vật lý và công nghệ nano\\Kho_Hinh_Anh\\[Goc]_Muc_3.4_Hinh_03_Chuyen_Pha_Sat_Tu_Thuan_Tu_PbTiO3.png",
+        "interaction_id": "IMG_3.3.5_ORIG_MAGNETIC",
+        "aspect_ratio": "16:9",
+        "brand_palette_compliant": true,
+        "pedagogical_caption": "Hình 3.3.5: Đường cong từ trễ và chuyển pha siêu thuận từ ở hạt nano PbTiO3 và Fe3O4 (Slide 37 HUST)."
+      },
+      "minimal_working_example": "Thời gian hồi phục Néel tau = tau_0 exp(K V / k_B T) và sự biến mất của lực kháng từ H_c = 0 dưới nhiệt độ chặn T_B.",
+      "pillar_equation_latex": "\\tau = \\tau_0 \\exp\\left(\\frac{K V}{k_B T}\\right), \\quad T_B = \\frac{K V}{k_B \\ln(t_m / \\tau_0)}",
+      "nomenclature_table": [
+        {
+          "name": "Hằng số bất đẳng hướng từ",
+          "symbol": "K",
+          "unit": "J/m^3",
+          "meaning": "Mật độ năng lượng từ tinh thể định hướng trục dễ từ hóa"
+        },
+        {
+          "name": "Nhiệt độ chặn (Blocking Temperature)",
+          "symbol": "T_B",
+          "unit": "K",
+          "meaning": "Nhiệt độ chuyển pha giữa trạng thái sắt từ bền và siêu thuận từ"
+        }
+      ],
+      "guided_practice_steps": [
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Khi thể tích hạt V nhỏ sao cho rào năng lượng K V ~ k_B T, năng lượng nhiệt làm lật ngẫu nhiên mômen từ của toàn bộ hạt.",
+        "↳ [Tường minh bước biến đổi trung gian từ slide gốc]: Đường cong từ trễ co lại thành đường đơn trị không có diện tích trễ (H_c = 0, M_r = 0)."
+      ],
+      "variations_and_asymptotic_sweeps": [
+        "Ứng dụng: Dẫn thuốc từ tính hạt nano Fe3O4 và chất tăng tương phản MRI không bị tắc mạch máu."
+      ],
+      "student_challenges_cer": [
+        "Thử thách CER 3.3.5: Tính kích thước tới hạn siêu thuận từ của hạt Fe3O4 ở 300 K."
+      ]
+    }
+  ]
+}
