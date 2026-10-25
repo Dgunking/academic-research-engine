@@ -1,0 +1,61 @@
+# Cấu hình Mặc định cho Khung Sư phạm Giảng dạy & Chuyên khảo Kỹ thuật (Antigravity Configurable Skill)
+pedagogy:
+  framework_name: "Progressive 5-Stage Pedagogy (LessonDeliverable)"
+  stages:
+    - id: "stage_1"
+      name: "Giới thiệu khái niệm và trực quan hóa mở đầu (Concept Introduction & Visual Anchor)"
+      role: "Concept Introduction & Visual Anchor"
+      ocr_chains: [1, 2, 3]
+    - id: "stage_2"
+      name: "Ví dụ tối giản và hạt nhân vật lý (Minimal Working Example & Physical Core)"
+      role: "Minimal Working Example"
+      pillar_equation_level: 3
+      nomenclature_standard: "ISO 80000-2"
+      require_concrete_data: true
+    - id: "stage_3"
+      name: "Thực hành có hướng dẫn và dẫn xuất vi mô từng bước (Guided Practice & Step-by-Step Derivation)"
+      role: "Guided Practice"
+      ocr_chains: [4, 5]
+      explicit_intermediate_label: true
+    - id: "stage_4"
+      name: "Phân tích các biến thể và khảo sát tiệm cận kỹ thuật (Variations & Asymptotic Sweep)"
+      role: "Variations & Asymptotic Sanity Check"
+      min_asymptotic_limits: 2
+      require_component_parameters: true
+    - id: "stage_5"
+      name: "Thử thách tự luyện & Dự đoán lỗi sai (Student Challenges & Error Anticipation - CER)"
+      role: "Challenges & Claim-Evidence-Reasoning"
+      question_count_range: [1, 2]
+      forbid_solving_in_pdf: true
+
+visual_pipeline:
+  hybrid_mode: true
+  analytical_engine: "matplotlib"
+  dpi: 300
+  dimensions: [6.5, 4.2]
+  triple_buffer_envelope:
+    delta_geom_percent: 8.0
+    delta_spine_percent: 5.0
+    delta_box_pt: 6.0
+  color_palette:
+    primary: "#0072BD"
+    accent_orange: "#D95319"
+    accent_yellow: "#EDB120"
+    accent_purple: "#7E2F8E"
+    accent_green: "#77AC30"
+    neutral_gray: "#7F7F7F"
+
+publishing:
+  engine: "reportlab"
+  page_format: "A4"
+  margins_pt: [40, 46]
+  two_pass_page_numbering: true
+  bookmarks_depth: 3
+  footer_text: "HUST Physics & Semiconductor Photonics Lab"
+
+domain:
+  name: "Khoa học Kỹ thuật Đại cương"
+  target_audience: "Kỹ sư & Học viên Nghiên cứu"
+  strict_si_units: true
+  sentence_case_titles: true
+  numbering_standard: "APA 7"

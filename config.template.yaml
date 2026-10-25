@@ -1,0 +1,45 @@
+# ==============================================================================
+# ACADEMIC RESEARCH ENGINE - SYSTEM & PEDAGOGICAL SPECIFICATION
+# ==============================================================================
+system:
+  engine_version: "2.5.0"
+  log_level: "INFO"
+  strict_fsm_enforcement: true
+  anti_tampering_check: true
+
+researcher_profile:
+  name: "${RESEARCHER_NAME}"
+  title: "Lead Researcher"
+  institution: "${INSTITUTION_NAME}"
+  field_of_study:
+    - "Semiconductor Physics"
+    - "Diode Lasers & Optoelectronics"
+    - "Photonic Integrated Circuits (PIC)"
+    - "Optical Thin Films"
+    - "Nanomaterials & Photocatalysis"
+
+standards:
+  nomenclature_schema: "ATCC_BILINGUAL_v2"
+  number_format: "APA_7" # Decimal comma in Vietnamese prose: 1,424 eV
+  unit_system: "SI_LAW_04" # Space before unit: 300 K, 10 nm
+  math_engine: "LATEX_MIN_300_DPI"
+  plot_style: "MATLAB_R2014B_PLUS_ZT_GVLE"
+
+pedagogical_pipeline:
+  ufme_feynman_engine: true
+  cognitive_depth: "UNBOUNDED"
+  micro_causal_flowchain_max_words: 65
+  malae_levels:
+    level_1: "Physical Intuition & Conservation Laws"
+    level_2: "Standard Variable Dissection (ISO 80000-2 Table)"
+    level_3: "Asymptotic & Boundary Condition Audit"
+  rubric: "CLAIM_EVIDENCE_REASONING_SILENT_DROP"
+
+quality_gates:
+  gate_18_tvd: true
+  sympy_formal_verification: true
+  sha256_sidecar_audit: true
+  zero_omission_strict: true
+  zero_slash_fractions: true
+  arrow_linebreak_gate: true
+  pre_flight_hard_assertion: true

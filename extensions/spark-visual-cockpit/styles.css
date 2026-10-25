@@ -1,0 +1,626 @@
+/* SPARK VISUAL COCKPIT v2.5.0-ENTERPRISE
+   Unified Decoupled Academic Workstation Stylesheet
+   Pure Minimalist Carbon & Slate Workstation Standard (Zero-Sticker Design)
+*/
+
+:root {
+  --spark-split-width: 30vw;
+  --spark-tab-width: 34px;
+  --spark-tab-height: 96px;
+  --spark-bg-deep: #0b0c10;
+  --spark-bg-panel: #12141a;
+  --spark-bg-surface: #181b22;
+  --spark-border: #242833;
+  --spark-border-subtle: #1c2029;
+  --spark-text-primary: #ededf0;
+  --spark-text-secondary: #8d929e;
+  --spark-accent-blue: #3b82f6;
+  --spark-accent-steel: #2563eb;
+}
+
+/* =========================================================================
+   1. HOST PAGE & PRINT ADJUSTMENTS
+   ========================================================================= */
+@media print {
+  #spark-cockpit-root,
+  .spark-resizer-handle,
+  #spark-floating-launcher,
+  #spark-dock-spark,
+  #spark-dock-read,
+  #spark-reload-toast,
+  #spark-action-toast,
+  .spark-reader-header,
+  .spark-btn-copy-cer {
+    display: none !important;
+  }
+
+  #spark-reader-root {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    display: block !important;
+  }
+
+  .spark-pdf-stack,
+  .spark-reader-content-scroll {
+    overflow: visible !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+
+  .spark-pdf-section-card {
+    border: 1px solid #cbd5e1 !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 24px !important;
+  }
+
+  .spark-pdf-section-frame {
+    height: 1000px !important;
+  }
+
+  body.spark-cockpit-active {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* Host Cockpit Root Container (LEFT CANVAS WORKSTATION) */
+#spark-cockpit-root {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: var(--spark-split-width, 30vw) !important;
+  min-width: 250px !important;
+  max-width: 80vw !important;
+  height: 100vh !important;
+  z-index: 2147483640 !important;
+  box-sizing: border-box !important;
+  pointer-events: auto !important;
+  contain: strict;
+  background: var(--spark-bg-deep) !important;
+  border-right: 1px solid var(--spark-border) !important;
+}
+
+/* Host body layout shift when Left Canvas is active */
+body.spark-cockpit-active {
+  margin-left: var(--spark-split-width, 30vw) !important;
+  width: calc(100vw - var(--spark-split-width, 30vw)) !important;
+  box-sizing: border-box !important;
+  transition: margin-left 0.15s cubic-bezier(0.16, 1, 0.3, 1), width 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Stream masking in native chat DOM */
+.spark-stream-hidden,
+div[data-spark-stream-hidden="true"],
+message-content[data-spark-masked="true"] {
+  display: none !important;
+}
+
+/* =========================================================================
+   F11 FULLSCREEN TOOLBAR SAFE-AREA
+   When Chrome enters F11 fullscreen, its auto-hiding toolbar (~60px) overlays
+   the top of the page when mouse nears the top edge.
+   .spark-f11-fullscreen is toggled by JS (screen.height === innerHeight).
+   We nudge fixed dock tabs down so they stay fully visible.
+   ========================================================================= */
+body.spark-f11-fullscreen #spark-cockpit-root {
+  top: 0 !important; /* host is fine at top:0, header inside handles offset */
+}
+
+body.spark-f11-fullscreen .spark-dock-tab {
+  /* Push tabs down from exact center so toolbar can't cover them */
+  top: calc(50% + 32px) !important;
+}
+
+body.spark-f11-fullscreen #spark-reader-root {
+  /* Ensure reader root doesn't go behind toolbar */
+  padding-top: 0 !important;
+}
+
+/* =========================================================================
+   2. DYNAMIC EDGE DOCK TABS (SPARK & READ - ZERO STICKER / MONOCHROME)
+   ========================================================================= */
+.spark-dock-tab {
+  position: fixed !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: var(--spark-tab-width, 34px) !important;
+  height: var(--spark-tab-height, 96px) !important;
+  padding: 8px 4px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "JetBrains Mono", Consolas, monospace !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  writing-mode: vertical-rl !important;
+  text-orientation: mixed !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+  backdrop-filter: blur(8px) !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* SPARK Dock Tab (Left Canvas Toggle)
+   CRITICAL: z-index: 2147483646 is strictly HIGHER than Reader Overlay (2147483630)
+   Guarantees the tab is NEVER occluded when Reader covers 100vw! */
+#spark-dock-spark {
+  left: 0 !important;
+  right: auto !important;
+  z-index: 2147483646 !important;
+  background: var(--spark-bg-panel) !important;
+  color: var(--spark-text-primary) !important;
+  border: 1px solid var(--spark-border) !important;
+  border-left: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+#spark-dock-spark:hover {
+  background: var(--spark-bg-surface) !important;
+  color: #ffffff !important;
+  border-color: var(--spark-accent-blue) !important;
+  transform: translateY(-50%) translateX(2px) !important;
+}
+
+#spark-dock-spark.dock-hidden {
+  display: none !important;
+}
+
+/* READ Dock Tab (Reader Overlay Toggle) - Anchored at the right edge */
+#spark-dock-read {
+  right: 0 !important;
+  left: auto !important;
+  z-index: 2147483642 !important;
+  background: var(--spark-bg-panel) !important;
+  color: var(--spark-text-primary) !important;
+  border: 1px solid var(--spark-border) !important;
+  border-right: none !important;
+  border-radius: 6px 0 0 6px !important;
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+#spark-dock-read:hover {
+  background: var(--spark-bg-surface) !important;
+  color: #ffffff !important;
+  border-color: var(--spark-accent-blue) !important;
+  transform: translateY(-50%) translateX(-2px) !important;
+}
+
+#spark-dock-read.dock-hidden {
+  display: none !important;
+}
+
+/* =========================================================================
+   3. RESIZER DIVIDER HANDLE
+   ========================================================================= */
+.spark-resizer-handle {
+  position: fixed !important;
+  top: 0 !important;
+  left: var(--spark-split-width, 30vw) !important;
+  bottom: 0 !important;
+  width: 8px !important;
+  margin-left: -4px !important;
+  cursor: col-resize !important;
+  z-index: 2147483645 !important;
+  background: transparent !important;
+  transition: background 0.15s ease;
+  user-select: none !important;
+}
+
+.spark-resizer-handle:hover,
+.spark-resizer-handle.dragging {
+  background: rgba(59, 130, 246, 0.25) !important;
+}
+
+.spark-resizer-line {
+  position: absolute;
+  top: 0;
+  left: 3px;
+  width: 2px;
+  height: 100%;
+  background: var(--spark-border);
+}
+
+.spark-resizer-handle:hover .spark-resizer-line,
+.spark-resizer-handle.dragging .spark-resizer-line {
+  background: var(--spark-accent-blue);
+}
+
+/* =========================================================================
+   4. READER OVERLAY ROOT & CONTAINER (KHUNG PHẢI [READ])
+   ========================================================================= */
+#spark-reader-root {
+  position: fixed !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  z-index: 2147483630 !important;
+  background: var(--spark-bg-deep) !important;
+  color: var(--spark-text-primary) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  transition: left 0.15s cubic-bezier(0.16, 1, 0.3, 1), width 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.18s ease-out !important;
+}
+
+/* When Left Canvas is open, Reader snaps cleanly to the right */
+body.spark-cockpit-active #spark-reader-root {
+  left: var(--spark-split-width, 30vw) !important;
+  width: calc(100vw - var(--spark-split-width, 30vw)) !important;
+  border-left: 1px solid var(--spark-border) !important;
+}
+
+/* When Reader is hidden (in CHAT mode), it slides away gracefully */
+#spark-reader-root.reader-hidden {
+  transform: translateX(105%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Top Reader Header Bar (Hidden in full-bleed direct PDF mode per User Request #1) */
+.spark-reader-header {
+  display: none !important;
+}
+
+/* Action button [Chat] */
+.spark-btn-chat {
+  background: var(--spark-bg-surface) !important;
+  color: var(--spark-text-primary) !important;
+  border: 1px solid var(--spark-border) !important;
+  border-radius: 4px !important;
+  padding: 4px 10px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+.spark-btn-chat:hover {
+  background: var(--spark-border) !important;
+  color: #ffffff !important;
+  border-color: var(--spark-accent-blue) !important;
+}
+
+/* Action button [Copy] (Hidden per user directive) */
+.spark-btn-copy-pdf {
+  display: none !important;
+}
+
+.spark-btn-copy-pdf:hover {
+  display: none !important;
+}
+
+/* Khi có văn bản bôi đen trong tài liệu */
+.spark-btn-copy-pdf.has-selection {
+  display: none !important;
+}
+
+/* Trạng thái xác nhận sao chép thành công */
+.spark-btn-copy-pdf.copied {
+  display: none !important;
+}
+
+.spark-btn-copy-pdf .spark-copy-icon {
+  display: none !important;
+}
+
+/* Action button [Open Drive] */
+.spark-btn-drive-open {
+  background: var(--spark-bg-surface) !important;
+  color: var(--spark-text-primary) !important;
+  border: 1px solid var(--spark-border) !important;
+  border-radius: 4px !important;
+  padding: 4px 10px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+.spark-btn-drive-open:hover {
+  background: var(--spark-border) !important;
+  color: #ffffff !important;
+  border-color: var(--spark-accent-blue) !important;
+}
+
+/* Action button [Reload] */
+.spark-btn-reload-pdf {
+  background: var(--spark-bg-surface) !important;
+  color: var(--spark-text-secondary) !important;
+  border: 1px solid var(--spark-border) !important;
+  border-radius: 4px !important;
+  padding: 4px 8px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+}
+
+.spark-btn-reload-pdf:hover {
+  color: var(--spark-text-primary) !important;
+  border-color: var(--spark-accent-blue) !important;
+}
+
+.spark-btn-reload-pdf.spinning {
+  opacity: 0.7 !important;
+  cursor: wait !important;
+}
+
+/* Action button [Close] */
+.spark-btn-close-pdf {
+  background: var(--spark-bg-surface) !important;
+  color: var(--spark-text-secondary) !important;
+  border: 1px solid var(--spark-border) !important;
+  border-radius: 4px !important;
+  padding: 4px 8px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+}
+
+.spark-btn-close-pdf:hover {
+  color: #ef4444 !important;
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* =========================================================================
+   5. CUMULATIVE PDF SECTION STACK (FULL-BLEED FULLSCREEN PDF DISPLAY)
+   ========================================================================= */
+.spark-pdf-stack {
+  flex: 1 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  overflow-y: auto !important;
+  background: var(--spark-bg-deep) !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+.spark-pdf-section-card {
+  width: 100% !important;
+  background: var(--spark-bg-panel) !important;
+  border: none !important;
+  border-bottom: 2px solid var(--spark-border) !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+}
+
+.spark-pdf-section-header {
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 16px !important;
+  background: var(--spark-bg-panel) !important;
+  border-bottom: 1px solid var(--spark-border) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--spark-text-primary) !important;
+  user-select: auto !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  box-sizing: border-box !important;
+}
+
+.spark-pdf-section-title {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--spark-text-primary) !important;
+  user-select: text !important;
+}
+
+.spark-pdf-section-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-shrink: 0 !important;
+  user-select: none !important;
+}
+
+.spark-pdf-section-link {
+  font-size: 11px !important;
+  color: var(--spark-text-secondary) !important;
+  text-decoration: none !important;
+  padding: 2px 8px !important;
+  border: 1px solid var(--spark-border) !important;
+  border-radius: 4px !important;
+  transition: all 0.15s ease !important;
+}
+
+.spark-pdf-section-link:hover {
+  color: var(--spark-text-primary) !important;
+  border-color: var(--spark-accent-blue) !important;
+}
+
+.spark-pdf-section-frame {
+  width: 100% !important;
+  height: calc(100vh - 38px) !important;
+  border: none !important;
+  background: #2b2b2b !important;
+  display: block !important;
+}
+
+/* Empty State inside Stack */
+.spark-pdf-empty {
+  display: none !important;
+}
+
+.spark-pdf-stack.is-empty .spark-pdf-empty {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 40px !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+  color: var(--spark-text-secondary) !important;
+  position: relative !important;
+}
+
+.spark-pdf-empty-bar {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 38px !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: var(--spark-bg-panel) !important;
+  border-bottom: 1px solid var(--spark-border) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--spark-text-primary) !important;
+  box-sizing: border-box !important;
+}
+
+.spark-pdf-empty-title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: var(--spark-text-primary) !important;
+  margin-bottom: 8px !important;
+  letter-spacing: 0.5px !important;
+}
+
+.spark-pdf-empty-desc {
+  font-size: 13px !important;
+  max-width: 440px !important;
+  line-height: 1.6 !important;
+  margin-bottom: 16px !important;
+  color: var(--spark-text-secondary) !important;
+}
+
+.spark-pdf-empty-hint {
+  font-size: 11px !important;
+  font-family: monospace !important;
+  background: var(--spark-bg-surface) !important;
+  padding: 6px 14px !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--spark-border) !important;
+  color: var(--spark-text-primary) !important;
+}
+
+/* In-chat notification pill */
+.spark-chat-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: var(--spark-bg-panel) !important;
+  border: 1px solid var(--spark-border) !important;
+  border-radius: 6px !important;
+  padding: 8px 14px !important;
+  margin: 10px 0 !important;
+  color: var(--spark-text-primary) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.spark-chat-pill:hover {
+  background: var(--spark-bg-surface) !important;
+  border-color: var(--spark-accent-blue) !important;
+}
+
+.spark-chat-pill b {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* Toast Notifications (Zero-Sticker Minimalist Carbon Style) */
+#spark-action-toast {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  background: var(--spark-bg-surface) !important;
+  color: var(--spark-text-primary) !important;
+  border: 1px solid var(--spark-border) !important;
+  border-radius: 6px !important;
+  padding: 10px 16px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  animation: sparkToastIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+#spark-action-toast.spark-toast-hidden {
+  opacity: 0 !important;
+  transform: translateY(10px) !important;
+  pointer-events: none !important;
+}
+
+.spark-toast-msg {
+  flex: 1 !important;
+  line-height: 1.4 !important;
+}
+
+.spark-toast-close {
+  background: transparent !important;
+  border: none !important;
+  color: var(--spark-text-secondary) !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  transition: color 0.15s ease, background 0.15s ease !important;
+}
+
+.spark-toast-close:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+@keyframes sparkToastIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

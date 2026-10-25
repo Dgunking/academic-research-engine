@@ -1,0 +1,112 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments & IDE
+.venv/
+venv/
+ENV/
+env/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets & Local Environment
+.env
+.env.*
+!.env.example
+*.key
+*.token
+credentials.json
+
+# Internal Development & Algorithm Notes
+Tài liệu xây dựng thuật toán/
+cấu trúc bài giảng cũ/
+archive/
+scratch/
+scratch*
+temp_inspect/
+
+# Output directories & artifacts
+output/
+data/
+
+# Drafts, tests & temporary files in root
+*.docx
+*.bak
+*.tmp
+*.swp
+*.jpx
+*.bundle
+test_*.png
+p3_p4_p5.txt
+scratch_sec3_text.txt
+scratch_sec_3_2.txt
+FINAL_GEMINI_SPARK_SYSTEM_INSTRUCTIONS.txt
+PLAN_*.md
+physics_viz_lock.py
+
+# Legacy unpacked extension folder (official package in extensions/spark-visual-cockpit/)
+spark-visual-cockpit-v2.0.0/
+
+# Testing cache
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Ephemeral testing scripts in scripts/
+scripts/audit_monograph_*.py
+scripts/build_monograph_*.py
+scripts/clean_slate_*.py
+scripts/gen_clean_*.py
+scripts/generate_simulation_*.py
+scripts/generate_simulations_*.py
+scripts/create_blueprint_*.py
+scripts/check_*.py
+scripts/fix_*.py
+scripts/inspect_*.py
+scripts/scan_*.py
+scripts/extract_*.py
+scripts/deep_audit_*.py
+scripts/build_blueprints_*.py
+scripts/build_chapter_*.py
+scripts/batch_rollout_*.py
+scripts/apply_*.py
+scripts/patch_*.py
+scripts/test_*.py
+scripts/run_all_sims.py
+scripts/simulate_autonomous_pipeline.py
+scripts/sync_algo_markdown_docs.py
+scripts/sync_phase_skills_and_agents.py
+scripts/update_core_algorithms.py
+scripts/verify_all_*.py
+scripts/verify_story_*.py
+scripts/detailed_legend_overlap.py
+scripts/draw_operational_cycle.py
+scripts/dry_run_*.py
+scripts/find_*.py
+scripts/generate_blueprint_*.py
+scripts/list_sim_imgs.py
+
+# Explicit Whitelist for core scripts
+!scripts/hpde_engine.py
+!scripts/malae_engine.py
+!scripts/rvae_engine.py
+!scripts/tvd_engine.py
+!scripts/parallel_scan_engine.py
+!scripts/pillar_equation_utils.py
+!scripts/package_for_gemini_spark.py
+!scripts/atcc_engine.py
+!scripts/hdir_engine.py
+!scripts/viz_legend_utils.py
+!scripts/ground_truth_manifest_engine.py
+!scripts/docx_audit_generator.py
+!scripts/system_profiler.py
+!scripts/verify_core_integrity.py
+
+scripts/audit_entire_chapter_*.py
+scripts/final_pass_lint.py

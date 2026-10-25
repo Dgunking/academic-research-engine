@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài giảng: Cấu trúc Dị thể Bán dẫn GaAs/AlGaAs & Laser Diode - ĐHBK Hà Nội</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 32px;
+      line-height: 1.6;
+      background: #0d1117;
+      color: #c9d1d9;
+    }
+    .lecture-container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    h1 { color: #58a6ff; font-size: 24px; border-bottom: 1px solid #30363d; padding-bottom: 12px; }
+    h2 { color: #79c0ff; font-size: 18px; margin-top: 24px; }
+    .micro-block {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+    .katex-formula {
+      background: #21262d;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-family: "Courier New", Courier, monospace;
+      display: inline-block;
+      margin: 6px 0;
+    }
+    a.figure-link {
+      color: #58a6ff;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    pre {
+      background: #090d13;
+      padding: 14px;
+      border-radius: 6px;
+      overflow-x: auto;
+      border: 1px solid #30363d;
+    }
+    code {
+      font-family: "Fira Code", monospace;
+      font-size: 13px;
+    }
+    .metadata-line {
+      color: #7ee787;
+      font-weight: 500;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="lecture-container">
+    <h1>Khoa Vật lý Kỹ thuật - Đại học Bách khoa Hà Nội</h1>
+    <p><em>Chuyên đề: Cấu trúc Giếng Lượng tử và Băng Năng lượng Dị thể Laser Diode</em></p>
+
+    <div class="micro-block">
+      <h2>1. Giản đồ Băng Năng lượng Dị chất GaAs / AlGaAs (Type-I Heterostructure)</h2>
+      <p>
+        Trong cấu trúc dị chất dị tiếp xúc Al<sub>x</sub>Ga<sub>1-x</sub>As / GaAs, độ gián đoạn vùng dẫn 
+        <span class="katex-formula">\Delta E_c = 0.65 \times \Delta E_g</span> và vùng hóa trị 
+        <span class="katex-formula">\Delta E_v = 0.35 \times \Delta E_g</span> đóng vai trò giam hãm điện tử và lỗ trống trong giếng thế lượng tử.
+      </p>
+      <p>
+        Xem tài liệu vi cấu trúc và phân bố mật độ trạng thái:
+        <br>
+        <a class="figure-link" href="https://drive.google.com/file/d/1A2B3C4D5E6F7G8H9I0J1K2L3M4N5O6P7/view">
+          [Figure 1.2: Heterojunction Band Diagram (GaAs/AlGaAs)]
+        </a>
+      </p>
+      <div class="metadata-line">
+        ↳ [Trục X]: Chiều dày d (nm) | [Trục Y]: Năng lượng E (eV) | [Điểm uốn]: Ec - Ev = 1.42 eV (GaAs)
+      </div>
+    </div>
+
+    <div class="micro-block">
+      <h2>2. Mô phỏng Vector Băng Năng lượng Quantum Well (Python/SVG)</h2>
+      <p>Đồ thị thế giếng thế chữ nhật hữu hạn và các mức năng lượng liên kết:</p>
+      
+      <pre><code>```diagram-spark
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wellGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.0"/>
+    </linearGradient>
+  </defs>
+  <!-- Trục tọa độ -->
+  <line x1="60" y1="340" x2="560" y2="340" stroke="#8b949e" stroke-width="2"/>
+  <line x1="60" y1="340" x2="60" y2="40" stroke="#8b949e" stroke-width="2"/>
+  <text x="560" y="370" fill="#8b949e" font-size="12" text-anchor="end">Chiều dày d (nm)</text>
+  <text x="30" y="45" fill="#8b949e" font-size="12">E (eV)</text>
+
+  <!-- Đáy vùng dẫn Ec -->
+  <path d="M 60,100 L 220,100 L 220,240 L 380,240 L 380,100 L 560,100" fill="url(#wellGrad)" stroke="#ff5252" stroke-width="3"/>
+  <text x="390" y="105" fill="#ff5252" font-size="14" font-weight="bold">Ec (Vùng dẫn)</text>
+
+  <!-- Đỉnh vùng hóa trị Ev -->
+  <path d="M 60,320 L 220,320 L 220,290 L 380,290 L 380,320 L 560,320" fill="none" stroke="#00e5ff" stroke-width="3"/>
+  <text x="390" y="325" fill="#00e5ff" font-size="14" font-weight="bold">Ev (Vùng hóa trị)</text>
+
+  <!-- Mức Fermi và mức lượng tử e1 -->
+  <line x1="220" y1="200" x2="380" y2="200" stroke="#ffff00" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="300" y="192" fill="#ffff00" font-size="12" text-anchor="middle">Mức năng lượng giam hãm e₁</text>
+
+  <!-- Độ rộng giếng Lz -->
+  <line x1="220" y1="260" x2="380" y2="260" stroke="#c9d1d9" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="300" y="278" fill="#c9d1d9" font-size="12" text-anchor="middle">Lz = 10 nm</text>
+</svg>
+```</code></pre>
+      <div class="metadata-line">
+        ↳ [Trục X]: Chiều dày Lz (nm) | [Trục Y]: Năng lượng E (eV) | [Điểm uốn]: ΔEc = 0.28 eV, ΔEv = 0.15 eV
+      </div>
+    </div>
+
+    <div class="micro-block">
+      <h2>3. Mô hình Giếng Lượng tử Kép Double Quantum Well (GaAs/AlGaAs)</h2>
+      <p>Cấu trúc giếng kép cộng hưởng với 2 mức năng lượng giam hãm e₁ và e₂ cùng hàm sóng liên kết:</p>
+      
+      <pre><code>```xml
+<svg viewBox="0 0 850 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title: Giếng Lượng Tử Kép (GaAs/AlGaAs DQW) -->
+  <defs>
+    <linearGradient id="dqwGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Hệ trục tọa độ -->
+  <line x1="80" y1="420" x2="800" y2="420" stroke="#8b949e" stroke-width="2"/>
+  <line x1="80" y1="420" x2="80" y2="50" stroke="#8b949e" stroke-width="2"/>
+  <text x="800" y="450" fill="#8b949e" font-size="13" text-anchor="end">Tọa độ không gian z (nm)</text>
+  <text x="40" y="55" fill="#8b949e" font-size="13">E (eV)</text>
+
+  <!-- Đáy vùng dẫn Ec tạo nên 2 giếng thế và 1 rào chắn trung tâm -->
+  <!-- Rào ngoài (AlGaAs) -> Giếng 1 (GaAs) -> Rào giữa (AlGaAs) -> Giếng 2 (GaAs) -> Rào ngoài (AlGaAs) -->
+  <path d="M 80,120 L 220,120 L 220,320 L 340,320 L 340,160 L 440,160 L 440,320 L 560,320 L 560,120 L 780,120" 
+        fill="url(#dqwGrad)" stroke="#ff5252" stroke-width="3"/>
+  <text x="790" y="125" fill="#ff5252" font-size="13" font-weight="bold">Ec (AlGaAs)</text>
+
+  <!-- Nhãn vùng vật liệu -->
+  <text x="150" y="105" fill="#8b949e" font-size="12" text-anchor="middle">AlGaAs</text>
+  <text x="280" y="350" fill="#00e5ff" font-size="13" font-weight="bold" text-anchor="middle">GaAs (Well 1)</text>
+  <text x="390" y="145" fill="#8b949e" font-size="12" text-anchor="middle">Barrier</text>
+  <text x="500" y="350" fill="#00e5ff" font-size="13" font-weight="bold" text-anchor="middle">GaAs (Well 2)</text>
+  <text x="670" y="105" fill="#8b949e" font-size="12" text-anchor="middle">AlGaAs</text>
+
+  <!-- Mức năng lượng liên kết e1 (Đối xứng) -->
+  <line x1="220" y1="280" x2="560" y2="280" stroke="#00e5ff" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="575" y="285" fill="#00e5ff" font-size="13" font-weight="bold">e₁ = 52 meV (Ground)</text>
+
+  <!-- Hàm sóng đối xứng psi_1 -->
+  <path d="M 220,280 Q 280,240 340,280 Q 390,295 440,280 Q 500,240 560,280" fill="none" stroke="#00e5ff" stroke-width="2"/>
+  <text x="280" y="235" fill="#00e5ff" font-size="12" text-anchor="middle">ψ₁ (Symmetric)</text>
+
+  <!-- Mức năng lượng liên kết e2 (Phản đối xứng) -->
+  <line x1="220" y1="220" x2="560" y2="220" stroke="#ffff00" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="575" y="225" fill="#ffff00" font-size="13" font-weight="bold">e₂ = 88 meV (Excited)</text>
+
+  <!-- Hàm sóng phản đối xứng psi_2 -->
+  <path d="M 220,220 Q 280,180 340,220 Q 390,220 440,220 Q 500,260 560,220" fill="none" stroke="#ffff00" stroke-width="2"/>
+  <text x="280" y="175" fill="#ffff00" font-size="12" text-anchor="middle">ψ₂ (Antisymmetric)</text>
+
+  <!-- Kích thước hình học -->
+  <line x1="220" y1="380" x2="340" y2="380" stroke="#8b949e" stroke-width="1.5"/>
+  <text x="280" y="398" fill="#8b949e" font-size="11" text-anchor="middle">Lw₁ = 8 nm</text>
+  <line x1="340" y1="380" x2="440" y2="380" stroke="#8b949e" stroke-width="1.5"/>
+  <text x="390" y="398" fill="#8b949e" font-size="11" text-anchor="middle">Lb = 4 nm</text>
+  <line x1="440" y1="380" x2="560" y2="380" stroke="#8b949e" stroke-width="1.5"/>
+  <text x="500" y="398" fill="#8b949e" font-size="11" text-anchor="middle">Lw₂ = 8 nm</text>
+</svg>
+```</code></pre>
+      <div class="metadata-line">
+        ↳ [Trục X]: Chiều dày z (nm) | [Trục Y]: Năng lượng E (eV) | [Rào thế]: ΔEc = 0.28 eV, Δe₁₂ = 36 meV
+      </div>
+    </div>
+  </div>
+</body>
+</html>

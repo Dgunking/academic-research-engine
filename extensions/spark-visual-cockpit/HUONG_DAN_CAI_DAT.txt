@@ -1,0 +1,56 @@
+========================================================================
+   HƯỚNG DẪN CÀI ĐẶT & SỬ DỤNG: SPARK VISUAL COCKPIT v2.0
+========================================================================
+
+Phiên bản: 2.0.0 (Bản chuẩn hóa tối cao: Tri-Pane Decoupled Academic Workstation)
+Tác giả: Hỗ trợ học tập Gemini Spark & Kỹ thuật Vật lý
+
+------------------------------------------------------------------------
+CÁCH CÀI ĐẶT NHANH TRONG 1 PHÚT
+------------------------------------------------------------------------
+
+Bước 1: GIẢI NÉN
+- Nhấp chuột phải vào file .zip và chọn "Extract All..." (hoặc Giải nén ở đây).
+- Bạn sẽ có một thư mục chứa các file: manifest.json, background.js, content.js, styles.css, icons,...
+
+Bước 2: MỞ TRANG QUẢN LÝ TIỆN ÍCH TRÊN TRÌNH DUYỆT
+- Mở Google Chrome (hoặc Edge, Brave, Cốc Cốc).
+- Nhập đường dẫn sau vào thanh địa chỉ:
+      chrome://extensions/
+
+Bước 3: BẬT CHẾ ĐỘ DÀNH CHO NHÀ PHÁT TRIỂN
+- Ở góc trên cùng bên phải màn hình, gạt bật công tắc:
+      [ Developer mode ] (Chế độ dành cho nhà phát triển)
+
+Bước 4: NẠP TIỆN ÍCH
+- Nhấp vào nút [ Load unpacked ] (Tải tiện ích đã giải nén) ở góc trên bên trái.
+- Chọn thư mục vừa giải nén (thư mục chứa manifest.json).
+- Tiện ích "Spark Visual Cockpit" sẽ xuất hiện ngay lập tức!
+- NẾU ĐÃ CÀI BẢN CŨ: Chỉ cần nhấn nút [ 🔄 ] (Tải lại / Reload) tại thẻ tiện ích rồi F5 lại tab Gemini.
+
+------------------------------------------------------------------------
+CÁC ĐIỂM ĐỘT PHÁ CỦA PHIÊN BẢN v2.0:
+------------------------------------------------------------------------
+1. BỐ CỤC HAI KHUNG NHÌN + LỚP PHỦ CHUYỂN ĐỔI (DUAL-PANE + LAYER OVERLAY):
+   - Cột Trái [SPARK]: Studio trực quan hiển thị sơ đồ băng năng lượng, vi cấu trúc dị thể (GaAs, AlGaAs, Quantum Well). Bật/tắt tự do bằng phím [Esc] hoặc nút [✕].
+   - Cột Phải [READ / CHAT]: Mặc định là Lớp phủ Bài đọc Living Document sạch sẽ, không trôi tin nhắn.
+   - Khi cần hỏi sâu: Bấm nút [CHAT] trên đỉnh bài đọc để trượt sang ô chat Gemini bản địa.
+   - Khi đã hiểu: Bấm thẻ mép nổi [READ] để quay lại đúng vị trí đang đọc dở.
+
+2. CỤM THẺ MÉP NỔI ĐỘNG 38PX (DYNAMIC DOCK TABS):
+   - Kích thước đồng bộ chuẩn xác 38px cho cả 2 thẻ [SPARK] và [READ].
+   - Khi đóng cả 2: Nằm kề nhau sát mép trái màn hình.
+   - Khi mở Khung Trái: Thẻ [READ] tự động trượt ra bám dính vào mép ngoài của Khung Trái.
+
+3. STREAM INTERCEPTOR & TRIỆT TIÊU GIẬT HÌNH (FOUC PREVENTION):
+   - Bài giảng dài trong cặp thẻ :::spark-reader-content được giấu khỏi dòng chat và nạp thẳng sang Khung [READ].
+   - Dòng chat chỉ hiện 1 thông báo ngắn gọn, giữ không gian chat luôn sạch sẽ.
+   - Tự động đóng thẻ ảo nếu bấm "Dừng sinh" giữa chừng.
+
+4. ĐỒNG BỘ THỊ GIÁC SCROLL-SYNC VỚI INTERACTION LOCK:
+   - Cuộn tới hình nào trong bài đọc, Khung Trái tự động chuyển tiêu điểm tới hình đó.
+   - Khi bạn đang chủ động Pan/Zoom trên Canvas, cơ chế tự động khóa trong 3 giây để không làm giật góc nhìn bạn đang soi.
+
+5. XUẤT BẢN PDF & LƯU TRỮ THEO CÂY ĐỀ CƯƠNG:
+   - Bấm nút [✓ Hoàn tất & Lưu trữ] để in bài học ra file PDF chuẩn học thuật, chống xé đôi công thức toán học, và lưu trữ vào đúng thư mục con trên Google Drive.
+========================================================================
