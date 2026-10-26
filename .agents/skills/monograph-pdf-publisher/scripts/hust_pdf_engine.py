@@ -2169,6 +2169,30 @@ def assert_monograph_text_compliance(
                 "(Khối 1: Teleology & Spatial Context, Khối 2: Mechanistic Blending & Derivation, Khối 3: Boundary Audit & Engineering Schema)."
             )
 
+        # Cấm tuyệt đối tiêu đề Khối và nhãn con di sản (Zero-Legacy-Block-Titles Gate)
+        legacy_titles = [
+            "Khởi Nguyên & Nỗi Đau Công Nghệ",
+            "Mỏ Neo Thị Giác & Mô Hình Hóa",
+            "Góc Nhìn Đối Trọng & Thử Thách Chẩn Đoán CER",
+            "Góc Nhìn Đối Trọng & Open CER Box",
+            "Nền tảng Vật lý Đại cương Quen thuộc",
+            "Ẩn dụ Cơ học Vĩ mô 3 Nhịp Đời thực",
+            "Dây cáp Chuyển giao Nhận thức",
+            "Bộ Tứ Câu Hỏi Toàn Cục Kỹ Sư Trưởng",
+            "Phân nhánh Đa hình Khối 2",
+            "Kịch bản Quét Tham số Kiểm chứng",
+        ]
+        for lt in legacy_titles:
+            if lt in combined_text:
+                errors.append(
+                    f"VI PHẠM DANH PHÁP TIÊU ĐỀ/NHÃN DI SẢN: Phát hiện chuỗi di sản '{lt}'. "
+                    "Bắt buộc dùng danh pháp chuẩn hóa: "
+                    "'Khối 1: Định vị Mục đích luận Hệ thống và Mỏ neo Không gian 3D', "
+                    "'Khối 2: Truy vết Cơ chế Vi mô, Giải phẫu Toán – Lý MALAE 3 Cấp và Dẫn xuất', "
+                    "'Khối 3: Kiểm toán Biên, Rủi ro Kỹ thuật và Thử thách Chẩn đoán R&D', "
+                    "'Tổng kết Phân mục X.Y và Mỏ neo Điều hướng Chuyển tiếp'."
+                )
+
         # 2. Bắt buộc hiện diện đầy đủ cả 3 Khối trong toàn văn chuyên khảo
         for k in range(1, 4):
             tag1 = f"Khối {k}:"
@@ -2345,3 +2369,84 @@ def assert_monograph_compliance(
 
     }
 
+
+
+def assert_story_visual_hierarchy(story: list) -> dict:
+    """
+    Gác cổng cấu trúc luồng nhận thức thị giác ReportLab Story:
+    1. Kiểm tra vị trí của embed_figure_with_caption: Bắt buộc nằm ngay sau tiêu đề H3 Khối 2 (cho phép Spacer).
+    2. Cấm triệt để văn bản, bảng danh pháp hoặc phương trình nằm chen ngang trước hình ảnh trong Khối 2.
+    3. Đếm số lượng MPT và số lượng hình ảnh, bảo đảm tỷ lệ 1:1 (Zero Blank MPT).
+    """
+    in_block_2 = False
+    b2_figure_seen = False
+    current_mpt = "Unknown"
+    mpt_figure_counts = {}
+    violations = []
+    flowables_since_b2_title = 0
+
+    for idx, f in enumerate(story):
+        if isinstance(f, Paragraph):
+            txt = f.text.strip()
+            # Chỉ bắt tiêu đề H2 bắt đầu bằng "Luận điểm 3."
+            if re.match(r"^(?:<b>)?Luận\s*điểm\s*\d+\.\d+\.\d+", txt):
+                current_mpt = re.sub(r"<[^>]+>", "", txt)[:50]
+                if current_mpt not in mpt_figure_counts:
+                    mpt_figure_counts[current_mpt] = 0
+
+            if "Khối 2:" in txt:
+                in_block_2 = True
+                b2_figure_seen = False
+                flowables_since_b2_title = 0
+                continue
+
+            if in_block_2 and "Khối 3:" in txt:
+                in_block_2 = False
+                if not b2_figure_seen:
+                    violations.append(f"Tại '{current_mpt}': Khối 2 không có bất kỳ hình ảnh nào được nhúng!")
+                continue
+
+        if in_block_2:
+            flowables_since_b2_title += 1
+            if isinstance(f, Spacer):
+                continue
+
+            # Kiểm tra xem f có phải là figure (KeepTogether chứa Image hoặc trực tiếp Image)
+            is_figure = False
+            if isinstance(f, Image):
+                is_figure = True
+            elif isinstance(f, KeepTogether):
+                content_list = getattr(f, "_content", [])
+                for sub in content_list:
+                    if isinstance(sub, Image):
+                        is_figure = True
+                        break
+
+            if is_figure:
+                mpt_figure_counts[current_mpt] = mpt_figure_counts.get(current_mpt, 0) + 1
+                b2_figure_seen = True
+            else:
+                if not b2_figure_seen:
+                    # Gặp text hoặc equation trước figure trong Khối 2
+                    snippet = ""
+                    if isinstance(f, Paragraph):
+                        snippet = re.sub(r"<[^>]+>", "", f.text)[:60]
+                    violations.append(
+                        f"Tại '{current_mpt}': Flowable loại '{f.__class__.__name__}' ('{snippet}') "
+                        f"xuất hiện trước hình ảnh trong Khối 2! "
+                        f"Lệnh embed_figure_with_caption() bắt buộc phải nằm ở dòng đầu tiên sau tiêu đề Khối 2."
+                    )
+
+    for mpt, count in mpt_figure_counts.items():
+        if count == 0:
+            violations.append(f"MPT '{mpt}' bị trắng hình ảnh (0 figures embedded)!")
+
+    if violations:
+        err_msg = "\n".join([f"  - {v}" for v in violations])
+        raise AssertionError(f"LINTER FAIL (assert_story_visual_hierarchy):\n{err_msg}")
+
+    return {
+        "status": "PASS",
+        "total_mpts": len(mpt_figure_counts),
+        "figure_counts": mpt_figure_counts
+    }

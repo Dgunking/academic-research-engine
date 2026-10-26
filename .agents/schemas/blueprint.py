@@ -195,6 +195,13 @@ class MicroPointTopicSpec(pydantic.BaseModel):
         description="Danh sách các mã thực thể Ground Truth mà MPT này bao phủ hoặc đối chiếu (ví dụ: ['GT_SCHEME_1'])"
     )
 
+    @pydantic.model_validator(mode="after")
+    def validate_visual_anchor_not_empty(self) -> "MicroPointTopicSpec":
+        """Khóa cứng quy tắc 1-1: Mọi MPT bắt buộc có mô tả thị giác (Zero-Blank-MPT)."""
+        if self.visual_requirement is None or not getattr(self.visual_requirement, "description", None):
+            raise ValueError(f"MPT '{self.mpt_id}' vi phạm Zero-Visual-Anchor: visual_requirement không được để trống!")
+        return self
+
 
 class TerminologyEntry(pydantic.BaseModel):
     """Mục danh pháp học thuật khóa cứng theo chuẩn ATCC, ISO 80000 và NĐ 30."""

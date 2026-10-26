@@ -1,6 +1,6 @@
 ---
 name: pedagogical-author
-description: Chuyên trách soạn thảo chuyên khảo toàn văn theo Dòng chảy Nhận thức Nguyên lý Đầu 3 Khối (Khối 1 Nỗi đau Công nghệ - Khối 2 Mỏ neo Thị giác & Mô hình hóa - Khối 3 Góc nhìn Đối trọng & Open CER), hạ độ dốc nhận thức cho người mới tiếp cận, giải phẫu phương trình MALAE 3 cấp độ, chuỗi nhân quả vi mô <= 65 từ/khối, mắt xích chuyển tiếp liền mạch và cấm in lời giải CER trong PDF.
+description: Chuyên trách soạn thảo chuyên khảo toàn văn theo Dòng chảy Nhận thức Nguyên lý Đầu 3 Khối (Khối 1: Định vị Mục đích luận Hệ thống và Mỏ neo Không gian 3D - Khối 2: Truy vết Cơ chế Vi mô, Giải phẫu Toán – Lý MALAE 3 Cấp và Dẫn xuất - Khối 3: Kiểm toán Biên, Rủi ro Kỹ thuật và Thử thách Chẩn đoán R&D), hạ độ dốc nhận thức cho người mới tiếp cận, giải phẫu phương trình MALAE 3 cấp độ, chuỗi nhân quả vi mô <= 65 từ/khối, mắt xích chuyển tiếp liền mạch và cấm in lời giải CER trong PDF.
 ---
 
 # Kỹ Năng Soạn Thảo Chuyên Khảo Sư Phạm Toàn Văn (Pedagogical Authoring Skill)
@@ -13,40 +13,47 @@ Kỹ năng này chịu trách nhiệm chuyển dịch `CurriculumBlueprint` và 
 
 Mỗi Luận điểm Vi mô (MPT) được triển khai qua 3 Khối nhận thức tự chứa, hạ độ dốc nhận thức cho sinh viên năm 3 mới tiếp cận 1 tháng:
 
-### Khối 1: Khởi Nguyên & Nỗi Đau Công Nghệ (Origin & Technological Bottleneck - Thuật toán 5)
-- **Nền tảng Vật lý Đại cương Quen thuộc:** Bắt đầu từ định luật vật lý đại cương năm 1–2 (Snell, bảo toàn năng lượng, bảo toàn điện tích).
-- **Giới hạn Vật lý & Điểm nghẽn Tiền nhiệm (`systemic_teleology_sbf`):** Chỉ rõ linh kiện thế hệ trước bị quá nhiệt, rò rỉ photon, mật độ hạt tải bị pha loãng hoặc cháy hỏng nếu không có cải tiến ở bước $N$.
-- **Bản chất Cốt lõi (`plain_english_axiom`):** Bản chất cốt lõi của luận điểm gói gọn trong một câu ngôn ngữ tự nhiên sắc bén (Zero-Jargon), không dùng từ ngữ rào đón.
-- **Hình tượng Hóa Trực giác (Dòng chảy 3 Nhịp) (`tangible_intuitive_framing`):** Thiết lập ẩn dụ cơ học hữu hình đẳng cấu toán học (đập nước, con dốc, van một chiều, đăng ký SME chống lặp).
+### Khối 1: Định vị Mục đích luận Hệ thống và Mỏ neo Không gian 3D
+- **Định vị mắt xích hệ thống (SBF/NFPS):**
+  * `• Nút thắt kỹ thuật ở mắt xích trước (N−1):` Phân tích giới hạn vật lý và điểm nghẽn của cấu trúc/bước trước đó.
+  * `• Chức năng can thiệp ở mắt xích hiện tại (N):` Giải pháp nguyên lý đầu được đưa vào tại phân mục này để giải quyết điểm nghẽn.
+  * `• Đầu ra cung cấp cho mắt xích kế tiếp (N+1):` Cung cấp cơ sở lý thuyết/dữ liệu cho các phân mục kế tiếp.
+- **Tiên đề Nguyên lý Đầu Một Câu (Plain-English Axiom):** Bản chất cốt lõi của luận điểm gói gọn trong một câu ngôn ngữ tự nhiên sắc bén (Zero-Jargon), không dùng từ ngữ rào đón.
+- **Mỏ neo không gian 3D & Ẩn dụ cơ học hữu hình:** Thiết lập ẩn dụ cơ học hữu hình đẳng cấu toán học (đập nước, con dốc, van một chiều, thung lũng kẹp rào thế) và mô tả hình thái không gian 3D.
 - **Khóa cứng giới hạn Khối 1:** TUYỆT ĐỐI KHÔNG GHIM ẢNH KỸ THUẬT Ở KHỐI 1.
-- **↳ Mắt xích Chuyển tiếp [Khởi nguyên ➔ Mô hình hóa] (`cognitive_handover_to_block_2`):** Kết thúc Khối 1 bằng câu hỏi gợi mở thị giác:
-  *↳ "Vậy cấu trúc này thực sự mang hình thù thế nào trong không gian tinh thể, và máy đo Lab sẽ bắt quả tang tín hiệu gì?"*
 
 ---
 
-### Khối 2: Mỏ Neo Thị Giác & Mô Hình Hóa (Visual Anchor & Modeling — Chuỗi Suy Luận Nhân Quả 4 Nhịp Toulmin)
-- **Vận hành qua Chuỗi Suy Luận Nhân Quả 4 Nhịp (Toulmin Causal Pipeline) bắt đầu chính thức từ Nhịp 1:**
-  * **Nhịp 1 (Visual & Empirical Evidence — Data):** Ghim Visual Anchor (TVD Sidecar) ngay dòng đầu tiên; bóc tách điểm uốn/gãy hình học; trích xuất tham số thực nghiệm ($I_{\text{th}}, SE, T_0$); kiểm toán nhị phân 0 số mồ côi (100% số liệu có đơn vị SI). Phân nhánh đa hình: Nhánh A (`EMPIRICAL_DATA_PLOT` - đồ thị Lab 3 tầng); Nhánh B (`PHENOMENON_SIMULATION` - đọc vị hình thái không gian Zero-Formula, Gedanken parameter sweep).
-  * **Nhịp 2 (Mechanistic Decoding — Warrant 1):** Giải mã động lực học hạt tải/photon/phonon đối kháng tại điểm đặc trưng (Carrier Density Pinning, đảo mật độ quần thể, tràn nhiệt, Auger, tuyết lở). Dịch 100% ký hiệu thành thực thể sống động trong tinh thể.
-  * **Nhịp 3 (Math-Physical Blending & Scaling — Warrant 2):** Khớp cơ chế vào Phương trình Cốt trụ duy nhất dạng phân số gạch ngang chuẩn $\frac{a}{b}$ (LaTeX Mathtext $\ge 300\text{ DPI}$). Thực hiện **Phép thử tương quan độ lớn (Order-of-Magnitude Scaling Step)** từ số liệu đo đạc thực tế ở Nhịp 1 làm đầu vào bắt buộc để giải thích vì sao giá trị rơi vào thang bậc đó (thay thế quy tắc cấm đại số cực đoan).
-  * **Nhịp 4 (Engineering Claim & Design Inference — Claim):** Rút ra kết luận thiết kế R&D và chỉ tiêu vận hành như hệ quả tất yếu từ phép thử độ lớn; áp dụng chốt chặn **Zero-Unwarranted Claims Gate** (cấm phán kết luận mồ côi không có căn cứ từ Nhịp 2 và Nhịp 3). Kèm Sweep Script 10–15 dòng và đúc kết 1 câu hành vi phi tuyến (Nonlinear Behavior Punchline).
-- **↳ Mắt xích Chuyển tiếp [Mô hình hóa ➔ Đối trọng] (`cognitive_handover_to_block_3`):** Kết thúc Khối 2 bằng câu hỏi lật ngược thực tế:
-  *↳ "Bức tranh lý tưởng trên bản vẽ thật hoàn hảo, nhưng khi đem ra chế tạo màng mỏng ngoài đời thực, ta sẽ va phải chướng ngại vật lý và cạm bẫy nào?"*
+### Khối 2: Truy vết Cơ chế Vi mô, Giải phẫu Toán – Lý MALAE 3 Cấp và Dẫn xuất
+- **Chốt chặn Phân cấp Thị giác (Visual Hierarchy Gate):** Ngay sau tiêu đề H3 Khối 2 và Spacer, phần tử đầu tiên BẮT BUỘC là `story.append(he.embed_figure_with_caption(...))` ghim hình ảnh thực chứng (Visual Evidence / TVD Sidecar) trước khi triển khai bất kỳ câu chữ nào.
+- **Truy vết tiên đề nguyên lý đầu:** Diễn giải cơ chế vi mô nền tảng xuất phát từ định luật bảo toàn.
+- **Phương trình Cột trụ (Target Equation Block):** Trình bày phương trình cốt trụ dạng phân số gạch ngang chuẩn $\frac{a}{b}$ qua LaTeX Mathtext $\ge 300\text{ DPI}$ kèm Bảng Danh pháp chuẩn.
+- **Giải phẫu Động lực học & Tham số Vận hành (Bộ Tứ Câu Hỏi Kỹ Sư Trưởng):**
+  * `• 1. Cơ chế vi mô cốt lõi nào đang diễn ra?`
+  * `• 2. Thông số ta có thể chủ động điều khiển:`
+  * `• 3. Tín hiệu thực nghiệm quan sát được trên máy đo:`
+  * `• 4. Phạm vi hoạt động tối ưu và ngưỡng phá vỡ giới hạn:`
+- **Chuỗi Suy Luận Nhân Quả 4 Nhịp Toulmin:**
+  * `• Nhịp 1: Bằng chứng thị giác thực chứng:` Bóc tách điểm uốn, gãy, giá trị đo đạc từ hình ảnh Khối 2.
+  * `• Nhịp 2: Động lực học vi mô:` Diễn giải động lực học đối kháng của hạt tải/photon/phonon.
+  * `• Nhịp 3: Toán học & Cân bằng thứ nguyên:` Cân đối đại số và bảo toàn thứ nguyên vật lý.
+  * `• Nhịp 4: Khẳng định kỹ thuật & Chỉ tiêu thiết kế:` Rút ra kết luận thiết kế R&D từ bằng chứng thực nghiệm.
+- **Dẫn xuất trung gian tường minh (Zero-Skipped-Steps):** Triển khai đầy đủ từng bước vi tích phân qua `he.build_intermediate_equation(...)`.
 
 ---
 
-### Khối 3: Góc Nhìn Đối Trọng & Thử Thách Chẩn Đoán CER (Orthogonal Perspective & Open CER Challenge - Thuật toán 5)
-- **1. Bóc tách Góc nhìn Đối trọng (`OrthogonalPerspective`):** Đổi chiều tư duy 90° từ bức tranh lý tưởng ở Khối 2 sang thực tế kỹ thuật:
-  * *Không gian thực $z \leftrightarrow$ Không gian xung lượng $k$:* Vị trí giam giữ electron vs. sự bảo toàn xung lượng khi tái hợp (subbands 2D).
-  * *Cân bằng tĩnh $\leftrightarrow$ Động học phi tuyến & Nhiệt độ:* Trạng thái 0 K/tĩnh vs. tự nóng Joule, trôi dải cấm, tràn hạt tải vượt rào khi nhiệt độ phòng tăng.
-  * *Tinh thể lý tưởng $\leftrightarrow$ Màng mỏng khuyết tật & Nhám biên thực tế:* Bề mặt phẳng tuyệt đối vs. độ gồ ghề $\pm 1$ lớp nguyên tử làm giãn rộng phi đồng nhất vạch phổ phát xạ.
-  * Diễn giải dung dị, trực quan, phù hợp với người học mới tiếp xúc chuyên ngành 1 tháng.
-- **2. Thử thách Chẩn đoán R&D Mở (`OpenCERChallenge`):**
+### Khối 3: Kiểm toán Biên, Rủi ro Kỹ thuật và Thử thách Chẩn đoán R&D
+- **Kiểm toán biên & Rủi ro vận hành kỹ thuật:** Bóc tách các giả thiết lý tưởng hóa, rủi ro nhiệt, trôi dải biên, bão hòa hạt tải, và các điểm sập hoạt động trong thực tế màng mỏng/linh kiện.
+- **Thử thách Chẩn đoán R&D Mở (`OpenCERChallenge`):**
   * Thiết kế 1 bài toán chẩn đoán thực chiến / bẫy ngộ nhận kinh điển bắt nguồn trực tiếp từ hình ảnh Khối 2.
   * Hiển thị trong PDF qua Flowable `make_open_cer_box` chuyên nghiệp gồm: Bối cảnh, Đề bài chẩn đoán, Định hướng Khẳng định (Claim Guide), Dữ liệu cần trích xuất (Evidence Guide), Tiêu chí Lập luận (Reasoning Guide), Cảnh báo bẫy ngộ nhận.
   * 🔒 **RÀNG BUỘC BẤT BIẾN:** **CẤM TUYỆT ĐỐI IN LỜI GIẢI TRONG PDF**. Để trống khung thử thách để người học suy nghĩ và trực tiếp tranh biện trên Chat. Khung chat duy trì Zero-Text Chat Rule khi xuất bản (chỉ xuất Bộ ba Mỏ neo Điều hướng trong ~2s). Lời giải tham chiếu lưu riêng ở trường `chat_evaluation_key` chỉ dùng để AI chấm điểm trên Chat.
 
 ---
+
+### Tổng kết Phân mục X.Y và Mỏ neo Điều hướng Chuyển tiếp
+- Khép lại phân mục bằng H2 tổng kết toàn diện các phát hiện cốt lõi từ các MPT.
+- Thiết lập mỏ neo điều hướng chuyển tiếp (Pedagogical Compass) dẫn dắt câu hỏi nghiên cứu mở sang phân mục $X.(Y+1)$ tiếp theo.
 
 ## II. BỘ LỌC TĨNH AST LINTER TRẠM 1 (THUẬT TOÁN 8)
 

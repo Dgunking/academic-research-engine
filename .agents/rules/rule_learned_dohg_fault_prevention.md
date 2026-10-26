@@ -101,6 +101,38 @@ description: Quy tắc phòng ngừa lỗi cú pháp toán, va chạm hình họ
     - CẤM TUYỆT ĐỐI sử dụng các chuỗi thực thể HTML thô (`&rarr;`, `&larr;`, `&gt;`, `&lt;`) trong văn bản hoặc chuỗi phương trình phản ứng hóa học ReportLab.
     - BẮT BUỘC sử dụng trực tiếp ký tự Unicode bản địa (`→`, `←`, `>`, `<`, `≥`, `≤`, `—`, `–`, `−`, `·`, `×`) trong tệp mã nguồn lưu dưới định dạng chuẩn UTF-8.
 
+11. **Chốt chặn Phân cấp Thị giác Khối 2 (Block 2 Toulmin Beat 1 Visual Hierarchy Gate):**
+    - Trong mỗi Luận điểm Vi mô (MPT), ngay sau tiêu đề H3 Khối 2: Truy vết Cơ chế Vi mô, Giải phẫu Toán – Lý MALAE 3 Cấp và Dẫn xuất, phần tử nội dung ĐẦU TIÊN bắt buộc phải là lệnh story.append(he.embed_figure_with_caption(...)) (cho phép tối đa 1 phần tử Spacer(1, ...) trước hình).
+    - CẤM TUYỆT ĐỐI đặt văn bản giải thích, Bộ tứ câu hỏi kỹ sư trưởng, Chuỗi biến đổi nhân quả hoặc các phương trình cột trụ/dẫn xuất trung gian TRƯỚC hình ảnh. Sinh viên và kỹ sư phải quan sát dữ liệu thực chứng (Nhịp 1 Toulmin) trước khi tiếp nhận phân tích cơ chế và công thức.
+
+12. **Chốt chặn Phân tách Panel Độc lập 1:1 (D-SAFE Sub-panel 1:1 Isolation Gate):**
+    - Áp dụng nghiêm ngặt Tầng 5 Thuật toán 3 (RVAE Engine): Mọi hình ảnh composite có nhiều panel chữ cái (a), (b), (c), ... bắt buộc phải được cắt rời thành từng tệp ảnh đơn lẻ ([Goc]_Muc_X.Y_Hinh_Za_[Ten].png).
+    - Mỗi MPT sở hữu duy nhất 1 tệp hình ảnh độc lập tương ứng với luận điểm phân tích. CẤM TUYỆT ĐỐI hiện tượng 'mồ côi panel' (panel xuất hiện trong ảnh tổng nhưng không có MPT phân tích) hoặc dồn toàn bộ ảnh composite vào một mục rồi để trắng hình các mục kế tiếp.
+
+13. **Chốt chặn Kiểm toán AST Flowables Thực chất (Zero-Hardcode Audit Gate):**
+    - 100% các giá trị trong từ điển checklist_status của audit_monograph_*.py bắt buộc phải là biểu thức logic kiểm tra thuộc tính thực của tài liệu (AST flowables, số trang PyMuPDF, mã băm SHA-256 tệp ảnh và sidecar, kết quả sympy.simplify == 0).
+    - CẤM TUYỆT ĐỐI gán trực tiếp giá trị True cố định.
+
+14. **Chốt chặn Khóa cứng Danh pháp Tiêu đề Chuẩn mực (Strict Canonical Headings Invariant Gate):**
+    - BẮT BUỘC 100% chuyên khảo trong mọi chương và môn học phải tuân thủ chuẩn xác 100% hệ thống tiêu đề:
+      * **Khối 1:** Khối 1: Định vị Mục đích luận Hệ thống và Mỏ neo Không gian 3D (hoặc Khối 1: Định vị Mục đích luận Hệ thống (SBF) & Mỏ neo Không gian 3D)
+      * **Khối 2:** Khối 2: Truy vết Cơ chế Vi mô, Giải phẫu Toán – Lý MALAE 3 Cấp và Dẫn xuất
+      * **Khối 3:** Khối 3: Kiểm toán Biên, Rủi ro Kỹ thuật và Thử thách Chẩn đoán R&D
+      * **Tiêu đề Tổng kết:** Tổng kết Phân mục X.Y và Mỏ neo Điều hướng Chuyển tiếp
+    - CẤM TUYỆT ĐỐI tái sinh các danh pháp tiêu đề di sản:
+      * ❌ CẤM Khởi Nguyên & Nỗi Đau Công Nghệ
+      * ❌ CẤM Mỏ Neo Thị Giác & Mô Hình Hóa
+      * ❌ CẤM Góc Nhìn Đối Trọng & Thử Thách Chẩn Đoán CER
+      * ❌ CẤM Góc Nhìn Đối Trọng & Open CER Box
+      * ❌ CẤM Tổng kết Chuyên khảo & Cầu nối Dẫn nhập sang Mục...
+    - CẤM TUYỆT ĐỐI các nhãn con di sản gây rác thị giác:
+      * ❌ CẤM Nền tảng Vật lý Đại cương Quen thuộc
+      * ❌ CẤM Ẩn dụ Cơ học Vĩ mô 3 Nhịp Đời thực
+      * ❌ CẤM ↳ Dây cáp Chuyển giao Nhận thức
+      * ❌ CẤM Bộ Tứ Câu Hỏi Toàn Cục Kỹ Sư Trưởng (Bắt buộc dùng Giải phẫu Động lực học & Tham số Vận hành (Bộ Tứ Câu Hỏi Kỹ Sư Trưởng))
+      * ❌ CẤM Phân nhánh Đa hình Khối 2
+      * ❌ CẤM Kịch bản Quét Tham số Kiểm chứng Tính Phụ thuộc Hàm
+
 ---
 
 ## III. MẪU MÃ CHUẨN HÓA

@@ -56,6 +56,14 @@ class BinaryEighteenPointResult(pydantic.BaseModel):
         description="Chi tiết trạng thái của từng tiêu chí trong 17/18 điểm"
     )
 
+    @pydantic.model_validator(mode="after")
+    def validate_dynamic_checklist(self) -> "BinaryEighteenPointResult":
+        """Xác thực tính nhất quán số lượng: total_passed phải bằng chính xác số lượng True."""
+        actual_true = sum(1 for v in self.checklist_status.values() if v is True)
+        if self.total_passed != actual_true:
+            raise ValueError(f"Gian lận kiểm toán: total_passed ({self.total_passed}) != số lượng True thực tế ({actual_true})!")
+        return self
+
 
 # Bí danh tương thích ngược (Backward Compatibility Alias)
 BinarySeventeenPointResult = BinaryEighteenPointResult
